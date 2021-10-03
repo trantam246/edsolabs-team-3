@@ -20,4 +20,5 @@
 
 # công việc
 
-push code vào nhánh này
+push code vào nhánh này nhánh [dev](https://github.com/nguyenanh1609/edsolabs-team-3/tree/dev)<br>
+nhánh main để chứa code đã hoàn thành để chạy
