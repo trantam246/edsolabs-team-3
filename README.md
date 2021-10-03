@@ -17,3 +17,7 @@
 -i18n<br>
 -Typescript<br>
 -spliderjs<br>
+
+# công việc
+
+push code vào nhánh này
