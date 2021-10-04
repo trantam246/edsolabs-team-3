@@ -7,7 +7,7 @@ export function AdsHome() {
       <Helmet>
         <meta name="description" content="Page not found" />
       </Helmet>
-      <p>adshome</p>
+      <p>adshome one</p>
     </>
   );
 }
