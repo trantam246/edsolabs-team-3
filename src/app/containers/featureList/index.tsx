@@ -7,7 +7,7 @@ export function FeatureList() {
       <Helmet>
         <meta name="description" content="Page not found" />
       </Helmet>
-      <p>featurelist</p>
+      <p className="">featurelist</p>
     </>
   );
 }

@@ -15,11 +15,9 @@ export function pageHome() {
         <title>Home</title>
         <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
+      {/*navbar*/}
+      <Navbar></Navbar>
       <Container>
-        <Row>
-          {/*navbar*/}
-          <Navbar></Navbar>
-        </Row>
         <Row>
           {/*tabshome*/}
           <TabsHome></TabsHome>
