@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import 'bootstrap/dist/css/bootstrap.css';
 import { pageHome } from './pages/pageHome';
 import { Not404 } from './containers/404';
+import TermsOfService from './components/termsOfService';
 export function App() {
   const { i18n } = useTranslation();
   return (

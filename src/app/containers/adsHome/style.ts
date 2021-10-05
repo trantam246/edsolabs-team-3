@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro';
-import '../../images/Rectangle 1817.png';
 
 export const Button = styled.button`
   font-size: 1.6rem;
@@ -18,6 +17,10 @@ export const Button = styled.button`
   margin-bottom: 1rem;
   border-radius: 17.2rem;
   border: none;
+  @media (max-width: 540px) {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+  }
 `;
 
 export const P = styled.p`
@@ -26,6 +29,11 @@ export const P = styled.p`
   font-weight: 500;
   color: #ffffff;
   margin-bottom: 3rem;
+  @media (max-width: 540px) {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
 `;
 
 export const H3 = styled.h3`
@@ -34,30 +42,32 @@ export const H3 = styled.h3`
   line-height: 4.4rem;
   color: #ffffff;
   margin-bottom: 1rem;
+  @media (max-width: 540px) {
+    line-height: 2rem;
+    font-size: 1.6rem;
+    margin-bottom: 0.7rem;
+  }
 `;
 
-export const Container = styled.div`
-  max-width: 1324px;
-  margin: 6rem auto;
-  position: relative;
-
-  background: linear-gradient(
-    90.03deg,
-    #131318 21.91%,
-    #211e22 64.64%,
-    rgba(23, 26, 35, 0) 68.82%
-  );
+export const ContainerAbs = styled.div`
+  background: url(${props => props.color}) no-repeat,
+    linear-gradient(
+      90.03deg,
+      #131318 21.91%,
+      #211e22 64.64%,
+      rgba(23, 26, 35, 0) 68.82%
+    );
+  background-position: 100%;
   border-radius: 2rem;
-
-  &::before {
-    content: '';
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-  }
+  margin: 6rem auto;
 `;
 
 export const Box = styled.div`
   padding: 4.8rem 0 4.8rem 9.8rem;
+  @media (max-width: 992px) {
+    padding: 2.4rem;
+  }
+  @media (max-width: 768px) {
+    padding: 1.2rem;
+  }
 `;
