@@ -5,7 +5,7 @@
   "dependencies": {
     "@react-icons/all-files": "4.1.0",
     "@reduxjs/toolkit": "1.6.0",
-    "@splidejs/splide": "2.4.21",
+    "@splidejs/react-splide": "0.4.4",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "12.0.0",
     "@types/fontfaceobserver": "0.0.6",
