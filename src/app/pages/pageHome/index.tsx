@@ -17,14 +17,12 @@ export function pageHome() {
       </Helmet>
       {/*navbar*/}
       <Navbar></Navbar>
+      {/*featurelist*/}
+      <FeatureList></FeatureList>
       <Container>
         <Row>
           {/*tabshome*/}
           <TabsHome></TabsHome>
-        </Row>
-        <Row>
-          {/*featurelist*/}
-          <FeatureList></FeatureList>
         </Row>
         <Row>
           {/*silders*/}
