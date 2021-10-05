@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { NavLink } from 'react-router-dom';
 import { Col, Container } from 'reactstrap';
-import avtar from '../../../img/avatarMenu.png';
+import avtar from '../../../images/avatarMenu.png';
 import { GrMenu } from '@react-icons/all-files/gr/GrMenu';
 import { GrClose } from '@react-icons/all-files/gr/GrClose';
 import { useState } from 'react';

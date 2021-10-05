@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { Helmet } from 'react-helmet-async';
 import { NavLink } from 'react-router-dom';
-import logo from '../../../img/logo.png';
+import logo from '../../../images/logo.png';
 
 const LogoImg = styled.img`
   @media (max-width: 600px) {
