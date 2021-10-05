@@ -19,14 +19,12 @@ export function pageHome() {
       <Navbar></Navbar>
       {/*featurelist*/}
       <FeatureList></FeatureList>
+      {/*silders*/}
+      <Silder></Silder>
       <Container>
         <Row>
           {/*tabshome*/}
           <TabsHome></TabsHome>
-        </Row>
-        <Row>
-          {/*silders*/}
-          <Silder></Silder>
         </Row>
         <Row>
           {/*adsHome*/}

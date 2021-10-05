@@ -5,7 +5,7 @@ const TitleSliders = styled.h3`
   color: #dba83d;
   text-align: center;
   font-weight: 600;
-  margin-top: 6rem;
+  padding-top: 6rem;
   margin-bottom: 7.6rem;
 `;
 const Title: React.FC = () => {
