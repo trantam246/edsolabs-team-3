@@ -19,7 +19,6 @@ export function pageHome() {
       <Navbar></Navbar>
       {/*featurelist*/}
       <FeatureList></FeatureList>
-
       <Container>
         <Row>
           {/*tabshome*/}
