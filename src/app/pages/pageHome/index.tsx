@@ -6,7 +6,7 @@ import { Silder } from 'app/containers/silders';
 import { TabsHome } from 'app/containers/tabsHome';
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-export function pageHome() {
+export function PageHome() {
   document.title = 'home';
   return (
     <>
