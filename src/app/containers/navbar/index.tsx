@@ -79,16 +79,16 @@ export function Navbar(props) {
             <MenuNavbar></MenuNavbar>
             <Col className="text-end">
               <ButtonNavBar color={'gradiend'} status={''}>
-                <NavLink to="/faq">Become a Pawnshop</NavLink>
+                <NavLink to="/">Become a Pawnshop</NavLink>
               </ButtonNavBar>
               <ButtonNavBar color={''} status={''}>
-                <NavLink to="/faq">Buy DFY</NavLink>
+                <NavLink to="/">Buy DFY</NavLink>
               </ButtonNavBar>
               <ButtonNavBar color={''} status={'true'}>
-                <NavLink to="/faq">Connect</NavLink>
+                <NavLink to="/">Connect</NavLink>
               </ButtonNavBar>
               <ButtonNavBar color={''} status={''}>
-                <NavLink to="/faq">Login</NavLink>
+                <NavLink to="/login">Login</NavLink>
               </ButtonNavBar>
               <HamburgerMenu onClick={openMenu}>
                 {openMenuMobile ? (
