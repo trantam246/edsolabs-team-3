@@ -6,6 +6,7 @@ import SeeAll from './SeeAll';
 
 const SliderSection = styled.section`
   min-height: 61.6rem;
+  overflow: hidden;
   background-color: #232732;
   @media screen and (max-width: 375px) {
     min-height: 39rem;

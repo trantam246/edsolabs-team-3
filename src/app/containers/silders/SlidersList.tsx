@@ -6,6 +6,58 @@ import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import SliderItem from './SliderItem';
 import styled from 'styled-components';
 
+const primaryOptions = {
+  type: 'slider',
+  rewind: true,
+  // width: '100%',
+  autoplay: true,
+  perPage: 3,
+  perMove: 1,
+  pagination: false,
+  breakpoints: {
+    '768': {
+      perPage: 1,
+      // width: '100%',
+    },
+  },
+};
+
+const Sliders = styled(Splide)`
+  .splide {
+    overflow: hidden;
+    &__arrow {
+      width: 7.4rem;
+      height: 7.4rem;
+      transform: translateY(-100%);
+      background: #c9cacd;
+      opacity: 0.1;
+      & svg {
+        width: 1.3rem;
+        height: 2.4rem;
+        color: #dba83d;
+      }
+      &--prev {
+        left: -10rem;
+      }
+      &--next {
+        right: -10rem;
+      }
+    }
+    &__list {
+      width: 100%;
+      justify-content: space-between;
+      margin: 0 auto !important;
+    }
+    &__slide {
+      width: calc(100% / 3 - 2rem) !important;
+      @media screen and (max-width: 768px) {
+        width: 28.3rem;
+        height: 17.7rem;
+      }
+    }
+  }
+`;
+
 const SlidersList: React.FC = () => {
   const items = [
     {
@@ -31,57 +83,6 @@ const SlidersList: React.FC = () => {
     },
   ];
 
-  const primaryOptions = {
-    type: 'slider',
-    rewind: true,
-    width: '100%',
-    autoplay: true,
-    perPage: 3,
-    perMove: 1,
-    pagination: false,
-    breakpoints: {
-      '600': {
-        perPage: 1,
-        // width: '100%',
-        pagination: true,
-      },
-    },
-  };
-
-  const Sliders = styled(Splide)`
-    .splide {
-      &__arrow {
-        width: 7.4rem;
-        height: 7.4rem;
-        transform: translateY(-100%);
-        background: #c9cacd;
-        opacity: 0.1;
-        & svg {
-          width: 1.3rem;
-          height: 2.4rem;
-          color: #dba83d;
-        }
-        &--prev {
-          left: -10rem;
-        }
-        &--next {
-          right: -10rem;
-        }
-      }
-      &__list {
-        width: 100%;
-        justify-content: space-between;
-        margin: 0 auto !important;
-      }
-      &__slide {
-        width: calc(100% / 3 - 2rem) !important;
-        @media screen and (max-width: 375px) {
-          width: 28.3rem;
-          height: 17.7rem;
-        }
-      }
-    }
-  `;
   return (
     <Sliders options={primaryOptions}>
       {items.map((item, idx) => (
