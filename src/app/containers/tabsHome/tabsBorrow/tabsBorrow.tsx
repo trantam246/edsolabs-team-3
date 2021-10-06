@@ -12,6 +12,7 @@ import { InputComponent } from 'app/components/Input';
 import { TabborrowNFT } from './style';
 import { RiInformationFill } from '@react-icons/all-files/ri/RiInformationFill';
 import { BiSearch } from '@react-icons/all-files/bi/BiSearch';
+import { ButtonComponent } from 'app/components/Button/Input';
 export default function TabsBorrow(props: any) {
   const [activeTabBorRowCryptocurrency, setActiveTabBorRowCryptocurrency] =
     useState('1');
@@ -123,10 +124,10 @@ export default function TabsBorrow(props: any) {
                 between 50 - 70% of the collateral value.
               </span>
             </TooltipTabs>
-            <button>
+            <ButtonComponent width="100px" height="50px" fontSize="16px">
               <BiSearch />
               Search
-            </button>
+            </ButtonComponent>
           </Form>
         </TabborrowCryptocurrency>
         <TabborrowNFT tabId="2">
