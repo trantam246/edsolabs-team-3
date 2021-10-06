@@ -31,6 +31,12 @@ export const TabborrowSub = styled(Nav)`
       #bd8727 101.47%
     );
   }
+  @media (max-width: 320px) {
+    font-size: 14px;
+    width: 227px;
+    height: 45px;
+    margin-right: 0px;
+  }
 `;
 ////-tab borrow Cryptocurrency
 export const TabborrowCryptocurrency = styled(TabPane)`
@@ -48,6 +54,56 @@ export const TabborrowCryptocurrency = styled(TabPane)`
       display: flex;
       justify-content: space-between;
     }
+    Button {
+      border: none;
+      position: relative;
+      background: linear-gradient(
+        221.15deg,
+        #bd8727 0%,
+        #ffd574 49.02%,
+        #feca50 62.02%,
+        #bd8727 101.47%
+      );
+      transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  @media (max-width: 1024px) {
+    form {
+      .btn__submit {
+        width: 50%;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    form {
+      .btn__submit {
+        width: 100%;
+      }
+    }
+  }
+  @media (max-width: 425px) {
+    form {
+      .btn__submit {
+        width: 319px;
+      }
+    }
+  }
+  @media (max-width: 375px) {
+    form {
+      .btn__submit {
+        width: 319px;
+      }
+    }
+  }
+  @media (max-width: 320px) {
+    form {
+      .btn__submit {
+        width: 240px;
+      }
+    }
   }
 `;
 /////-wrapper input
@@ -58,6 +114,7 @@ interface wrapperInput {
   colorBr: string;
 }
 export const WrapperInput = styled.div`
+  position: relative;
   height: ${(props: wrapperInput) => (props.height ? props.height : '0px')};
   width: ${(props: wrapperInput) => (props.width ? props.width : '0px')};
   input {
@@ -107,6 +164,115 @@ export const WrapperInput = styled.div`
       border: none;
     }
   }
+  .btn_max {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+  .icon_coi {
+    position: absolute;
+    left: 18px;
+    top: 10px;
+  }
+  .value_coi {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: #fff;
+    font-size: 10px;
+  }
+  .collateral__Select {
+    color: #fff;
+    overflow-y: auto;
+    width: 111px;
+    height: 345px;
+    position: absolute;
+    top: 45px;
+    background-color: #2f3543;
+    border-radius: 15px;
+    z-index: 2;
+    ::-webkit-scrollbar {
+      width: 5px;
+      background-color: #45484f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #a2a3a7;
+    }
+    & > div {
+      :hover {
+        background-color: #535762;
+      }
+    }
+  }
+  .warning__input {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    color: red;
+  }
+  .Loanamount__select {
+    height: 200px;
+  }
+  @media (max-width: 1024px) {
+    width: ${(props: wrapperInput) =>
+      props.width === '417px' || props.width === '225px' ? '670px' : '200px'};
+    .btn_max {
+      width: 54px;
+      font-size: 14px;
+    }
+    div {
+      .input__Choose {
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    width: ${(props: wrapperInput) =>
+      props.width === '417px' || props.width === '225px' ? '500px' : '170px'};
+    .btn_max {
+      width: 54px;
+      font-size: 14px;
+    }
+    div {
+      .input__Choose {
+      }
+    }
+  }
+  @media (max-width: 425px) {
+    width: ${(props: wrapperInput) =>
+      props.width === '417px' || props.width === '225px' ? '240px' : '100px'};
+    .btn_max {
+      width: 54px;
+      font-size: 14px;
+    }
+    div {
+      .input__Choose {
+      }
+    }
+  }
+  @media (max-width: 375px) {
+    width: ${(props: wrapperInput) =>
+      props.width === '417px' || props.width === '225px' ? '218px' : '94px'};
+    .btn_max {
+      width: 54px;
+      font-size: 14px;
+    }
+    div {
+      .input__Choose {
+      }
+    }
+  }
+  @media (max-width: 320px) {
+    width: ${(props: wrapperInput) =>
+      props.width === '417px' || props.width === '225px' ? '180px' : '70px'};
+    .btn_max {
+      width: 54px;
+      font-size: 14px;
+    }
+    div {
+      .input__Choose {
+      }
+    }
+  }
 `;
 ////Tooltip
 export const TooltipTabs = styled.p`
@@ -114,10 +280,11 @@ export const TooltipTabs = styled.p`
   font-size: 12px;
   color: #c9cacd !important;
   padding: 0;
-  margin-top: 5px !important;
+  margin-top: 20px !important;
   margin-bottom: 60px !important;
   position: relative;
   span {
+    z-index: 4;
     display: none;
     position: absolute;
     top: 20px;
@@ -130,5 +297,37 @@ export const TooltipTabs = styled.p`
     display: block;
   }
 `;
+
 ////-tab borrow NFT
-export const TabborrowNFT = styled(TabPane)``;
+export const TabborrowNFT = styled(TabPane)`
+  .img {
+    margin-top: 57px;
+  }
+  button {
+    color: #282c37;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    background: linear-gradient(
+      221.15deg,
+      #bd8727 0%,
+      #ffd574 49.02%,
+      #feca50 62.02%,
+      #bd8727 101.47%
+    );
+    border-radius: 172px;
+    padding: 14px 24px;
+    border: none;
+    margin-top: 40px;
+  }
+  p {
+    margin-top: 32px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    a {
+      text-decoration-line: underline;
+      color: #dba83d;
+    }
+  }
+`;

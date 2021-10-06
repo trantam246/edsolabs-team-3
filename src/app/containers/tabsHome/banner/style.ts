@@ -30,8 +30,29 @@ export const Banner = styled(Col)`
       display: inline-block;
     }
   }
+  @media (max-width: 1920px) {
+    padding-left: 211px;
+    h1 {
+      font-size: 6rem;
+      margin-bottom: 29px;
+      padding-left: 70px;
+      width: 550px;
+    }
+    p {
+      padding-left: 70px;
+    }
+  }
   @media (max-width: 1440px) {
     padding-left: 0px;
+    h1 {
+      font-size: 6rem;
+      margin-bottom: 29px;
+      padding-left: 80px;
+      width: 550px;
+    }
+    p {
+      padding-left: 80px;
+    }
   }
   @media (max-width: 1366px) {
     padding-right: 35px;
@@ -39,8 +60,11 @@ export const Banner = styled(Col)`
     h1 {
       font-size: 5.4rem;
       margin-bottom: 29px;
-      padding-left: 50px;
+      padding-left: 80px;
       width: 550px;
+    }
+    p {
+      padding-left: 80px;
     }
   }
 
@@ -58,6 +82,12 @@ export const Banner = styled(Col)`
       padding-left: 0px;
       margin-bottom: 80px;
     }
+    div {
+      text-align: center;
+      img {
+        display: inline-block;
+      }
+    }
   }
 
   @media (max-width: 425px) {
@@ -72,7 +102,7 @@ export const Banner = styled(Col)`
       .title__span {
         color: #dba83d;
       }
-      font-size: 4.2rem;
+      font-size: 4.8rem;
       margin-bottom: 10px;
     }
     p {
@@ -90,6 +120,7 @@ export const Banner = styled(Col)`
     padding-right: 0px;
     padding-left: 0px;
     h1 {
+      font-size: 4rem;
       padding-left: 0px;
       width: auto;
       div {
@@ -98,7 +129,6 @@ export const Banner = styled(Col)`
       .title__span {
         color: #dba83d;
       }
-      font-size: 3.6rem;
       margin-bottom: 10px;
     }
     p {
@@ -116,6 +146,7 @@ export const Banner = styled(Col)`
     padding-right: 0px;
     padding-left: 0px;
     h1 {
+      font-size: 35px;
       padding-left: 0px;
       width: auto;
       div {

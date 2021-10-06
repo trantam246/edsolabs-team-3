@@ -27,6 +27,8 @@ export function ButtonComponent(props: any) {
         color={props.color}
         fontSize={props.fontSize}
         borderRadius={props.borderRadius}
+        className={props.className}
+        type={props.type}
       >
         {props.children}
       </Buttun>
