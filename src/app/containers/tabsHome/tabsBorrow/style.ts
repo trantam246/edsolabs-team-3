@@ -31,6 +31,12 @@ export const TabborrowSub = styled(Nav)`
       #bd8727 101.47%
     );
   }
+  @media (max-width: 320px) {
+    font-size: 14px;
+    width: 227px;
+    height: 45px;
+    margin-right: 0px;
+  }
 `;
 ////-tab borrow Cryptocurrency
 export const TabborrowCryptocurrency = styled(TabPane)`
@@ -61,6 +67,41 @@ export const TabborrowCryptocurrency = styled(TabPane)`
       transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
       &:hover {
         opacity: 0.8;
+      }
+    }
+  }
+  @media (max-width: 1024px) {
+    form {
+      .btn__submit {
+        width: 50%;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    form {
+      .btn__submit {
+        width: 100%;
+      }
+    }
+  }
+  @media (max-width: 425px) {
+    form {
+      .btn__submit {
+        width: 319px;
+      }
+    }
+  }
+  @media (max-width: 375px) {
+    form {
+      .btn__submit {
+        width: 319px;
+      }
+    }
+  }
+  @media (max-width: 320px) {
+    form {
+      .btn__submit {
+        width: 240px;
       }
     }
   }
@@ -172,6 +213,66 @@ export const WrapperInput = styled.div`
   .Loanamount__select {
     height: 200px;
   }
+  @media (max-width: 1024px) {
+    width: ${(props: wrapperInput) =>
+      props.width === '417px' || props.width === '225px' ? '670px' : '200px'};
+    .btn_max {
+      width: 54px;
+      font-size: 14px;
+    }
+    div {
+      .input__Choose {
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    width: ${(props: wrapperInput) =>
+      props.width === '417px' || props.width === '225px' ? '500px' : '170px'};
+    .btn_max {
+      width: 54px;
+      font-size: 14px;
+    }
+    div {
+      .input__Choose {
+      }
+    }
+  }
+  @media (max-width: 425px) {
+    width: ${(props: wrapperInput) =>
+      props.width === '417px' || props.width === '225px' ? '240px' : '100px'};
+    .btn_max {
+      width: 54px;
+      font-size: 14px;
+    }
+    div {
+      .input__Choose {
+      }
+    }
+  }
+  @media (max-width: 375px) {
+    width: ${(props: wrapperInput) =>
+      props.width === '417px' || props.width === '225px' ? '218px' : '94px'};
+    .btn_max {
+      width: 54px;
+      font-size: 14px;
+    }
+    div {
+      .input__Choose {
+      }
+    }
+  }
+  @media (max-width: 320px) {
+    width: ${(props: wrapperInput) =>
+      props.width === '417px' || props.width === '225px' ? '180px' : '70px'};
+    .btn_max {
+      width: 54px;
+      font-size: 14px;
+    }
+    div {
+      .input__Choose {
+      }
+    }
+  }
 `;
 ////Tooltip
 export const TooltipTabs = styled.p`
@@ -183,6 +284,7 @@ export const TooltipTabs = styled.p`
   margin-bottom: 60px !important;
   position: relative;
   span {
+    z-index: 4;
     display: none;
     position: absolute;
     top: 20px;

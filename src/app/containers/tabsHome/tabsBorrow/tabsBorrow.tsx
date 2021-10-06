@@ -16,7 +16,7 @@ import iconDcoi from '../../../../images/iconDcoi.png';
 import { useForm } from 'react-hook-form';
 import ListSelect from './listselect/listselect';
 import NFT from '../../../../images/NFT.png';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 export default function TabsBorrow(props: any) {
   //trang thai dong mo select
   const [collateralSelectStatus, setcollateralSelectStatus] = useState(false);
@@ -226,6 +226,7 @@ export default function TabsBorrow(props: any) {
                 height="36px"
                 colorFont="#DBA83D"
                 colorBr="#DBA83D"
+                className="input__Choose"
               >
                 <input
                   type="text"
@@ -329,6 +330,7 @@ export default function TabsBorrow(props: any) {
               height="54px"
               fontSize="16px"
               color="#282C37"
+              className="btn__submit"
             >
               <BiSearch />
               Search
