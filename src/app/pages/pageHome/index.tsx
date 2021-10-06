@@ -22,10 +22,10 @@ export function PageHome() {
       <FeatureList></FeatureList>
       {/*silders*/}
       <Silder></Silder>
-      {/*footter*/}
-      <Footter></Footter>
       {/*adsHome*/}
       <AdsHome></AdsHome>
+      {/*footter*/}
+      <Footter></Footter>
     </>
   );
 }
