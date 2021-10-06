@@ -14,6 +14,8 @@ import { useTranslation } from 'react-i18next';
 import 'bootstrap/dist/css/bootstrap.css';
 import { PageHome } from './pages/pageHome';
 import { Not404 } from './containers/404';
+import { PageSearch } from './pages/pageSearch';
+import { PageSign } from './pages/pageSign';
 export function App() {
   const { i18n } = useTranslation();
   return (
@@ -27,6 +29,8 @@ export function App() {
       </Helmet>
       <Switch>
         <Route exact path="/" component={PageHome} />
+        <Route exact path="/search" component={PageSearch} />
+        <Route exact path="/login" component={PageSign} />
         <Route component={Not404} />
       </Switch>
       <GlobalStyle />
