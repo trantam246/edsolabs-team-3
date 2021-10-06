@@ -4,6 +4,7 @@ import { Footter } from 'app/containers/footter';
 import { Navbar } from 'app/containers/navbar';
 import { Silder } from 'app/containers/silders';
 import { TabsHome } from 'app/containers/tabsHome';
+import { Not404 } from 'app/containers/404';
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Container, Row } from 'reactstrap';
@@ -15,12 +16,18 @@ export function pageHome() {
         <title>Home</title>
         <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
+      {/* not404 */}
+      <Not404></Not404>
+
       {/*navbar*/}
       <Navbar></Navbar>
+
       {/*featurelist*/}
       <FeatureList></FeatureList>
+
       {/*silders*/}
       <Silder></Silder>
+
       <Container>
         <Row>
           {/*tabshome*/}
