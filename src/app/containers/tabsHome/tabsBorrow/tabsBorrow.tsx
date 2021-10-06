@@ -7,18 +7,123 @@ import {
 } from './style';
 import classnames from 'classnames';
 import { useState } from 'react';
-import { Form, TabContent } from 'reactstrap';
-import { InputComponent } from 'app/components/Input';
+import { TabContent } from 'reactstrap';
 import { TabborrowNFT } from './style';
 import { RiInformationFill } from '@react-icons/all-files/ri/RiInformationFill';
 import { BiSearch } from '@react-icons/all-files/bi/BiSearch';
 import { ButtonComponent } from 'app/components/Button/Input';
+import iconDcoi from '../../../../images/iconDcoi.png';
+import { useForm } from 'react-hook-form';
+import ListSelect from './listselect/listselect';
+import NFT from '../../../../images/NFT.png';
+import { Link, NavLink } from 'react-router-dom';
 export default function TabsBorrow(props: any) {
+  //trang thai dong mo select
+  const [collateralSelectStatus, setcollateralSelectStatus] = useState(false);
+  const [LoanamountselectSatus, setLoanamountselectSatus] = useState(false);
+  //du lieu
+  const collateralSelect = [
+    {
+      icon: iconDcoi,
+      value: 'Duration',
+    },
+    {
+      icon: iconDcoi,
+      value: '1',
+    },
+    {
+      icon: iconDcoi,
+      value: '2',
+    },
+    {
+      icon: iconDcoi,
+      value: '3',
+    },
+    {
+      icon: iconDcoi,
+      value: '4',
+    },
+    {
+      icon: iconDcoi,
+      value: '5',
+    },
+    {
+      icon: iconDcoi,
+      value: '5',
+    },
+    {
+      icon: iconDcoi,
+      value: '5',
+    },
+    {
+      icon: iconDcoi,
+      value: '5',
+    },
+    {
+      icon: iconDcoi,
+      value: '5',
+    },
+  ];
+  const Loanamountselect = [
+    {
+      icon: iconDcoi,
+      value: 'Duration',
+    },
+    {
+      icon: iconDcoi,
+      value: '1',
+    },
+    {
+      icon: iconDcoi,
+      value: '2',
+    },
+    {
+      icon: iconDcoi,
+      value: '3',
+    },
+  ];
+  //lay icon
+  interface myIcon {
+    icon: string;
+    value: string;
+  }
+  interface myLo {
+    Loanamountselect: {
+      icon?: string;
+      value?: string;
+    };
+    collateralSelect: {
+      icon?: string;
+      value?: string;
+    };
+  }
+  const [iconTag, seticonTag] = useState<myLo>({
+    Loanamountselect: {},
+    collateralSelect: {},
+  });
+  const handleIconPositionLoanamountselect = (icon: myIcon) => {
+    seticonTag({ ...iconTag, Loanamountselect: icon });
+    setLoanamountselectSatus(false);
+  };
+  const handleIconPositionCollateralSelect = (icon: myIcon) => {
+    seticonTag({ ...iconTag, collateralSelect: icon });
+    setcollateralSelectStatus(false);
+  };
+  //tabs
   const [activeTabBorRowCryptocurrency, setActiveTabBorRowCryptocurrency] =
     useState('1');
   const toggleCryptocurrency = tab => {
     if (activeTabBorRowCryptocurrency !== tab)
       setActiveTabBorRowCryptocurrency(tab);
+  };
+  //submit form 1
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSumitFormCryptocurrency = data => {
+    console.log(data);
   };
   return (
     <>
@@ -46,24 +151,72 @@ export default function TabsBorrow(props: any) {
       </TabborrowSub>
       <TabContent activeTab={activeTabBorRowCryptocurrency}>
         <TabborrowCryptocurrency tabId="1">
-          <Form>
+          <form onSubmit={handleSubmit(onSumitFormCryptocurrency)}>
             <p>Collateral</p>
             <div>
               <WrapperInput width="417px" height="44px" colorFont="" colorBr="">
-                <InputComponent
-                  name="Collateral"
+                <input
                   type="number"
+                  // name="Collateral"
                   placeholder="Enter amount"
-                  value=""
-                ></InputComponent>
+                  {...register('Collateral', { required: true })}
+                ></input>
+                {errors.Collateral && (
+                  <span className="warning__input">Invalid amount</span>
+                )}
+                <ButtonComponent
+                  className="btn_max"
+                  width="64px"
+                  height="34px"
+                  borderRadius="172px"
+                  type="button"
+                >
+                  Max
+                </ButtonComponent>
               </WrapperInput>
-              <WrapperInput width="111px" height="44px" colorFont="" colorBr="">
-                <InputComponent
-                  name="CollateralSelect"
+              <WrapperInput
+                width="111px"
+                height="44px"
+                colorFont=""
+                colorBr=""
+                onFocus={() => setcollateralSelectStatus(true)}
+              >
+                <input
+                  // name="CollateralSelect"
                   type="text"
-                  placeholder="Currency"
-                  value=""
-                ></InputComponent>
+                  placeholder={iconTag.collateralSelect.value ? '' : 'Currency'}
+                  autoComplete="off"
+                  // {...register('CollateralSelect', { required: true })}
+                ></input>
+                <span className="icon_coi">
+                  <img src={iconTag.collateralSelect.icon} alt="" />
+                </span>
+                <span className="value_coi">
+                  {iconTag.collateralSelect.value}
+                </span>
+                {collateralSelectStatus ? (
+                  <div className="collateral__Select">
+                    {collateralSelect.map((el, index) =>
+                      collateralSelectStatus ? (
+                        <ListSelect
+                          handleIconPosition={
+                            handleIconPositionCollateralSelect
+                          }
+                          icon={el.icon}
+                          key={index}
+                          value={el.value}
+                        ></ListSelect>
+                      ) : (
+                        ''
+                      ),
+                    )}
+                  </div>
+                ) : (
+                  ''
+                )}
+                {errors.CollateralSelect && (
+                  <span className="warning__input">Invalid amount</span>
+                )}
               </WrapperInput>
             </div>
             <p>Or</p>
@@ -74,25 +227,30 @@ export default function TabsBorrow(props: any) {
                 colorFont="#DBA83D"
                 colorBr="#DBA83D"
               >
-                <InputComponent
-                  name="CollatChooseExistingcollateraleral"
+                <input
                   type="text"
-                  value="Choose Existing collateral"
-                  placeholder=""
-                ></InputComponent>
+                  defaultValue="Choose Existing collateral"
+                ></input>
               </WrapperInput>
             </div>
             <p>Collateral</p>
             <div>
               <WrapperInput width="417px" height="44px" colorFont="" colorBr="">
-                <InputComponent
-                  name="Duration"
+                <input
+                  // name="Duration"
                   type="number"
                   placeholder="Duration"
-                ></InputComponent>
+                  {...register('Duration', { required: true })}
+                ></input>
+                {errors.Duration && (
+                  <span className="warning__input">Invalid amount</span>
+                )}
               </WrapperInput>
               <WrapperInput width="111px" height="44px" colorFont="" colorBr="">
-                <select name="Durationselect">
+                <select
+                  // name="Durationselect"
+                  {...register('Durationselect')}
+                >
                   <option defaultValue="mon">Month</option>
                   <option defaultValue="wek">Weeks</option>
                 </select>
@@ -101,20 +259,61 @@ export default function TabsBorrow(props: any) {
             <p>Loan amount</p>
             <div>
               <WrapperInput width="417px" height="44px" colorFont="" colorBr="">
-                <InputComponent
-                  name="Loanamount"
+                <input
+                  // name="Loanamount"
                   type="number"
                   placeholder="Enter amount"
-                  value=""
-                ></InputComponent>
+                  {...register('Loanamount', { required: true })}
+                ></input>
+                {errors.Loanamount && (
+                  <span className="warning__input">Invalid amount</span>
+                )}
               </WrapperInput>
-              <WrapperInput width="111px" height="44px" colorFont="" colorBr="">
-                <InputComponent
-                  name="Loanamountselect"
+              <WrapperInput
+                width="111px"
+                height="44px"
+                colorFont=""
+                colorBr=""
+                onFocus={() => setLoanamountselectSatus(true)}
+              >
+                <input
+                  // name="Loanamountselect"
                   type="text"
-                  placeholder="Loan amount"
-                  value=""
-                ></InputComponent>
+                  placeholder={
+                    iconTag.Loanamountselect.value ? '' : 'Loan amount'
+                  }
+                  autoComplete="off"
+                  // {...register('Loanamountselect', { required: true })}
+                ></input>
+                <span className="icon_coi">
+                  <img src={iconTag.Loanamountselect.icon} alt="" />
+                </span>
+                <span className="value_coi">
+                  {iconTag.Loanamountselect.value}
+                </span>
+                {LoanamountselectSatus ? (
+                  <div className="collateral__Select Loanamount__select">
+                    {Loanamountselect.map((el, index) =>
+                      Loanamountselect ? (
+                        <ListSelect
+                          icon={el.icon}
+                          key={index}
+                          value={el.value}
+                          handleIconPosition={
+                            handleIconPositionLoanamountselect
+                          }
+                        ></ListSelect>
+                      ) : (
+                        ''
+                      ),
+                    )}
+                  </div>
+                ) : (
+                  ''
+                )}
+                {errors.Loanamountselect && (
+                  <span className="warning__input">Invalid amount</span>
+                )}
               </WrapperInput>
             </div>
             <TooltipTabs>
@@ -124,15 +323,27 @@ export default function TabsBorrow(props: any) {
                 between 50 - 70% of the collateral value.
               </span>
             </TooltipTabs>
-            <ButtonComponent width="100px" height="50px" fontSize="16px">
+            <ButtonComponent
+              borderRadius="172px"
+              width="530px"
+              height="54px"
+              fontSize="16px"
+              color="#282C37"
+            >
               <BiSearch />
               Search
             </ButtonComponent>
-          </Form>
+          </form>
         </TabborrowCryptocurrency>
         <TabborrowNFT tabId="2">
-          <hr />
-          aaaaaaaaaaaaaaaaa
+          <div className="img">
+            <img src={NFT} alt="" />
+          </div>
+          <button>Find NFT lenders</button>
+          <p>
+            Don’t have hard NFT?
+            <Link to="/login"> Create new</Link>
+          </p>
         </TabborrowNFT>
       </TabContent>
     </>

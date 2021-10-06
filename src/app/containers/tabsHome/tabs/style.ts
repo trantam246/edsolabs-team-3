@@ -33,7 +33,7 @@ export const TabSum = styled(Nav)`
 ///--tab borrow
 export const Tabborrow = styled(TabPane)`
   width: 600px;
-  height: 681px;
+  min-height: 681px;
   background: #171a23;
   border-radius: 30px;
   padding: 24px 30px;
