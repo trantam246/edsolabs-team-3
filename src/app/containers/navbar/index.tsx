@@ -8,6 +8,7 @@ import { GrClose } from '@react-icons/all-files/gr/GrClose';
 import { useState } from 'react';
 import { MenuNavbar } from 'app/components/menu';
 import { Logo } from 'app/components/logo';
+
 import {
   ActiveMenuMobile,
   AiOutlineLefts,
@@ -20,8 +21,10 @@ import {
   MenuSubMobile,
   RowNavBar,
 } from './style';
+import styled from 'styled-components';
+const Containers = styled(Container)``;
 
-export function Navbar() {
+export function Navbar(props) {
   const [openMenuMobile, setopenMenuMobile] = useState(false);
   const [statusMenuMobile, setstatusMenuMobile] = useState({
     Myaccount: false,
@@ -67,7 +70,7 @@ export function Navbar() {
       <Helmet>
         <meta name="description" content="Page not found" />
       </Helmet>
-      <Container fluid>
+      <Containers fluid>
         <RowNavBar>
           <Col className="col-lg-2 col-md-3 p-0 d-flex justify-content-start align-items-center">
             <Logo></Logo>
@@ -199,7 +202,7 @@ export function Navbar() {
         ) : (
           ''
         )}
-      </Container>
+      </Containers>
     </>
   );
 }

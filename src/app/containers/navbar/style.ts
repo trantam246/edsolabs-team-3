@@ -48,7 +48,7 @@ export const HamburgerMenu = styled.div`
       stroke: white;
     }
   }
-  @media (max-width: 1275px) {
+  @media (max-width: 1440px) {
     display: inline-block;
     svg {
       color: white;
@@ -65,6 +65,8 @@ export const MenuMobile = styled.div`
   min-height: 100vh;
   width: 100%;
   background-color: #171a23;
+  border: 1px solid #fff;
+  z-index: 999;
 `;
 export const AvatarAndName = styled.div`
   text-align: center;
