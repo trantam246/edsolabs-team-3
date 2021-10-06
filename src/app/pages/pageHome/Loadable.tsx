@@ -1,6 +1,6 @@
 import { lazyLoad } from 'utils/loadable';
 
-export const pageHome = lazyLoad(
+export const PageHome = lazyLoad(
   () => import('./index'),
-  module => module.pageHome,
+  module => module.PageHome,
 );

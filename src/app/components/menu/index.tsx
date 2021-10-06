@@ -25,7 +25,7 @@ const Menu = styled(Col)`
       }
     }
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 1440px) {
     display: none;
   }
 `;
