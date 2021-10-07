@@ -120,11 +120,13 @@ export const WrapperInput = styled.div`
     cursor: pointer;
   }
   width: ${(props: wrapperInput) => (props.width ? props.width : '0px')};
+  .activeBrinput {
+    border: 2px solid #ff5252 !important;
+  }
   input {
     width: 100%;
     height: 100%;
-    border: 1px solid
-      ${(props: wrapperInput) => (props.colorBr ? props.colorBr : '#74767b')};
+    border: 1px solid #74767b;
     box-sizing: border-box;
     border-radius: 22px;
     padding: 0px 16px;
@@ -195,6 +197,7 @@ export const WrapperInput = styled.div`
     background-color: #2f3543;
     border-radius: 15px;
     z-index: 2;
+
     ::-webkit-scrollbar {
       width: 5px;
       background-color: #45484f;
@@ -212,7 +215,7 @@ export const WrapperInput = styled.div`
     position: absolute;
     bottom: -20px;
     left: 0;
-    color: red;
+    color: #ff5252;
   }
   .Loanamount__select {
     height: 200px;

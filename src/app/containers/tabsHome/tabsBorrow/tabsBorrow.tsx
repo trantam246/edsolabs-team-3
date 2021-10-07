@@ -5,6 +5,7 @@ import {
   TooltipTabs,
   WrapperInput,
 } from './style';
+import { Alert } from 'react-bootstrap';
 import classnames from 'classnames';
 import { useState } from 'react';
 import { TabContent } from 'reactstrap';
@@ -12,13 +13,14 @@ import { TabborrowNFT } from './style';
 import { RiInformationFill } from '@react-icons/all-files/ri/RiInformationFill';
 import { BiSearch } from '@react-icons/all-files/bi/BiSearch';
 import { ButtonComponent } from 'app/components/Button/Input';
-import iconDcoi from '../../../../images/iconDcoi.png';
+import iconDcoi from '../../../../images/iconDcoi.svg';
 import { useForm } from 'react-hook-form';
 import ListSelect from './listselect/listselect';
 import NFT from '../../../../images/NFT.png';
 import { Link } from 'react-router-dom';
 export default function TabsBorrow(props: any) {
   //trang thai dong mo select
+  const [dataSearch, setdataSearch] = useState({});
   const [collateralSelectStatus, setcollateralSelectStatus] = useState(false);
   const [LoanamountselectSatus, setLoanamountselectSatus] = useState(false);
   const handleOnBlur = () => {
@@ -108,10 +110,12 @@ export default function TabsBorrow(props: any) {
   });
   const handleIconPositionLoanamountselect = (icon: myIcon) => {
     seticonTag({ ...iconTag, Loanamountselect: icon });
+    setdataSearch({ ...dataSearch, Loanamountselect: icon });
     setLoanamountselectSatus(false);
   };
   const handleIconPositionCollateralSelect = (icon: myIcon) => {
     seticonTag({ ...iconTag, collateralSelect: icon });
+    setdataSearch({ ...dataSearch, collateralSelect: icon });
     setcollateralSelectStatus(false);
   };
   //tabs
@@ -129,7 +133,9 @@ export default function TabsBorrow(props: any) {
   } = useForm();
   const onSumitFormCryptocurrency = data => {
     console.log(data);
+    setdataSearch({ ...dataSearch, data });
   };
+  console.log(dataSearch);
   return (
     <>
       <TabborrowSub tabs>
@@ -164,6 +170,7 @@ export default function TabsBorrow(props: any) {
                   type="number"
                   // name="Collateral"
                   placeholder="Enter amount"
+                  className={errors.Collateral ? 'activeBrinput' : ''}
                   {...register('Collateral', { required: true })}
                 ></input>
                 {errors.Collateral && (
@@ -242,6 +249,7 @@ export default function TabsBorrow(props: any) {
                   // name="Duration"
                   type="number"
                   placeholder="Duration"
+                  className={errors.Duration ? 'activeBrinput' : ''}
                   {...register('Duration', { required: true })}
                 ></input>
                 {errors.Duration && (
@@ -265,6 +273,7 @@ export default function TabsBorrow(props: any) {
                   // name="Loanamount"
                   type="number"
                   placeholder="Enter amount"
+                  className={errors.Loanamount ? 'activeBrinput' : ''}
                   {...register('Loanamount', { required: true })}
                 ></input>
                 {errors.Loanamount && (
@@ -349,6 +358,8 @@ export default function TabsBorrow(props: any) {
           </p>
         </TabborrowNFT>
       </TabContent>
+
+      <Alert variant="danger">This is a alert—check it out!</Alert>
     </>
   );
 }
