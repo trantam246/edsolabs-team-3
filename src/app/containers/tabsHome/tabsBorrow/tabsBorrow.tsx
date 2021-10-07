@@ -5,7 +5,6 @@ import {
   TooltipTabs,
   WrapperInput,
 } from './style';
-import { Alert } from 'react-bootstrap';
 import classnames from 'classnames';
 import { useState } from 'react';
 import { TabContent } from 'reactstrap';
@@ -358,8 +357,6 @@ export default function TabsBorrow(props: any) {
           </p>
         </TabborrowNFT>
       </TabContent>
-
-      <Alert variant="danger">This is a alert—check it out!</Alert>
     </>
   );
 }
