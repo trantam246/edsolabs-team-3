@@ -1,13 +1,14 @@
+import * as React from 'react';
 import { AdsHome } from 'app/containers/adsHome';
 import { FeatureList } from 'app/containers/featureList';
-import { Footter } from 'app/containers/footter';
+import { Footer } from 'app/containers/footer';
 import { Navbar } from 'app/containers/navbar';
 import { Silder } from 'app/containers/silders';
 import { TabsHome } from 'app/containers/tabsHome';
-import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Container, Row } from 'reactstrap';
-export function pageHome() {
+import { Container } from 'reactstrap';
+import { Section } from './style';
+export function PageHome() {
   document.title = 'home';
   return (
     <>
@@ -17,28 +18,26 @@ export function pageHome() {
       </Helmet>
       {/*navbar*/}
       <Navbar></Navbar>
-      <Container>
-        <Row>
-          {/*tabshome*/}
-          <TabsHome></TabsHome>
-        </Row>
-        <Row>
-          {/*featurelist*/}
-          <FeatureList></FeatureList>
-        </Row>
-        <Row>
-          {/*silders*/}
+      {/*tabshome*/}
+      <TabsHome></TabsHome>
+      {/*featurelist*/}
+      <FeatureList></FeatureList>
+      <Section>
+        {/*silders*/}
+        <Container>
           <Silder></Silder>
-        </Row>
-        <Row>
-          {/*adsHome*/}
+        </Container>
+      </Section>
+      <Section>
+        {/*adsHome*/}
+        <Container>
           <AdsHome></AdsHome>
-        </Row>
-        <Row>
-          {/*footter*/}
-          <Footter></Footter>
-        </Row>
-      </Container>
+        </Container>
+      </Section>
+
+      {/*footter*/}
+
+      <Footer></Footer>
     </>
   );
 }

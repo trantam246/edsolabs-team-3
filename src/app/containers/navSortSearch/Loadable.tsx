@@ -1,6 +1,6 @@
 import { lazyLoad } from 'utils/loadable';
 
-export const Footter = lazyLoad(
+export const NavSortSearch = lazyLoad(
   () => import('./index'),
-  module => module.Footter,
+  module => module.NavSortSearch,
 );

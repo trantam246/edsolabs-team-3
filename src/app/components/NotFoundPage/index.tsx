@@ -14,6 +14,7 @@ export function NotFoundPage() {
         <Title>
           4
           <span role="img" aria-label="Crying Face">
+            {' '}
             😢
           </span>
           4
