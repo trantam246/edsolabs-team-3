@@ -1,7 +1,8 @@
-import { Footer } from 'app/containers/footer';
-import { Navbar } from 'app/containers/navbar';
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Navbar } from 'app/containers/navbar';
+import { LoginAndRegister } from 'app/containers/loginAndRegister';
+
 export function PageSign() {
   return (
     <>
@@ -11,9 +12,7 @@ export function PageSign() {
       </Helmet>
       {/*navbar*/}
       <Navbar></Navbar>
-      {/* sử dụng component input button trong thư mục components */}
-      {/*footter*/}
-      <Footer></Footer>
+      <LoginAndRegister />
     </>
   );
 }
