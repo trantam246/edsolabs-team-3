@@ -5,11 +5,10 @@ export const Section = styled.section`
   &:nth-last-child() {
     background: #171a23;
   }
-  &:nth-child(odd) {
+  &:nth-child(even) {
     background: #232732;
   }
-
-  &:nth-child(even) {
+  &:nth-child(odd) {
     background: #171a23;
   }
 `;
