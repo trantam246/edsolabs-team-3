@@ -7,6 +7,7 @@ import { TabsHome } from 'app/containers/tabsHome';
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Container, Row } from 'reactstrap';
+import { Section } from './style';
 export function pageHome() {
   document.title = 'home';
   return (
@@ -19,24 +20,33 @@ export function pageHome() {
       <Navbar></Navbar>
       {/*featurelist*/}
       <FeatureList></FeatureList>
-      <Container>
-        <Row>
-          {/*tabshome*/}
+      <Section>
+        {/*tabshome*/}
+        <Container>
           <TabsHome></TabsHome>
-        </Row>
-        <Row>
-          {/*silders*/}
+        </Container>
+      </Section>
+
+      <Section>
+        {/*silders*/}
+        <Container>
           <Silder></Silder>
-        </Row>
-        <Row>
-          {/*adsHome*/}
+        </Container>
+      </Section>
+
+      <Section>
+        {/*adsHome*/}
+        <Container>
           <AdsHome></AdsHome>
-        </Row>
-        <Row>
-          {/*footter*/}
+        </Container>
+      </Section>
+
+      <Section>
+        {/*footter*/}
+        <Container>
           <Footter></Footter>
-        </Row>
-      </Container>
+        </Container>
+      </Section>
     </>
   );
 }

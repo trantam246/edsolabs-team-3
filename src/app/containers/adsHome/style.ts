@@ -29,10 +29,14 @@ export const P = styled.p`
   font-weight: 500;
   color: #ffffff;
   margin-bottom: 3rem;
+  @media (max-width: 992px) {
+    margin-right: 30%;
+  }
   @media (max-width: 540px) {
     font-size: 1.2rem;
     line-height: 1.5rem;
     margin-bottom: 1.2rem;
+    margin-right: 50%;
   }
 `;
 
@@ -50,16 +54,28 @@ export const H3 = styled.h3`
 `;
 
 export const ContainerAbs = styled.div`
-  background: url(${props => props.color}) no-repeat,
-    linear-gradient(
+  background: linear-gradient(
       90.03deg,
       #131318 21.91%,
       #211e22 64.64%,
       rgba(23, 26, 35, 0) 68.82%
-    );
+    ),
+    url(${props => props.color}) no-repeat;
   background-position: 100%;
+  background-size: cover;
   border-radius: 2rem;
-  margin: 6rem auto;
+  margin: 0 auto;
+  @media (max-width: 992px) {
+    background: linear-gradient(
+        90.03deg,
+        #131318 21.91%,
+        #211e22 42.44%,
+        rgba(23, 26, 35, 0) 68.82%
+      ),
+      url(${props => props.color}) no-repeat;
+    background-position: 100%;
+    background-size: cover;
+  }
 `;
 
 export const Box = styled.div`
@@ -68,6 +84,6 @@ export const Box = styled.div`
     padding: 2.4rem;
   }
   @media (max-width: 768px) {
-    padding: 1.2rem;
+    padding: 1.6rem;
   }
 `;
