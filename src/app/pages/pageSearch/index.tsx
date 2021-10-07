@@ -1,5 +1,5 @@
 import { FiterNavSearch } from 'app/containers/fiterNavSearch';
-import { Footter } from 'app/containers/footter';
+import { Footer } from 'app/containers/footer';
 import { Navbar } from 'app/containers/navbar';
 import { NavSortSearch } from 'app/containers/navSortSearch';
 import { Pagination } from 'app/containers/pagination';
@@ -46,7 +46,7 @@ export function PageSearch() {
         </Row>
       </Container>
       {/*footter*/}
-      <Footter></Footter>
+      <Footer></Footer>
     </>
   );
 }
