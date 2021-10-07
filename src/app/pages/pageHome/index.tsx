@@ -6,6 +6,8 @@ import { Navbar } from 'app/containers/navbar';
 import { Silder } from 'app/containers/silders';
 import { TabsHome } from 'app/containers/tabsHome';
 import { Helmet } from 'react-helmet-async';
+import { Container, Row } from 'reactstrap';
+import { Section } from './style';
 export function PageHome() {
   document.title = 'home';
   return (
@@ -20,11 +22,29 @@ export function PageHome() {
       <TabsHome></TabsHome>
       {/*featurelist*/}
       <FeatureList></FeatureList>
-      {/*silders*/}
-      <Silder></Silder>
-      {/*adsHome*/}
-      <AdsHome></AdsHome>
+      <Section>
+        {/*tabshome*/}
+        <Container>
+          <TabsHome></TabsHome>
+        </Container>
+      </Section>
+
+      <Section>
+        {/*silders*/}
+        <Container>
+          <Silder></Silder>
+        </Container>
+      </Section>
+
+      <Section>
+        {/*adsHome*/}
+        <Container>
+          <AdsHome></AdsHome>
+        </Container>
+      </Section>
+
       {/*footter*/}
+
       <Footer></Footer>
     </>
   );
