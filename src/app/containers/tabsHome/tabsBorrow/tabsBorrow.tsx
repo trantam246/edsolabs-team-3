@@ -21,6 +21,11 @@ export default function TabsBorrow(props: any) {
   //trang thai dong mo select
   const [collateralSelectStatus, setcollateralSelectStatus] = useState(false);
   const [LoanamountselectSatus, setLoanamountselectSatus] = useState(false);
+  const handleOnBlur = () => {
+    setTimeout(() => {
+      setcollateralSelectStatus(false);
+    }, 200);
+  };
   //du lieu
   const collateralSelect = [
     {
@@ -174,14 +179,10 @@ export default function TabsBorrow(props: any) {
                   Max
                 </ButtonComponent>
               </WrapperInput>
-              <WrapperInput
-                width="111px"
-                height="44px"
-                colorFont=""
-                colorBr=""
-                onFocus={() => setcollateralSelectStatus(true)}
-              >
+              <WrapperInput width="111px" height="44px" colorFont="" colorBr="">
                 <input
+                  onFocus={() => setcollateralSelectStatus(true)}
+                  onBlur={handleOnBlur}
                   // name="CollateralSelect"
                   type="text"
                   placeholder={iconTag.collateralSelect.value ? '' : 'Currency'}

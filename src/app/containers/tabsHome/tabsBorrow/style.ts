@@ -116,6 +116,9 @@ interface wrapperInput {
 export const WrapperInput = styled.div`
   position: relative;
   height: ${(props: wrapperInput) => (props.height ? props.height : '0px')};
+  div {
+    cursor: pointer;
+  }
   width: ${(props: wrapperInput) => (props.width ? props.width : '0px')};
   input {
     width: 100%;
@@ -180,6 +183,7 @@ export const WrapperInput = styled.div`
     top: 15px;
     color: #fff;
     font-size: 10px;
+    outline: none;
   }
   .collateral__Select {
     color: #fff;
