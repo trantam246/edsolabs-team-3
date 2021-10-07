@@ -12,51 +12,68 @@ const Wrapper = styled.div`
   background: #171a23; ;
 `;
 
-const Title = styled.h1`
+const Title = styled.div`
   text-align: center;
   color: #dba83d;
+  font-size: 36px;
+  font-weight: 600;
   padding-top: 6rem;
-  padding-bottom: 9.5rem;
+  padding-bottom: 10rem;
+  @media (max-width: 376px) {
+    font-size: 24px;
+    padding-top: 4rem;
+    padding-bottom: 4.1rem;
+  }
 `;
 
 const List = styled(Row)`
   padding-bottom: 8rem;
+  @media (max-width: 376px) {
+    padding-bottom: 0rem;
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
 `;
 
-type featureType = {
-  path: any;
-  title: string;
-  description: string;
-};
-
-const data: featureType[] = [
-  {
-    path: Au_fastTime,
-    title: 'Quicker than the bank',
-    description:
-      'Banks are yesterdays news. Get the money you need without having to wait.',
-  },
-  {
-    path: Au_rate,
-    title: 'Better interest rates',
-    description:
-      'P2P lending lets you negotiate with the lender to arrange the best possible interest rates.',
-  },
-  {
-    path: Au_moneyManagement,
-    title: 'Finance assets without selling ',
-    description:
-      'Put your assets to work so you can continue to meet your financial obligations. ',
-  },
-  {
-    path: Au_approved,
-    title: 'No credit checks',
-    description:
-      'Borrow without the background checks. Anyone can get the financing they need.',
-  },
-];
-
 export function FeatureList() {
+  type featureType = {
+    id: number;
+    path: any;
+    title: string;
+    description: string;
+  };
+
+  const data: featureType[] = [
+    {
+      id: 1,
+      path: Au_fastTime,
+      title: 'Quicker than the bank',
+      description:
+        'Banks are yesterdays news. Get the money you need without having to wait.',
+    },
+    {
+      id: 2,
+      path: Au_rate,
+      title: 'Better interest rates',
+      description:
+        'P2P lending lets you negotiate with the lender to arrange the best possible interest rates.',
+    },
+    {
+      id: 3,
+      path: Au_moneyManagement,
+      title: 'Finance assets without selling ',
+      description:
+        'Put your assets to work so you can continue to meet your financial obligations. ',
+    },
+    {
+      id: 4,
+      path: Au_approved,
+      title: 'No credit checks',
+      description:
+        'Borrow without the background checks. Anyone can get the financing they need.',
+    },
+  ];
+
   return (
     <>
       <Helmet>
@@ -69,6 +86,7 @@ export function FeatureList() {
             {data.map((o, i) => (
               <FeatureItem
                 key={i}
+                id={o.id}
                 path={o.path}
                 title={o.title}
                 description={o.description}

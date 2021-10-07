@@ -25,7 +25,7 @@ const Menu = styled(Col)`
       }
     }
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 1440px) {
     display: none;
   }
 `;
@@ -38,24 +38,24 @@ export function MenuNavbar() {
       <Menu>
         <ul>
           <li>
-            <NavLink to="/faq" activeClassName="selected">
+            <NavLink to="/" activeClassName="selected">
               Pawn
             </NavLink>
           </li>
           <li>
-            <NavLink to="/faq">Brorow</NavLink>
+            <NavLink to="/">Brorow</NavLink>
           </li>
           <li>
-            <NavLink to="/faq">Lend</NavLink>
+            <NavLink to="/">Lend</NavLink>
           </li>
           <li>
-            <NavLink to="/faq">NFT</NavLink>
+            <NavLink to="/">NFT</NavLink>
           </li>
           <li>
-            <NavLink to="/faq">My Account</NavLink>
+            <NavLink to="/">My Account</NavLink>
           </li>
           <li>
-            <NavLink to="/faq">FAQ</NavLink>
+            <NavLink to="/">FAQ</NavLink>
           </li>
         </ul>
       </Menu>
