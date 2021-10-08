@@ -8,7 +8,14 @@ import TextContent from './textContent';
 
 const Wrapper = styled.div`
   background: #232732;
-  height: calc(100vh - 10rem);
+  margin-bottom: 1.2rem;
+
+  @media (max-width: 769px) {
+    .row {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  } ;
 `;
 
 export function LoginAndRegister() {
