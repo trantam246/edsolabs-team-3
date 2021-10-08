@@ -28,8 +28,8 @@ export function App() {
         <meta name="description" content="A React Boilerplate application" />
       </Helmet>
       <Switch>
-        <Route exact path="/" component={PageHome} />
-        <Route exact path="/search" component={PageSearch} />
+        <Route exact path="/search" component={PageHome} />
+        <Route exact path="/" component={PageSearch} />
         <Route exact path="/login" component={PageSign} />
         <Route component={Not404} />
       </Switch>
