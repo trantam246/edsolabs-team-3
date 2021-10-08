@@ -136,7 +136,7 @@ export const WrapperInput = styled.div`
     font-size: 16px;
     &:focus {
       outline: none;
-      border: 1px solid #dba83d;
+      border: 2px solid #dba83d;
     }
     ::placeholder {
       font-weight: 500;
@@ -162,7 +162,7 @@ export const WrapperInput = styled.div`
     padding: 0px 10px;
     &:focus {
       outline: none;
-      border: 1px solid #dba83d;
+      border: 2px solid #dba83d;
     }
     option {
       background-color: #232732;
@@ -187,38 +187,11 @@ export const WrapperInput = styled.div`
     font-size: 10px;
     outline: none;
   }
-  .collateral__Select {
-    color: #fff;
-    overflow-y: auto;
-    width: 111px;
-    height: 345px;
-    position: absolute;
-    top: 45px;
-    background-color: #2f3543;
-    border-radius: 15px;
-    z-index: 2;
-
-    ::-webkit-scrollbar {
-      width: 5px;
-      background-color: #45484f;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #a2a3a7;
-    }
-    & > div {
-      :hover {
-        background-color: #535762;
-      }
-    }
-  }
   .warning__input {
     position: absolute;
     bottom: -20px;
     left: 0;
     color: #ff5252;
-  }
-  .Loanamount__select {
-    height: 200px;
   }
   @media (max-width: 1024px) {
     width: ${(props: wrapperInput) =>

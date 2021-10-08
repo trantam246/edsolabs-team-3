@@ -1,18 +1,41 @@
 import React from 'react';
 import { GrInput, WarperInput } from './style';
 import { useForm } from 'react-hook-form';
+import { SelectAll } from 'app/components/select/select';
+import { useState } from 'react';
 export function TabLendForm() {
+  const [dataSearch, setdataSearch] = useState<any>({ Collateral: '1' });
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    setdataSearch({ ...dataSearch, dataSumMit: data });
+  };
+  const onChangeRadio = e => {
+    if (dataSearch.Collateral === '1') {
+      setdataSearch({
+        ...dataSearch,
+        CollateralList: null,
+        Collateral: e.target.value,
+      });
+    } else {
+      setdataSearch({ ...dataSearch, Collateral: e.target.value });
+    }
+  };
+  const handleOnchange1 = (e: any) => {
+    setdataSearch({ ...dataSearch, Maximumloanamount: e });
+  };
+  const handleOnchange2 = (e: any) => {
+    setdataSearch({ ...dataSearch, CollateralList: e });
+  };
+  console.log(dataSearch);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <GrInput>
         <p>Maximum loan amount</p>
-        <div className="justify-content-between">
+        <div className="">
           <WarperInput
             width="417px"
             height="44px"
@@ -31,21 +54,19 @@ export function TabLendForm() {
             )}
           </WarperInput>
           <WarperInput width="111px" height="44px">
-            <input
-              type="text"
-              autoComplete="off"
-              placeholder="Duration"
-              {...register('MaximumSelect', { required: true })}
-            />
-            {errors.MaximumSelect && (
-              <span className="errValiInput">Invalid currency</span>
-            )}
+            <SelectAll
+              onChanges={handleOnchange1}
+              default={false}
+              heightOption="255px"
+              placeholder="Currency"
+              isMuli={false}
+            ></SelectAll>
           </WarperInput>
         </div>
       </GrInput>
       <GrInput>
         <p>Duration</p>
-        <div className="justify-content-between">
+        <div className="">
           <WarperInput
             width="417px"
             height="44px"
@@ -65,12 +86,10 @@ export function TabLendForm() {
             )}
           </WarperInput>
           <WarperInput width="111px" height="44px">
-            <input
-              type="text"
-              autoComplete="off"
-              placeholder="Duration"
-              {...register('DurationSelect', { required: true })}
-            />
+            <select {...register('Durationselect')}>
+              <option value="Month">Month</option>
+              <option value="Weeks">Weeks</option>
+            </select>
           </WarperInput>
         </div>
       </GrInput>
@@ -78,22 +97,43 @@ export function TabLendForm() {
         <p>Collateral</p>
         <div className="">
           <div className="radio">
-            <input type="radio" name="radio" value="1" defaultChecked />
+            <input
+              type="radio"
+              name="radio"
+              value="1"
+              defaultChecked
+              onChange={onChangeRadio}
+            />
           </div>
           <span>Crypto</span>
           <div className="radio">
-            <input type="radio" name="radio" value="2" />
+            <input
+              type="radio"
+              name="radio"
+              value="2"
+              onChange={onChangeRadio}
+            />
           </div>
           <span>NFT</span>
         </div>
       </GrInput>
-      <GrInput>
-        <div className="">
-          <WarperInput width="540px" height="44px" className="input__full">
-            <input type="text" placeholder="Duration" />
-          </WarperInput>
-        </div>
-      </GrInput>
+      {dataSearch.Collateral === '1' ? (
+        <GrInput>
+          <div className="">
+            <WarperInput width="540px" height="" className="input__full">
+              <SelectAll
+                onChanges={handleOnchange2}
+                default={false}
+                heightOption="255px"
+                placeholder="Currency"
+                isMuli={true}
+              ></SelectAll>
+            </WarperInput>
+          </div>
+        </GrInput>
+      ) : (
+        ''
+      )}
       <GrInput>
         <button>Search</button>
       </GrInput>

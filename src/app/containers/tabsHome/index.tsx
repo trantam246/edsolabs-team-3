@@ -2,11 +2,8 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Container } from 'reactstrap';
 import { BannerTabs } from './banner/bannerTabs';
-
 import { ContainerSumTabHome, Rows } from './style';
-
 import { TabsComponent } from './tabs/tabsHome';
-import SelectAA from './tabsBorrow/select';
 export function TabsHome() {
   return (
     <>
@@ -19,7 +16,6 @@ export function TabsHome() {
             <BannerTabs></BannerTabs>
             <TabsComponent></TabsComponent>
           </Rows>
-          <SelectAA></SelectAA>
         </Container>
       </ContainerSumTabHome>
     </>
