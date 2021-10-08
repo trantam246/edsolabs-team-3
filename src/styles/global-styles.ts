@@ -19,12 +19,12 @@ export const GlobalStyle = createGlobalStyle`
     font-size: inherit;
   }
   body{
-    ::-webkit-scrollbar{
-  width: 5px;
-  background-color: #45484F;
-}
-::-webkit-scrollbar-thumb{
-  background-color: #A2A3A7;
-}
+          ::-webkit-scrollbar{
+        width: 5px;
+        background-color: #45484F;
+      }
+      ::-webkit-scrollbar-thumb{
+        background-color: #A2A3A7;
+      }
   }
 `;
