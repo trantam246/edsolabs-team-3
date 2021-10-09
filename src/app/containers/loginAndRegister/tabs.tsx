@@ -4,6 +4,8 @@ import classnames from 'classnames';
 import styled from 'styled-components';
 import TabRegister from './tabRegister';
 import TabLogin from './tabLogin';
+import { useHistory } from 'react-router';
+import { useEffect } from 'react';
 
 const NavStyled = styled(Nav)`
   border: none;
@@ -34,11 +36,24 @@ const NavStyled = styled(Nav)`
 
 export default function Tabs() {
   const [activeTab, setActiveTab] = useState('1');
-
+  const history = useHistory();
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
+    if (tab === '1') {
+      history.push({ pathname: '', search: 'tab=1' });
+    }
+    if (tab === '2') {
+      history.push({ pathname: '', search: 'tab=2' });
+    }
   };
-
+  useEffect(() => {
+    if (history.location.search.includes('?tab=1')) {
+      setActiveTab('1');
+    }
+    if (history.location.search.includes('?tab=2')) {
+      setActiveTab('2');
+    }
+  }, [setActiveTab, history.location.search]);
   return (
     <>
       <NavStyled tabs>
