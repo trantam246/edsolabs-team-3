@@ -1,10 +1,25 @@
+import { useRef, useState } from 'react';
 import { TabPane } from 'reactstrap';
 import styled from 'styled-components';
 import InputCustom from './inputCustom';
 import { BsEyeFill } from '@react-icons/all-files/bs/BsEyeFill';
 import { BsEyeSlashFill } from '@react-icons/all-files/bs/BsEyeSlashFill';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+interface props {
+  id: string;
+}
+
+interface IFormInput {
+  name: string;
+  email: string;
+  password: string;
+  rePassword: string;
+}
+
+const AU_SITE_KEY: string = '6Lc8HrgcAAAAAMH77TMTrDqP3ZNFz8J19AZW13TD';
+const AU_SECRET_KEY: string = '6Lc8HrgcAAAAAEHCvI0OVfuCY3hWCGyQE3DvgdPV';
 
 const TabPaneLogin = styled(TabPane)`
   padding-top: 3rem;
@@ -14,6 +29,24 @@ const TabPaneLogin = styled(TabPane)`
     font-size: 1.2rem;
     line-height: 1.2rem;
     padding-top: 0.4rem;
+  }
+
+  .pInfor {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 0px;
+  }
+
+  .p1 {
+    margin-bottom: 0.3rem;
+  }
+
+  .p2 {
+    margin-bottom: 2.9rem;
+  }
+
+  .pYellow {
+    color: #dba83d;
   }
 
   .divButton {
@@ -53,6 +86,14 @@ const TabPaneLogin = styled(TabPane)`
       width: 17rem;
       height: 4.2rem;
     }
+
+    .pInfor {
+      line-height: 1.7rem;
+    }
+
+    .p1 {
+      margin-bottom: 0.8rem;
+    }
   }
 
   @media (max-width: 426px) {
@@ -80,32 +121,46 @@ const TabPaneLogin = styled(TabPane)`
   }
 `;
 
-interface props {
-  id: string;
-}
-
-interface IFormInput {
-  email: string;
-  password: string;
-}
-
-export default function TabLogin({ id }: props) {
+export default function TabRegister({ id }: props) {
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<IFormInput>();
 
+  const [token, setToken] = useState('');
+  const reCaptcha = useRef();
   const onSubmit = (data: IFormInput) => {
-    alert(JSON.stringify(data));
+    if (!token) {
+      return;
+    }
+    alert(JSON.stringify(data) + '************' + token);
+    setToken('');
   };
 
-  const [hide, setHide] = useState<boolean>(true);
-  const getHide = () => setHide(!hide);
+  const [hide1, setHide1] = useState<boolean>(true);
+  const getHide1 = () => setHide1(!hide1);
+
+  const [hide2, setHide2] = useState<boolean>(true);
+  const getHide2 = () => setHide2(!hide2);
 
   return (
     <TabPaneLogin tabId={id}>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <InputCustom
+          label="Name"
+          type="text"
+          placeHolder="Enter name"
+          Icon={null}
+          iconClick={null}
+          register={register('name', { required: true })}
+          err={
+            errors?.name?.type === 'required' && (
+              <p className="pError">Invalid name</p>
+            )
+          }
+        />
+
         <InputCustom
           label="Email"
           type="text"
@@ -122,10 +177,10 @@ export default function TabLogin({ id }: props) {
 
         <InputCustom
           label="Password"
-          type={hide ? 'password' : 'text'}
+          type={hide1 ? 'password' : 'text'}
           placeHolder="Enter password"
-          Icon={hide ? BsEyeSlashFill : BsEyeFill}
-          iconClick={getHide}
+          Icon={hide1 ? BsEyeSlashFill : BsEyeFill}
+          iconClick={getHide1}
           register={register('password', { required: true })}
           err={
             errors?.password?.type === 'required' && (
@@ -134,9 +189,41 @@ export default function TabLogin({ id }: props) {
           }
         />
 
+        <InputCustom
+          label="Confirm password"
+          type={hide2 ? 'password' : 'text'}
+          placeHolder="Enter password"
+          Icon={hide2 ? BsEyeSlashFill : BsEyeFill}
+          iconClick={getHide2}
+          register={register('rePassword', { required: true })}
+          err={
+            errors?.rePassword?.type === 'required' && (
+              <p className="pError">Invalid password</p>
+            )
+          }
+        />
+
+        <p className="pInfor p1">
+          We will not share or sell your information to 3rd parties.
+        </p>
+        <p className="pInfor p2">
+          By clicking on <span className="pYellow">Create Account</span>, you
+          agree to DeFi For You’s Terms and Conditions of Use.
+        </p>
+
+        <ReCAPTCHA
+          className="recaptcha"
+          sitekey={AU_SITE_KEY}
+          hl="en"
+          size="normal"
+          ref={reCaptcha}
+          onChange={token => setToken(token)}
+          onExpired={() => setToken('')}
+        />
+
         <div className="divButton">
           <button type="submit" className="buttonStyled">
-            Login
+            Create Account
           </button>
         </div>
       </form>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
-import iconDcoi from '../../../images/iconDcoi.svg';
+import { iconCoin, LoanAmount } from '../icon';
 const SelectA = styled(Select)`
   .css-tlfecz-indicatorContainer {
     padding-left: 0px;
@@ -73,116 +73,24 @@ const SelectA = styled(Select)`
   }
 `;
 export function SelectAll(props: any) {
-  const options = [
-    {
-      value: 'dfgdf',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>1</span>
-        </>
-      ),
-    },
-    {
-      value: 'dfsgsdfg',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>1</span>
-        </>
-      ),
-    },
-    {
-      value: '33sdgag3',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>1</span>
-        </>
-      ),
-    },
-    {
-      value: 'agadggr333',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>1</span>
-        </>
-      ),
-    },
-    {
-      value: '33jyyj3',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>1</span>
-        </>
-      ),
-    },
-    {
-      value: '4t34tt',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>1</span>
-        </>
-      ),
-    },
-    {
-      value: 'sdgagb',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>1</span>
-        </>
-      ),
-    },
-    {
-      value: '888',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>66</span>
-        </>
-      ),
-    },
-    {
-      value: '7777',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>55</span>
-        </>
-      ),
-    },
-    {
-      value: '435',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>44</span>
-        </>
-      ),
-    },
-    {
-      value: '3253245',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>33</span>
-        </>
-      ),
-    },
-    {
-      value: '2345345',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>22</span>
-        </>
-      ),
-    },
-  ];
+  const options1 = iconCoin.map(e => ({
+    value: e.value,
+    label: (
+      <>
+        <img src={e.url} alt="" style={{ height: '20px', width: '20px' }} />
+        <span>{e.value}</span>
+      </>
+    ),
+  }));
+  const options2 = LoanAmount.map(e => ({
+    value: e.value,
+    label: (
+      <>
+        <img src={e.url} alt="" style={{ height: '20px', width: '20px' }} />
+        <span>{e.value}</span>
+      </>
+    ),
+  }));
   const styles = {
     option: (provided, state) => ({
       ...provided,
@@ -283,7 +191,7 @@ export function SelectAll(props: any) {
       {props.isMuli ? (
         <SelectA
           isMulti
-          options={options}
+          options={options1}
           styles={styles}
           components={{
             IndicatorSeparator: () => null,
@@ -293,18 +201,18 @@ export function SelectAll(props: any) {
         ></SelectA>
       ) : props.default ? (
         <SelectA
-          options={options}
+          options={options2}
           styles={styles}
           components={{
             IndicatorSeparator: () => null,
           }}
           placeholder={props.placeholder}
           onChange={onchange}
-          defaultValue={options[1]}
+          defaultValue={options2[1]}
         ></SelectA>
       ) : (
         <SelectA
-          options={options}
+          options={options1}
           styles={styles}
           components={{
             IndicatorSeparator: () => null,

@@ -2,13 +2,17 @@ import { FiterNavSearch } from 'app/containers/fiterNavSearch';
 import { Footer } from 'app/containers/footer';
 import { Navbar } from 'app/containers/navbar';
 import { NavSortSearch } from 'app/containers/navSortSearch';
+import { NumberOfResult } from 'app/containers/numberOfResult';
 import { Pagination } from 'app/containers/pagination';
 import { PawnShop } from 'app/containers/pawnShop';
-import { PersonnalLending } from 'app/containers/personnalLending';
 import { Suggest } from 'app/containers/suggest';
+import { PersonalLending } from 'app/containers/personalLending';
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Col, Container, Row } from 'reactstrap';
+import hurry_img from '../../../images/hurry_img.png';
+import loan_img from '../../../images/loan_img.png';
+
 export function PageSearch() {
   return (
     <>
@@ -22,13 +26,24 @@ export function PageSearch() {
         <Row>
           <Col lg="9" md="12">
             <Col>
-              <Suggest></Suggest>
+              <NumberOfResult></NumberOfResult>
             </Col>
             <Col>
-              <PersonnalLending></PersonnalLending>
+              <Suggest
+                src={hurry_img}
+                title="You are not in a hurry and can await"
+                desc="Request a loan from a trusted P2P lender to get a better interest rate and LTV"
+              ></Suggest>
             </Col>
             <Col>
-              <Suggest></Suggest>
+              <PersonalLending></PersonalLending>
+            </Col>
+            <Col>
+              <Suggest
+                src={loan_img}
+                title="Want an instant loan?"
+                desc="Submit your collateral to get a loan in seconds"
+              ></Suggest>
             </Col>
             <Col>
               <NavSortSearch></NavSortSearch>

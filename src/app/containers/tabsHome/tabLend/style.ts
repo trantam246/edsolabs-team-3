@@ -207,6 +207,6 @@ export const WarperInput = styled.div<any>`
     width: ${p => (p.width === '417px' ? '217px' : '94px')};
   }
   @media (max-width: 320px) {
-    width: ${p => (p.width === '417px' ? '150px' : '94px')};
+    width: ${p => (p.width === '417px' ? '150px' : '110px')};
   }
 `;

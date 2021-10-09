@@ -66,8 +66,38 @@ export const Banner = styled(Col)`
     p {
       padding-left: 80px;
     }
+    div {
+      text-align: center;
+      img {
+        width: 100%;
+        display: inline-block;
+      }
+    }
   }
 
+  @media (max-width: 1280px) {
+    padding-left: 70px;
+    padding-right: 70px;
+    h1 {
+      margin-bottom: 29px;
+      width: 100%;
+      text-align: left;
+      padding-left: 0px;
+      padding-right: 50px;
+    }
+    p {
+      text-align: left;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    div {
+      text-align: left;
+      img {
+        width: 400px;
+        display: inline-block;
+      }
+    }
+  }
   @media (max-width: 1024px) {
     padding-right: 0px;
     padding-left: 0px;
@@ -90,6 +120,32 @@ export const Banner = styled(Col)`
     }
   }
 
+  @media (max-width: 768px) {
+    padding-right: 0px;
+    padding-left: 0px;
+    h1 {
+      padding-left: 0px;
+      width: auto;
+      div {
+        display: inline-block;
+      }
+      .title__span {
+        color: #dba83d;
+      }
+      font-size: 4.8rem;
+      margin-bottom: 10px;
+    }
+    p {
+      padding-left: 0px;
+      font-size: 1.4rem;
+      margin-bottom: 14px;
+    }
+    div {
+      img {
+        width: 100%;
+      }
+    }
+  }
   @media (max-width: 425px) {
     padding-right: 0px;
     padding-left: 0px;
@@ -112,7 +168,7 @@ export const Banner = styled(Col)`
     }
     div {
       img {
-        width: 344px;
+        width: 100%;
       }
     }
   }
@@ -165,7 +221,7 @@ export const Banner = styled(Col)`
     }
     div {
       img {
-        width: 280px;
+        width: 100%;
       }
     }
   }

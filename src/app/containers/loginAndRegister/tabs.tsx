@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
+import { TabContent, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import styled from 'styled-components';
+import TabRegister from './tabRegister';
 import TabLogin from './tabLogin';
+import { useHistory } from 'react-router';
+import { useEffect } from 'react';
 
 const NavStyled = styled(Nav)`
   border: none;
@@ -23,15 +26,34 @@ const NavStyled = styled(Nav)`
     color: #dba83d !important;
     border-bottom: 3px solid #dba83d !important;
   }
+
+  @media (max-width: 376px) {
+    .nav-link {
+      font-size: 3rem;
+    }
+  }
 `;
 
 export default function Tabs() {
   const [activeTab, setActiveTab] = useState('1');
-
+  const history = useHistory();
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
+    if (tab === '1') {
+      history.push({ pathname: '', search: 'tab=1' });
+    }
+    if (tab === '2') {
+      history.push({ pathname: '', search: 'tab=2' });
+    }
   };
-
+  useEffect(() => {
+    if (history.location.search.includes('?tab=1')) {
+      setActiveTab('1');
+    }
+    if (history.location.search.includes('?tab=2')) {
+      setActiveTab('2');
+    }
+  }, [setActiveTab, history.location.search]);
   return (
     <>
       <NavStyled tabs>
@@ -57,10 +79,8 @@ export default function Tabs() {
         </NavItem>
       </NavStyled>
       <TabContent activeTab={activeTab}>
-        <TabLogin id="1" />
-        <TabPane tabId="2" color="white">
-          Tab 2
-        </TabPane>
+        <TabRegister id="1" />
+        <TabLogin id="2" />
       </TabContent>
     </>
   );
