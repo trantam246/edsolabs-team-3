@@ -3,7 +3,7 @@ import { AdsHome } from 'app/containers/adsHome';
 import { FeatureList } from 'app/containers/featureList';
 import { Footer } from 'app/containers/footer';
 import { Navbar } from 'app/containers/navbar';
-import { Silder } from 'app/containers/silders';
+import { Sliders } from 'app/containers/Sliders';
 import { TabsHome } from 'app/containers/tabsHome';
 import { Helmet } from 'react-helmet-async';
 import { Container } from 'reactstrap';
@@ -25,7 +25,7 @@ export function PageHome() {
       <Section>
         {/*silders*/}
         <Container>
-          <Silder></Silder>
+          <Sliders></Sliders>
         </Container>
       </Section>
       <Section>
