@@ -123,6 +123,12 @@ export const WrapperInput = styled.div`
   .activeBrinput {
     border: 2px solid #ff5252 !important;
   }
+  .input__Disabled {
+    border: 1px solid #dba83d;
+    ::placeholder {
+      color: #dba83d;
+    }
+  }
   input {
     width: 100%;
     height: 100%;
@@ -243,7 +249,7 @@ export const WrapperInput = styled.div`
   }
   @media (max-width: 320px) {
     width: ${(props: wrapperInput) =>
-      props.width === '417px' || props.width === '225px' ? '180px' : '70px'};
+      props.width === '417px' || props.width === '225px' ? '180px' : '110px'};
     .btn_max {
       width: 54px;
       font-size: 14px;

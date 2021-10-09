@@ -121,7 +121,9 @@ export default function TabsBorrow(props: any) {
                 <input
                   type="text"
                   disabled
-                  defaultValue="Choose Existing collateral"
+                  placeholder="Choose Existing collateral"
+                  // defaultValue="Choose Existing collateral"
+                  className="input__Disabled"
                 ></input>
               </WrapperInput>
             </div>

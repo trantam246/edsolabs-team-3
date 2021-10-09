@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
-import iconDcoi from '../../../images/iconDcoi.svg';
+import { iconCoin } from '../icon';
 const SelectCollateral = styled(Select)<any>`
   width: 100%;
   height: 100%;
@@ -101,116 +101,15 @@ const SelectCollateral = styled(Select)<any>`
   }
 `;
 export default function SelectCollateralComponent(props: any) {
-  const options = [
-    {
-      value: 'dfgdf',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>1</span>
-        </>
-      ),
-    },
-    {
-      value: 'dfsgsdfg',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>1</span>
-        </>
-      ),
-    },
-    {
-      value: '33sdgag3',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>1</span>
-        </>
-      ),
-    },
-    {
-      value: 'agadggr333',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>1</span>
-        </>
-      ),
-    },
-    {
-      value: '33jyyj3',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>1</span>
-        </>
-      ),
-    },
-    {
-      value: '4t34tt',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>1</span>
-        </>
-      ),
-    },
-    {
-      value: 'sdgagb',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>1</span>
-        </>
-      ),
-    },
-    {
-      value: '888',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>66</span>
-        </>
-      ),
-    },
-    {
-      value: '7777',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>55</span>
-        </>
-      ),
-    },
-    {
-      value: '435',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>44</span>
-        </>
-      ),
-    },
-    {
-      value: '3253245',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>33</span>
-        </>
-      ),
-    },
-    {
-      value: '2345345',
-      label: (
-        <>
-          <img src={iconDcoi} alt="" />
-          <span>22</span>
-        </>
-      ),
-    },
-  ];
+  const options = iconCoin.map(e => ({
+    value: e.value,
+    label: (
+      <>
+        <img src={e.url} alt="" style={{ height: '20px', width: '20px' }} />
+        <span>{e.value}</span>
+      </>
+    ),
+  }));
   const handleOnchangesub = (e: any) => {
     props.onChanges(e);
   };
