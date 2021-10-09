@@ -1,15 +1,18 @@
 import * as React from 'react';
 import { Col } from 'reactstrap';
-import { Button, P, H3, Box, ContainerAbs } from './style';
+import { Button, P, H3, H4, Box, ContainerAbs } from './style';
 import absWatch from '../../../images/abs-Watch.png';
 
 export function AdsHome() {
   return (
     <div>
+      <H3>
+        <span>explore featured pawnshops</span>
+      </H3>
       <ContainerAbs color={absWatch}>
         <Col md="12" lg="8" xl="7">
           <Box>
-            <H3>Become a Pawnshop</H3>
+            <H4>Become a Pawnshop</H4>
             <P>
               Open your own pawn shop and discover a new business opportunity
               with an unmatched ROI. Be a part of the world's financial
