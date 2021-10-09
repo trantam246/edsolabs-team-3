@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
+import { TabContent, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import styled from 'styled-components';
+import TabRegister from './tabRegister';
 import TabLogin from './tabLogin';
 
 const NavStyled = styled(Nav)`
@@ -22,6 +23,12 @@ const NavStyled = styled(Nav)`
     background: none !important;
     color: #dba83d !important;
     border-bottom: 3px solid #dba83d !important;
+  }
+
+  @media (max-width: 376px) {
+    .nav-link {
+      font-size: 3rem;
+    }
   }
 `;
 
@@ -57,10 +64,8 @@ export default function Tabs() {
         </NavItem>
       </NavStyled>
       <TabContent activeTab={activeTab}>
-        <TabLogin id="1" />
-        <TabPane tabId="2" color="white">
-          Tab 2
-        </TabPane>
+        <TabRegister id="1" />
+        <TabLogin id="2" />
       </TabContent>
     </>
   );

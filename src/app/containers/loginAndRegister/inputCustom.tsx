@@ -1,17 +1,9 @@
 import * as React from 'react';
+import classnames from 'classnames';
 import styled from 'styled-components';
 
-interface Props {
-  label: string;
-  type: string;
-  placeHolder: string;
-  Icon: any;
-  register: any;
-  err: any;
-}
-
 const Wrapper = styled.div`
-  max-width: 58.4rem;
+  width: 100%;
   height: 9.7rem;
 
   .inputDiv {
@@ -25,6 +17,18 @@ const Wrapper = styled.div`
     margin-top: 1rem;
     cursor: pointer;
   }
+
+  .error {
+    border: 1px solid rgb(255, 72, 72);
+    &:focus {
+      border: 1px solid rgb(255, 72, 72);
+      caret-color: rgb(255, 72, 72);
+    }
+  }
+
+  @media (min-width: 1025px) {
+    width: 58.4rem;
+  }
 `;
 
 const Label = styled.div`
@@ -36,7 +40,7 @@ const Label = styled.div`
 
 const InputStyled = styled.input`
   height: 4.4rem;
-  min-width: 58.4rem;
+  width: 100%;
   background: inherit;
   border-radius: 2.2rem;
   padding-left: 2.4rem;
@@ -72,21 +76,36 @@ const InputStyled = styled.input`
   }
 `;
 
+interface Props {
+  label: string;
+  type: string;
+  placeHolder: string;
+  Icon: any;
+  iconClick: any;
+  register: any;
+  err: any;
+}
+
 export default function InputCustom({
   label,
   type,
   placeHolder,
   Icon,
+  iconClick,
   register,
   err,
 }: Props) {
-  console.log(err);
   return (
     <Wrapper>
       <Label>{label}</Label>
       <div className="inputDiv">
-        <InputStyled type={type} placeholder={placeHolder} {...register} />
-        {Icon && <Icon className="icon" />}
+        <InputStyled
+          type={type}
+          placeholder={placeHolder}
+          {...register}
+          className={classnames({ error: err !== false })}
+        />
+        {Icon && <Icon className="icon" onClick={iconClick} />}
       </div>
       {err}
     </Wrapper>
