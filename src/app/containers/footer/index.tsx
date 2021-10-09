@@ -55,6 +55,35 @@ const FooterDefi = styled.footer`
       margin-top: 10rem;
     }
   }
+  @media screen and (min-width: 1120px) and (max-width: 1200px) {
+    .row__nav-list {
+      margin-bottom: -6rem;
+      margin-top: 4rem;
+    }
+  }
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    .row__nav-list {
+      margin-top: 10rem;
+      .icons {
+        width: 20rem;
+      }
+    }
+  }
+  @media screen and (min-width: 437px) and (max-width: 575px) {
+    .row__nav-list {
+      transform: translateY(32rem);
+    }
+  }
+  @media screen and (max-width: 372px) {
+    .row__nav-list {
+      transform: translateY(40rem);
+    }
+  }
+  @media screen and (max-width: 319px) {
+    .row__nav-list {
+      transform: translateY(43rem);
+    }
+  }
 `;
 
 export function Footer() {

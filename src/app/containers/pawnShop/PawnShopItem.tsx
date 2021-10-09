@@ -16,12 +16,15 @@ const PawnShop = styled.div`
   .pawn {
     display: flex;
     flex-wrap: wrap;
-
+    &__shop {
+      display: flex;
+      width: 70%;
+    }
     &__img {
       width: 23.3rem;
       position: relative;
       &-shop {
-        max-width: 100%;
+        width: 100%;
         height: 100%;
         border-radius: 0.8rem;
         object-fit: cover;
@@ -35,7 +38,7 @@ const PawnShop = styled.div`
     &__content {
       flex: 1;
       margin-left: 2rem;
-      border-right: 0.1rem solid grey;
+      border-right: 0.1rem solid #9bcfff36;
     }
     &__name {
       font-style: normal;
@@ -43,6 +46,12 @@ const PawnShop = styled.div`
       font-size: 2.4rem;
       line-height: 2.9rem;
       color: #ffffff;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-word;
     }
     &__star {
       font-style: normal;
@@ -75,7 +84,7 @@ const PawnShop = styled.div`
       }
     }
     &__interest {
-      width: 28.6rem;
+      width: 30%;
       text-align: right;
       display: flex;
       flex-direction: column;
@@ -125,7 +134,6 @@ const PawnShop = styled.div`
       align-items: center;
       justify-content: center;
       margin-bottom: 1.1rem;
-
       letter-spacing: 0.04rem;
       &--auto {
         color: #2596ff;
@@ -137,7 +145,7 @@ const PawnShop = styled.div`
         border: 0.1rem solid #fe951a;
         background: rgba(254, 149, 26, 0.2);
       }
-      &--negotitation {
+      &--negotiation {
         color: #ff4848;
         border: 0.1rem solid #ff4848;
         background: rgba(255, 72, 72, 0.2);
@@ -152,6 +160,100 @@ const PawnShop = styled.div`
         #bd8727 101.47%
       );
       border: none;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .pawn {
+      &__img {
+        width: 14rem;
+        img {
+          height: auto;
+        }
+      }
+      &__name {
+        font-size: 1.8rem;
+        & > img {
+          display: none;
+        }
+      }
+      &__rate-result {
+        font-size: 2rem;
+      }
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .pawn {
+      flex-direction: column;
+      &__shop {
+        display: flex;
+        width: 100%;
+      }
+      &__img {
+        width: 40%;
+      }
+      &__content {
+        width: 100%;
+        border-bottom: 0.1rem solid #9bcfff36;
+        border-right: none;
+      }
+
+      &__details {
+        margin-top: 0;
+      }
+      &__interest {
+        width: 100%;
+        align-items: flex-start;
+        margin-top: 2rem;
+        p {
+          text-align: left;
+        }
+      }
+      &__view {
+        height: 4.2rem;
+        min-width: 14.5rem;
+      }
+    }
+  }
+  @media screen and (max-width: 575px) {
+    padding: 1.2rem;
+    .pawn {
+      position: relative;
+      height: auto;
+      flex-direction: column;
+      &__shop {
+        width: 100%;
+        flex-direction: column;
+      }
+      &__content {
+        margin-left: 0;
+      }
+      &__name {
+        position: absolute;
+        top: 0;
+        right: -4%;
+        width: 56%;
+        /* height: 10%; */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+      &__img {
+        width: 44%;
+      }
+      &__details {
+        margin-top: 1.2rem;
+      }
+    }
+  }
+  @media screen and (max-width: 375px) {
+    .pawn {
+      &__img {
+        width: 45%;
+      }
+      &__name {
+        right: -4%;
+        height: auto;
+      }
     }
   }
 `;
@@ -185,42 +287,44 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
   return (
     <PawnShop>
       <div className="pawn">
-        <div className="pawn__img">
-          <img className="pawn__img-shop" src={item.img} alt="" />
-          <img
-            className="pawn__img-icon"
-            src={item.heart ? heartActive : heartDisable}
-            alt=""
-          />
-        </div>
-        <div className="pawn__content">
-          <div className="pawn__name">
-            {item.name} <img src={checkIcon} alt="" />
+        <div className="pawn__shop">
+          <div className="pawn__img">
+            <img className="pawn__img-shop" src={item.img} alt="" />
+            <img
+              className="pawn__img-icon"
+              src={item.heart ? heartActive : heartDisable}
+              alt=""
+            />
           </div>
-          <div className="pawn__star">
-            <img src={starIcon} alt="" />
-            {item.star}
+          <div className="pawn__content">
+            <div className="pawn__name">
+              {item.name} <img src={checkIcon} alt="" />
+              <div className="pawn__star">
+                <img src={starIcon} alt="" />
+                {item.star}
+              </div>
+            </div>
+            <ul className="pawn__details">
+              <li className="pawn__details-item">
+                <p className="pawn__details-label">Available:</p>
+                <p className="pawn__details-result">{item.available} USDT</p>
+              </li>
+              <li className="pawn__details-item">
+                <p className="pawn__details-label">Limit:</p>
+                <p className="pawn__details-result">
+                  {item.limit_min} USDT - {item.limit_max} USDT
+                </p>
+              </li>
+              <li className="pawn__details-item">
+                <p className="pawn__details-label">Duration:</p>
+                <p className="pawn__details-result">{item.duration}</p>
+              </li>
+              <li className="pawn__details-item">
+                <p className="pawn__details-label">LTV:</p>
+                <p className="pawn__details-result">{item.ltv}</p>
+              </li>
+            </ul>
           </div>
-          <ul className="pawn__details">
-            <li className="pawn__details-item">
-              <p className="pawn__details-label">Available:</p>
-              <p className="pawn__details-result">{item.available} USDT</p>
-            </li>
-            <li className="pawn__details-item">
-              <p className="pawn__details-label">Limit:</p>
-              <p className="pawn__details-result">
-                {item.limit_min} USDT - {item.limit_max} USDT
-              </p>
-            </li>
-            <li className="pawn__details-item">
-              <p className="pawn__details-label">Duration:</p>
-              <p className="pawn__details-result">{item.duration}</p>
-            </li>
-            <li className="pawn__details-item">
-              <p className="pawn__details-label">LTV:</p>
-              <p className="pawn__details-result">{item.ltv}</p>
-            </li>
-          </ul>
         </div>
         <div className="pawn__interest">
           <div className="pawn__rate">

@@ -26,6 +26,12 @@ const TitlePersonal = styled.div`
       }
     }
   }
+  @media screen and (max-width: 575px) {
+    display: none;
+  }
+  @media screen and (max-width: 1139px) {
+    font-size: 1.6rem;
+  }
 `;
 const Title = () => {
   return (
