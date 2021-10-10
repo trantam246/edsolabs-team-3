@@ -41,6 +41,19 @@ export const P = styled.p`
 `;
 
 export const H3 = styled.h3`
+  text-align: center;
+  color: #dba83d;
+  font-size: 36px;
+  font-weight: 600;
+  padding-top: 6rem;
+  padding-bottom: 10rem;
+  @media (max-width: 768px) {
+    font-size: 24px;
+    padding-top: 4rem;
+    padding-bottom: 4.1rem;
+  }
+`;
+export const H4 = styled.h4`
   font-weight: 600;
   font-size: 3.6rem;
   line-height: 4.4rem;
