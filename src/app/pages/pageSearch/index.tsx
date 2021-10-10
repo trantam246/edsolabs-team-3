@@ -74,7 +74,7 @@ export function PageSearch() {
             <Col>
               <Suggest
                 src={hurry_img}
-                title="You are not in a hurry and can await"
+                title="You are not in a hurry and can await?"
                 desc="Request a loan from a trusted P2P lender to get a better interest rate and LTV"
               ></Suggest>
             </Col>

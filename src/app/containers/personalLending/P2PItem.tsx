@@ -128,6 +128,34 @@ const P2P = styled.div`
       @media screen and (max-width: 1200px) {
         margin-top: 1.8rem;
       }
+      @media screen and (max-width: 767px) and (min-width: 575px) {
+        margin-top: 0;
+      }
+    }
+  }
+  @media screen and (max-width: 575px) {
+    .lender {
+      &__name {
+        font-size: 1.6rem;
+      }
+      &__rate {
+        font-size: 1.4rem;
+      }
+      &__interest {
+        font-size: 1.8rem;
+      }
+      &__tag {
+        font-size: 1.2rem;
+      }
+      &__collateral {
+        margin-bottom: 3.4rem;
+        font-size: 1.4rem;
+        span {
+          margin-bottom: 1.2rem;
+          display: block;
+          width: 100%;
+        }
+      }
     }
   }
 `;
@@ -171,7 +199,8 @@ const P2PItem: React.FC<IP2P> = ({ item }) => {
           ))}
         </ul>
         <div className="lender__collateral">
-          Collateral accepted:{renderIconsList}{' '}
+          <span>Collateral accepted:</span>
+          {renderIconsList}{' '}
           {item.collateral.length > 5
             ? `& ${item.collateral.slice(5).length} more`
             : ''}
