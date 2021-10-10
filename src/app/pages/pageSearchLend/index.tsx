@@ -18,11 +18,11 @@ export function PageSearchLend() {
       <Section className="section-even">
         <Container>
           <Row>
-            <Col lg="9" md="12">
+            <Col xl="9">
               {/* phàn anh toàn code */}
               <Table />
             </Col>
-            <Col lg="3">
+            <Col xl="3">
               <FiterNavSearch></FiterNavSearch>
             </Col>
           </Row>
