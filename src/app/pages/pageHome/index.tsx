@@ -3,7 +3,7 @@ import { AdsHome } from 'app/containers/adsHome';
 import { FeatureList } from 'app/containers/featureList';
 import { Footer } from 'app/containers/footer';
 import { Navbar } from 'app/containers/navbar';
-import { Sliders } from 'app/containers/Sliders';
+import { Sliders } from 'app/containers/silders';
 import { TabsHome } from 'app/containers/tabsHome';
 import { Helmet } from 'react-helmet-async';
 import { Container } from 'reactstrap';
