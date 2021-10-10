@@ -7,7 +7,7 @@ export function PawnShop() {
       <Helmet>
         <meta name="description" content="Page not found" />
       </Helmet>
-      <PawnShopList />
+      <PawnShopList></PawnShopList>
     </>
   );
 }

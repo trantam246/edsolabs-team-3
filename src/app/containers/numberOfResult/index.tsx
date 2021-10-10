@@ -9,6 +9,10 @@ const NumberResultBorrow = styled.div`
   line-height: 2.4rem;
   margin-top: 3rem;
   margin-bottom: 2rem;
+  @media screen and (max-width: 767px) {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
 `;
 export function NumberOfResult() {
   const amountResult = 10;
