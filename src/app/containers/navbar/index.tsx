@@ -33,6 +33,11 @@ export function Navbar(props) {
   });
   const openMenu = () => {
     setopenMenuMobile(!openMenuMobile);
+    if (openMenuMobile === false) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   };
   const openDownMenuMobile = value => {
     switch (value) {

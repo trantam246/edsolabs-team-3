@@ -12,8 +12,48 @@ import { Helmet } from 'react-helmet-async';
 import { Col, Container, Row } from 'reactstrap';
 import hurry_img from '../../../images/hurry_img.png';
 import loan_img from '../../../images/loan_img.png';
-
+import filtericon from '../../../images/filtericon.svg';
+import styled from 'styled-components';
+import { useState } from 'react';
+const Filter = styled(Col)`
+  text-align: right;
+  margin-top: 13px;
+  @media (max-width: 1920px) {
+    display: none;
+  }
+  @media (max-width: 1440px) {
+    display: none;
+  }
+  @media (max-width: 1366px) {
+    display: none;
+  }
+  @media (max-width: 1280px) {
+    display: none;
+  }
+  @media (max-width: 1024px) {
+    display: block;
+  }
+  @media (max-width: 768px) {
+    display: block;
+  }
+  @media (max-width: 425px) {
+    display: block;
+  }
+  @media (max-width: 375px) {
+    display: block;
+  }
+  @media (max-width: 320px) {
+    display: block;
+  }
+`;
 export function PageSearch() {
+  const [statusFilterNav, setstatusFilterNav] = useState(false);
+  const onClick = () => {
+    setstatusFilterNav(!statusFilterNav);
+  };
+  const TurnOffFilterNav = () => {
+    setstatusFilterNav(false);
+  };
   return (
     <>
       <Helmet>
@@ -24,7 +64,10 @@ export function PageSearch() {
       <Navbar></Navbar>
       <Container>
         <Row>
-          <Col lg="9" md="12">
+          <Col xl="9">
+            <Filter>
+              <img src={filtericon} alt="" onClick={onClick} />
+            </Filter>
             <Col>
               <NumberOfResult></NumberOfResult>
             </Col>
@@ -55,8 +98,11 @@ export function PageSearch() {
               <Pagination></Pagination>
             </Col>
           </Col>
-          <Col lg="3">
-            <FiterNavSearch></FiterNavSearch>
+          <Col xl="3">
+            <FiterNavSearch
+              status={statusFilterNav}
+              TurnOffFilterNav={TurnOffFilterNav}
+            ></FiterNavSearch>
           </Col>
         </Row>
       </Container>

@@ -5,6 +5,9 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../../images/logo.png';
 
 const LogoImg = styled.img`
+  @media (max-width: 1440px) {
+    width: 100%;
+  }
   @media (max-width: 1024px) {
     width: 200px;
   }
