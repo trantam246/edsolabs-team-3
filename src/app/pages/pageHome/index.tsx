@@ -34,7 +34,6 @@ export function PageHome() {
           <AdsHome></AdsHome>
         </Container>
       </Section>
-
       {/*footter*/}
 
       <Footer></Footer>
