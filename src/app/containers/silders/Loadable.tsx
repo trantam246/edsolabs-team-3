@@ -1,6 +1,6 @@
 import { lazyLoad } from 'utils/loadable';
 
-export const Sliders = lazyLoad(
+export const Silder = lazyLoad(
   () => import('./index'),
-  module => module.Sliders,
+  module => module.Silder,
 );
