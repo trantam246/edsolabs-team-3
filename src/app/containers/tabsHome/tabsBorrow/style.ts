@@ -173,12 +173,16 @@ export const WrapperInput = styled.div`
     option {
       background-color: #232732;
       border: none;
+      border-radius: 20px;
     }
   }
   .btn_max {
     position: absolute;
     right: 5px;
     top: 5px;
+    color: #282c37;
+    font-size: 16px;
+    line-height: 19px;
   }
   .icon_coi {
     position: absolute;

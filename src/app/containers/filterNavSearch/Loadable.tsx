@@ -1,6 +1,6 @@
 import { lazyLoad } from 'utils/loadable';
 
 export const FiterNavSearch = lazyLoad(
-  () => import('./index'),
+  () => import('./borrowCryptocurrency'),
   module => module.FiterNavSearch,
 );

@@ -26,6 +26,9 @@ export const P = styled.p`
 export const Tables = styled.table`
   width: 100%;
   margin-bottom: 2rem;
+  @media (max-width: 768px) {
+    margin-bottom: 1.6rem;
+  }
 `;
 
 export const Thead = styled.thead`
@@ -76,6 +79,7 @@ export const Td = styled.td`
     display: block;
     padding-left: 30%;
     border-bottom: 0 !important;
+    max-height: 6rem;
 
     &:first-child {
       display: none;
@@ -85,7 +89,8 @@ export const Td = styled.td`
       font-size: 1.4rem;
       line-height: 1.7rem;
       padding: 1.6rem 0;
-      width: calc(30% - 15px);
+      width: fit-content;
+      padding-top: 0;
     }
     &:nth-child(2)::before {
       content: 'Borrower';

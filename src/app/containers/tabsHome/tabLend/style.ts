@@ -151,6 +151,16 @@ export const WarperInput = styled.div<any>`
   height: ${p => (p.height ? p.height : 'auto')};
   width: ${p => (p.width ? p.width : '10px')};
   position: relative;
+  & > .btn__max-lend {
+    position: absolute;
+    width: 64px;
+    height: 34px;
+    font-size: 16px;
+    line-height: 19px;
+    color: #282c37;
+    right: 5px;
+    top: 5px;
+  }
   & > select {
     width: 100%;
     height: 100%;
@@ -162,6 +172,10 @@ export const WarperInput = styled.div<any>`
     font-size: 16px;
     color: #a2a3a7;
     padding: 0px 20px;
+    & > option {
+      background-color: red;
+      height: 50px;
+    }
     &:focus {
       outline: none;
       border: 2px solid #dba83d;

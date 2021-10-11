@@ -1,4 +1,4 @@
-import { FiterNavSearch } from 'app/containers/fiterNavSearch';
+import { FiterNavSearch } from 'app/containers/filterNavSearch/lendCryptocurrency';
 import { Footer } from 'app/containers/footer';
 import { Navbar } from 'app/containers/navbar';
 import Table from 'app/containers/table';
@@ -6,7 +6,19 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Col, Container, Row } from 'reactstrap';
 import { Section } from '../pageHome/style';
+import { Filter } from '../pageSearch/style';
+import filtericon from '../../../images/filtericon.svg';
+import { useState } from 'react';
 export function PageSearchLend() {
+  const [statusFilterNav, setstatusFilterNav] = useState(false);
+  const onClick = () => {
+    setstatusFilterNav(!statusFilterNav);
+    if (statusFilterNav === false) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  };
   return (
     <>
       <Helmet>
@@ -19,11 +31,21 @@ export function PageSearchLend() {
         <Container>
           <Row>
             <Col xl="9">
-              {/* phàn anh toàn code */}
+              <Filter>
+                <img
+                  src={filtericon}
+                  alt=""
+                  onClick={onClick}
+                  style={{ cursor: 'pointer' }}
+                />
+              </Filter>
               <Table />
             </Col>
             <Col xl="3">
-              <FiterNavSearch></FiterNavSearch>
+              <FiterNavSearch
+                status={statusFilterNav}
+                onClick={onClick}
+              ></FiterNavSearch>
             </Col>
           </Row>
         </Container>

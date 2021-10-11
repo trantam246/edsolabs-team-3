@@ -1,12 +1,13 @@
 import styled from 'styled-components/macro';
 import ArrowUp from '../../../images/ArrowUp.svg';
+import iconcheck from '../../../images/iconcheck.svg';
 export const Bong = styled.div`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #c5caa76e;
+  background-color: #494a4fb0;
   z-index: 0;
 `;
 export const WarperFilterNav = styled.div<any>`
@@ -17,6 +18,15 @@ export const WarperFilterNav = styled.div<any>`
   margin-top: 30px;
   padding-bottom: 16px;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 4px;
+    background-color: #45484f;
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #74767b;
+    border-radius: 3px;
+  }
   @media (max-width: 1024px) {
     position: fixed;
     top: -30px;
@@ -70,6 +80,7 @@ export const Resetfilter = styled.div`
     font-size: 14px;
     line-height: 17px;
     text-decoration-line: underline;
+    cursor: pointer;
   }
   img {
     display: none;
@@ -86,7 +97,7 @@ export const InputSearchNameFilter = styled.div`
     height: 40px;
     padding: 0px 12px;
     border-radius: 22px;
-    background: #828282;
+    background: #3e424b;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -97,6 +108,7 @@ export const InputSearchNameFilter = styled.div`
         color: #ffffff;
         border: none;
         background-color: transparent;
+
         :focus {
           outline: none;
         }
@@ -126,6 +138,99 @@ export const Accordion = styled.div`
     overflow-y: auto;
     margin-right: 20px;
     margin-bottom: 12px;
+    .checkbox__custom {
+      padding-bottom: 12px;
+      & > span {
+        margin-left: 16px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #ffffff;
+        & > img {
+          margin-right: 8px;
+        }
+      }
+      & > input[type='checkbox'] {
+        height: 16px;
+        width: 16px;
+        appearance: none;
+        border: 1px solid #d1d1d3;
+        box-sizing: border-box;
+        border-radius: 3px;
+        cursor: pointer;
+        position: relative;
+        & ::after {
+          content: url(${iconcheck});
+          position: absolute;
+          top: -2px;
+          left: 3px;
+          display: none;
+        }
+        &:checked {
+          background-color: #dba83d;
+          border: none;
+        }
+
+        &:checked::after {
+          display: block;
+          top: 0px;
+          left: 3px;
+        }
+      }
+    }
+    .radio__custom {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      padding-bottom: 12px;
+      & > span {
+        margin-left: 16px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #ffffff;
+      }
+      & > div {
+        & > input {
+          margin: 0px;
+          display: none;
+        }
+        & > input[type='radio']:checked ~ span::before {
+          transform: scale(1);
+        }
+        & > input[type='radio']:checked ~ span {
+          border: 1px solid #dba83d;
+        }
+        & > span {
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          border: 1px solid #fff;
+          display: inline-block;
+          box-sizing: border-box;
+          position: relative;
+          transition: 300ms all ease-in-out;
+          cursor: pointer;
+          &:hover {
+            box-shadow: 0 0 0px 5px rgba(253, 253, 253, 0.308);
+          }
+          &::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            background-color: #dba83d;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transform: scale(0);
+            transition: 300ms all ease-in-out;
+          }
+        }
+      }
+    }
     &::-webkit-scrollbar {
       width: 4px;
       background-color: #45484f;
@@ -134,23 +239,6 @@ export const Accordion = styled.div`
     &::-webkit-scrollbar-thumb {
       background-color: #74767b;
       border-radius: 3px;
-    }
-    & > div {
-      display: flex;
-      justify-content: start;
-      align-items: center;
-      padding-bottom: 12px;
-      & > input {
-        width: 16px;
-        height: 16px;
-        margin-right: 6px;
-      }
-      & > span {
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 20px;
-        color: #fff;
-      }
     }
   }
   .accordion-item {

@@ -22,7 +22,8 @@ export function FiterNavSearch(props: any) {
           <img
             src={closeFilterNav}
             alt=""
-            onClick={() => props.TurnOffFilterNav()}
+            onClick={() => props.onClick()}
+            style={{ cursor: 'pointer' }}
           />
         </Resetfilter>
         <InputSearchNameFilter>
@@ -35,6 +36,7 @@ export function FiterNavSearch(props: any) {
             </div>
           </div>
         </InputSearchNameFilter>
+
         <Accordion className="accordion" id="accordionPanelsStayOpenExample">
           <div className="accordion-item">
             <h2 className="accordion-header" id="panelsStayOpen-headingOne">
@@ -55,25 +57,38 @@ export function FiterNavSearch(props: any) {
               aria-labelledby="panelsStayOpen-headingOne"
             >
               <div className="accordion-body">
-                <div>
-                  <input type="radio" />
-                  <span>0 - 10% </span>
-                </div>
-                <div>
-                  <input type="radio" />
-                  <span>10 - 25%</span>
-                </div>
-                <div>
-                  <input type="radio" />
-                  <span>25 - 50%</span>
-                </div>
-                <div>
-                  <input type="radio" />
+                <label className="radio__custom">
+                  <div>
+                    <input type="radio" name="Interestrange" value="0-10" />
+                    <span></span>
+                  </div>
+                  <span>{'0 - 10%'}</span>
+                </label>
+                <label className="radio__custom">
+                  <div>
+                    <input type="radio" name="Interestrange" value="10-25" />
+                    <span></span>
+                  </div>
+                  <span>{'10 - 25%'}</span>
+                </label>
+                <label className="radio__custom">
+                  <div>
+                    <input type="radio" name="Interestrange" value="25-50" />
+                    <span></span>
+                  </div>
+                  <span>{'25 - 50%'}</span>
+                </label>
+                <label className="radio__custom">
+                  <div>
+                    <input type="radio" name="Interestrange" value=">50" />
+                    <span></span>
+                  </div>
                   <span>{'> 50%'}</span>
-                </div>
+                </label>
               </div>
             </div>
           </div>
+
           <div className="accordion-item">
             <h2 className="accordion-header" id="panelsStayOpen-headingTwo">
               <button
@@ -93,25 +108,38 @@ export function FiterNavSearch(props: any) {
               aria-labelledby="panelsStayOpen-headingTwo"
             >
               <div className="accordion-body">
-                <div>
-                  <input type="radio" />
-                  <span>0 - 25%</span>
-                </div>
-                <div>
-                  <input type="radio" />
-                  <span>25 - 50%</span>
-                </div>
-                <div>
-                  <input type="radio" />
-                  <span>50 - 75%</span>
-                </div>
-                <div>
-                  <input type="radio" />
+                <label className="radio__custom">
+                  <div>
+                    <input type="radio" name="Loantovalue" value="0-25" />
+                    <span></span>
+                  </div>
+                  <span>{'0 - 25%'}</span>
+                </label>
+                <label className="radio__custom">
+                  <div>
+                    <input type="radio" name="Loantovalue" value="25-50" />
+                    <span></span>
+                  </div>
+                  <span>{'25 - 50%'}</span>
+                </label>
+                <label className="radio__custom">
+                  <div>
+                    <input type="radio" name="Loantovalue" value="50-75" />
+                    <span></span>
+                  </div>
+                  <span>{'50 - 75%'}</span>
+                </label>
+                <label className="radio__custom">
+                  <div>
+                    <input type="radio" name="Loantovalue" value=">75" />
+                    <span></span>
+                  </div>
                   <span>{'> 75%'}</span>
-                </div>
+                </label>
               </div>
             </div>
           </div>
+
           <div className="accordion-item">
             <h2 className="accordion-header" id="panelsStayOpen-headingThree">
               <button
@@ -132,8 +160,12 @@ export function FiterNavSearch(props: any) {
             >
               <div className="accordion-body">
                 {iconCoin.map((item, index) => (
-                  <div key={index}>
-                    <input type="checkbox" />
+                  <div className="checkbox__custom" key={index}>
+                    <input
+                      type="checkbox"
+                      name="Collateralaccepted"
+                      value={item.value}
+                    />
                     <span>
                       <img
                         src={item.url}
@@ -147,6 +179,7 @@ export function FiterNavSearch(props: any) {
               </div>
             </div>
           </div>
+
           <div className="accordion-item">
             <h2 className="accordion-header" id="panelsStayOpen-headingFour">
               <button
@@ -167,8 +200,12 @@ export function FiterNavSearch(props: any) {
             >
               <div className="accordion-body">
                 {LoanAmount.map((item, index) => (
-                  <div key={index}>
-                    <input type="checkbox" />
+                  <div className="checkbox__custom" key={index}>
+                    <input
+                      type="checkbox"
+                      name="Loantoken"
+                      value={item.value}
+                    />
                     <span>
                       <img
                         src={item.url}
@@ -182,6 +219,7 @@ export function FiterNavSearch(props: any) {
               </div>
             </div>
           </div>
+
           <div className="accordion-item">
             <h2 className="accordion-header" id="panelsStayOpen-headingFive">
               <button
@@ -201,16 +239,16 @@ export function FiterNavSearch(props: any) {
               aria-labelledby="panelsStayOpen-headingFive"
             >
               <div className="accordion-body">
-                <div>
-                  <input type="checkbox" />
+                <div className="checkbox__custom">
+                  <input type="checkbox" name="Loantype" value="Auto" />
                   <span>Auto</span>
                 </div>
-                <div>
-                  <input type="checkbox" />
+                <div className="checkbox__custom">
+                  <input type="checkbox" name="Loantype" value="Semi-auto" />
                   <span>Semi-auto</span>
                 </div>
-                <div>
-                  <input type="checkbox" />
+                <div className="checkbox__custom">
+                  <input type="checkbox" name="Loantype" value="Negotiation" />
                   <span>Negotiation</span>
                 </div>
               </div>
@@ -235,13 +273,13 @@ export function FiterNavSearch(props: any) {
               aria-labelledby="panelsStayOpen-heading6"
             >
               <div className="accordion-body">
-                <div>
-                  <input type="checkbox" />
-                  <span>Month</span>
+                <div className="checkbox__custom">
+                  <input type="checkbox" name="Duration" value="Week" />
+                  <span>Week</span>
                 </div>
-                <div>
-                  <input type="checkbox" />
-                  <span>Weeks</span>
+                <div className="checkbox__custom">
+                  <input type="checkbox" name="Duration" value="Month" />
+                  <span>Month</span>
                 </div>
               </div>
             </div>
@@ -250,7 +288,7 @@ export function FiterNavSearch(props: any) {
       </WarperFilterNav>
       <Bong
         style={{ display: props.status ? 'block' : 'none' }}
-        onClick={() => props.TurnOffFilterNav()}
+        onClick={() => props.onClick()}
       ></Bong>
     </>
   );

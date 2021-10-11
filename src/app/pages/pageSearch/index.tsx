@@ -1,4 +1,4 @@
-import { FiterNavSearch } from 'app/containers/fiterNavSearch';
+import { FiterNavSearch } from 'app/containers/filterNavSearch/borrowCryptocurrency';
 import { Footer } from 'app/containers/footer';
 import { Navbar } from 'app/containers/navbar';
 import { NavSortSearch } from 'app/containers/navSortSearch';
@@ -15,44 +15,20 @@ import loan_img from '../../../images/loan_img.png';
 import filtericon from '../../../images/filtericon.svg';
 import styled from 'styled-components';
 import { useState } from 'react';
-const Filter = styled(Col)`
-  text-align: right;
-  margin-top: 13px;
-  @media (max-width: 1920px) {
-    display: none;
-  }
-  @media (max-width: 1440px) {
-    display: none;
-  }
-  @media (max-width: 1366px) {
-    display: none;
-  }
-  @media (max-width: 1280px) {
-    display: none;
-  }
-  @media (max-width: 1024px) {
-    display: block;
-  }
-  @media (max-width: 768px) {
-    display: block;
-  }
-  @media (max-width: 425px) {
-    display: block;
-  }
-  @media (max-width: 375px) {
-    display: block;
-  }
-  @media (max-width: 320px) {
-    display: block;
-  }
+import { Filter } from './style';
+
+const ContainerPage = styled(Container)`
+  padding: 0 1.6rem;
 `;
 export function PageSearch() {
   const [statusFilterNav, setstatusFilterNav] = useState(false);
   const onClick = () => {
     setstatusFilterNav(!statusFilterNav);
-  };
-  const TurnOffFilterNav = () => {
-    setstatusFilterNav(false);
+    if (statusFilterNav === false) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   };
   return (
     <>
@@ -62,14 +38,22 @@ export function PageSearch() {
       </Helmet>
       {/*navbar*/}
       <Navbar></Navbar>
-      <Container>
+      <ContainerPage>
         <Row>
           <Col xl="9">
             <Filter>
-              <img src={filtericon} alt="" onClick={onClick} />
+              <img
+                src={filtericon}
+                alt=""
+                onClick={onClick}
+                style={{ cursor: 'pointer' }}
+              />
             </Filter>
             <Col>
-              <NumberOfResult></NumberOfResult>
+              <NumberOfResult
+                content="pawnshop packages match your search"
+                amount={5}
+              />
             </Col>
             <Col>
               <Suggest
@@ -92,20 +76,20 @@ export function PageSearch() {
               <NavSortSearch></NavSortSearch>
             </Col>
             <Col>
-              <PawnShop></PawnShop>
+              <PawnShop />
             </Col>
             <Col>
-              <Pagination></Pagination>
+              <Pagination />
             </Col>
           </Col>
           <Col xl="3">
             <FiterNavSearch
               status={statusFilterNav}
-              TurnOffFilterNav={TurnOffFilterNav}
+              onClick={onClick}
             ></FiterNavSearch>
           </Col>
         </Row>
-      </Container>
+      </ContainerPage>
       {/*footter*/}
       <Footer></Footer>
     </>
