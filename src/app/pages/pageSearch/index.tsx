@@ -15,6 +15,11 @@ import loan_img from '../../../images/loan_img.png';
 import filtericon from '../../../images/filtericon.svg';
 import styled from 'styled-components';
 import { useState } from 'react';
+
+const ContainerPage = styled(Container)`
+  padding: 0 1.6rem;
+`;
+
 const Filter = styled(Col)`
   text-align: right;
   margin-top: 13px;
@@ -64,7 +69,7 @@ export function PageSearch() {
       </Helmet>
       {/*navbar*/}
       <Navbar></Navbar>
-      <Container>
+      <ContainerPage>
         <Row>
           <Col xl="9">
             <Filter>
@@ -76,7 +81,10 @@ export function PageSearch() {
               />
             </Filter>
             <Col>
-              <NumberOfResult></NumberOfResult>
+              <NumberOfResult
+                content="pawnshop packages match your search"
+                amount={5}
+              />
             </Col>
             <Col>
               <Suggest
@@ -99,10 +107,10 @@ export function PageSearch() {
               <NavSortSearch></NavSortSearch>
             </Col>
             <Col>
-              <PawnShop></PawnShop>
+              <PawnShop />
             </Col>
             <Col>
-              <Pagination></Pagination>
+              <Pagination />
             </Col>
           </Col>
           <Col xl="3">
@@ -112,7 +120,7 @@ export function PageSearch() {
             ></FiterNavSearch>
           </Col>
         </Row>
-      </Container>
+      </ContainerPage>
       {/*footter*/}
       <Footer></Footer>
     </>
