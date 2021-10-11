@@ -1,10 +1,10 @@
 import React from 'react';
 import { IconStart, P } from './style';
-export default function Borrower() {
+export default function Borrower(props) {
   return (
     <>
       <div>
-        <a href="http://localhost:3000">0xaa5...a410e</a>
+        <a href={props.href}>0xaa5...a410e</a>
         <div>
           <P>
             <IconStart />
