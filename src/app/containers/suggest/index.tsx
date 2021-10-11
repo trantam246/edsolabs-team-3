@@ -2,22 +2,21 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 const UISuggest = styled.div`
+  padding: 2.05rem 2.6rem;
   max-width: 101.1rem;
-  /* max-height: 12.3rem; */
   border: 0.1rem solid #45484f;
   border-radius: 2rem;
   box-sizing: border-box;
   .suggest {
     display: flex;
     align-items: center;
-    padding: 2.05rem 2.6rem;
-    letter-spacing: 0.04rem;
     &__img {
-      min-width: 12rem;
+      /* min-width: 12rem; */
+      width: 13%;
       margin-right: 4.1rem;
       & img {
         width: 100%;
-        height: 8rem;
+        /* height: 8rem; */
         object-fit: cover;
       }
     }
@@ -33,9 +32,48 @@ const UISuggest = styled.div`
       line-height: 2rem;
       color: #ffffff;
     }
-    @media screen and (max-width: 375px) {
+  }
+
+  @media screen and (max-width: 767px) {
+    .suggest {
+      &__img {
+        width: 30%;
+      }
+    }
+  }
+  @media screen and (max-width: 575px) {
+    flex-direction: column;
+    position: relative;
+    height: auto;
+    padding: 1.2rem;
+    margin-bottom: 2.4rem;
+    .suggest {
+      /* width: 100%; */
+      flex-direction: column;
+      display: flex;
+      width: 100%;
+
+      &__content {
+        /* height: 300px; */
+      }
+      &__img {
+        width: 20%;
+        /* height: 50%; */
+        margin-bottom: 1.4rem;
+        margin-right: auto;
+      }
+      &__content {
+        width: 100%;
+      }
       &__title {
+        width: 70%;
+        /* height: 60%; */
         font-size: 1.8rem;
+        line-height: 2.2rem;
+        position: absolute;
+        bottom: 0;
+        left: 26%;
+        margin-bottom: 6rem;
       }
       &__desc {
         font-size: 1.4rem;
@@ -52,19 +90,6 @@ export function Suggest(props: ISuggest) {
   return (
     <UISuggest>
       <div className="suggest">
-        {/* <Col className="col-3 col-md-3">
-          <div className="suggest__img">
-            <img src={props.src} alt="" />
-          </div>
-        </Col>
-        <Col className="col-9 col-md-9">
-          <div className="suggest__content">
-            <p className="suggest__title">{props.title}</p>
-          </div>
-        </Col>
-        <Col className="col-12 col-md-9">
-          <div className="suggest__desc">{props.desc}</div>
-        </Col> */}
         <div className="suggest__img">
           <img src={props.src} alt="" />
         </div>

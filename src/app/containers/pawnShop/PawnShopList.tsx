@@ -36,7 +36,7 @@ const shopListData = [
   },
   {
     img: shop3,
-    name: 'F88 - Online Pawnshop',
+    name: 'H&T Pawnbrokers',
     heart: true,
     star: 1000,
     available: '3232423',
@@ -60,11 +60,11 @@ const shopListData = [
     ltv: 'Up to 80%',
     apr: '10 - 15%',
     collateral: ['BTC', 'ETH'],
-    method: 'Negotitation',
+    method: 'Negotiation',
   },
   {
     img: shop4,
-    name: 'F88 - Online Pawnshop',
+    name: 'H&T Pawnbrokers',
     heart: true,
     star: 1000,
     available: '3232423',
@@ -74,7 +74,7 @@ const shopListData = [
     ltv: 'Up to 80%',
     apr: '10 - 15%',
     collateral: ['BTC', 'ETH'],
-    method: 'Negotitation',
+    method: 'Negotiation',
   },
 ];
 

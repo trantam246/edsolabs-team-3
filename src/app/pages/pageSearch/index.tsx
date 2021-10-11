@@ -12,8 +12,55 @@ import { Helmet } from 'react-helmet-async';
 import { Col, Container, Row } from 'reactstrap';
 import hurry_img from '../../../images/hurry_img.png';
 import loan_img from '../../../images/loan_img.png';
+import filtericon from '../../../images/filtericon.svg';
+import styled from 'styled-components';
+import { useState } from 'react';
 
+const ContainerPage = styled(Container)`
+  padding: 0 1.6rem;
+`;
+
+const Filter = styled(Col)`
+  text-align: right;
+  margin-top: 13px;
+  @media (max-width: 1920px) {
+    display: none;
+  }
+  @media (max-width: 1440px) {
+    display: none;
+  }
+  @media (max-width: 1366px) {
+    display: none;
+  }
+  @media (max-width: 1280px) {
+    display: none;
+  }
+  @media (max-width: 1024px) {
+    display: block;
+  }
+  @media (max-width: 768px) {
+    display: block;
+  }
+  @media (max-width: 425px) {
+    display: block;
+  }
+  @media (max-width: 375px) {
+    display: block;
+  }
+  @media (max-width: 320px) {
+    display: block;
+  }
+`;
 export function PageSearch() {
+  const [statusFilterNav, setstatusFilterNav] = useState(false);
+  const onClick = () => {
+    setstatusFilterNav(!statusFilterNav);
+    if (statusFilterNav === false) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  };
   return (
     <>
       <Helmet>
@@ -22,16 +69,27 @@ export function PageSearch() {
       </Helmet>
       {/*navbar*/}
       <Navbar></Navbar>
-      <Container>
+      <ContainerPage>
         <Row>
-          <Col lg="9" md="12">
+          <Col xl="9">
+            <Filter>
+              <img
+                src={filtericon}
+                alt=""
+                onClick={onClick}
+                style={{ cursor: 'pointer' }}
+              />
+            </Filter>
             <Col>
-              <NumberOfResult></NumberOfResult>
+              <NumberOfResult
+                content="pawnshop packages match your search"
+                amount={5}
+              />
             </Col>
             <Col>
               <Suggest
                 src={hurry_img}
-                title="You are not in a hurry and can await"
+                title="You are not in a hurry and can await?"
                 desc="Request a loan from a trusted P2P lender to get a better interest rate and LTV"
               ></Suggest>
             </Col>
@@ -49,17 +107,20 @@ export function PageSearch() {
               <NavSortSearch></NavSortSearch>
             </Col>
             <Col>
-              <PawnShop></PawnShop>
+              <PawnShop />
             </Col>
             <Col>
-              <Pagination></Pagination>
+              <Pagination />
             </Col>
           </Col>
-          <Col lg="3">
-            <FiterNavSearch></FiterNavSearch>
+          <Col xl="3">
+            <FiterNavSearch
+              status={statusFilterNav}
+              onClick={onClick}
+            ></FiterNavSearch>
           </Col>
         </Row>
-      </Container>
+      </ContainerPage>
       {/*footter*/}
       <Footer></Footer>
     </>
