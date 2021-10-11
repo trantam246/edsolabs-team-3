@@ -8,12 +8,19 @@ import { TabsHome } from 'app/containers/tabsHome';
 import { Helmet } from 'react-helmet-async';
 import { Container } from 'reactstrap';
 import { Section } from './style';
+// import { useState, useEffect } from 'react';
 export function PageHome() {
   document.title = 'home';
+  // const [state, setstate] = useState(window.innerWidth);
+  // const a = () => {
+  //   setstate(window.innerWidth);
+  // };
+  // window.addEventListener('resize', a);
+  // console.log(state);
   return (
     <>
       <Helmet>
-        <title>Home</title>
+        <title>DeFi For You | DeFi For You UK</title>
         <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
       {/*navbar*/}

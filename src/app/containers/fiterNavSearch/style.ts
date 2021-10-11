@@ -6,7 +6,7 @@ export const Bong = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #c5caa76e;
+  background-color: #494a4fb0;
   z-index: 0;
 `;
 export const WarperFilterNav = styled.div<any>`
@@ -17,6 +17,15 @@ export const WarperFilterNav = styled.div<any>`
   margin-top: 30px;
   padding-bottom: 16px;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 4px;
+    background-color: #45484f;
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #74767b;
+    border-radius: 3px;
+  }
   @media (max-width: 1024px) {
     position: fixed;
     top: -30px;
@@ -70,6 +79,7 @@ export const Resetfilter = styled.div`
     font-size: 14px;
     line-height: 17px;
     text-decoration-line: underline;
+    cursor: pointer;
   }
   img {
     display: none;
@@ -97,6 +107,7 @@ export const InputSearchNameFilter = styled.div`
         color: #ffffff;
         border: none;
         background-color: transparent;
+
         :focus {
           outline: none;
         }
@@ -144,6 +155,7 @@ export const Accordion = styled.div`
         width: 16px;
         height: 16px;
         margin-right: 6px;
+        cursor: pointer;
       }
       & > span {
         font-weight: 500;
