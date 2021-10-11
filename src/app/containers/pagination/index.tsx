@@ -20,9 +20,7 @@ const Paginate = styled.div`
         box-sizing: border-box;
         border-radius: 0.4rem;
         margin-right: 1.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+
         a,
         svg {
           font-style: normal;
@@ -31,13 +29,17 @@ const Paginate = styled.div`
           line-height: 2rem;
           text-align: center;
           color: #ffffff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
         }
-        &:hover {
-          /* background-color: #dba83d;
+      }
+      &:hover {
+        /* background-color: #dba83d;
           border: none; */
-          a {
-            color: #ffffff !important;
-          }
+        a {
+          color: #ffffff !important;
         }
       }
     }
@@ -49,9 +51,9 @@ const Paginate = styled.div`
       }
     }
     &--active {
-      background-color: #dba83d;
       border: none !important;
       a {
+        background-color: #dba83d;
         color: #ffffff !important;
       }
     }

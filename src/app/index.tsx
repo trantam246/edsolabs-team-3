@@ -18,6 +18,7 @@ import { PageSearch } from './pages/pageSearch';
 import { PageSign } from './pages/pageSign';
 import { PawnShop } from './containers/pawnShop';
 import { PageSearchLend } from './pages/pageSearchLend';
+import { PageSearchNft } from './pages/pageSearchNft';
 export function App() {
   const { i18n } = useTranslation();
   return (
@@ -32,9 +33,10 @@ export function App() {
       <Switch>
         <Route exact path="/" component={PageHome} />
         <Route exact path="/pawnshop" component={PawnShop} />
-        <Route exact path="/search" component={PageSearch} />
+        <Route exact path="/search/borrow" component={PageSearch} />
         <Route exact path="/login" component={PageSign} />
         <Route exact path="/loginlend" component={PageSearchLend} />
+        <Route exact path="/search/nft" component={PageSearchNft} />
         <Route component={Not404} />
       </Switch>
       <GlobalStyle />

@@ -26,7 +26,7 @@ const AddressList = styled.div`
     .phone-LD {
       a {
         display: block;
-        width: 19rem !important;
+        width: 18rem !important;
         line-height: 3rem;
       }
       img {
@@ -58,7 +58,7 @@ const AddressItem = styled.div`
     }
   }
   .view-companies {
-    width: 21rem;
+    width: 19rem;
     align-items: center;
     transition: 0.4s;
     &:hover {
@@ -75,7 +75,7 @@ export function Address() {
       <ul>
         <li>
           <AddressItem>
-            <p className="title">DeFi For You - Hanoi Office</p>
+            <p className="title">DeFi For You — Hanoi Office</p>
             <div className="phone phone-VN">
               <a href="https://app.defiforyou.uk/tel:+84%209643%2066605">
                 {' '}
@@ -95,7 +95,7 @@ export function Address() {
         </li>
         <li className="london__item">
           <AddressItem>
-            <p className="title">DeFi For You - London Office</p>
+            <p className="title">DeFi For You — London Office</p>
 
             <div className="phone phone-LD">
               <a href="https://app.defiforyou.uk/tel:+84%209643%2066605">

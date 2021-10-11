@@ -43,6 +43,27 @@ const Menu = styled(Col)`
     }
   }
   @media (max-width: 1440px) {
+    & > ul {
+      & > li {
+        padding-left: 36px;
+      }
+    }
+  }
+  @media (max-width: 1366px) {
+    & > ul {
+      & > li {
+        padding-left: 30px;
+      }
+    }
+  }
+  @media (max-width: 1280px) {
+    & > ul {
+      & > li {
+        padding-left: 30px;
+      }
+    }
+  }
+  @media (max-width: 1024px) {
     display: none;
   }
 `;
@@ -60,7 +81,7 @@ export function MenuNavbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/search" activeClassName="selected">
+            <NavLink exact to="/search/borrow" activeClassName="selected">
               <span>Brorow</span>
             </NavLink>
           </li>
