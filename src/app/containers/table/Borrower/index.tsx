@@ -4,7 +4,7 @@ export default function Borrower() {
   return (
     <>
       <div>
-        <a href="#">0xaa5...a410e</a>
+        <a href="http://localhost:3000">0xaa5...a410e</a>
         <div>
           <P>
             <IconStart />

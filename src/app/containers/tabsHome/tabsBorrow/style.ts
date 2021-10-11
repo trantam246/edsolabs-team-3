@@ -173,6 +173,7 @@ export const WrapperInput = styled.div`
     option {
       background-color: #232732;
       border: none;
+      border-radius: 20px;
     }
   }
   .btn_max {
