@@ -36,6 +36,7 @@ export function FiterNavSearch(props: any) {
             </div>
           </div>
         </InputSearchNameFilter>
+
         <Accordion className="accordion" id="accordionPanelsStayOpenExample">
           <div className="accordion-item">
             <h2 className="accordion-header" id="panelsStayOpen-headingOne">
@@ -87,6 +88,7 @@ export function FiterNavSearch(props: any) {
               </div>
             </div>
           </div>
+
           <div className="accordion-item">
             <h2 className="accordion-header" id="panelsStayOpen-headingTwo">
               <button
@@ -137,6 +139,7 @@ export function FiterNavSearch(props: any) {
               </div>
             </div>
           </div>
+
           <div className="accordion-item">
             <h2 className="accordion-header" id="panelsStayOpen-headingThree">
               <button
@@ -176,6 +179,7 @@ export function FiterNavSearch(props: any) {
               </div>
             </div>
           </div>
+
           <div className="accordion-item">
             <h2 className="accordion-header" id="panelsStayOpen-headingFour">
               <button
@@ -215,6 +219,7 @@ export function FiterNavSearch(props: any) {
               </div>
             </div>
           </div>
+
           <div className="accordion-item">
             <h2 className="accordion-header" id="panelsStayOpen-headingFive">
               <button

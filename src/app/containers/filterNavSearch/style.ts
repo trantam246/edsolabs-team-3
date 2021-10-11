@@ -97,7 +97,7 @@ export const InputSearchNameFilter = styled.div`
     height: 40px;
     padding: 0px 12px;
     border-radius: 22px;
-    background: #828282;
+    background: #3e424b;
     display: flex;
     justify-content: start;
     align-items: center;

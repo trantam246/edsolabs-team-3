@@ -16,14 +16,31 @@ import { useForm } from 'react-hook-form';
 import NFT from '../../../../images/NFT.png';
 import { Link } from 'react-router-dom';
 import { SelectAll } from 'app/components/select/select';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router';
 export default function TabsBorrow(props: any) {
   //tabs
+  const history = useHistory();
   const [activeTabBorRowCryptocurrency, setActiveTabBorRowCryptocurrency] =
     useState('1');
   const toggleCryptocurrency = tab => {
     if (activeTabBorRowCryptocurrency !== tab)
       setActiveTabBorRowCryptocurrency(tab);
+    if (tab === '1') {
+      history.push({ pathname: '', search: 'tab=1' });
+    }
+    if (tab === '2') {
+      history.push({ pathname: '', search: 'tab=2' });
+    }
   };
+  useEffect(() => {
+    if (history.location.search.includes('?tab=1')) {
+      setActiveTabBorRowCryptocurrency('1');
+    }
+    if (history.location.search.includes('?tab=2')) {
+      setActiveTabBorRowCryptocurrency('2');
+    }
+  }, [activeTabBorRowCryptocurrency, history.location.search]);
   //submit form 1
   const [dataSearchBorrowTbas1, setdataSearchBorrowTbas1] = useState<any>({});
   const {
@@ -47,7 +64,7 @@ export default function TabsBorrow(props: any) {
       LoanAmount: e.value,
     });
   };
-  console.log(dataSearchBorrowTbas1);
+  console.log('form borrow', dataSearchBorrowTbas1);
   return (
     <>
       <TabborrowSub tabs>

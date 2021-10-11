@@ -68,26 +68,24 @@ export function Silder() {
             },
           }}
         >
-          {items.map((o, i) => {
+          {items.map((o, index) => {
             return (
-              <>
-                <SwiperSlide key={i}>
-                  <Box>
-                    <IconGroup>
-                      <div className="icon icon-Brand">Super shop</div>
-                      <div className="icon icon-rank">
-                        <AiFillStar />
-                        1000
-                      </div>
-                    </IconGroup>
-                    <SlideImg src={o.src} alt="" />
-                  </Box>
-                  <Title>
-                    <h4>{o.altText}</h4>
-                    <p>{o.caption}</p>
-                  </Title>
-                </SwiperSlide>
-              </>
+              <SwiperSlide key={index}>
+                <Box>
+                  <IconGroup>
+                    <div className="icon icon-Brand">Super shop</div>
+                    <div className="icon icon-rank">
+                      <AiFillStar />
+                      1000
+                    </div>
+                  </IconGroup>
+                  <SlideImg src={o.src} alt="" />
+                </Box>
+                <Title>
+                  <h4>{o.altText}</h4>
+                  <p>{o.caption}</p>
+                </Title>
+              </SwiperSlide>
             );
           })}
         </Swiper>
