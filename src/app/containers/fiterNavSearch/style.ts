@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro';
 import ArrowUp from '../../../images/ArrowUp.svg';
+import iconcheck from '../../../images/iconcheck.svg';
 export const Bong = styled.div`
   position: fixed;
   top: 0;
@@ -137,6 +138,99 @@ export const Accordion = styled.div`
     overflow-y: auto;
     margin-right: 20px;
     margin-bottom: 12px;
+    .checkbox__custom {
+      padding-bottom: 12px;
+      & > span {
+        margin-left: 16px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #ffffff;
+        & > img {
+          margin-right: 8px;
+        }
+      }
+      & > input[type='checkbox'] {
+        height: 16px;
+        width: 16px;
+        appearance: none;
+        border: 1px solid #d1d1d3;
+        box-sizing: border-box;
+        border-radius: 3px;
+        cursor: pointer;
+        position: relative;
+        & ::after {
+          content: url(${iconcheck});
+          position: absolute;
+          top: -2px;
+          left: 3px;
+          display: none;
+        }
+        &:checked {
+          background-color: #dba83d;
+          border: none;
+        }
+
+        &:checked::after {
+          display: block;
+          top: 0px;
+          left: 3px;
+        }
+      }
+    }
+    .radio__custom {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      padding-bottom: 12px;
+      & > span {
+        margin-left: 16px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #ffffff;
+      }
+      & > div {
+        & > input {
+          margin: 0px;
+          display: none;
+        }
+        & > input[type='radio']:checked ~ span::before {
+          transform: scale(1);
+        }
+        & > input[type='radio']:checked ~ span {
+          border: 1px solid #dba83d;
+        }
+        & > span {
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          border: 1px solid #fff;
+          display: inline-block;
+          box-sizing: border-box;
+          position: relative;
+          transition: 300ms all ease-in-out;
+          cursor: pointer;
+          &:hover {
+            box-shadow: 0 0 0px 5px rgba(253, 253, 253, 0.308);
+          }
+          &::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            background-color: #dba83d;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transform: scale(0);
+            transition: 300ms all ease-in-out;
+          }
+        }
+      }
+    }
     &::-webkit-scrollbar {
       width: 4px;
       background-color: #45484f;
@@ -145,24 +239,6 @@ export const Accordion = styled.div`
     &::-webkit-scrollbar-thumb {
       background-color: #74767b;
       border-radius: 3px;
-    }
-    & > div {
-      display: flex;
-      justify-content: start;
-      align-items: center;
-      padding-bottom: 12px;
-      & > input {
-        width: 16px;
-        height: 16px;
-        margin-right: 6px;
-        cursor: pointer;
-      }
-      & > span {
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 20px;
-        color: #fff;
-      }
     }
   }
   .accordion-item {

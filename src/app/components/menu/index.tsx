@@ -82,7 +82,7 @@ export function MenuNavbar() {
           </li>
           <li>
             <NavLink exact to="/search/borrow" activeClassName="selected">
-              <span>Brorow</span>
+              <span>Borrow</span>
             </NavLink>
           </li>
           <li>
