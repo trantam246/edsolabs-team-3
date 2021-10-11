@@ -4,7 +4,7 @@ export default function Borrower(props) {
   return (
     <>
       <div>
-        <a href={props.href}>0xaa5...a410e</a>
+        <a href={props.href}>{props.href}</a>
         <div>
           <P>
             <IconStart />
