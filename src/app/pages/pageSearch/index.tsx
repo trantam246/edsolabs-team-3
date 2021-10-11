@@ -55,9 +55,11 @@ export function PageSearch() {
   const [statusFilterNav, setstatusFilterNav] = useState(false);
   const onClick = () => {
     setstatusFilterNav(!statusFilterNav);
-  };
-  const TurnOffFilterNav = () => {
-    setstatusFilterNav(false);
+    if (statusFilterNav === false) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   };
   return (
     <>
@@ -71,7 +73,12 @@ export function PageSearch() {
         <Row>
           <Col xl="9">
             <Filter>
-              <img src={filtericon} alt="" onClick={onClick} />
+              <img
+                src={filtericon}
+                alt=""
+                onClick={onClick}
+                style={{ cursor: 'pointer' }}
+              />
             </Filter>
             <Col>
               <NumberOfResult
@@ -109,7 +116,7 @@ export function PageSearch() {
           <Col xl="3">
             <FiterNavSearch
               status={statusFilterNav}
-              TurnOffFilterNav={TurnOffFilterNav}
+              onClick={onClick}
             ></FiterNavSearch>
           </Col>
         </Row>

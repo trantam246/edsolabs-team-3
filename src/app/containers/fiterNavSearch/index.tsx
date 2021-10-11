@@ -22,7 +22,8 @@ export function FiterNavSearch(props: any) {
           <img
             src={closeFilterNav}
             alt=""
-            onClick={() => props.TurnOffFilterNav()}
+            onClick={() => props.onClick()}
+            style={{ cursor: 'pointer' }}
           />
         </Resetfilter>
         <InputSearchNameFilter>
@@ -250,7 +251,7 @@ export function FiterNavSearch(props: any) {
       </WarperFilterNav>
       <Bong
         style={{ display: props.status ? 'block' : 'none' }}
-        onClick={() => props.TurnOffFilterNav()}
+        onClick={() => props.onClick()}
       ></Bong>
     </>
   );

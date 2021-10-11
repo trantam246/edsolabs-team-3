@@ -134,7 +134,7 @@ export default function TabRegister({ id }: props) {
     if (!token) {
       return;
     }
-    alert(JSON.stringify(data) + '************' + token);
+    console.log(JSON.stringify(data) + '************1111!' + token);
     setToken('');
   };
 
