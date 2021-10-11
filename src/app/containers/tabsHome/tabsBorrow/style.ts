@@ -180,6 +180,9 @@ export const WrapperInput = styled.div`
     position: absolute;
     right: 5px;
     top: 5px;
+    color: #282c37;
+    font-size: 16px;
+    line-height: 19px;
   }
   .icon_coi {
     position: absolute;

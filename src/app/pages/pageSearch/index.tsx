@@ -1,4 +1,4 @@
-import { FiterNavSearch } from 'app/containers/fiterNavSearch';
+import { FiterNavSearch } from 'app/containers/filterNavSearch/borrowCryptocurrency';
 import { Footer } from 'app/containers/footer';
 import { Navbar } from 'app/containers/navbar';
 import { NavSortSearch } from 'app/containers/navSortSearch';
@@ -15,41 +15,10 @@ import loan_img from '../../../images/loan_img.png';
 import filtericon from '../../../images/filtericon.svg';
 import styled from 'styled-components';
 import { useState } from 'react';
+import { Filter } from './style';
 
 const ContainerPage = styled(Container)`
   padding: 0 1.6rem;
-`;
-
-const Filter = styled(Col)`
-  text-align: right;
-  margin-top: 13px;
-  @media (max-width: 1920px) {
-    display: none;
-  }
-  @media (max-width: 1440px) {
-    display: none;
-  }
-  @media (max-width: 1366px) {
-    display: none;
-  }
-  @media (max-width: 1280px) {
-    display: none;
-  }
-  @media (max-width: 1024px) {
-    display: block;
-  }
-  @media (max-width: 768px) {
-    display: block;
-  }
-  @media (max-width: 425px) {
-    display: block;
-  }
-  @media (max-width: 375px) {
-    display: block;
-  }
-  @media (max-width: 320px) {
-    display: block;
-  }
 `;
 export function PageSearch() {
   const [statusFilterNav, setstatusFilterNav] = useState(false);

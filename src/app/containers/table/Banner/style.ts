@@ -1,21 +1,31 @@
 import styled from 'styled-components';
 
 export const Box = styled.div`
-  width: 100%;
+  position: relative;
   display: flex;
   justify-content: space-between;
+
   background: #475674;
   border-radius: 1rem;
+  margin-bottom: 2rem;
 
   img {
     padding-right: 2.4rem;
     object-fit: contain;
   }
+  @media (max-width: 425px) {
+    margin-bottom: 1.6rem;
+    img {
+      position: absolute;
+      top: 16px;
+      right: 0;
+      padding-right: 0.4rem;
+    }
+  }
 `;
 
 export const Title = styled.div`
   padding: 1.6rem 3.5rem;
-
   h4 {
     font-weight: 600;
     font-size: 2.4rem;
@@ -42,6 +52,16 @@ export const Title = styled.div`
     p {
       font-size: 1.2rem;
       line-height: 1.4rem;
+    }
+  }
+  @media (max-width: 425px) {
+    padding: 1.6rem 1.2rem;
+    h4 {
+      width: max-content;
+    }
+    p {
+      max-width: 50%;
+      padding-right: 3rem;
     }
   }
 `;

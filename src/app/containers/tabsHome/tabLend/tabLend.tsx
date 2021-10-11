@@ -6,8 +6,8 @@ import { useState } from 'react';
 export function TabLendForm() {
   const [dataSearch, setdataSearch] = useState<any>({ Collateral: '1' });
   const {
-    register,
     handleSubmit,
+    register,
     formState: { errors },
   } = useForm();
   const onSubmit = data => {
@@ -30,7 +30,7 @@ export function TabLendForm() {
   const handleOnchange2 = (e: any) => {
     setdataSearch({ ...dataSearch, CollateralList: e });
   };
-  console.log(dataSearch);
+  console.log('form lend', dataSearch);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <GrInput>
@@ -52,6 +52,7 @@ export function TabLendForm() {
                 Maximum loan amount is required
               </span>
             )}
+            <button className="btn__max-lend">Max</button>
           </WarperInput>
           <WarperInput width="111px" height="44px">
             <SelectAll
