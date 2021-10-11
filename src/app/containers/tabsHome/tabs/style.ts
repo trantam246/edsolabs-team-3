@@ -63,7 +63,7 @@ export const Tabborrow = styled(TabPane)`
 ///-tab lend
 export const TabLend = styled(TabPane)`
   width: 600px;
-  height: 521px;
+  min-height: 521px;
   padding: 30px;
   background: #171a23;
   border-radius: 30px;
@@ -83,7 +83,7 @@ export const TabLend = styled(TabPane)`
     width: 100%;
     padding: 16px 12px;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 320px) {
     width: 100%;
     padding: 16px 12px;
   }

@@ -26,7 +26,8 @@ export const GrInput = styled.div`
   }
   & > div {
     display: flex;
-    span {
+    justify-content: space-between;
+    & > span {
       color: #fff;
       font-weight: 500;
       font-size: 16px;
@@ -77,7 +78,7 @@ export const GrInput = styled.div`
   }
   @media (max-width: 1024px) {
     & > div {
-      span {
+      & > span {
         margin-right: 30px;
         margin-top: 13px;
       }
@@ -91,7 +92,7 @@ export const GrInput = styled.div`
   }
   @media (max-width: 768px) {
     & > div {
-      span {
+      & > span {
         margin-right: 30px;
         margin-top: 13px;
       }
@@ -105,7 +106,7 @@ export const GrInput = styled.div`
   }
   @media (max-width: 425px) {
     & > div {
-      span {
+      & > span {
         margin-right: 30px;
         margin-top: 13px;
       }
@@ -119,7 +120,7 @@ export const GrInput = styled.div`
   }
   @media (max-width: 375px) {
     & > div {
-      span {
+      & > span {
         margin-right: 10px;
         margin-top: 13px;
       }
@@ -133,7 +134,7 @@ export const GrInput = styled.div`
   }
   @media (max-width: 320px) {
     & > div {
-      span {
+      & > span {
         margin-right: 10px;
         margin-top: 13px;
       }
@@ -147,23 +148,12 @@ export const GrInput = styled.div`
   }
 `;
 export const WarperInput = styled.div<any>`
-  height: ${p => (p.height ? p.height : '10px')};
+  height: ${p => (p.height ? p.height : 'auto')};
   width: ${p => (p.width ? p.width : '10px')};
   position: relative;
-  .errValiInput {
-    position: absolute;
-    bottom: -18px;
-    left: 0;
-    color: #ff5252 !important;
-    font-size: 12px;
-    margin: 0px;
-  }
-  &:focus {
-    border: 1px solid #dba83d;
-  }
-  & > input {
-    height: 100%;
+  & > select {
     width: 100%;
+    height: 100%;
     border-radius: 22px;
     border: 1px solid ${p => (p.border ? 'red' : '#74767b')};
     box-sizing: border-box;
@@ -174,7 +164,34 @@ export const WarperInput = styled.div<any>`
     padding: 0px 20px;
     &:focus {
       outline: none;
-      border: 1px solid #dba83d;
+      border: 2px solid #dba83d;
+    }
+  }
+  .errValiInput {
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    color: #ff5252 !important;
+    font-size: 12px;
+    margin: 0px;
+  }
+  &:focus {
+    border: 2px solid #dba83d;
+  }
+  & > input {
+    height: 100%;
+    width: 100%;
+    border-radius: 22px;
+    border: 2px solid ${p => (p.border ? '#ff5252' : '#74767b')};
+    box-sizing: border-box;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 16px;
+    color: #a2a3a7;
+    padding: 0px 20px;
+    &:focus {
+      outline: none;
+      border: 2px solid #dba83d;
     }
   }
   @media (max-width: 1024px) {
@@ -190,6 +207,6 @@ export const WarperInput = styled.div<any>`
     width: ${p => (p.width === '417px' ? '217px' : '94px')};
   }
   @media (max-width: 320px) {
-    width: ${p => (p.width === '417px' ? '150px' : '94px')};
+    width: ${p => (p.width === '417px' ? '150px' : '110px')};
   }
 `;

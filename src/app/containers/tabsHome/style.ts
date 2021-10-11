@@ -11,6 +11,9 @@ export const Rows = styled(Row)`
   display: flex;
   flex-direction: row;
   padding: 83px 16px;
+  @media (max-width: 1280px) {
+    padding: 27px 16px 20px 16px;
+  }
   @media (max-width: 1024px) {
     flex-direction: column;
     padding: 27px 16px 20px 16px;

@@ -30,11 +30,22 @@ export const ButtonNavBar = styled(Button)`
         : 'unset'};
     margin-left: 20px;
   }
+  @media (max-width: 1440px) {
+    a {
+      margin-left: 0px;
+      padding: 9px 20px;
+    }
+  }
+  @media (max-width: 1280px) {
+    a {
+      margin-left: 0px;
+      padding: 9px 18px;
+    }
+  }
   @media (max-width: 900px) {
     display: ${props => (props.status ? 'inline-block ' : 'none')};
     a {
       margin-left: 0px;
-      padding: 9px 10px;
     }
   }
 `;
@@ -48,7 +59,7 @@ export const HamburgerMenu = styled.div`
       stroke: white;
     }
   }
-  @media (max-width: 1440px) {
+  @media (max-width: 1024px) {
     display: inline-block;
     svg {
       color: white;

@@ -26,7 +26,7 @@ const AddressList = styled.div`
     .phone-LD {
       a {
         display: block;
-        width: 19rem !important;
+        width: 18rem !important;
         line-height: 3rem;
       }
       img {
@@ -58,7 +58,7 @@ const AddressItem = styled.div`
     }
   }
   .view-companies {
-    width: 21rem;
+    width: 19rem;
     align-items: center;
     transition: 0.4s;
     &:hover {

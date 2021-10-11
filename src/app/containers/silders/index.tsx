@@ -10,6 +10,7 @@ import slide3 from '../../../images/slide3.png';
 import SwiperCore, { Pagination, Navigation } from 'swiper';
 import { SlideImg, SwiperSlideCustom, Title, IconGroup, Box } from './style';
 import { AiFillStar } from 'react-icons/ai';
+import SeeAll from './SeeAll';
 
 const items = [
   {
@@ -42,33 +43,34 @@ SwiperCore.use([Pagination, Navigation]);
 
 export function Silder() {
   return (
-    <SwiperSlideCustom>
-      <div className="swiper-button-prev"></div>
-      <div className="swiper-button-next"></div>
-      <Swiper
-        slidesPerView={1}
-        spaceBetween={10}
-        loop={true}
-        loopFillGroupWithBlank={true}
-        navigation={{
-          prevEl: '.swiper-button-prev',
-          nextEl: '.swiper-button-next',
-        }}
-        breakpoints={{
-          '@1': {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          '@1.5': {
-            slidesPerView: 3,
-            spaceBetween: 20,
-          },
-        }}
-      >
-        {items.map(o => {
-          return (
-            <>
-              <SwiperSlide>
+    <>
+      <SeeAll />
+      <SwiperSlideCustom>
+        <div className="swiper-button-prev"></div>
+        <div className="swiper-button-next"></div>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={10}
+          loop={true}
+          loopFillGroupWithBlank={true}
+          navigation={{
+            prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next',
+          }}
+          breakpoints={{
+            '@1': {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            '@1.5': {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+          }}
+        >
+          {items.map((o, i) => {
+            return (
+              <SwiperSlide key={i}>
                 <Box>
                   <IconGroup>
                     <div className="icon icon-Brand">Super shop</div>
@@ -84,10 +86,10 @@ export function Silder() {
                   <p>{o.caption}</p>
                 </Title>
               </SwiperSlide>
-            </>
-          );
-        })}
-      </Swiper>
-    </SwiperSlideCustom>
+            );
+          })}
+        </Swiper>
+      </SwiperSlideCustom>
+    </>
   );
 }

@@ -16,6 +16,8 @@ import { PageHome } from './pages/pageHome';
 import { Not404 } from './containers/404';
 import { PageSearch } from './pages/pageSearch';
 import { PageSign } from './pages/pageSign';
+import { PawnShop } from './containers/pawnShop';
+import { PageSearchLend } from './pages/pageSearchLend';
 export function App() {
   const { i18n } = useTranslation();
   return (
@@ -29,8 +31,10 @@ export function App() {
       </Helmet>
       <Switch>
         <Route exact path="/" component={PageHome} />
+        <Route exact path="/pawnshop" component={PawnShop} />
         <Route exact path="/search" component={PageSearch} />
         <Route exact path="/login" component={PageSign} />
+        <Route exact path="/loginlend" component={PageSearchLend} />
         <Route component={Not404} />
       </Switch>
       <GlobalStyle />

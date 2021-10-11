@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
   padding: 6rem 0;
-  &:nth-last-child() {
-    background: #171a23;
+  &.section-even {
+    background: #171a23 !important;
   }
   &:nth-child(even) {
     background: #232732;
