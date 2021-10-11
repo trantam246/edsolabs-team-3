@@ -43,7 +43,7 @@ const UISuggest = styled.div`
   }
   @media screen and (max-width: 575px) {
     flex-direction: column;
-    position: relative;
+    /* position: relative; */
     height: auto;
     padding: 1.2rem;
     margin-bottom: 2.4rem;
@@ -52,7 +52,7 @@ const UISuggest = styled.div`
       flex-direction: column;
       display: flex;
       width: 100%;
-
+      position: relative;
       &__content {
         /* height: 300px; */
       }
@@ -71,7 +71,7 @@ const UISuggest = styled.div`
         font-size: 1.8rem;
         line-height: 2.2rem;
         position: absolute;
-        bottom: 0;
+        bottom: -0.4rem;
         left: 26%;
         margin-bottom: 6rem;
       }

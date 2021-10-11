@@ -16,7 +16,6 @@ import { PageHome } from './pages/pageHome';
 import { Not404 } from './containers/404';
 import { PageSearch } from './pages/pageSearch';
 import { PageSign } from './pages/pageSign';
-import { PawnShop } from './containers/pawnShop';
 import { PageSearchLend } from './pages/pageSearchLend';
 import { PageSearchNft } from './pages/pageSearchNft';
 export function App() {

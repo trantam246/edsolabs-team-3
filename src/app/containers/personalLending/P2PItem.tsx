@@ -27,9 +27,11 @@ const P2P = styled.div`
   color: #d1d1d3;
   letter-spacing: 0.04rem;
   margin-bottom: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
   .lender {
-    min-height: 22rem;
-
     &__name {
       font-style: normal;
       font-weight: 500;
@@ -37,7 +39,6 @@ const P2P = styled.div`
       line-height: 2.4rem;
       text-decoration-line: underline;
       color: #2596ff;
-
       & img {
         margin-left: 1.2rem;
       }
@@ -121,17 +122,12 @@ const P2P = styled.div`
         #feca50 62.02%,
         #bd8727 101.47%
       );
-      margin: -3.2rem auto 0rem auto;
+      margin: 2.8rem auto 0;
       display: flex;
       align-items: center;
       justify-content: center;
       border: none;
-      @media screen and (max-width: 1200px) {
-        margin-top: 1.8rem;
-      }
-      @media screen and (max-width: 767px) and (min-width: 575px) {
-        margin-top: 0;
-      }
+      flex-shrink: 0;
     }
   }
   @media screen and (max-width: 575px) {
@@ -156,6 +152,9 @@ const P2P = styled.div`
           display: block;
           width: 100%;
         }
+      }
+      &__button {
+        margin-top: 0;
       }
     }
   }

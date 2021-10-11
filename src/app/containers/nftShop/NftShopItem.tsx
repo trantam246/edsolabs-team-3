@@ -77,7 +77,7 @@ const NftShop = styled.div`
       }
       &-label {
         color: #a2a3a7;
-        min-width: 13rem;
+        min-width: 15rem;
       }
       &-result {
         color: #ffffff;
@@ -149,7 +149,7 @@ const NftShop = styled.div`
         padding-bottom: 0.1rem;
       }
     }
-    &__view {
+    &__offer {
       background: linear-gradient(
         221.15deg,
         #bd8727 0%,
@@ -158,6 +158,7 @@ const NftShop = styled.div`
         #bd8727 101.47%
       );
       border: none;
+      margin-top: 6rem;
     }
   }
   @media screen and (max-width: 991px) {
@@ -179,6 +180,9 @@ const NftShop = styled.div`
       }
       &__rate-result {
         font-size: 2rem;
+      }
+      &__offer {
+        margin-top: 2.4rem;
       }
     }
   }
@@ -285,7 +289,7 @@ const NftShopItem: React.FC<IShop> = ({ item }) => {
             height="4.8rem"
             borderRadius="4.8rem"
             color="#282c37"
-            className="nft__view"
+            className="nft__offer"
           >
             Send Offer
           </ButtonComponent>
