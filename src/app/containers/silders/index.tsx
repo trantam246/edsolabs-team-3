@@ -68,10 +68,10 @@ export function Silder() {
             },
           }}
         >
-          {items.map(o => {
+          {items.map((o, i) => {
             return (
               <>
-                <SwiperSlide>
+                <SwiperSlide key={i}>
                   <Box>
                     <IconGroup>
                       <div className="icon icon-Brand">Super shop</div>

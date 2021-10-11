@@ -23,7 +23,7 @@ export default function Table() {
           <tr>
             <Td>1</Td>
             <Td>
-              <Borrower />
+              <Borrower href={'#'} />
             </Td>
             <Td>
               <NFTIcon value="ETH" />
