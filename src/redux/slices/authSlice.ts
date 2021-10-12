@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 export interface User {
   id: number | string;
@@ -25,19 +25,28 @@ const initialState: AuthState = {
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: 'signin',
   initialState,
   reducers: {
     login(state, action) {},
     loginSuccess(state, action) {
       state.isLoggedIn = true;
+      alert('bạn đã đăng nhập thành công');
     },
     loginFailed(state, action) {
       state.logging = false;
+      alert('tài khoản hoặc mật khẩu sai');
     },
     logout(state) {
       localStorage.removeItem('access_token');
       state.isLoggedIn = false;
+    },
+    register(state, action) {},
+    registerSuccess(state, action) {
+      alert('bạn đã đăng ký thành công');
+    },
+    registerFailed(state, action) {
+      alert('faile');
     },
   },
 });

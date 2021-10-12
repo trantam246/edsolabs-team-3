@@ -208,7 +208,6 @@ export function SelectAll(props: any) {
           }}
           placeholder={props.placeholder}
           onChange={onchange}
-          defaultValue={options2[1]}
         ></SelectA>
       ) : (
         <SelectA

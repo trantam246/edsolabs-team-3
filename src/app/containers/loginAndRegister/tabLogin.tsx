@@ -97,10 +97,9 @@ interface IFormInput {
 export default function TabLogin({ id }: props) {
   const dispath = useDispatch();
   const history = useHistory();
-  const local = localStorage.getItem('access_token');
   const islogin = useAppSelector(selectIsLoggedIn);
   useEffect(() => {
-    if (islogin === true) {
+    if (islogin) {
       history.push('/');
     }
   }, [islogin]);
@@ -109,7 +108,6 @@ export default function TabLogin({ id }: props) {
     formState: { errors },
     handleSubmit,
   } = useForm<IFormInput>();
-
   const onSubmit = (data: IFormInput) => {
     dispath(authActions.login(data));
   };

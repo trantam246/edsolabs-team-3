@@ -27,9 +27,19 @@ import {
 } from './style';
 import { useDispatch } from 'react-redux';
 import { authActions } from 'redux/slices';
+import { useEffect } from 'react';
+import userApi from 'api/userApi';
 export function Navbar(props) {
   const history = useHistory();
   const dispath = useDispatch();
+  const [accName, setaccName] = useState<any>({});
+  useEffect(() => {
+    if (localStorage.getItem('access_token')) {
+      userApi
+        .getNameAcc(localStorage.getItem('access_token'))
+        .then(res => setaccName(res));
+    }
+  }, []);
   const [openMenuMobile, setopenMenuMobile] = useState(false);
   const [statusMenuMobile, setstatusMenuMobile] = useState({
     Myaccount: false,
@@ -47,6 +57,7 @@ export function Navbar(props) {
   };
   const logout = () => {
     dispath(authActions.logout());
+    alert(window.location.pathname);
     history.push('/');
   };
   const openDownMenuMobile = value => {
@@ -105,7 +116,7 @@ export function Navbar(props) {
                 {localStorage.getItem('access_token') ? (
                   <AccountZone>
                     <img src={avatarMenu} alt="" />
-                    <span>anh admin</span>
+                    <span>{accName?.data?.name}</span>
                   </AccountZone>
                 ) : (
                   <ButtonNavBar color={''} status={''}>

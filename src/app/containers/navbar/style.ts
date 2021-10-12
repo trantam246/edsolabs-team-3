@@ -1,5 +1,5 @@
 import { AiOutlineLeft } from '@react-icons/all-files/ai/AiOutlineLeft';
-import { Row, Button, Container, Col } from 'reactstrap';
+import { Row, Button, Container } from 'reactstrap';
 import styled from 'styled-components';
 export const RowNavBar = styled(Row)`
   max-height: 100px;
