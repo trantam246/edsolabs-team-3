@@ -5,6 +5,11 @@ import { BsEyeFill } from '@react-icons/all-files/bs/BsEyeFill';
 import { BsEyeSlashFill } from '@react-icons/all-files/bs/BsEyeSlashFill';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { authActions, selectIsLoggedIn } from 'redux/slices';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router';
+import { useAppSelector } from 'redux/hocks';
 
 const TabPaneLogin = styled(TabPane)`
   padding-top: 3rem;
@@ -85,21 +90,27 @@ interface props {
 }
 
 interface IFormInput {
-  email: string;
+  username: string;
   password: string;
 }
 
 export default function TabLogin({ id }: props) {
+  const dispath = useDispatch();
+  const history = useHistory();
+  const islogin = useAppSelector(selectIsLoggedIn);
+  useEffect(() => {
+    if (islogin) {
+      history.push('/');
+    }
+  }, [islogin]);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<IFormInput>();
-
   const onSubmit = (data: IFormInput) => {
-    alert(JSON.stringify(data));
+    dispath(authActions.login(data));
   };
-
   const [hide, setHide] = useState<boolean>(true);
   const getHide = () => setHide(!hide);
 
@@ -112,9 +123,9 @@ export default function TabLogin({ id }: props) {
           placeHolder="Enter email"
           Icon={null}
           iconClick={null}
-          register={register('email', { required: true })}
+          register={register('username', { required: true })}
           err={
-            errors?.email?.type === 'required' && (
+            errors?.username?.type === 'required' && (
               <p className="pError">Invalid email</p>
             )
           }

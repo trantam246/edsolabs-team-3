@@ -10,8 +10,6 @@ import {
   WarperFilterNav,
 } from './style';
 import { iconCoin } from 'app/components/icon';
-import { useState } from 'react';
-
 export function FiterNavSearch(props: any) {
   return (
     <>

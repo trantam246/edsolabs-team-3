@@ -8,7 +8,7 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
 import { GlobalStyle } from 'styles/global-styles';
 import { useTranslation } from 'react-i18next';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -16,7 +16,6 @@ import { PageHome } from './pages/pageHome';
 import { Not404 } from './containers/404';
 import { PageSearch } from './pages/pageSearch';
 import { PageSign } from './pages/pageSign';
-import { PawnShop } from './containers/pawnShop';
 import { PageSearchLend } from './pages/pageSearchLend';
 import { PageSearchNft } from './pages/pageSearchNft';
 export function App() {
@@ -31,11 +30,20 @@ export function App() {
         <meta name="description" content="A React Boilerplate application" />
       </Helmet>
       <Switch>
-        <Route exact path="/" component={PageHome} />
-        <Route exact path="/search/borrow" component={PageSearch} />
-        <Route exact path="/login" component={PageSign} />
-        <Route exact path="/search/lend" component={PageSearchLend} />
-        <Route exact path="/search/nft" component={PageSearchNft} />
+        <Route exact path="/">
+          <Redirect to="/pawn" />
+        </Route>
+        <Route exact path="/pawn" component={PageHome} />
+        <Route exact path="/pawn/offer" component={PageSearch} />
+        <Route exact path="/login">
+          {localStorage.getItem('access_token') !== '' ? (
+            <PageSign />
+          ) : (
+            <Redirect to="/pawn" />
+          )}
+        </Route>
+        <Route exact path="/pawn/lender" component={PageSearchLend} />
+        <Route exact path="/pawn/lender/nft-result" component={PageSearchNft} />
         <Route component={Not404} />
       </Switch>
       <GlobalStyle />

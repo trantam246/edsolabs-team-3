@@ -6,31 +6,26 @@ import { BsEyeFill } from '@react-icons/all-files/bs/BsEyeFill';
 import { BsEyeSlashFill } from '@react-icons/all-files/bs/BsEyeSlashFill';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
-
+import { useDispatch } from 'react-redux';
+import { authActions } from 'redux/slices';
 interface props {
   id: string;
 }
-
 interface IFormInput {
   name: string;
   email: string;
   password: string;
   rePassword: string;
 }
-
-const AU_SITE_KEY: string = '6Lc8HrgcAAAAAMH77TMTrDqP3ZNFz8J19AZW13TD';
-const AU_SECRET_KEY: string = '6Lc8HrgcAAAAAEHCvI0OVfuCY3hWCGyQE3DvgdPV';
-
+const AU_SITE_KEY: string = '6LcSG9EaAAAAABvbpHkdugGmjEWeYPp6NoPPDEvt';
 const TabPaneLogin = styled(TabPane)`
   padding-top: 3rem;
-
   .pError {
     color: rgb(255, 72, 72);
     font-size: 1.2rem;
     line-height: 1.2rem;
     padding-top: 0.4rem;
   }
-
   .pInfor {
     color: white;
     font-size: 1.4rem;
@@ -127,17 +122,22 @@ export default function TabRegister({ id }: props) {
     formState: { errors },
     handleSubmit,
   } = useForm<IFormInput>();
-
+  const dispath = useDispatch();
   const [token, setToken] = useState('');
   const reCaptcha = useRef();
   const onSubmit = (data: IFormInput) => {
-    if (!token) {
-      return;
+    if (data.password !== data.rePassword) {
+      alert('tài khoản mật khẩu ko khớp ');
+    } else {
+      const datas = {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        recaptcha_response: token,
+      };
+      dispath(authActions.register(datas));
     }
-    console.log(JSON.stringify(data) + '************1111!' + token);
-    setToken('');
   };
-
   const [hide1, setHide1] = useState<boolean>(true);
   const getHide1 = () => setHide1(!hide1);
 

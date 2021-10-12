@@ -8,7 +8,14 @@ import slide1 from '../../../images/slide1.png';
 import slide2 from '../../../images/slide2.png';
 import slide3 from '../../../images/slide3.png';
 import SwiperCore, { Pagination, Navigation } from 'swiper';
-import { SlideImg, SwiperSlideCustom, Title, IconGroup, Box } from './style';
+import {
+  SlideImg,
+  SwiperSlideCustom,
+  Title,
+  IconGroup,
+  Box,
+  H3,
+} from './style';
 import { AiFillStar } from 'react-icons/ai';
 import SeeAll from './SeeAll';
 
@@ -44,6 +51,9 @@ SwiperCore.use([Pagination, Navigation]);
 export function Silder() {
   return (
     <>
+      <H3>
+        <span>explore featured pawnshops</span>
+      </H3>
       <SeeAll />
       <SwiperSlideCustom>
         <div className="swiper-button-prev"></div>

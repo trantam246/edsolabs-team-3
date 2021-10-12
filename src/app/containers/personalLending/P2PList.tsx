@@ -1,7 +1,10 @@
 import React from 'react';
 import { Col, Row } from 'reactstrap';
+import styled from 'styled-components/macro';
 import P2PItem from './P2PItem';
-
+const ColItem = styled(Col)`
+  display: flex;
+`;
 const p2pData = [
   {
     name: 'Tam Pawnshop',
@@ -35,10 +38,10 @@ const P2PList: React.FC = () => {
   return (
     <Row>
       {p2pData.slice(0, 2).map((item, idx) => (
-        <Col key={idx} className="col-12 col-md-6">
+        <ColItem key={idx} className="col-12 col-md-6 col__item">
           {' '}
           <P2PItem item={item} />
-        </Col>
+        </ColItem>
       ))}
     </Row>
   );

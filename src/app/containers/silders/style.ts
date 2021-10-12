@@ -56,6 +56,20 @@ export const Title = styled.div`
   }
 `;
 
+export const H3 = styled.h3`
+  text-align: center;
+  color: #dba83d;
+  font-size: 36px;
+  font-weight: 600;
+  padding-top: 6rem;
+  padding-bottom: 10rem;
+  @media (max-width: 768px) {
+    font-size: 24px;
+    padding-top: 0;
+    padding-bottom: 3rem;
+  }
+`;
+
 export const IconGroup = styled.div`
   display: flex;
   justify-content: space-between;

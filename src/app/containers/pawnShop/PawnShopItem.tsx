@@ -134,7 +134,6 @@ const PawnShop = styled.div`
       align-items: center;
       justify-content: center;
       margin-bottom: 1.1rem;
-      letter-spacing: 0.04rem;
       &--auto {
         color: #2596ff;
         background: rgba(37, 150, 255, 0.2);
