@@ -52,7 +52,7 @@ const NavItem: any = styled.div`
   align-items: center;
   justify-content: space-evenly;
   flex: 1;
-  padding: 0 3rem;
+  padding: 0 2rem;
   border-right: 0.1rem grey solid;
   ${({ active }: any) =>
     active &&

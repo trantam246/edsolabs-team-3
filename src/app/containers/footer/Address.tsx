@@ -58,7 +58,7 @@ const AddressItem = styled.div`
     }
   }
   .view-companies {
-    width: 19rem;
+    min-width: 21rem;
     align-items: center;
     transition: 0.4s;
     &:hover {
