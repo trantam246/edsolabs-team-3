@@ -18,8 +18,11 @@ import { PageSearch } from './pages/pageSearch';
 import { PageSign } from './pages/pageSign';
 import { PageSearchLend } from './pages/pageSearchLend';
 import { PageSearchNft } from './pages/pageSearchNft';
+import { useAppSelector } from 'redux/hocks';
 export function App() {
   const { i18n } = useTranslation();
+  const con = useAppSelector(state => state);
+  console.log(con);
   return (
     <BrowserRouter>
       <Helmet

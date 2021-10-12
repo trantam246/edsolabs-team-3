@@ -121,7 +121,7 @@ export default function TabsBorrow(props: any) {
                   onChanges={handleOnchange1}
                   default={false}
                   heightOption="255px"
-                  placeholder="Currency"
+                  placeholder="All"
                   isMuli={false}
                 ></SelectAll>
               </WrapperInput>
@@ -189,7 +189,7 @@ export default function TabsBorrow(props: any) {
                   onChanges={handleOnchange2}
                   default={true}
                   heightOption="150px"
-                  placeholder="Currency"
+                  placeholder="All"
                   isMuli={false}
                 ></SelectAll>
               </WrapperInput>
