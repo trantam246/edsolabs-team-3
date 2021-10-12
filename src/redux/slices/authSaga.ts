@@ -6,9 +6,10 @@ function* watchLoginFlow(payload: any) {
   yield delay(500);
   try {
     const getAcc = yield userApi.login(payload.payload);
+    console.log(getAcc);
     localStorage.setItem('access_token', getAcc.access_token);
-    const getNameAcc = yield userApi.getNameAcc(getAcc.access_token);
-    console.log(getNameAcc);
+    // const getNameAcc = yield userApi.getNameAcc(getAcc.access_token);
+    yield put(authActions.loginSuccess(''));
   } catch (errr) {
     yield put(authActions.loginFailed(errr));
   }

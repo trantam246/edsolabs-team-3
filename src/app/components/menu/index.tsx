@@ -45,11 +45,11 @@ const Menu = styled(Col)`
   @media (max-width: 1440px) {
     & > ul {
       & > li {
-        padding-left: 36px;
+        padding-left: 20px;
       }
     }
   }
-  @media (max-width: 1366px) {
+  @media (max-width: 1352px) {
     & > ul {
       & > li {
         padding-left: 30px;
@@ -59,9 +59,12 @@ const Menu = styled(Col)`
   @media (max-width: 1280px) {
     & > ul {
       & > li {
-        padding-left: 30px;
+        padding-left: 20px;
       }
     }
+  }
+  @media (max-width: 1200px) {
+    display: none;
   }
   @media (max-width: 1024px) {
     display: none;
@@ -73,7 +76,7 @@ export function MenuNavbar() {
       <Helmet>
         <meta name="description" content="Page not found" />
       </Helmet>
-      <Menu>
+      <Menu className="flex-fill">
         <ul>
           <li>
             <NavLink exact to="/" activeClassName="selected">

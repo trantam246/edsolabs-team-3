@@ -6,7 +6,10 @@ import { BsEyeSlashFill } from '@react-icons/all-files/bs/BsEyeSlashFill';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { authActions } from 'redux/slices';
+import { authActions, selectIsLoggedIn } from 'redux/slices';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router';
+import { useAppSelector } from 'redux/hocks';
 
 const TabPaneLogin = styled(TabPane)`
   padding-top: 3rem;
@@ -93,6 +96,14 @@ interface IFormInput {
 
 export default function TabLogin({ id }: props) {
   const dispath = useDispatch();
+  const history = useHistory();
+  const local = localStorage.getItem('access_token');
+  const islogin = useAppSelector(selectIsLoggedIn);
+  useEffect(() => {
+    if (islogin === true) {
+      history.push('/');
+    }
+  }, [islogin]);
   const {
     register,
     formState: { errors },

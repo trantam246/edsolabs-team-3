@@ -8,8 +8,10 @@ import { GrClose } from '@react-icons/all-files/gr/GrClose';
 import { useState } from 'react';
 import { MenuNavbar } from 'app/components/menu';
 import { Logo } from 'app/components/logo';
-
+import avatarMenu from '../../../images/avatarMenu.png';
+import { useHistory } from 'react-router';
 import {
+  AccountZone,
   ActiveMenuMobile,
   AiOutlineLefts,
   AvatarAndName,
@@ -23,7 +25,11 @@ import {
   MenuSubMobile,
   RowNavBar,
 } from './style';
+import { useDispatch } from 'react-redux';
+import { authActions } from 'redux/slices';
 export function Navbar(props) {
+  const history = useHistory();
+  const dispath = useDispatch();
   const [openMenuMobile, setopenMenuMobile] = useState(false);
   const [statusMenuMobile, setstatusMenuMobile] = useState({
     Myaccount: false,
@@ -38,6 +44,10 @@ export function Navbar(props) {
     } else {
       document.body.style.overflow = 'auto';
     }
+  };
+  const logout = () => {
+    dispath(authActions.logout());
+    history.push('/');
   };
   const openDownMenuMobile = value => {
     switch (value) {
@@ -77,24 +87,31 @@ export function Navbar(props) {
       <HeaderHome>
         <Containers fluid id={openMenuMobile ? 'fixed__Header' : ''}>
           <RowNavBar>
-            <Col className="p-0 col-xl-2 col-lg-3 col-md-5 col-6 d-flex justify-content-start align-items-center warper__logo">
+            <Col className="p-0 col-xl-2 col-lg-3 col-md-4 col-5 d-flex justify-content-start align-items-center warper__logo">
               <Logo></Logo>
             </Col>
-            <Col className="p-0 col-xl-10 col-lg-9 col-md-7 col-6 d-flex align-items-center justify-content-between">
+            <Col className="p-0 col-xl-10 col-lg-9 col-md-8 col-7 d-flex align-items-center justify-content-between">
               <MenuNavbar></MenuNavbar>
-              <Col className="text-end">
+              <Col className="text-end flex-fill">
                 <ButtonNavBar color={'gradiend'} status={''}>
                   <NavLink to="/">Become a Pawnshop</NavLink>
                 </ButtonNavBar>
                 <ButtonNavBar color={''} status={''}>
                   <NavLink to="/">Buy DFY</NavLink>
                 </ButtonNavBar>
-                <ButtonNavBar color={''} status={'true'}>
+                <ButtonNavBar color={''} status={'true'} onClick={logout}>
                   <NavLink to="/">Connect</NavLink>
                 </ButtonNavBar>
-                <ButtonNavBar color={''} status={''}>
-                  <NavLink to="/login">Login</NavLink>
-                </ButtonNavBar>
+                {localStorage.getItem('access_token') ? (
+                  <AccountZone>
+                    <img src={avatarMenu} alt="" />
+                    <span>anh admin</span>
+                  </AccountZone>
+                ) : (
+                  <ButtonNavBar color={''} status={''}>
+                    <NavLink to="/login">Login</NavLink>
+                  </ButtonNavBar>
+                )}
                 <HamburgerMenu onClick={openMenu}>
                   {openMenuMobile ? (
                     <GrClose size="28"></GrClose>

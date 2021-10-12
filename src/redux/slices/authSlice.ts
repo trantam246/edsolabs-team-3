@@ -14,12 +14,14 @@ export interface AuthState {
   isLoggedIn: boolean;
   logging?: boolean;
   currentUser?: User;
+  dataName?: any;
 }
 
 const initialState: AuthState = {
   isLoggedIn: false,
   logging: false,
   currentUser: undefined,
+  dataName: false,
 };
 
 const authSlice = createSlice({
@@ -27,16 +29,15 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login(state, action) {},
-    loginSuccess(state, action: PayloadAction<User>) {
-      state.logging = false;
-      state.currentUser = action.payload;
+    loginSuccess(state, action) {
+      state.isLoggedIn = true;
     },
     loginFailed(state, action) {
       state.logging = false;
     },
     logout(state) {
+      localStorage.removeItem('access_token');
       state.isLoggedIn = false;
-      state.currentUser = undefined;
     },
   },
 });
