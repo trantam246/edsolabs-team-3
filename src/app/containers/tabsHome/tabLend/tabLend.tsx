@@ -59,7 +59,7 @@ export function TabLendForm() {
               onChanges={handleOnchange1}
               default={false}
               heightOption="255px"
-              placeholder="Currency"
+              placeholder="All"
               isMuli={false}
             ></SelectAll>
           </WarperInput>
