@@ -12,5 +12,11 @@ const userApi = {
     let config = { headers: { Authorization: 'Bearer ' + data } };
     return axiosClient.get(url, config);
   },
+  register(data: any) {
+    console.log('api', data);
+    const url =
+      'https://staginggw.defiforyou.uk/defi-user-service/public-api/v1.0.0/users/signup';
+    return axiosClient.post(url, data);
+  },
 };
 export default userApi;

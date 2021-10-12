@@ -20,7 +20,7 @@ const Paginate = styled.div`
         box-sizing: border-box;
         border-radius: 0.4rem;
         margin-right: 1.2rem;
-
+        overflow: hidden;
         a,
         svg {
           font-style: normal;

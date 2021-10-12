@@ -20,6 +20,12 @@ import { Filter } from './style';
 const ContainerPage = styled(Container)`
   padding: 0 1.6rem;
 `;
+
+const RowPage = styled(Row)`
+  .row {
+    --bs-gutter-x: 2.3rem;
+  }
+`;
 export function PageSearch() {
   const [statusFilterNav, setstatusFilterNav] = useState(false);
   const onClick = () => {
@@ -39,7 +45,7 @@ export function PageSearch() {
       {/*navbar*/}
       <Navbar></Navbar>
       <ContainerPage>
-        <Row>
+        <RowPage>
           <Col xl="9">
             <Filter>
               <img
@@ -88,7 +94,7 @@ export function PageSearch() {
               onClick={onClick}
             ></FiterNavSearch>
           </Col>
-        </Row>
+        </RowPage>
       </ContainerPage>
       {/*footter*/}
       <Footer></Footer>

@@ -13,40 +13,65 @@ export const RowNavBar = styled(Row)`
     min-height: 56px;
   }
 `;
-
+export const AccountZone = styled.div`
+  display: inline-block;
+  & > img {
+    width: 31px;
+    height: 31px;
+    margin-left: 20px;
+  }
+  & > span {
+    margin-left: 7px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+  }
+  @media (max-width: 1440px) {
+    & > span {
+      display: none;
+    }
+  }
+  @media (max-width: 600px) {
+    & > img {
+      display: none;
+    }
+  }
+`;
 export const ButtonNavBar = styled(Button)`
+  margin-left: 20px;
+  border: ${props => (props.color ? 'none' : '1px solid #dba83d')};
+  box-sizing: border-box;
+  border-radius: 25px;
+  padding: 9px 20px;
+  background: ${props =>
+    props.color
+      ? 'linear-gradient(221.15deg, #BD8727 0%, #FFD574 49.02%, #FECA50 62.02%, #BD8727 101.47%)'
+      : 'transparent'};
   a {
     text-decoration: none;
     font-weight: 500;
     font-size: 14px;
     color: ${props => (props.color ? '#282C37' : '#dba83d ')};
-    border: ${props => (props.color ? 'none' : '1px solid #dba83d')};
-    box-sizing: border-box;
-    border-radius: 25px;
-    padding: 9px 20px;
-    background: ${props =>
-      props.color
-        ? 'linear-gradient(221.15deg, #BD8727 0%, #FFD574 49.02%, #FECA50 62.02%, #BD8727 101.47%)'
-        : 'unset'};
-    margin-left: 20px;
+    line-height: 17px;
   }
-  @media (max-width: 1440px) {
-    a {
-      margin-left: 0px;
-      padding: 9px 20px;
-    }
+  &:first-child {
+    margin-left: 0px;
+  }
+  @media (max-width: 1352px) {
+    margin-left: 10px;
   }
   @media (max-width: 1280px) {
-    a {
-      margin-left: 0px;
-      padding: 9px 18px;
-    }
+    padding: 9px 10px;
+  }
+  @media (max-width: 1200px) {
+    padding: 9px 20px;
   }
   @media (max-width: 900px) {
     display: ${props => (props.status ? 'inline-block ' : 'none')};
-    a {
-      margin-left: 0px;
-    }
+  }
+  @media (max-width: 320px) {
+    display: ${props => (props.status ? 'inline-block ' : 'none')};
+    margin-left: 0px;
   }
 `;
 export const HamburgerMenu = styled.div`
