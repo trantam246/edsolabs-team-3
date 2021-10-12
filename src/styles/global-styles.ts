@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     width: 100%;
     font-size: 10px;
+    background-color: #171a23;
   }
   body {
    font-family: 'Montserrat', sans-serif;
@@ -19,13 +20,12 @@ export const GlobalStyle = createGlobalStyle`
     font-size: inherit;
   }
   body{
-    ::-webkit-scrollbar{
-  width: 11px;
-  background-color: #45484F;
-}
-::-webkit-scrollbar-thumb{
-  background-color: #A2A3A7;
-  border-radius: 5.5px;
-}
+          ::-webkit-scrollbar{
+        width: 5px;
+        background-color: #45484F;
+      }
+      ::-webkit-scrollbar-thumb{
+        background-color: #A2A3A7;
+      }
   }
 `;

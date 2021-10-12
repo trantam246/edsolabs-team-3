@@ -1,5 +1,5 @@
 import { AiOutlineLeft } from '@react-icons/all-files/ai/AiOutlineLeft';
-import { Row, Button } from 'reactstrap';
+import { Row, Button, Container } from 'reactstrap';
 import styled from 'styled-components';
 export const RowNavBar = styled(Row)`
   max-height: 100px;
@@ -30,11 +30,22 @@ export const ButtonNavBar = styled(Button)`
         : 'unset'};
     margin-left: 20px;
   }
+  @media (max-width: 1440px) {
+    a {
+      margin-left: 0px;
+      padding: 9px 20px;
+    }
+  }
+  @media (max-width: 1280px) {
+    a {
+      margin-left: 0px;
+      padding: 9px 18px;
+    }
+  }
   @media (max-width: 900px) {
     display: ${props => (props.status ? 'inline-block ' : 'none')};
     a {
       margin-left: 0px;
-      padding: 9px 10px;
     }
   }
 `;
@@ -48,7 +59,7 @@ export const HamburgerMenu = styled.div`
       stroke: white;
     }
   }
-  @media (max-width: 1275px) {
+  @media (max-width: 1024px) {
     display: inline-block;
     svg {
       color: white;
@@ -60,11 +71,11 @@ export const HamburgerMenu = styled.div`
 `;
 //menu mobi le
 export const MenuMobile = styled.div`
-  position: absolute;
-  left: 0;
   min-height: 100vh;
   width: 100%;
   background-color: #171a23;
+  border: 1px solid #fff;
+  z-index: 999;
 `;
 export const AvatarAndName = styled.div`
   text-align: center;
@@ -90,20 +101,23 @@ export const MenuSubMobile = styled.div`
 interface activeMenuMobile {
   status: boolean;
 }
-export const ActiveMenuMobile = styled.div`
+export const ActiveMenuMobile = styled.div<any>`
   background-color: ${(p: activeMenuMobile) => (p.status ? '#282c37' : 'none')};
-  span {
+  .active {
+    color: ${(p: activeMenuMobile) => (p.status ? '#DBA83D' : '#fff')};
   }
 `;
 export const AiOutlineLefts = styled(AiOutlineLeft)`
   transform: ${props => (props.children ? 'rotate(270deg)' : '')};
 `;
-
 export const MenuSubDown = styled.div`
   padding: 0px !important;
   div {
     padding-left: 40px;
     background-color: #282c37;
+    .active {
+      color: #dba83d;
+    }
   }
 `;
 export const MenuBorrowerProfile = styled.div`
@@ -115,3 +129,29 @@ export const MenuBorrowerProfile = styled.div`
     padding-left: 71px;
   }
 `;
+export const HeaderHome = styled.header`
+  #fixed__Header {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    padding: 0px;
+    overflow-y: auto;
+    margin: 0px;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    ::-webkit-scrollbar-thumb {
+      display: none;
+    }
+    & > div {
+      padding: 10px;
+      margin: 0px;
+      & > div {
+        padding: 0px;
+      }
+    }
+  }
+`;
+export const Containers = styled(Container)``;

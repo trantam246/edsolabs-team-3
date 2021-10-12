@@ -20,12 +20,50 @@ const Menu = styled(Col)`
           color: #dba83d;
         }
       }
+      .selected {
+        transition: 1s all ease-in-out;
+        color: #dba83d;
+        span {
+          position: relative;
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 25px;
+            height: 2px;
+            background: #dba83d;
+            border-radius: 1px;
+          }
+        }
+      }
       @media (max-width: 1366px) {
         padding-left: 26px;
       }
     }
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 1440px) {
+    & > ul {
+      & > li {
+        padding-left: 36px;
+      }
+    }
+  }
+  @media (max-width: 1366px) {
+    & > ul {
+      & > li {
+        padding-left: 30px;
+      }
+    }
+  }
+  @media (max-width: 1280px) {
+    & > ul {
+      & > li {
+        padding-left: 30px;
+      }
+    }
+  }
+  @media (max-width: 1024px) {
     display: none;
   }
 `;
@@ -38,24 +76,34 @@ export function MenuNavbar() {
       <Menu>
         <ul>
           <li>
-            <NavLink to="/faq" activeClassName="selected">
-              Pawn
+            <NavLink exact to="/" activeClassName="selected">
+              <span>Pawn</span>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/faq">Brorow</NavLink>
+            <NavLink exact to="/search/borrow" activeClassName="selected">
+              <span>Borrow</span>
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/faq">Lend</NavLink>
+            <NavLink exact to="/login" activeClassName="selected">
+              <span>Lend</span>
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/faq">NFT</NavLink>
+            <NavLink exact to="/111" activeClassName="selected">
+              <span>NFT</span>
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/faq">My Account</NavLink>
+            <NavLink exact to="/22" activeClassName="selected">
+              <span>My Account</span>
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/faq">FAQ</NavLink>
+            <NavLink exact to="/2222" activeClassName="selected">
+              <span>FAQ</span>
+            </NavLink>
           </li>
         </ul>
       </Menu>
