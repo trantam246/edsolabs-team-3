@@ -12,7 +12,7 @@ import { TabborrowNFT } from './style';
 import { RiInformationFill } from '@react-icons/all-files/ri/RiInformationFill';
 import { BiSearch } from '@react-icons/all-files/bi/BiSearch';
 import { ButtonComponent } from 'app/components/Button/Input';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import NFT from '../../../../images/NFT.png';
 import { Link } from 'react-router-dom';
 import { SelectAll } from 'app/components/select/select';
@@ -42,29 +42,16 @@ export default function TabsBorrow(props: any) {
     }
   }, [activeTabBorRowCryptocurrency, history.location.search]);
   //submit form 1
-  const [dataSearchBorrowTbas1, setdataSearchBorrowTbas1] = useState<any>({});
   const {
-    register,
     handleSubmit,
+    register,
     formState: { errors },
+    control,
   } = useForm();
   const onSumitFormCryptocurrency = data => {
-    setdataSearchBorrowTbas1({ ...dataSearchBorrowTbas1, data: data });
+    console.log(data);
   };
-  ///
-  const handleOnchange1 = (e: any) => {
-    setdataSearchBorrowTbas1({
-      ...dataSearchBorrowTbas1,
-      selectCollateral: e.value,
-    });
-  };
-  const handleOnchange2 = (e: any) => {
-    setdataSearchBorrowTbas1({
-      ...dataSearchBorrowTbas1,
-      LoanAmount: e.value,
-    });
-  };
-  console.log('form borrow', dataSearchBorrowTbas1);
+
   return (
     <>
       <TabborrowSub tabs>
@@ -99,11 +86,11 @@ export default function TabsBorrow(props: any) {
                   type="number"
                   // name="Collateral"
                   placeholder="Enter amount"
-                  className={errors.Collateral ? 'activeBrinput' : ''}
-                  {...register('Collateral', { required: true })}
+                  className={errors.collateralAmount ? 'activeBrinput' : ''}
+                  {...register('collateralAmount', { required: true })}
                   autoComplete="off"
                 ></input>
-                {errors.Collateral && (
+                {errors.collateralAmount && (
                   <span className="warning__input">Invalid amount</span>
                 )}
                 <ButtonComponent
@@ -117,13 +104,29 @@ export default function TabsBorrow(props: any) {
                 </ButtonComponent>
               </WrapperInput>
               <WrapperInput width="111px" height="44px" colorFont="" colorBr="">
-                <SelectAll
-                  onChanges={handleOnchange1}
-                  default={false}
-                  heightOption="255px"
-                  placeholder="All"
-                  isMuli={false}
-                ></SelectAll>
+                <Controller
+                  control={control}
+                  name="collateralSymbols"
+                  // rules={{
+                  //   required: true,
+                  // }}
+                  render={({ field: { onChange, value, ref } }) => (
+                    <SelectAll
+                      tab="bor"
+                      value={value}
+                      onChange={onChange}
+                      default={false}
+                      heightOption="255px"
+                      placeholder="All"
+                      isMuli={false}
+                      option={'1'}
+                      error={Boolean(errors.collateralSymbols)}
+                    ></SelectAll>
+                  )}
+                />
+                {errors.collateralSymbols && (
+                  <span className="warning__input">Invalid amount</span>
+                )}
               </WrapperInput>
             </div>
             <p>Or</p>
@@ -144,29 +147,45 @@ export default function TabsBorrow(props: any) {
                 ></input>
               </WrapperInput>
             </div>
-            <p>Collateral</p>
+            <p>Duration</p>
             <div>
               <WrapperInput width="417px" height="44px" colorFont="" colorBr="">
                 <input
                   // name="Duration"
                   type="number"
-                  placeholder="Duration"
+                  placeholder="durationQty"
                   autoComplete="off"
-                  className={errors.Duration ? 'activeBrinput' : ''}
-                  {...register('Duration', { required: true })}
+                  className={errors.durationQty ? 'activeBrinput' : ''}
+                  {...register('durationQty', { required: true })}
                 ></input>
-                {errors.Duration && (
+                {errors.durationQty && (
                   <span className="warning__input">Invalid amount</span>
                 )}
               </WrapperInput>
               <WrapperInput width="111px" height="44px" colorFont="" colorBr="">
-                <select
-                  // name="Durationselect"
-                  {...register('Durationselect')}
-                >
-                  <option defaultValue="mon">Month</option>
-                  <option defaultValue="wek">Weeks</option>
-                </select>
+                <Controller
+                  control={control}
+                  name="durationTypes"
+                  // rules={{
+                  //   required: true,
+                  // }}
+                  render={({ field: { onChange, value, ref } }) => (
+                    <SelectAll
+                      tab="bor"
+                      value={value}
+                      onChange={onChange}
+                      default={false}
+                      heightOption="150px"
+                      placeholder="All"
+                      isMuli={false}
+                      option={'3'}
+                      error={Boolean(errors.durationTypes)}
+                    ></SelectAll>
+                  )}
+                />
+                {errors.durationTypes && (
+                  <span className="warning__input">Invalid amount</span>
+                )}
               </WrapperInput>
             </div>
             <p>Loan amount</p>
@@ -177,21 +196,37 @@ export default function TabsBorrow(props: any) {
                   type="number"
                   autoComplete="off"
                   placeholder="Enter amount"
-                  className={errors.Loanamount ? 'activeBrinput' : ''}
-                  {...register('Loanamount', { required: true })}
+                  className={errors.loanAmount ? 'activeBrinput' : ''}
+                  {...register('loanAmount', { required: true })}
                 ></input>
-                {errors.Loanamount && (
+                {errors.loanAmount && (
                   <span className="warning__input">Invalid amount</span>
                 )}
               </WrapperInput>
               <WrapperInput width="111px" height="44px" colorFont="" colorBr="">
-                <SelectAll
-                  onChanges={handleOnchange2}
-                  default={true}
-                  heightOption="150px"
-                  placeholder="All"
-                  isMuli={false}
-                ></SelectAll>
+                <Controller
+                  control={control}
+                  name="loanSymbols"
+                  // rules={{
+                  //   required: true,
+                  // }}
+                  render={({ field: { onChange, value, ref } }) => (
+                    <SelectAll
+                      tab="bor"
+                      value={value}
+                      onChange={onChange}
+                      default={true}
+                      heightOption="150px"
+                      placeholder="All"
+                      isMuli={false}
+                      option={'2'}
+                      error={Boolean(errors.loanSymbols)}
+                    ></SelectAll>
+                  )}
+                />
+                {errors.loanSymbols && (
+                  <span className="warning__input">Invalid amount</span>
+                )}
               </WrapperInput>
             </div>
             <TooltipTabs>
