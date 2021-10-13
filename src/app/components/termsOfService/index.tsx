@@ -1,12 +1,29 @@
-import React from 'react';
-import { Container } from 'reactstrap';
-import { ButtonGroup, Button, List, H3, Box, Paper, Span } from './styled';
-export default function TermsOfService() {
+import React, { useState, useEffect } from 'react';
+import {
+  ButtonGroup,
+  Button,
+  List,
+  H3,
+  Box,
+  Paper,
+  Span,
+  ModalBG,
+} from './styled';
+
+export default function TermsOfService(props) {
+  const [typeBtn, setTypeBtn] = useState(true);
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {}, []);
+  console.log(offset);
+  const funcScroll = () => {
+    console.log(window.scrollY);
+  };
   return (
-    <Container>
+    <ModalBG isOpen={props.isOpen}>
       <Paper>
         <H3>Terms of Service</H3>
-        <Box className="overflow-auto">
+        <Box className="overflow-auto" onScroll={funcScroll}>
           <Span>DeFi For You Crypto Ethics & Regulation UK</Span>
           <List>
             The crypto digital ecosystem is a challenger to the existing
@@ -53,9 +70,15 @@ export default function TermsOfService() {
         </Box>
         <ButtonGroup>
           <Button color={''}>Decline</Button>
-          <Button color={'gradiend'}>Accept</Button>
+          <Button
+            color={'gradiend'}
+            onClick={props.handleAccept}
+            disabled={false}
+          >
+            Accept
+          </Button>
         </ButtonGroup>
       </Paper>
-    </Container>
+    </ModalBG>
   );
 }

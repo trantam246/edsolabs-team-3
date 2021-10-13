@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro';
 import { Jumbotron } from 'reactstrap';
+import { Modal } from 'reactstrap';
 
 export const Button = styled.button`
   font-size: 1.6rem;
@@ -19,6 +20,11 @@ export const Button = styled.button`
   @media (max-width: 540px) {
     font-size: 1.4rem;
     margin-bottom: 0;
+  }
+`;
+export const ModalBG = styled(Modal)`
+  .modal-content {
+    background: none !important;
   }
 `;
 
