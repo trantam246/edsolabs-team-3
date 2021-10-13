@@ -231,6 +231,9 @@ export function FiterNavSearch(props: any) {
                       name={item.value}
                       value={item.value}
                       onChange={onChangeCollateralAccepted}
+                      defaultChecked={props.dataParam.collateralSymbols.includes(
+                        item.value,
+                      )}
                     />
                     <span>
                       <img
@@ -272,6 +275,9 @@ export function FiterNavSearch(props: any) {
                       name="Loantoken"
                       value={item.value}
                       onChange={onChangeLoanToken}
+                      defaultChecked={props.dataParam.loanSymbols.includes(
+                        item.value,
+                      )}
                     />
                     <span>
                       <img
@@ -359,8 +365,11 @@ export function FiterNavSearch(props: any) {
                   <input
                     type="checkbox"
                     name="Duration"
-                    value="Week"
+                    value="0"
                     onChange={onChangeDuration}
+                    defaultChecked={
+                      props.dataParam.durationTypes === 0 ? true : false
+                    }
                   />
                   <span>Week</span>
                 </div>
@@ -368,8 +377,11 @@ export function FiterNavSearch(props: any) {
                   <input
                     type="checkbox"
                     name="Duration"
-                    value="Month"
+                    value="1"
                     onChange={onChangeDuration}
+                    defaultChecked={
+                      props.dataParam.durationTypes === 1 ? true : false
+                    }
                   />
                   <span>Month</span>
                 </div>

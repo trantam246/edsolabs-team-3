@@ -16,7 +16,9 @@ import filtericon from '../../../images/filtericon.svg';
 import styled from 'styled-components';
 import { useState } from 'react';
 import { Filter } from './style';
-
+import { useHistory } from 'react-router';
+import SearchBorrowCryApi from 'api/searchBorrowCryApi';
+import { useEffect } from 'react';
 const ContainerPage = styled(Container)`
   padding: 0 1.6rem;
 `;
@@ -27,6 +29,8 @@ const RowPage = styled(Row)`
   }
 `;
 export function PageSearch() {
+  const queryString = require('query-string');
+  const history = useHistory();
   const [statusFilterNav, setstatusFilterNav] = useState(false);
   const [dataSearch, setdataSearch] = useState<any>({
     inputSearch: '',
@@ -88,6 +92,22 @@ export function PageSearch() {
       setdataSearch({ ...dataSearch, duration: newValue2 });
     }
   };
+  // chuyển đổi url ra obj
+  const param = queryString.parse(history.location.search);
+  console.log('data param', param);
+  //lấy api render ra mà hình
+  const [dataRender, setdataRender] = useState<any>({});
+  useEffect(() => {
+    SearchBorrowCryApi.search(param)
+      .then((res: any) => {
+        setdataRender(res.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, [dataSearch]);
+  console.log('data tuwf api về lú về', dataRender);
+
   //onclick mowr filter nav
   const onClick = () => {
     setstatusFilterNav(!statusFilterNav);
@@ -97,7 +117,7 @@ export function PageSearch() {
       document.body.style.overflow = 'auto';
     }
   };
-  console.log('data tra ve=', dataSearch);
+  console.log('data filter nav gửi api', dataSearch);
   return (
     <>
       <Helmet>
@@ -161,6 +181,7 @@ export function PageSearch() {
               onChangeLoanToken={onChangeLoanToken}
               onChangeLoanType={onChangeLoanType}
               onChangeDuration={onChangeDuration}
+              dataParam={param}
             ></FiterNavSearch>
           </Col>
         </RowPage>
