@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { BsChevronRight } from '@react-icons/all-files/bs/BsChevronRight';
 import { BsChevronLeft } from '@react-icons/all-files/bs/BsChevronLeft';
 import styled from 'styled-components';
+import { useHistory } from 'react-router';
 
 const Paginate = styled.div`
   .paginate {
@@ -60,9 +61,9 @@ const Paginate = styled.div`
   }
 `;
 
-export function Pagination() {
+export function Pagination(props: any) {
   // const [users, setUsers] = useState(JsonData.slice(0, 50));
-  // const [pageNumber, setPageNumber] = useState(0);
+  const [pageNumber, setPageNumber] = useState(0);
   // const usersPerPage = 10;
   // const pagesVisited = pageNumber * usersPerPage;
 
@@ -80,10 +81,19 @@ export function Pagination() {
 
   // const pageCount = Math.ceil(users.length / usersPerPage);
 
-  // const changePage = ({ selected }) => {
-  //   setPageNumber(selected);
-  // };
+  const history = useHistory();
+  const changePage = ({ selected }) => {
+    const queryString = require('query-string');
+    const param = queryString.parse(history.location.search);
 
+    setPageNumber(selected);
+    history.push({
+      pathname: '/pawn/offer',
+      search: queryString.stringify({ ...param, page: selected }),
+    });
+    console.log(selected);
+  };
+  console.log('n', pageNumber);
   return (
     <Paginate className="paginate">
       {/* {displayUsers} */}
@@ -91,8 +101,8 @@ export function Pagination() {
         previousLabel={<BsChevronLeft />}
         nextLabel={<BsChevronRight />}
         // pageCount={pageCount}
-        pageCount={4}
-        // onPageChange={changePage}
+        pageCount={props.totalPages}
+        onPageChange={changePage}
         initialPage={0}
         containerClassName={'paginate__list'}
         previousLinkClassName={'paginate__prev'}

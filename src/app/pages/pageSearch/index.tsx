@@ -210,10 +210,10 @@ export function PageSearch() {
               <NavSortSearch></NavSortSearch>
             </Col>
             <Col>
-              <PawnShop />
+              <PawnShop data={dataRender} />
             </Col>
             <Col>
-              <Pagination />
+              <Pagination totalPages={dataRender.total_pages} />
             </Col>
           </Col>
           <Col xl="3">
