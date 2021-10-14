@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const RowNavBar = styled(Row)`
   max-height: 100px;
   padding: 20px 30px;
-  background-color: #232732;
+  background-color: #282c37;
   color: #d1d1d3;
   border-bottom: 1px solid #4f4f4f;
   @media (max-width: 600px) {
@@ -75,6 +75,12 @@ export const ButtonNavBar = styled(Button)`
     props.color
       ? 'linear-gradient(221.15deg, #BD8727 0%, #FFD574 49.02%, #FECA50 62.02%, #BD8727 101.47%)'
       : 'transparent'};
+
+  &:hover {
+    opacity: 0.7;
+    transition: all ease-in-out 0.5s;
+  }
+
   a {
     text-decoration: none;
     font-weight: 500;
