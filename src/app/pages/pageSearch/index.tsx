@@ -20,11 +20,15 @@ import { useHistory } from 'react-router';
 import SearchBorrowCryApi from 'api/searchBorrowCryApi';
 import { useEffect } from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { useDispatch } from 'react-redux';
 import { pawnShopAction } from 'redux/slices/pawnShopSlice';
 import SearchPersonalApi from 'api/searchPersonalApi';
 >>>>>>> b5a2157 (nav sort)
+=======
+import searchPersonalLend from 'api/searchPersonalLendApi';
+>>>>>>> 4b67e43 (done nav sort)
 const ContainerPage = styled(Container)`
   padding: 0 1.6rem;
 `;
@@ -140,7 +144,8 @@ export function PageSearch() {
 
   const fetchDataPersonalLend = async () => {
     try {
-      const data = await SearchPersonalApi.search();
+      const response = await searchPersonalLend.search();
+      const data = await response.data;
       setDataPersonalLend(data);
     } catch (err) {
       throw err;
@@ -149,7 +154,9 @@ export function PageSearch() {
 
   useEffect(() => {
     fetchDataPersonalLend();
+  }, []);
 
+  useEffect(() => {
     if (
       dataSearch.interestRanges === undefined &&
       dataSearch.collateralSymbols === undefined &&
@@ -237,15 +244,10 @@ export function PageSearch() {
   const handleSort = o => {
     setdataSearch({ ...dataSearch, cusSort: o });
   };
-  console.log('sort', dataSearch);
-  //ô tâm
-
-  //o tâ,m
   console.log('param', param);
   console.log('data từ api trả về', dataRender);
   console.log('----------------------------------------');
   console.log('data filter nav gửi api', dataSearch);
-  console.log('object', dataPersonalLend);
   return (
     <>
       <Helmet>
@@ -294,12 +296,14 @@ export function PageSearch() {
             <Col>
               <PawnShop data={dataRender} />
             </Col>
-            <Col>
-              <Pagination
-                editPageCount={editPageCount}
-                dataRender={dataRender}
-              />
-            </Col>
+            {dataRender?.total_pages > 0 && (
+              <Col>
+                <Pagination
+                  editPageCount={editPageCount}
+                  dataRender={dataRender}
+                />
+              </Col>
+            )}
           </Col>
           <Col xl="3">
             <FiterNavSearch
