@@ -4,10 +4,6 @@ import React, { useState } from 'react';
 import { BsChevronRight } from '@react-icons/all-files/bs/BsChevronRight';
 import { BsChevronLeft } from '@react-icons/all-files/bs/BsChevronLeft';
 import styled from 'styled-components';
-import { useHistory } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
-import { pawnShopAction } from 'redux/slices/pawnShopSlice';
-import SearchBorrowCryApi from 'api/searchBorrowCryApi';
 
 const Paginate = styled.div`
   .paginate {
@@ -64,33 +60,16 @@ const Paginate = styled.div`
   }
 `;
 
-export function Pagination() {
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const totalPages = useSelector(
-    (state: any) => state.pawnShop.data.total_pages,
-  );
-  const changePage = ({ selected }) => {
-    const queryString = require('query-string');
-    const param = queryString.parse(history.location.search);
-    history.push({
-      pathname: '/pawn/offer',
-      search: queryString.stringify({ ...param, page: selected }),
-    });
-    SearchBorrowCryApi.search({ ...param, page: selected })
-      .then((res: any) => {
-        dispatch(pawnShopAction.getPawnShop(res.data));
-      })
-      .catch(error => {
-        console.log(error);
-      });
+export function Pagination(props: any) {
+  const changePage = e => {
+    props.editPageCount(e.selected);
   };
   return (
     <Paginate className="paginate">
       <ReactPaginate
         previousLabel={<BsChevronLeft />}
         nextLabel={<BsChevronRight />}
-        pageCount={totalPages}
+        pageCount={props.dataRender.total_pages}
         onPageChange={changePage}
         initialPage={0}
         containerClassName={'paginate__list'}

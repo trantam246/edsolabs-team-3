@@ -1,4 +1,3 @@
-// import { LoginPayload } from './../redux/slices/authSlice';
 import axiosClient from 'api';
 const SearchBorrowCryApi = {
   search(param: any) {

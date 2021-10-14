@@ -19,7 +19,7 @@ import { Filter } from './style';
 import { useHistory } from 'react-router';
 import SearchBorrowCryApi from 'api/searchBorrowCryApi';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { pawnShopAction } from 'redux/slices/pawnShopSlice';
 const ContainerPage = styled(Container)`
   padding: 0 1.6rem;
@@ -100,7 +100,6 @@ export function PageSearch() {
   };
   //lấy api render ra mà hình
   const [dataRender, setdataRender] = useState<any>({});
-  const dispatch = useDispatch();
   useEffect(() => {
     if (
       dataSearch.interestRanges === undefined &&
@@ -119,7 +118,7 @@ export function PageSearch() {
       SearchBorrowCryApi.search(dataSearch)
         .then((res: any) => {
           setdataRender(res.data);
-          dispatch(pawnShopAction.getPawnShop(res.data));
+          // dispatch(pawnShopAction.getPawnShop(res.data));
         })
         .catch(error => {
           console.log(error);
@@ -155,6 +154,9 @@ export function PageSearch() {
       size: 10,
     });
   }, []);
+  const editPageCount = e => {
+    setdataSearch({ ...dataSearch, page: e });
+  };
   //onclick mowr filter nav
   const onClick = () => {
     setstatusFilterNav(!statusFilterNav);
@@ -164,6 +166,10 @@ export function PageSearch() {
       document.body.style.overflow = 'auto';
     }
   };
+
+  //ô tâm
+
+  //o tâ,m
   console.log('param', param);
   console.log('data từ api trả về', dataRender);
   console.log('----------------------------------------');
@@ -217,7 +223,10 @@ export function PageSearch() {
               <PawnShop />
             </Col>
             <Col>
-              <Pagination />
+              <Pagination
+                editPageCount={editPageCount}
+                dataRender={dataRender}
+              />
             </Col>
           </Col>
           <Col xl="3">
