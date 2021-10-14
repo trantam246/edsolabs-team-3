@@ -59,8 +59,10 @@ export function PageSearch() {
 
   const onChangeCollateralAccepted = e => {
     if (e.target.checked) {
-      const newvalue = [...dataSearch.collateralSymbols, e.target.value];
-      setdataSearch({ ...dataSearch, collateralSymbols: newvalue });
+      // const newvalue = [...dataSearch.collateralSymbols, e.target.value];
+      const newString = dataSearch.collateralSymbols + ',' + e.target.value;
+      console.log(newString);
+      setdataSearch({ ...dataSearch, collateralSymbols: newString });
     } else {
       const newValue1 = [...dataSearch.collateralSymbols];
       const newValue2 = newValue1.filter(el => el !== e.target.value);
@@ -140,8 +142,9 @@ export function PageSearch() {
     newArrDuration.push(param.durationTypes);
     const newLoanToken = [...data.loanSymbols];
     newLoanToken.push(param.loanSymbols);
-    const newCollateralAccepted = [...data.collateralSymbols];
-    newCollateralAccepted.push(param.collateralSymbols);
+    // const newCollateralAccepted = [...data.collateralSymbols];
+    const newCollateralAccepted = param.collateralSymbols;
+    // newCollateralAccepted.push(param.collateralSymbols);
     setdataSearch({
       ...dataSearch,
       durationTypes: newArrDuration,

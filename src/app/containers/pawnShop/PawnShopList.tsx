@@ -23,7 +23,6 @@ const PawnShopList = () => {
     type: o.type,
     isFavorite: o.isFavourite,
   }));
-  console.log('ok', dataPawnShops);
   return (
     <>
       {dataPawnShops?.map((item, idx) => (

@@ -59,7 +59,6 @@ const Paginate = styled.div`
     }
   }
 `;
-
 export function Pagination(props: any) {
   const changePage = e => {
     props.editPageCount(e.selected);
