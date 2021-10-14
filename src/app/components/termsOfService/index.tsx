@@ -68,6 +68,14 @@ export default function TermsOfService(props) {
             CListents and users are assured that we are a company that treats
             customers fairly.
           </List>
+          <List>
+            CListents and users are assured that we are a company that treats
+            customers fairly.
+          </List>
+          <List>
+            CListents and users are assured that we are a company that treats
+            customers fairly.
+          </List>
         </Box>
         <ButtonGroup>
           <Button color={''}>Decline</Button>
