@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   ButtonGroup,
   Button,
@@ -12,12 +12,13 @@ import {
 
 export default function TermsOfService(props) {
   const [typeBtn, setTypeBtn] = useState(true);
-  const [offset, setOffset] = useState(0);
+  const [colorBtn, setColorBtn] = useState('disable');
 
-  useEffect(() => {}, []);
-  console.log(offset);
-  const funcScroll = () => {
-    console.log(window.scrollY);
+  const funcScroll = e => {
+    if (e.target.scrollTop === e.target.scrollHeight - e.target.clientHeight) {
+      setTypeBtn(false);
+      setColorBtn('gradiend');
+    }
   };
   return (
     <ModalBG isOpen={props.isOpen}>
@@ -71,9 +72,10 @@ export default function TermsOfService(props) {
         <ButtonGroup>
           <Button color={''}>Decline</Button>
           <Button
-            color={'gradiend'}
+            color={colorBtn}
             onClick={props.handleAccept}
-            disabled={false}
+            disabled={typeBtn}
+            className="btn-disable"
           >
             Accept
           </Button>
