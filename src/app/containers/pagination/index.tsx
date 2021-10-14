@@ -4,6 +4,10 @@ import React, { useState } from 'react';
 import { BsChevronRight } from '@react-icons/all-files/bs/BsChevronRight';
 import { BsChevronLeft } from '@react-icons/all-files/bs/BsChevronLeft';
 import styled from 'styled-components';
+import { useHistory } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { pawnShopAction } from 'redux/slices/pawnShopSlice';
+import SearchBorrowCryApi from 'api/searchBorrowCryApi';
 
 const Paginate = styled.div`
   .paginate {
@@ -61,38 +65,33 @@ const Paginate = styled.div`
 `;
 
 export function Pagination() {
-  // const [users, setUsers] = useState(JsonData.slice(0, 50));
-  // const [pageNumber, setPageNumber] = useState(0);
-  // const usersPerPage = 10;
-  // const pagesVisited = pageNumber * usersPerPage;
-
-  // const displayUsers = users
-  //   .slice(pagesVisited, pagesVisited + usersPerPage)
-  //   .map(user => {
-  //     return (
-  //       <div className="user">
-  //         <h3>{user.firstName}</h3>
-  //         <h3>{user.lastName}</h3>
-  //         <h3>{user.email}</h3>
-  //       </div>
-  //     );
-  //   });
-
-  // const pageCount = Math.ceil(users.length / usersPerPage);
-
-  // const changePage = ({ selected }) => {
-  //   setPageNumber(selected);
-  // };
-
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const totalPages = useSelector(
+    (state: any) => state.pawnShop.data.total_pages,
+  );
+  const changePage = ({ selected }) => {
+    const queryString = require('query-string');
+    const param = queryString.parse(history.location.search);
+    history.push({
+      pathname: '/pawn/offer',
+      search: queryString.stringify({ ...param, page: selected }),
+    });
+    SearchBorrowCryApi.search({ ...param, page: selected })
+      .then((res: any) => {
+        dispatch(pawnShopAction.getPawnShop(res.data));
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
   return (
     <Paginate className="paginate">
-      {/* {displayUsers} */}
       <ReactPaginate
         previousLabel={<BsChevronLeft />}
         nextLabel={<BsChevronRight />}
-        // pageCount={pageCount}
-        pageCount={4}
-        // onPageChange={changePage}
+        pageCount={totalPages}
+        onPageChange={changePage}
         initialPage={0}
         containerClassName={'paginate__list'}
         previousLinkClassName={'paginate__prev'}
