@@ -71,37 +71,53 @@ const navList = [
   {
     value: 'Interest rate',
     src: increaseIcon,
+    cusSort(o) {
+      return o === increaseIcon ? 'interest,asc' : 'interest,desc';
+    },
   },
   {
     value: 'Loan to value',
     src: increaseIcon,
+    cusSort(o) {
+      return o === increaseIcon ? 'loanToValue,asc' : 'loanToValue,desc';
+    },
   },
   {
     value: 'Duration',
     src: increaseIcon,
+    cusSort(o) {
+      return o === increaseIcon ? 'durationQty,asc' : 'durationQty,desc';
+    },
   },
   {
     value: 'Limitation',
     src: increaseIcon,
+    cusSort(o) {
+      return o === increaseIcon ? 'limitation,asc' : 'limitation,desc';
+    },
   },
   {
     value: 'Pawnshop rating',
     src: increaseIcon,
+    cusSort(o) {
+      return o === increaseIcon ? 'reputation,asc' : 'reputation,desc';
+    },
   },
 ];
-export function NavSortSearch() {
+export function NavSortSearch(props) {
   const [items, setItems] = useState(navList);
   const [active, setActive] = useState('');
 
   const handleClick = v => {
     setItems(
       items.map(o =>
-        o.value === v
+        o.value === v.value
           ? { ...o, src: o.src === increaseIcon ? decreaseIcon : increaseIcon }
           : o,
       ),
     );
-    setActive(v);
+    setActive(v.value);
+    props.handleSort(v.cusSort(v.src));
   };
   return (
     <>
@@ -115,7 +131,7 @@ export function NavSortSearch() {
               key={i}
               active={active === o.value ? 1 : undefined}
               className="sort-nav__item"
-              onClick={handleClick.bind(null, o.value)}
+              onClick={handleClick.bind(null, o)}
             >
               {o.value} <img src={o.src} alt="" />
             </NavItem>

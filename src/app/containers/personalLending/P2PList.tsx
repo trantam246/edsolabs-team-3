@@ -5,36 +5,22 @@ import P2PItem from './P2PItem';
 const ColItem = styled(Col)`
   display: flex;
 `;
-const p2pData = [
-  {
-    name: 'Tam Pawnshop',
-    rate: 1000,
-    signed: 100,
-    interest_min: 10,
-    interest_max: 12,
-    tags: ['Good LTV', 'Fast Disburement', 'Trusted'],
-    collateral: [0, 1, 2, 3, 2, 3, 4],
-  },
-  {
-    name: 'Tam Pawnshop',
-    rate: 1000,
-    signed: 100,
-    interest_min: 10,
-    interest_max: 12,
-    tags: ['Good LTV', 'Fast Disburement', 'Trusted'],
-    collateral: [0, 3, 1, 1, 2],
-  },
-  {
-    name: 'Tam Pawnshop',
-    rate: 1000,
-    signed: 100,
-    interest_min: 10,
-    interest_max: 12,
-    tags: ['Good LTV', 'Fast Disburement', 'Trusted'],
-    collateral: [0, 3, 1, 1, 2],
-  },
-];
-const P2PList: React.FC = () => {
+
+const P2PList = (props: any) => {
+  const LendData = props.data?.content?.map(o => ({
+    addressLend: o.associatedAddress,
+    reputation: o.reputation,
+    contract: o.completedContracts,
+    interestMin: o.minInterestRate,
+    interestMax: o.maxInterestRate,
+    collateral: [
+      {
+        address: o.acceptableAssetAsCollateral.address,
+        symbol: o.acceptableAssetAsCollateral.symbol,
+      },
+    ],
+  }));
+  console.log('lendata', LendData);
   return (
     <Row>
       {p2pData.slice(0, 2).map((item, idx) => (

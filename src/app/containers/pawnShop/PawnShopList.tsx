@@ -1,10 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import PawnShopItem from './PawnShopItem';
 
-const PawnShopList = () => {
-  const data = useSelector((state: any) => state.pawnShop.data);
-  const dataPawnShops = data.content?.map(o => ({
+const PawnShopList = (props: any) => {
+  const dataPawnShops = props.data.content?.map(o => ({
     id: o.id,
     name: o.pawnShop.name,
     interest: o.interest,

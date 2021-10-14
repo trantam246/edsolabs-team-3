@@ -19,6 +19,12 @@ import { Filter } from './style';
 import { useHistory } from 'react-router';
 import SearchBorrowCryApi from 'api/searchBorrowCryApi';
 import { useEffect } from 'react';
+<<<<<<< HEAD
+=======
+import { useDispatch } from 'react-redux';
+import { pawnShopAction } from 'redux/slices/pawnShopSlice';
+import SearchPersonalApi from 'api/searchPersonalApi';
+>>>>>>> b5a2157 (nav sort)
 const ContainerPage = styled(Container)`
   padding: 0 1.6rem;
 `;
@@ -130,7 +136,20 @@ export function PageSearch() {
   };
   //lấy api render ra mà hình
   const [dataRender, setdataRender] = useState<any>({});
+  const [dataPersonalLend, setDataPersonalLend] = useState<any>([]);
+
+  const fetchDataPersonalLend = async () => {
+    try {
+      const data = await SearchPersonalApi.search();
+      setDataPersonalLend(data);
+    } catch (err) {
+      throw err;
+    }
+  };
+
   useEffect(() => {
+    fetchDataPersonalLend();
+
     if (
       dataSearch.interestRanges === undefined &&
       dataSearch.collateralSymbols === undefined &&
@@ -149,7 +168,6 @@ export function PageSearch() {
       SearchBorrowCryApi.search(dataSearch)
         .then((res: any) => {
           setdataRender(res.data);
-          // dispatch(pawnShopAction.getPawnShop(res.data));
         })
         .catch(error => {
           console.log(error);
@@ -216,6 +234,10 @@ export function PageSearch() {
     }
   };
 
+  const handleSort = o => {
+    setdataSearch({ ...dataSearch, cusSort: o });
+  };
+  console.log('sort', dataSearch);
   //ô tâm
 
   //o tâ,m
@@ -223,6 +245,7 @@ export function PageSearch() {
   console.log('data từ api trả về', dataRender);
   console.log('----------------------------------------');
   console.log('data filter nav gửi api', dataSearch);
+  console.log('object', dataPersonalLend);
   return (
     <>
       <Helmet>
@@ -245,7 +268,7 @@ export function PageSearch() {
             <Col>
               <NumberOfResult
                 content="pawnshop packages match your search"
-                amount={5}
+                amount={dataRender.total_elements}
               />
             </Col>
             <Col>
@@ -256,7 +279,7 @@ export function PageSearch() {
               ></Suggest>
             </Col>
             <Col>
-              <PersonalLending></PersonalLending>
+              <PersonalLending data={dataPersonalLend} />
             </Col>
             <Col>
               <Suggest
@@ -266,10 +289,10 @@ export function PageSearch() {
               ></Suggest>
             </Col>
             <Col>
-              <NavSortSearch></NavSortSearch>
+              <NavSortSearch handleSort={handleSort} />
             </Col>
             <Col>
-              <PawnShop />
+              <PawnShop data={dataRender} />
             </Col>
             <Col>
               <Pagination

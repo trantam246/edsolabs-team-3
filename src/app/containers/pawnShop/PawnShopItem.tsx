@@ -335,23 +335,29 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
                   {item.durationQtyType === 1 ? 'months' : 'weeks'}
                 </p>
               </li>
-              <li className="pawn__details-item">
-                <p className="pawn__details-label">LTV:</p>
-                <p className="pawn__details-result">
-                  Up to {item.loanToValue}%
-                </p>
-              </li>
+              {item.loanToValue && (
+                <li className="pawn__details-item">
+                  <p className="pawn__details-label">LTV:</p>
+                  <p className="pawn__details-result">
+                    Up to {item.loanToValue}%
+                  </p>
+                </li>
+              )}
             </ul>
           </div>
         </div>
         <div className="pawn__interest">
           <div className="pawn__rate">
             <p className="pawn__rate-label">
-              {item.interestMin || item.interestMax ? 'Interest rate' : ''}
+              {item.interestMin || item.interestMax || item.interest
+                ? 'Interest rate'
+                : ''}
             </p>
             <p className="pawn__rate-result">
-              {item.interestMin ? item.interestMin + ' - ' : ''}
-              {item.interestMax ? item.interestMax + '% APR' : ''}
+              {item.interest
+                ? item.interest
+                : item.interestMin + ' - ' + item.interestMax}
+              % APR
             </p>
           </div>
           <div className="pawn__collateral">
