@@ -61,6 +61,7 @@ export function TabLendForm() {
               heightOption="255px"
               placeholder="All"
               isMuli={false}
+              option={'2'}
             ></SelectAll>
           </WarperInput>
         </div>
@@ -87,10 +88,14 @@ export function TabLendForm() {
             )}
           </WarperInput>
           <WarperInput width="111px" height="44px">
-            <select {...register('Durationselect')}>
-              <option value="Month">Month</option>
-              <option value="Weeks">Weeks</option>
-            </select>
+            <SelectAll
+              onChanges={handleOnchange1}
+              default={false}
+              heightOption="255px"
+              placeholder="All"
+              isMuli={false}
+              option={'1'}
+            ></SelectAll>
           </WarperInput>
         </div>
       </GrInput>

@@ -41,6 +41,7 @@
     "node-plop": "0.26.2",
     "plop": "2.7.4",
     "prettier": "2.3.2",
+    "query-string": "7.0.1",
     "react": "17.0.2",
     "react-app-polyfill": "2.0.0",
     "react-bootstrap": "1.6.4",

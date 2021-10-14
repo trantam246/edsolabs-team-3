@@ -196,7 +196,7 @@ export const WarperInput = styled.div<any>`
     height: 100%;
     width: 100%;
     border-radius: 22px;
-    border: 2px solid ${p => (p.border ? '#ff5252' : '#74767b')};
+    border: 1px solid ${p => (p.border ? '#ff5252' : '#74767b')};
     box-sizing: border-box;
     background-color: transparent;
     font-weight: 500;

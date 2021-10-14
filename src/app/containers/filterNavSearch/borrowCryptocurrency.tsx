@@ -11,6 +11,27 @@ import {
 } from './style';
 import { iconCoin, LoanAmount } from 'app/components/icon';
 export function FiterNavSearch(props: any) {
+  const onChangeInputSearch = e => {
+    props.onChangeInputSearch(e);
+  };
+  const onChangeInterestRange = e => {
+    props.onChangeInterestRange(e);
+  };
+  const onChangeLoanToValue = e => {
+    props.onChangeLoanToValue(e);
+  };
+  const onChangeCollateralAccepted = e => {
+    props.onChangeCollateralAccepted(e);
+  };
+  const onChangeLoanToken = e => {
+    props.onChangeLoanToken(e);
+  };
+  const onChangeLoanType = e => {
+    props.onChangeLoanType(e);
+  };
+  const onChangeDuration = e => {
+    props.onChangeDuration(e);
+  };
   return (
     <>
       <Helmet>
@@ -32,7 +53,11 @@ export function FiterNavSearch(props: any) {
               <img src={searchFilterNav} alt="" />
             </div>
             <div>
-              <input type="text" placeholder="Search pawnshops" />
+              <input
+                type="text"
+                placeholder="Search pawnshops"
+                onChange={onChangeInputSearch}
+              />
             </div>
           </div>
         </InputSearchNameFilter>
@@ -59,28 +84,48 @@ export function FiterNavSearch(props: any) {
               <div className="accordion-body">
                 <label className="radio__custom">
                   <div>
-                    <input type="radio" name="Interestrange" value="0-10" />
+                    <input
+                      type="radio"
+                      name="Interestrange"
+                      value="0:0.1"
+                      onChange={onChangeInterestRange}
+                    />
                     <span></span>
                   </div>
                   <span>{'0 - 10%'}</span>
                 </label>
                 <label className="radio__custom">
                   <div>
-                    <input type="radio" name="Interestrange" value="10-25" />
+                    <input
+                      type="radio"
+                      name="Interestrange"
+                      value="0.1:0.25"
+                      onChange={onChangeInterestRange}
+                    />
                     <span></span>
                   </div>
                   <span>{'10 - 25%'}</span>
                 </label>
                 <label className="radio__custom">
                   <div>
-                    <input type="radio" name="Interestrange" value="25-50" />
+                    <input
+                      type="radio"
+                      name="Interestrange"
+                      value="0.25:0.5"
+                      onChange={onChangeInterestRange}
+                    />
                     <span></span>
                   </div>
                   <span>{'25 - 50%'}</span>
                 </label>
                 <label className="radio__custom">
                   <div>
-                    <input type="radio" name="Interestrange" value=">50" />
+                    <input
+                      type="radio"
+                      name="Interestrange"
+                      value="0.5:1"
+                      onChange={onChangeInterestRange}
+                    />
                     <span></span>
                   </div>
                   <span>{'> 50%'}</span>
@@ -110,28 +155,48 @@ export function FiterNavSearch(props: any) {
               <div className="accordion-body">
                 <label className="radio__custom">
                   <div>
-                    <input type="radio" name="Loantovalue" value="0-25" />
+                    <input
+                      type="radio"
+                      name="Loantovalue"
+                      value="0-25"
+                      onChange={onChangeLoanToValue}
+                    />
                     <span></span>
                   </div>
                   <span>{'0 - 25%'}</span>
                 </label>
                 <label className="radio__custom">
                   <div>
-                    <input type="radio" name="Loantovalue" value="25-50" />
+                    <input
+                      type="radio"
+                      name="Loantovalue"
+                      value="25-50"
+                      onChange={onChangeLoanToValue}
+                    />
                     <span></span>
                   </div>
                   <span>{'25 - 50%'}</span>
                 </label>
                 <label className="radio__custom">
                   <div>
-                    <input type="radio" name="Loantovalue" value="50-75" />
+                    <input
+                      type="radio"
+                      name="Loantovalue"
+                      value="50-75"
+                      onChange={onChangeLoanToValue}
+                    />
                     <span></span>
                   </div>
                   <span>{'50 - 75%'}</span>
                 </label>
                 <label className="radio__custom">
                   <div>
-                    <input type="radio" name="Loantovalue" value=">75" />
+                    <input
+                      type="radio"
+                      name="Loantovalue"
+                      value=">75"
+                      onChange={onChangeLoanToValue}
+                    />
                     <span></span>
                   </div>
                   <span>{'> 75%'}</span>
@@ -163,8 +228,9 @@ export function FiterNavSearch(props: any) {
                   <div className="checkbox__custom" key={index}>
                     <input
                       type="checkbox"
-                      name="Collateralaccepted"
+                      name={item.value}
                       value={item.value}
+                      onChange={onChangeCollateralAccepted}
                     />
                     <span>
                       <img
@@ -205,6 +271,7 @@ export function FiterNavSearch(props: any) {
                       type="checkbox"
                       name="Loantoken"
                       value={item.value}
+                      onChange={onChangeLoanToken}
                     />
                     <span>
                       <img
@@ -240,15 +307,30 @@ export function FiterNavSearch(props: any) {
             >
               <div className="accordion-body">
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Loantype" value="Auto" />
+                  <input
+                    type="checkbox"
+                    name="Loantype"
+                    value="Auto"
+                    onChange={onChangeLoanType}
+                  />
                   <span>Auto</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Loantype" value="Semi-auto" />
+                  <input
+                    type="checkbox"
+                    name="Loantype"
+                    value="Semi-auto"
+                    onChange={onChangeLoanType}
+                  />
                   <span>Semi-auto</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Loantype" value="Negotiation" />
+                  <input
+                    type="checkbox"
+                    name="Loantype"
+                    value="Negotiation"
+                    onChange={onChangeLoanType}
+                  />
                   <span>Negotiation</span>
                 </div>
               </div>
@@ -274,11 +356,21 @@ export function FiterNavSearch(props: any) {
             >
               <div className="accordion-body">
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Duration" value="Week" />
+                  <input
+                    type="checkbox"
+                    name="Duration"
+                    value="Week"
+                    onChange={onChangeDuration}
+                  />
                   <span>Week</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Duration" value="Month" />
+                  <input
+                    type="checkbox"
+                    name="Duration"
+                    value="Month"
+                    onChange={onChangeDuration}
+                  />
                   <span>Month</span>
                 </div>
               </div>

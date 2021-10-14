@@ -28,6 +28,67 @@ const RowPage = styled(Row)`
 `;
 export function PageSearch() {
   const [statusFilterNav, setstatusFilterNav] = useState(false);
+  const [dataSearch, setdataSearch] = useState<any>({
+    inputSearch: '',
+    interestRange: '',
+    loanToValue: '',
+    CollateralAccepted: [],
+    loanToken: [],
+    loanType: [],
+    duration: [],
+  }); //data lấy được từ người dùng khi onchange
+  const onChangeInputSearch = (e: any) => {
+    setdataSearch({ ...dataSearch, inputSearch: e.target.value });
+  }; //lấy dữ liệu từ ô input
+
+  const onChangeInterestRange = (e: any) => {
+    setdataSearch({ ...dataSearch, interestRange: e.target.value });
+  };
+  const onChangeLoanToValue = (e: any) => {
+    setdataSearch({ ...dataSearch, loanToValue: e.target.value });
+  };
+
+  const onChangeCollateralAccepted = e => {
+    if (e.target.checked) {
+      const newvalue = [...dataSearch.CollateralAccepted, e.target.value];
+      setdataSearch({ ...dataSearch, CollateralAccepted: newvalue });
+    } else {
+      const newValue1 = [...dataSearch.CollateralAccepted];
+      const newValue2 = newValue1.filter(el => el !== e.target.value);
+      setdataSearch({ ...dataSearch, CollateralAccepted: newValue2 });
+    }
+  };
+  const onChangeLoanToken = e => {
+    if (e.target.checked) {
+      const newvalue = [...dataSearch.loanToken, e.target.value];
+      setdataSearch({ ...dataSearch, loanToken: newvalue });
+    } else {
+      const newValue1 = [...dataSearch.loanToken];
+      const newValue2 = newValue1.filter(el => el !== e.target.value);
+      setdataSearch({ ...dataSearch, loanToken: newValue2 });
+    }
+  };
+  const onChangeLoanType = e => {
+    if (e.target.checked) {
+      const newvalue = [...dataSearch.loanType, e.target.value];
+      setdataSearch({ ...dataSearch, loanType: newvalue });
+    } else {
+      const newValue1 = [...dataSearch.loanType];
+      const newValue2 = newValue1.filter(el => el !== e.target.value);
+      setdataSearch({ ...dataSearch, loanType: newValue2 });
+    }
+  };
+  const onChangeDuration = e => {
+    if (e.target.checked) {
+      const newvalue = [...dataSearch.duration, e.target.value];
+      setdataSearch({ ...dataSearch, duration: newvalue });
+    } else {
+      const newValue1 = [...dataSearch.duration];
+      const newValue2 = newValue1.filter(el => el !== e.target.value);
+      setdataSearch({ ...dataSearch, duration: newValue2 });
+    }
+  };
+  //onclick mowr filter nav
   const onClick = () => {
     setstatusFilterNav(!statusFilterNav);
     if (statusFilterNav === false) {
@@ -36,6 +97,7 @@ export function PageSearch() {
       document.body.style.overflow = 'auto';
     }
   };
+  console.log('data tra ve=', dataSearch);
   return (
     <>
       <Helmet>
@@ -92,6 +154,13 @@ export function PageSearch() {
             <FiterNavSearch
               status={statusFilterNav}
               onClick={onClick}
+              onChangeInputSearch={onChangeInputSearch}
+              onChangeInterestRange={onChangeInterestRange}
+              onChangeLoanToValue={onChangeLoanToValue}
+              onChangeCollateralAccepted={onChangeCollateralAccepted}
+              onChangeLoanToken={onChangeLoanToken}
+              onChangeLoanType={onChangeLoanType}
+              onChangeDuration={onChangeDuration}
             ></FiterNavSearch>
           </Col>
         </RowPage>
