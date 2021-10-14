@@ -108,6 +108,7 @@ export default function InputCustom({
       <Label>{label}</Label>
       <div className="inputDiv">
         <InputStyled
+          autoComplete="off"
           type={type}
           placeholder={placeHolder}
           {...register}
