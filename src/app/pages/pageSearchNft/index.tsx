@@ -45,9 +45,7 @@ export function PageSearchNft() {
             <Col>
               <NftShop />
             </Col>
-            <Col>
-              <Pagination />
-            </Col>
+            <Col>{/* <Pagination /> */}</Col>
           </Col>
           <Col xl="3">
             <FiterNavSearch

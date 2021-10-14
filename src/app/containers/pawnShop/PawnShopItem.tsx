@@ -257,18 +257,24 @@ const PawnShop = styled.div`
 `;
 interface IShop {
   item: {
-    img: string;
+    id: number;
     name: string;
-    heart: boolean;
-    star: number;
-    available: string | number;
-    limit_min: number;
-    limit_max: number;
-    duration: string;
-    ltv: string;
-    apr: string;
+    interest: number;
+    interestMin: number;
+    interestMax: number;
+    allowedLoanMax: number;
+    allowedLoanMin: number;
+    durationQtyMax: number;
+    durationQtyMin: number;
+    durationQtyType: number;
+    loanToValue: number;
+    symbol: string;
     collateral: string[];
-    method: string;
+    reputation: number;
+    avatar: string;
+    type: number;
+    isFavorite?: boolean;
+    // method: string;
   };
 }
 
@@ -282,15 +288,21 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
     ) : (
       <p className="pawn__collateral-result">{item.collateral.join(', ')}</p>
     );
+
+  const methodButton = () => {
+    if (item.type === 0) return 'Auto';
+    else if (item.type === 1) return 'Semi-Auto';
+    return 'Negotiation';
+  };
   return (
     <PawnShop>
       <div className="pawn">
         <div className="pawn__shop">
           <div className="pawn__img">
-            <img className="pawn__img-shop" src={item.img} alt="" />
+            <img className="pawn__img-shop" src={item.avatar} alt="" />
             <img
               className="pawn__img-icon"
-              src={item.heart ? heartActive : heartDisable}
+              src={item.isFavorite ? heartActive : heartDisable}
               alt=""
             />
           </div>
@@ -299,35 +311,48 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
               {item.name} <img src={checkIcon} alt="" />
               <div className="pawn__star">
                 <img src={starIcon} alt="" />
-                {item.star}
+                {item.reputation}
               </div>
             </div>
             <ul className="pawn__details">
               <li className="pawn__details-item">
                 <p className="pawn__details-label">Available:</p>
-                <p className="pawn__details-result">{item.available} USDT</p>
+                <p className="pawn__details-result">{item.name}</p>
               </li>
               <li className="pawn__details-item">
                 <p className="pawn__details-label">Limit:</p>
                 <p className="pawn__details-result">
-                  {item.limit_min} USDT - {item.limit_max} USDT
+                  {item.allowedLoanMin.toLocaleString('en')}
+                  {' ' + item.symbol} -{' '}
+                  {item.allowedLoanMax.toLocaleString('en')}
+                  {' ' + item.symbol}
                 </p>
               </li>
               <li className="pawn__details-item">
                 <p className="pawn__details-label">Duration:</p>
-                <p className="pawn__details-result">{item.duration}</p>
+                <p className="pawn__details-result">
+                  {item.durationQtyMin} - {item.durationQtyMax}{' '}
+                  {item.durationQtyType === 1 ? 'months' : 'weeks'}
+                </p>
               </li>
               <li className="pawn__details-item">
                 <p className="pawn__details-label">LTV:</p>
-                <p className="pawn__details-result">{item.ltv}</p>
+                <p className="pawn__details-result">
+                  Up to {item.loanToValue}%
+                </p>
               </li>
             </ul>
           </div>
         </div>
         <div className="pawn__interest">
           <div className="pawn__rate">
-            <p className="pawn__rate-label">Interest rate</p>
-            <p className="pawn__rate-result">{item.apr} APR</p>
+            <p className="pawn__rate-label">
+              {item.interestMin || item.interestMax ? 'Interest rate' : ''}
+            </p>
+            <p className="pawn__rate-result">
+              {item.interestMin ? item.interestMin + ' - ' : ''}
+              {item.interestMax ? item.interestMax + '% APR' : ''}
+            </p>
           </div>
           <div className="pawn__collateral">
             <p className="pawn__collateral-label">Collateral accepted</p>
@@ -337,9 +362,9 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
             width="10rem"
             height="2.6rem"
             borderRadius="1.35rem"
-            className={`pawn__method pawn__method--${item.method.toLowerCase()}`}
+            className={`pawn__method pawn__method--${methodButton().toLowerCase()}`}
           >
-            {item.method}
+            {methodButton()}
           </ButtonComponent>
           <ButtonComponent
             fontSize="1.6rem"

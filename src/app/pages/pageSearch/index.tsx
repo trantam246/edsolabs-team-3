@@ -16,7 +16,11 @@ import filtericon from '../../../images/filtericon.svg';
 import styled from 'styled-components';
 import { useState } from 'react';
 import { Filter } from './style';
-
+import { useHistory } from 'react-router';
+import SearchBorrowCryApi from 'api/searchBorrowCryApi';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { pawnShopAction } from 'redux/slices/pawnShopSlice';
 const ContainerPage = styled(Container)`
   padding: 0 1.6rem;
 `;
@@ -27,66 +31,131 @@ const RowPage = styled(Row)`
   }
 `;
 export function PageSearch() {
+  const queryString = require('query-string');
+  const history = useHistory();
   const [statusFilterNav, setstatusFilterNav] = useState(false);
+  // chuyển đổi url ra obj
+  const param = queryString.parse(history.location.search);
+  //data lấy từ filter search
   const [dataSearch, setdataSearch] = useState<any>({
-    inputSearch: '',
-    interestRange: '',
-    loanToValue: '',
-    CollateralAccepted: [],
-    loanToken: [],
-    loanType: [],
-    duration: [],
+    // name: '',
+    // interestRanges: '',
+    // loanToValueRanges: '',
+    // collateralSymbols: [],
+    // loanSymbols: [],
+    // loanTypes: [],
+    // durationTypes: [],
   }); //data lấy được từ người dùng khi onchange
   const onChangeInputSearch = (e: any) => {
-    setdataSearch({ ...dataSearch, inputSearch: e.target.value });
+    setdataSearch({ ...dataSearch, name: e.target.value });
   }; //lấy dữ liệu từ ô input
 
   const onChangeInterestRange = (e: any) => {
-    setdataSearch({ ...dataSearch, interestRange: e.target.value });
+    setdataSearch({ ...dataSearch, interestRanges: e.target.value });
   };
   const onChangeLoanToValue = (e: any) => {
-    setdataSearch({ ...dataSearch, loanToValue: e.target.value });
+    setdataSearch({ ...dataSearch, loanToValueRanges: e.target.value });
   };
 
   const onChangeCollateralAccepted = e => {
     if (e.target.checked) {
-      const newvalue = [...dataSearch.CollateralAccepted, e.target.value];
-      setdataSearch({ ...dataSearch, CollateralAccepted: newvalue });
+      const newvalue = [...dataSearch.collateralSymbols, e.target.value];
+      setdataSearch({ ...dataSearch, collateralSymbols: newvalue });
     } else {
-      const newValue1 = [...dataSearch.CollateralAccepted];
+      const newValue1 = [...dataSearch.collateralSymbols];
       const newValue2 = newValue1.filter(el => el !== e.target.value);
-      setdataSearch({ ...dataSearch, CollateralAccepted: newValue2 });
+      setdataSearch({ ...dataSearch, collateralSymbols: newValue2 });
     }
   };
   const onChangeLoanToken = e => {
     if (e.target.checked) {
-      const newvalue = [...dataSearch.loanToken, e.target.value];
-      setdataSearch({ ...dataSearch, loanToken: newvalue });
+      const newvalue = [...dataSearch.loanSymbols, e.target.value];
+      setdataSearch({ ...dataSearch, loanSymbols: newvalue });
     } else {
-      const newValue1 = [...dataSearch.loanToken];
+      const newValue1 = [...dataSearch.loanSymbols];
       const newValue2 = newValue1.filter(el => el !== e.target.value);
-      setdataSearch({ ...dataSearch, loanToken: newValue2 });
+      setdataSearch({ ...dataSearch, loanSymbols: newValue2 });
     }
   };
   const onChangeLoanType = e => {
     if (e.target.checked) {
-      const newvalue = [...dataSearch.loanType, e.target.value];
-      setdataSearch({ ...dataSearch, loanType: newvalue });
+      const data = { loanTypes: [] };
+      const newvalue = [...data.loanTypes, e.target.value];
+      setdataSearch({ ...dataSearch, loanTypes: newvalue });
     } else {
-      const newValue1 = [...dataSearch.loanType];
+      const newValue1 = [...dataSearch.loanTypes];
       const newValue2 = newValue1.filter(el => el !== e.target.value);
-      setdataSearch({ ...dataSearch, loanType: newValue2 });
+      setdataSearch({ ...dataSearch, loanTypes: newValue2 });
     }
   };
   const onChangeDuration = e => {
     if (e.target.checked) {
-      const newvalue = [...dataSearch.duration, e.target.value];
-      setdataSearch({ ...dataSearch, duration: newvalue });
+      const newvalue = [...dataSearch.durationTypes, e.target.value];
+      setdataSearch({ ...dataSearch, durationTypes: newvalue });
     } else {
-      const newValue1 = [...dataSearch.duration];
+      const newValue1 = [...dataSearch.durationTypes];
       const newValue2 = newValue1.filter(el => el !== e.target.value);
-      setdataSearch({ ...dataSearch, duration: newValue2 });
+      setdataSearch({ ...dataSearch, durationTypes: newValue2 });
     }
+  };
+  //lấy api render ra mà hình
+  const [dataRender, setdataRender] = useState<any>({});
+  useEffect(() => {
+    if (
+      dataSearch.interestRanges === undefined &&
+      dataSearch.collateralSymbols === undefined &&
+      dataSearch.loanTypes === undefined &&
+      dataSearch.name === undefined
+    ) {
+      SearchBorrowCryApi.search(param)
+        .then((res: any) => {
+          setdataRender(res.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } else {
+      SearchBorrowCryApi.search(dataSearch)
+        .then((res: any) => {
+          setdataRender(res.data);
+          // dispatch(pawnShopAction.getPawnShop(res.data));
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      history.push({
+        pathname: '/pawn/offer',
+        search: queryString.stringify(dataSearch),
+      });
+    }
+  }, [dataSearch]);
+  //truyền param vào state 1 lần
+  useEffect(() => {
+    const data: any = {
+      durationTypes: [],
+      loanSymbols: [],
+      collateralSymbols: [],
+    };
+    const newArrDuration = [...data.durationTypes];
+    newArrDuration.push(param.durationTypes);
+    const newLoanToken = [...data.loanSymbols];
+    newLoanToken.push(param.loanSymbols);
+    const newCollateralAccepted = [...data.collateralSymbols];
+    newCollateralAccepted.push(param.collateralSymbols);
+    setdataSearch({
+      ...dataSearch,
+      durationTypes: newArrDuration,
+      loanSymbols: newLoanToken,
+      collateralSymbols: newCollateralAccepted,
+      collateralAmount: param.collateralAmount,
+      durationQty: param.durationQty,
+      loanAmount: param.loanAmount,
+      status: 3,
+      size: 10,
+    });
+  }, []);
+  const editPageCount = e => {
+    setdataSearch({ ...dataSearch, page: e });
   };
   //onclick mowr filter nav
   const onClick = () => {
@@ -97,7 +166,14 @@ export function PageSearch() {
       document.body.style.overflow = 'auto';
     }
   };
-  console.log('data tra ve=', dataSearch);
+
+  //ô tâm
+
+  //o tâ,m
+  console.log('param', param);
+  console.log('data từ api trả về', dataRender);
+  console.log('----------------------------------------');
+  console.log('data filter nav gửi api', dataSearch);
   return (
     <>
       <Helmet>
@@ -147,7 +223,10 @@ export function PageSearch() {
               <PawnShop />
             </Col>
             <Col>
-              <Pagination />
+              <Pagination
+                editPageCount={editPageCount}
+                dataRender={dataRender}
+              />
             </Col>
           </Col>
           <Col xl="3">
