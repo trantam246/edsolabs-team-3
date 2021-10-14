@@ -6,9 +6,11 @@ import { Helmet } from 'react-helmet-async';
 import { Col, Container, Row } from 'reactstrap';
 import styled from 'styled-components';
 import { FiterNavSearch } from 'app/containers/filterNavSearch/lendNFT';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import filtericon from '../../../images/filtericon.svg';
 import { Filter } from './style';
+import { useHistory } from 'react-router';
+import SearchLendNFTApi from 'api/searchLendNFT';
 const ContainerPage = styled(Container)`
   @media screen and (max-width: 575px) {
     padding: 0 1.6rem;
@@ -24,6 +26,21 @@ export function PageSearchNft() {
       document.body.style.overflow = 'auto';
     }
   };
+
+  const queryString = require('query-string');
+  const history = useHistory();
+  const param = queryString.parse(history.location.search);
+  const [dataRender, setdataRender] = useState<any>({});
+  useEffect(() => {
+    SearchLendNFTApi.search(param)
+      .then((res: any) => {
+        setdataRender(res.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -43,7 +60,7 @@ export function PageSearchNft() {
               />
             </Filter>
             <Col>
-              <NftShop />
+              <NftShop dataLendNFT={dataRender} />
             </Col>
             <Col>{/* <Pagination /> */}</Col>
           </Col>
