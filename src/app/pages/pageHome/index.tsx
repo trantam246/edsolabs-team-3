@@ -19,13 +19,12 @@ export function PageHome() {
   // window.addEventListener('resize', a);
   // console.log(state);
   const [modal, setModal] = useState(false);
-  if (
-    localStorage.hasOwnProperty('access_token') &&
-    !localStorage.hasOwnProperty('terms-and-conditions')
-  ) {
+
+  if (!localStorage.hasOwnProperty('terms-and-conditions')) {
     setTimeout(() => {
       setModal(true);
-    }, 3000);
+    }, 2000);
+
   }
   const toggle = () => {
     localStorage.setItem('terms-and-conditions', '1');

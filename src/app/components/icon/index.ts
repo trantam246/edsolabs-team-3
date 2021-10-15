@@ -37,7 +37,7 @@ export const iconCoin = [
   },
   {
     url: 'https://app.defiforyou.uk/_nuxt/img/DFY.a0b985b.png',
-    value: 'DEY',
+    value: 'DFY',
   },
   {
     url: 'https://app.defiforyou.uk/_nuxt/img/USDT.b7a5381.png',

@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import SearchLendCryApi from 'api/searchLendCry';
 import { useHistory } from 'react-router';
+
 export function PageSearchLend() {
   const [statusFilterNav, setstatusFilterNav] = useState(false);
   const onClick = () => {
@@ -65,11 +66,13 @@ export function PageSearchLend() {
     //   });
     // }
   }, [dataSearch]);
+
   const editPageCount = e => {
     setdataSearch({ ...dataSearch, page: e });
   };
   console.log(dataSearch);
   console.log(dataRender);
+
 
   return (
     <>
@@ -91,7 +94,7 @@ export function PageSearchLend() {
                   style={{ cursor: 'pointer' }}
                 />
               </Filter>
-              <Table />
+              <Table dataRender={dataRender} />
             </Col>
             <Col xl="3">
               <FiterNavSearch

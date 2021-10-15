@@ -7,14 +7,14 @@ export const Box = styled.div`
 
   background: #475674;
   border-radius: 1rem;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 
   img {
     padding-right: 2.4rem;
     object-fit: contain;
   }
   @media (max-width: 425px) {
-    margin-bottom: 1.6rem;
+    margin: 1.6rem;
     img {
       position: absolute;
       top: 16px;
