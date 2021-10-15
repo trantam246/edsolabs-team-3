@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { TabPane } from 'reactstrap';
 import styled from 'styled-components';
 import InputCustom from './inputCustom';

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { FiterNavSearch } from 'app/containers/filterNavSearch/lendCryptocurrency';
 import { Footer } from 'app/containers/footer';
 import { Navbar } from 'app/containers/navbar';
@@ -65,7 +66,11 @@ export function PageSearchLend() {
     //   });
     // }
   }, [dataSearch]);
-  console.log('data Lend:', dataRender);
+  const editPageCount = e => {
+    setdataSearch({ ...dataSearch, page: e });
+  };
+  console.log(dataSearch);
+  console.log(dataRender);
 
   return (
     <>
@@ -93,6 +98,7 @@ export function PageSearchLend() {
               <FiterNavSearch
                 status={statusFilterNav}
                 onClick={onClick}
+                editPageCount={editPageCount}
               ></FiterNavSearch>
             </Col>
           </Row>

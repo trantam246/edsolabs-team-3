@@ -15,7 +15,6 @@ export function TabLendForm() {
     control,
   } = useForm();
   const onSubmit = data => {
-    console.log('lend', data);
     if (Collateral === true) {
       const newObj = {
         collateralSymbols: [],
@@ -23,7 +22,6 @@ export function TabLendForm() {
         durationTypes: Number(data.durationTypes.value),
         // loanAmount: Number(data.loanAmount),
         loanSymbols: data.loanSymbols.value,
-        status: 3,
         size: 10,
       };
       const newArr = data.collateralSymbols.map(value => value.value);
@@ -40,10 +38,10 @@ export function TabLendForm() {
         durationTypes: Number(data.durationTypes.value),
         loanAmount: Number(data.loanAmount),
         loanSymbols: data.loanSymbols.value,
-        status: 3,
         size: 10,
+        page: 0,
       };
-      console.log('false', newObj);
+      console.log('ô âu phàn này', newObj);
       history.push({
         pathname: '/pawn/lender/nft-result',
         search: queryString.stringify(newObj),
