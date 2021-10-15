@@ -19,6 +19,7 @@ export function PageHome() {
   // window.addEventListener('resize', a);
   // console.log(state);
   const [modal, setModal] = useState(false);
+
   if (!localStorage.hasOwnProperty('terms-and-conditions')) {
     setTimeout(() => {
       setModal(true);
