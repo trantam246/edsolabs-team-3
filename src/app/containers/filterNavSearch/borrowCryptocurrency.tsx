@@ -11,7 +11,6 @@ import {
   WarperFilterNav,
 } from './style';
 import { iconCoin, LoanAmount } from 'app/components/icon';
-import { useState } from 'react';
 export function FiterNavSearch(props: any) {
   const onChangeInputSearch = e => {
     props.onChangeInputSearch(e);
@@ -101,6 +100,13 @@ export function FiterNavSearch(props: any) {
                       name="Interestrange"
                       value="0:0.1"
                       onChange={onChangeInterestRange}
+                      checked={
+                        param.interestRanges === undefined
+                          ? false
+                          : param.interestRanges === '0:0.1'
+                          ? true
+                          : false
+                      }
                     />
                     <span></span>
                   </div>
@@ -113,6 +119,13 @@ export function FiterNavSearch(props: any) {
                       name="Interestrange"
                       value="0.1:0.25"
                       onChange={onChangeInterestRange}
+                      checked={
+                        param.interestRanges === undefined
+                          ? false
+                          : param.interestRanges === '0.1:0.25'
+                          ? true
+                          : false
+                      }
                     />
                     <span></span>
                   </div>
@@ -125,6 +138,13 @@ export function FiterNavSearch(props: any) {
                       name="Interestrange"
                       value="0.25:0.5"
                       onChange={onChangeInterestRange}
+                      checked={
+                        param.interestRanges === undefined
+                          ? false
+                          : param.interestRanges === '0.25:0.5'
+                          ? true
+                          : false
+                      }
                     />
                     <span></span>
                   </div>
@@ -137,6 +157,13 @@ export function FiterNavSearch(props: any) {
                       name="Interestrange"
                       value="0.5:1"
                       onChange={onChangeInterestRange}
+                      checked={
+                        param.interestRanges === undefined
+                          ? false
+                          : param.interestRanges === '0.5:1'
+                          ? true
+                          : false
+                      }
                     />
                     <span></span>
                   </div>
@@ -172,6 +199,13 @@ export function FiterNavSearch(props: any) {
                       name="Loantovalue"
                       value="0:0.25"
                       onChange={onChangeLoanToValue}
+                      checked={
+                        param.loanToValueRanges === undefined
+                          ? false
+                          : param.loanToValueRanges === '0:0.25'
+                          ? true
+                          : false
+                      }
                     />
                     <span></span>
                   </div>
@@ -184,6 +218,13 @@ export function FiterNavSearch(props: any) {
                       name="Loantovalue"
                       value="0.25:0.5"
                       onChange={onChangeLoanToValue}
+                      checked={
+                        param.loanToValueRanges === undefined
+                          ? false
+                          : param.loanToValueRanges === '0.25:0.5'
+                          ? true
+                          : false
+                      }
                     />
                     <span></span>
                   </div>
@@ -196,6 +237,13 @@ export function FiterNavSearch(props: any) {
                       name="Loantovalue"
                       value="0.5:0.75"
                       onChange={onChangeLoanToValue}
+                      checked={
+                        param.loanToValueRanges === undefined
+                          ? false
+                          : param.loanToValueRanges === '0.5:0.75'
+                          ? true
+                          : false
+                      }
                     />
                     <span></span>
                   </div>
@@ -208,6 +256,13 @@ export function FiterNavSearch(props: any) {
                       name="Loantovalue"
                       value="0.75:1"
                       onChange={onChangeLoanToValue}
+                      checked={
+                        param.loanToValueRanges === undefined
+                          ? false
+                          : param.loanToValueRanges === '0.75:1'
+                          ? true
+                          : false
+                      }
                     />
                     <span></span>
                   </div>

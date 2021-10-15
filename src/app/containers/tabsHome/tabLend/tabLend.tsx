@@ -39,6 +39,7 @@ export function TabLendForm() {
         loanAmount: Number(data.loanAmount),
         loanSymbols: data.loanSymbols.value,
         size: 10,
+        page: 0,
       };
       console.log('ô âu phàn này', newObj);
       history.push({

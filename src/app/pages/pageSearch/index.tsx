@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { FiterNavSearch } from 'app/containers/filterNavSearch/borrowCryptocurrency';
 import { Footer } from 'app/containers/footer';
 import { Navbar } from 'app/containers/navbar';
@@ -218,6 +219,8 @@ export function PageSearch() {
       status: 3,
       size: 5,
       loanTypes: param.loanTypes,
+      interestRanges: param.interestRanges,
+      loanToValueRanges: param.loanToValueRanges,
     });
   }, []);
   const editPageCount = e => {

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Footer } from 'app/containers/footer';
 import { Navbar } from 'app/containers/navbar';
 import { NftShop } from 'app/containers/nftShop';
@@ -31,37 +32,41 @@ export function PageSearchNft() {
   const history = useHistory();
   const param = queryString.parse(history.location.search);
   const [dataRender, setdataRender] = useState<any>({});
-  const [dataSearch, setdataSearch] = useState<any>({
-    name: '',
-    durationTypes: [],
-    NFTtype: [],
-    Assettype: [],
-    collateralSymbols: [],
-  });
+  const [dataSearch, setdataSearch] = useState<any>({});
+  //nut reset
+  const clickResetAll = () => {
+    history.push('/pawn/lender/nft-result');
+    setdataSearch({ page: 0, size: 10 });
+  };
   //lấy dữ liệu input
   const onchangeInputName = e => {
     setdataSearch({ ...dataSearch, name: e.target.value });
   };
   const collateralSymbols = e => {
     if (e.target.checked) {
-      const newvalue = dataSearch?.collateralSymbols;
+      const newvalue = dataSearch?.loanSymbols;
       newvalue.push(e.target.value);
-      setdataSearch({ ...dataSearch, collateralSymbols: newvalue });
+      setdataSearch({ ...dataSearch, loanSymbols: newvalue });
     } else {
-      const newValue1 = [...dataSearch?.collateralSymbols];
+      const newValue1 = [...dataSearch?.loanSymbols];
       const newValue2 = newValue1.filter(el => el !== e.target.value);
-      setdataSearch({ ...dataSearch, collateralSymbols: newValue2 });
+      setdataSearch({ ...dataSearch, loanSymbols: newValue2 });
     }
   };
   const NFTtype = e => {
     if (e.target.checked) {
-      const newvalue = dataSearch?.NFTtype;
-      newvalue.push(e.target.value);
-      setdataSearch({ ...dataSearch, NFTtype: newvalue });
+      const data = {
+        nftType: [],
+      };
+      const newvalue =
+        dataSearch.nftType === undefined
+          ? [...data.nftType, e.target.value]
+          : [...dataSearch.nftType, e.target.value];
+      setdataSearch({ ...dataSearch, nftType: newvalue });
     } else {
-      const newValue1 = [...dataSearch?.NFTtype];
+      const newValue1 = [...dataSearch?.nftType];
       const newValue2 = newValue1.filter(el => el !== e.target.value);
-      setdataSearch({ ...dataSearch, NFTtype: newValue2 });
+      setdataSearch({ ...dataSearch, nftType: newValue2 });
     }
   };
   const durationTypes = e => {
@@ -77,28 +82,63 @@ export function PageSearchNft() {
   };
   const Assettype = e => {
     if (e.target.checked) {
-      const newvalue = dataSearch?.Assettype;
-      newvalue.push(e.target.value);
-      setdataSearch({ ...dataSearch, Assettype: newvalue });
+      const data = {
+        assetType: [],
+      };
+      const newvalue =
+        dataSearch.assetType === undefined
+          ? [...data.assetType, e.target.value]
+          : [...dataSearch.assetType, e.target.value];
+      setdataSearch({ ...dataSearch, assetType: newvalue });
     } else {
-      const newValue1 = [...dataSearch?.Assettype];
+      const newValue1 = [...dataSearch?.assetType];
       const newValue2 = newValue1.filter(el => el !== e.target.value);
-      setdataSearch({ ...dataSearch, Assettype: newValue2 });
+      setdataSearch({ ...dataSearch, assetType: newValue2 });
     }
   };
+
   useEffect(() => {
-    SearchLendNFTApi.search(param)
+    SearchLendNFTApi.search(dataSearch)
       .then((res: any) => {
         setdataRender(res.data);
+        console.log('laanf 2');
       })
       .catch(error => {
         console.log(error);
       });
+    history.push({
+      pathname: '/pawn/lender/nft-result',
+      search: queryString.stringify(dataSearch),
+    });
+  }, [dataSearch]);
+  useEffect(() => {
+    const durationTypes: any = [];
+    durationTypes.push(param.durationTypes);
+    const loanSymbols: any = [];
+    loanSymbols.push(param.loanSymbols);
+    const nftType =
+      param.nftType === undefined ? param.nftType : [...param.nftType];
+    const assetType =
+      param.assetType === undefined ? param.assetType : [...param.assetType];
+    setdataSearch({
+      page: param.page,
+      size: 10,
+      // durationQty: param.durationQty, //
+      durationTypes: durationTypes,
+      // loanAmount: param.loanAmount, //
+      loanSymbols: loanSymbols,
+      name: param.name,
+      nftType: nftType,
+      assetType: assetType,
+    });
   }, []);
   const editPageCount = e => {
     setdataSearch({ ...dataSearch, page: e });
   };
+  console.log('param', param);
   console.log('dataSearch', dataSearch);
+  console.log('datarender', dataRender);
+
   return (
     <>
       <Helmet>
@@ -137,6 +177,7 @@ export function PageSearchNft() {
               NFTtype={NFTtype}
               durationTypes={durationTypes}
               Assettype={Assettype}
+              clickResetAll={clickResetAll}
             ></FiterNavSearch>
           </Col>
         </Row>
