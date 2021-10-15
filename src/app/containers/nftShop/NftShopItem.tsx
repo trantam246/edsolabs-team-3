@@ -5,11 +5,7 @@ import diamondIcon from '../../../images/diamo_nft_icon.svg';
 import artworkIcon from '../../../images/art_nft_icon.svg';
 import starIcon from '../../../images/star_icon.svg';
 import hardNft from '../../../images/hard_nft.png';
-<<<<<<< HEAD
-import avatar from '../../../images/shop1_nft.png';
-=======
 import { NftShop } from './style';
->>>>>>> 4b67e43 (done nav sort)
 
 interface IShop {
   item: {

@@ -19,16 +19,8 @@ import { Filter } from './style';
 import { useHistory } from 'react-router';
 import SearchBorrowCryApi from 'api/searchBorrowCryApi';
 import { useEffect } from 'react';
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import { useDispatch } from 'react-redux';
-import { pawnShopAction } from 'redux/slices/pawnShopSlice';
-import SearchPersonalApi from 'api/searchPersonalApi';
->>>>>>> b5a2157 (nav sort)
-=======
 import searchPersonalLend from 'api/searchPersonalLendApi';
->>>>>>> 4b67e43 (done nav sort)
+
 const ContainerPage = styled(Container)`
   padding: 0 1.6rem;
 `;
