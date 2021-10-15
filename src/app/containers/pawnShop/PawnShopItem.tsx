@@ -75,9 +75,9 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
               <li className="pawn__details-item">
                 <p className="pawn__details-label">Limit:</p>
                 <p className="pawn__details-result">
-                  {item.allowedLoanMin.toLocaleString('en')}
+                  {item.allowedLoanMin?.toLocaleString('en')}
                   {' ' + item.symbol} -{' '}
-                  {item.allowedLoanMax.toLocaleString('en')}
+                  {item.allowedLoanMax?.toLocaleString('en')}
                   {' ' + item.symbol}
                 </p>
               </li>

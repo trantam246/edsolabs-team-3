@@ -4,7 +4,7 @@ import PawnShopItem from './PawnShopItem';
 const PawnShopList = (props: any) => {
   const dataPawnShops = props.data.content?.map(o => ({
     id: o.id,
-    name: o.pawnShop.name,
+    name: o.pawnShop?.name,
     interest: o.interest,
     interestMin: o.interestMin,
     interestMax: o.interestMax,
@@ -14,10 +14,10 @@ const PawnShopList = (props: any) => {
     durationQtyMin: o.durationQtyMin,
     durationQtyType: o.durationQtyType,
     loanToValue: o.loanToValue,
-    symbol: o.acceptableAssetsAsLoan[0].symbol,
-    collateral: o.acceptableAssetsAsCollateral.map(e => e.symbol),
-    reputation: o.pawnShop.reputation,
-    avatar: o.pawnShop.avatar,
+    symbol: o.acceptableAssetsAsLoan[0]?.symbol,
+    collateral: o.acceptableAssetsAsCollateral?.map(e => e.symbol),
+    reputation: o.pawnShop?.reputation,
+    avatar: o.pawnShop?.avatar,
     type: o.type,
     isFavorite: o.isFavourite,
   }));
