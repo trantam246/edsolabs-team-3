@@ -100,6 +100,10 @@ const TabPaneLogin = styled(TabPane)`
       width: 100%;
     }
   }
+
+  @media (min-width: 1440px) {
+    padding-bottom: 213px;
+  }
 `;
 
 interface props {

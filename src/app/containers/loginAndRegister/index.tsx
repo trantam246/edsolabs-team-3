@@ -8,7 +8,6 @@ import TextContent from './textContent';
 
 const Wrapper = styled.div`
   background: #232732;
-  margin-bottom: 1.2rem;
 
   @media (max-width: 769px) {
     .row {
