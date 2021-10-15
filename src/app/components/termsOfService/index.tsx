@@ -91,6 +91,7 @@ export default function TermsOfService(props) {
             transaction process is authorised and regulated by The Financial
             Conduct Authority.{' '}
           </List>
+
         </Box>
         <ButtonGroup>
           <Button color={''}>Decline</Button>

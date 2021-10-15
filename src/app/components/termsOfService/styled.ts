@@ -34,14 +34,17 @@ export const Button = styled.button`
   }
 `;
 export const ModalBG = styled(Modal)`
+
   position: fixed;
   transform: translate(-50%, -50%) !important;
   top: 45%;
   left: 50%;
+
   .modal-content {
     background: none !important;
   }
   max-width: 1324px !important;
+
 
   @media (max-width: 1920px) {
     max-width: 80% !important;
@@ -61,7 +64,6 @@ export const ModalBG = styled(Modal)`
   @media (max-width: 540px) {
     max-width: 100% !important;
     left: 0;
-  }
 `;
 
 export const Paper = styled(Jumbotron)`
@@ -131,6 +133,7 @@ export const Box = styled.div`
     background: #45484f;
     border-radius: 0.5rem;
     margin: 2rem 2.2rem 4rem 0 !important;
+
   }
   ::-webkit-scrollbar-thumb {
     background: #a2a3a7;
