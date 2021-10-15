@@ -8,6 +8,9 @@ export const SlideImg = styled.img`
   object-fit: cover;
   border-radius: 2rem;
 
+  @media (max-width: 1441) {
+    width: 362px;
+  }
   @media (max-width: 768px) {
     max-width: 283px;
   }
@@ -18,7 +21,9 @@ export const Box = styled.div`
   margin: 0 auto;
   max-width: 428px;
   width: inherit;
-
+  @media (max-width: 1441) {
+    width: 362px;
+  }
   @media (max-width: 768px) {
     max-width: 283px;
   }
@@ -120,6 +125,7 @@ export const SwiperSlideCustom = styled.div`
   .swiper-button-next,
   .swiper-button-prev {
     position: absolute;
+    top: calc(50% - 45px);
     background: rgba(201, 202, 205, 0.1);
     color: #dba83d;
     font-size: 2.5rem;
@@ -142,57 +148,73 @@ export const SwiperSlideCustom = styled.div`
   @media (max-width: 1600px) {
     .swiper-button-next,
     .swiper-button-prev {
-      width: 60px;
-      height: 60px;
+      width: 65px;
+      height: 65px;
       font-size: 2rem;
     }
     .swiper-button-next {
-      right: -55px;
+      right: -75px;
     }
     .swiper-button-prev {
-      left: -55px;
+      left: -75px;
     }
+  }
+  @media (max-width: 1500px) {
+    margin: 0 40px;
   }
   @media (max-width: 1024px) {
     .swiper-button-next,
     .swiper-button-prev {
-      width: 40px;
-      height: 40px;
+      top: calc(50% - 40px);
+      width: 55px;
+      height: 55px;
       font-size: 1.5rem;
     }
     .swiper-button-next {
-      right: -25px;
+      right: -60px;
     }
     .swiper-button-prev {
-      left: -25px;
+      left: -60px;
+    }
+  }
+  @media (max-width: 768px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+      top: calc(50% - 35px);
+      width: 45px;
+      height: 45px;
+      font-size: 1.5rem;
+    }
+    .swiper-button-next {
+      right: -60px;
+    }
+    .swiper-button-prev {
+      left: -60px;
     }
   }
   @media (max-width: 576px) {
+    margin: 0 auto;
     .swiper-button-next,
     .swiper-button-prev {
-      width: 30px;
-      height: 30px;
+      top: calc(50% - 30px);
+      width: 40px;
+      height: 40px;
       font-size: 1.2rem;
     }
     .swiper-button-next {
-      right: 10px;
+      right: 0px;
     }
     .swiper-button-prev {
-      left: 10px;
+      left: 0px;
     }
   }
   @media (max-width: 375px) {
     .swiper-button-next,
     .swiper-button-prev {
+      top: calc(50% - 27px);
+
       width: 30px;
       height: 30px;
-      font-size: 1.2rem;
-    }
-    .swiper-button-next {
-      right: 0;
-    }
-    .swiper-button-prev {
-      left: 0;
     }
   }
 `;

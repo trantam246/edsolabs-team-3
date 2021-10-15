@@ -13,6 +13,10 @@ export const Button = styled(ButtonComponent)`
   font-weight: 500;
   font-size: 1.4rem;
   line-height: 1.7rem;
+  &:hover {
+    opacity: 0.7;
+    transition: all ease-in-out 0.5s;
+  }
 `;
 
 export const P = styled.p`
@@ -58,6 +62,10 @@ export const Th = styled.th`
 export const Tbody = styled.tbody`
   tr {
     background-color: #282c37;
+    &:hover {
+      background: #475674;
+      transition: all ease-in-out 0.2s;
+    }
   }
 `;
 

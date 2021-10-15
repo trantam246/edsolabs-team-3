@@ -27,11 +27,11 @@ export default function Table(props: any) {
                 <Th></Th>
               </tr>
             </Thead>
-            {dataRender?.content?.map((o, i) => {
-              return (
-                <>
-                  <Tbody key={i}>
-                    <tr>
+            <Tbody>
+              {dataRender?.content?.map((o, i) => {
+                return (
+                  <>
+                    <tr key={i}>
                       <Td>{++i}</Td>
                       <Td>
                         <Borrower
@@ -69,13 +69,12 @@ export default function Table(props: any) {
                         />
                       </Td>
                     </tr>
-                  </Tbody>
-                  <Tbody>
+
                     <td colSpan={6}>{i === length && <Banner />}</td>
-                  </Tbody>
-                </>
-              );
-            })}
+                  </>
+                );
+              })}
+            </Tbody>
           </Tables>
         </>
       )}
