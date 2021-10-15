@@ -4,121 +4,61 @@ import Borrower from './Borrower';
 import NFTIcon from './NFTIcon';
 import { Button, Tables, Thead, Th, Td, Tbody, P } from './style';
 
-const data = {
-  content: [
-    {
-      id: 1,
-      Borrower: '0xaa5...a410e',
-      NFT: ['ETH', 'DFY'],
-      date: '12 months',
-    },
-    {
-      id: 2,
-      Borrower: '0xaa5...a410e',
-      NFT: ['ETH', 'DFY'],
-      date: '12 months',
-    },
-    {
-      id: 3,
-      Borrower: '0xaa5...a410e',
-      NFT: ['ETH', 'DFY'],
-      date: '12 months',
-    },
-    {
-      id: 4,
-      Borrower: '0xaa5...a410e',
-      NFT: ['ETH', 'DFY'],
-      date: '12 months',
-    },
-    {
-      id: 5,
-      Borrower: '0xaa5...a410e',
-      NFT: ['ETH', 'DFY'],
-      date: '12 months',
-    },
-    {
-      id: 6,
-      Borrower: '0xaa5...a410e',
-      NFT: ['ETH', 'DFY'],
-      date: '12 months',
-    },
-    {
-      id: 7,
-      Borrower: '0xaa5...a410e',
-      NFT: ['ETH', 'DFY'],
-      date: '12 months',
-    },
-    {
-      id: 8,
-      Borrower: '0xaa5...a410e',
-      NFT: ['ETH', 'DFY'],
-      date: '12 months',
-    },
-    {
-      id: 9,
-      Borrower: '0xaa5...a410e',
-      NFT: ['ETH', 'DFY'],
-      date: '12 months',
-    },
-    {
-      id: 10,
-      Borrower: '0xaa5...a410e',
-      NFT: ['ETH', 'DFY'],
-      date: '12 months',
-    },
-  ],
-  size: 10,
-  page: 0,
-};
-
-export default function Table() {
-  const chunk = (target, size) => {
-    return target.reduce(
-      (memo, value, index) => {
-        if (index % (target.length / size) === 0 && index !== 0) memo.push([]);
-        memo[memo.length - 1].push(value);
-        return memo;
-      },
-      [[]],
-    );
-  };
+export default function Table(props: any) {
+  const { dataRender } = props;
+  const length =
+    dataRender?.content?.length <= dataRender?.size / 2
+      ? dataRender?.content?.length
+      : dataRender?.size / 2;
 
   return (
     <>
-      <P>10 collateral offers match your search</P>
-      {chunk(data.content, 2).map((data, i) => {
-        return (
-          <>
-            <Tables key={i}>
-              <Thead>
-                <tr>
-                  <Th>#</Th>
-                  <Th>Borrower</Th>
-                  <Th>Collateral</Th>
-                  <Th>Loan currency</Th>
-                  <Th>Duration</Th>
-                  <Th></Th>
-                </tr>
-              </Thead>
-              {data.map((o, k) => {
-                return (
-                  <Tbody key={k}>
+      {props && (
+        <>
+          <P>{dataRender.total_elements} collateral offers match your search</P>
+          <Tables>
+            <Thead>
+              <tr>
+                <Th>#</Th>
+                <Th>Borrower</Th>
+                <Th>Collateral</Th>
+                <Th>Loan currency</Th>
+                <Th>Duration</Th>
+                <Th></Th>
+              </tr>
+            </Thead>
+            {dataRender?.content?.map((o, i) => {
+              return (
+                <>
+                  <Tbody key={i}>
                     <tr>
-                      <Td>{o.id}</Td>
+                      <Td>{++i}</Td>
                       <Td>
-                        <Borrower href={o.Borrower} />
+                        <Borrower
+                          href={o?.walletAddress}
+                          contract={o?.completedContracts}
+                          reputation={o?.reputation}
+                        />
                       </Td>
-                      {o.NFT.map((n, j) => {
-                        return (
-                          <>
-                            <Td key={j}>
-                              <NFTIcon value={n} />
-                            </Td>
-                          </>
-                        );
-                      })}
-
-                      <Td>{o.date}</Td>
+                      <Td>
+                        <NFTIcon
+                          type={'collateral'}
+                          value={o?.collateralSymbol}
+                          Amount={o?.collateralAmount}
+                        />
+                      </Td>
+                      <Td>
+                        <NFTIcon
+                          type={'loan'}
+                          value={o?.loanSymbol}
+                          Amount={o?.loanAmount}
+                        />
+                      </Td>
+                      <Td>
+                        {o?.durationType === 0
+                          ? `${o?.durationQty} Months`
+                          : `${o?.durationQty} Weeks`}
+                      </Td>
                       <Td>
                         <Button
                           children="Send Offer"
@@ -130,13 +70,15 @@ export default function Table() {
                       </Td>
                     </tr>
                   </Tbody>
-                );
-              })}
-            </Tables>
-            {i % 2 === 0 && <Banner />}
-          </>
-        );
-      })}
+                  <Tbody>
+                    <td colSpan={6}>{i === length && <Banner />}</td>
+                  </Tbody>
+                </>
+              );
+            })}
+          </Tables>
+        </>
+      )}
     </>
   );
 }

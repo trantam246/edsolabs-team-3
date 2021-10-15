@@ -2,7 +2,8 @@ import axiosClient from 'api';
 const SearchLendCryApi = {
   search(param: any) {
     const url =
-      'https://gwapi.defiforyou.uk/defi-pawn-crypto-service/public-api/v1.0.0/pawn-shop/search-p2p-lenders';
+      'https://staginggw.defiforyou.uk/defi-pawn-crypto-service/public-api/v1.0.0/collaterals/search';
+
     return axiosClient.get(url, { params: param });
   },
 };

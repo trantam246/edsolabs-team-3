@@ -76,6 +76,21 @@ export default function TermsOfService(props) {
             CListents and users are assured that we are a company that treats
             customers fairly.
           </List>
+          <List>
+            Assurance knowing that certain elements within the peer-to-peer
+            transaction process is authorised and regulated by The Financial
+            Conduct Authority.{' '}
+          </List>
+          <List>
+            Assurance knowing that certain elements within the peer-to-peer
+            transaction process is authorised and regulated by The Financial
+            Conduct Authority.{' '}
+          </List>
+          <List>
+            Assurance knowing that certain elements within the peer-to-peer
+            transaction process is authorised and regulated by The Financial
+            Conduct Authority.{' '}
+          </List>
         </Box>
         <ButtonGroup>
           <Button color={''}>Decline</Button>

@@ -56,7 +56,7 @@ const Menu = styled(Col)`
       }
     }
   }
-  @media (max-width: 1280px) {
+  @media (max-width: 1320px) {
     & > ul {
       & > li {
         padding-left: 20px;

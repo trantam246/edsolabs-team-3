@@ -19,9 +19,9 @@ export function TabLendForm() {
     if (Collateral === true) {
       const newObj = {
         collateralSymbols: [],
-        durationQty: Number(data.durationQty),
+        // durationQty: Number(data.durationQty),
         durationTypes: Number(data.durationTypes.value),
-        loanAmount: Number(data.loanAmount),
+        // loanAmount: Number(data.loanAmount),
         loanSymbols: data.loanSymbols.value,
         status: 3,
         size: 10,
