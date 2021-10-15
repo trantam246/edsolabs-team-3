@@ -264,7 +264,14 @@ const NftShopItem: React.FC<IShop> = ({ item }) => {
             <li className="nft__details-item">
               <p className="nft__details-label">Duration:</p>
               <p className="nft__details-result">
-                {item.durationTime} {item.durationType === 0 ? 'week' : 'month'}
+                {item.durationTime}{' '}
+                {item.durationType === 0
+                  ? item.durationTime > 1
+                    ? 'weeks'
+                    : 'week'
+                  : item.durationTime > 1
+                  ? 'months'
+                  : 'month'}
               </p>
             </li>
             {item.nftAssetLocation && (
@@ -278,7 +285,8 @@ const NftShopItem: React.FC<IShop> = ({ item }) => {
                 <p className="nft__details-label">Evaluated price:</p>
                 <div className="nft__details-result">
                   <img src={tIcon} alt="" />
-                  {item.nftEvaluatedPrice} {item.nftEvaluatedSymbol}
+                  {item.nftEvaluatedPrice.toLocaleString('en')}{' '}
+                  {item.nftEvaluatedSymbol}
                 </div>
               </li>
             )}
@@ -288,7 +296,8 @@ const NftShopItem: React.FC<IShop> = ({ item }) => {
           <div className="nft__rate">
             <p className="nft__rate-label">Expected loan</p>
             <p className="nft__rate-result">
-              {item.expectedLoanAmount} {item.expectedLoanSymbol}
+              {item.expectedLoanAmount.toLocaleString('en')}{' '}
+              {item.expectedLoanSymbol}
             </p>
           </div>
 
