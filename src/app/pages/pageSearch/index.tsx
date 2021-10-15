@@ -19,8 +19,6 @@ import { Filter } from './style';
 import { useHistory } from 'react-router';
 import SearchBorrowCryApi from 'api/searchBorrowCryApi';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { pawnShopAction } from 'redux/slices/pawnShopSlice';
 const ContainerPage = styled(Container)`
   padding: 0 1.6rem;
 `;
@@ -46,6 +44,23 @@ export function PageSearch() {
     // loanTypes: [],
     // durationTypes: [],
   }); //data lấy được từ người dùng khi onchange
+  const resetDataFilter = () => {
+    setdataSearch({
+      name: '',
+      interestRanges: '',
+      loanToValueRanges: '',
+      collateralSymbols: [],
+      loanTypes: [],
+      durationTypes: [],
+      loanSymbols: [],
+      size: 10,
+      status: 3,
+    });
+    history.push({
+      pathname: '/pawn/offer',
+      search: queryString.stringify({ size: 10 }),
+    });
+  };
   const onChangeInputSearch = (e: any) => {
     setdataSearch({ ...dataSearch, name: e.target.value });
   }; //lấy dữ liệu từ ô input
@@ -59,19 +74,26 @@ export function PageSearch() {
 
   const onChangeCollateralAccepted = e => {
     if (e.target.checked) {
-      // const newvalue = [...dataSearch.collateralSymbols, e.target.value];
-      const newString = dataSearch.collateralSymbols + ',' + e.target.value;
-      console.log(newString);
-      setdataSearch({ ...dataSearch, collateralSymbols: newString });
+      const newvalue = dataSearch?.collateralSymbols;
+      newvalue.push(e.target.value);
+      setdataSearch({ ...dataSearch, collateralSymbols: newvalue });
     } else {
-      const newValue1 = [...dataSearch.collateralSymbols];
+      const newValue1 = [...dataSearch?.collateralSymbols];
       const newValue2 = newValue1.filter(el => el !== e.target.value);
       setdataSearch({ ...dataSearch, collateralSymbols: newValue2 });
     }
   };
   const onChangeLoanToken = e => {
     if (e.target.checked) {
-      const newvalue = [...dataSearch.loanSymbols, e.target.value];
+      const data = {
+        loanSymbols: [],
+      };
+      const newvalue =
+        dataSearch.loanSymbols === undefined
+          ? [...data.loanSymbols, e.target.value]
+          : [...dataSearch.loanSymbols, e.target.value];
+      // const newvalue: any = dataSearch?.loanSymbols;
+      // newvalue.push(e.target.value);
       setdataSearch({ ...dataSearch, loanSymbols: newvalue });
     } else {
       const newValue1 = [...dataSearch.loanSymbols];
@@ -81,8 +103,13 @@ export function PageSearch() {
   };
   const onChangeLoanType = e => {
     if (e.target.checked) {
-      const data = { loanTypes: [] };
-      const newvalue = [...data.loanTypes, e.target.value];
+      const data = {
+        loanTypes: [],
+      };
+      const newvalue =
+        dataSearch.loanTypes === undefined
+          ? [...data.loanTypes, e.target.value]
+          : [...dataSearch.loanTypes, e.target.value];
       setdataSearch({ ...dataSearch, loanTypes: newvalue });
     } else {
       const newValue1 = [...dataSearch.loanTypes];
@@ -92,7 +119,8 @@ export function PageSearch() {
   };
   const onChangeDuration = e => {
     if (e.target.checked) {
-      const newvalue = [...dataSearch.durationTypes, e.target.value];
+      const newvalue = dataSearch?.durationTypes;
+      newvalue.push(e.target.value);
       setdataSearch({ ...dataSearch, durationTypes: newvalue });
     } else {
       const newValue1 = [...dataSearch.durationTypes];
@@ -117,6 +145,7 @@ export function PageSearch() {
           console.log(error);
         });
     } else {
+      //goij laij api
       SearchBorrowCryApi.search(dataSearch)
         .then((res: any) => {
           setdataRender(res.data);
@@ -139,22 +168,39 @@ export function PageSearch() {
       collateralSymbols: [],
     };
     const newArrDuration = [...data.durationTypes];
-    newArrDuration.push(param.durationTypes);
+    const newArrDuration2 =
+      typeof param.durationTypes === 'undefined'
+        ? []
+        : typeof param.durationTypes === 'string'
+        ? [param.durationTypes].concat(newArrDuration)
+        : param.durationTypes.concat(newArrDuration);
+
     const newLoanToken = [...data.loanSymbols];
-    newLoanToken.push(param.loanSymbols);
-    // const newCollateralAccepted = [...data.collateralSymbols];
-    const newCollateralAccepted = param.collateralSymbols;
-    // newCollateralAccepted.push(param.collateralSymbols);
+    const newLoanToken2 =
+      typeof param.loanSymbols === 'undefined'
+        ? []
+        : typeof param.loanSymbols === 'string'
+        ? [param.loanSymbols].concat(newLoanToken)
+        : param.loanSymbols.concat(newLoanToken);
+
+    const newCollateralAccepted = [...data.collateralSymbols];
+    const newCollateralAccepted2 =
+      typeof param.collateralSymbols === 'undefined'
+        ? []
+        : typeof param.collateralSymbols === 'string'
+        ? [param.collateralSymbols].concat(newCollateralAccepted)
+        : param.collateralSymbols.concat(newCollateralAccepted);
     setdataSearch({
       ...dataSearch,
-      durationTypes: newArrDuration,
-      loanSymbols: newLoanToken,
-      collateralSymbols: newCollateralAccepted,
+      durationTypes: newArrDuration2,
+      loanSymbols: newLoanToken2,
+      collateralSymbols: newCollateralAccepted2,
       collateralAmount: param.collateralAmount,
       durationQty: param.durationQty,
       loanAmount: param.loanAmount,
       status: 3,
       size: 10,
+      loanTypes: param.loanTypes,
     });
   }, []);
   const editPageCount = e => {
@@ -243,6 +289,8 @@ export function PageSearch() {
               onChangeLoanToken={onChangeLoanToken}
               onChangeLoanType={onChangeLoanType}
               onChangeDuration={onChangeDuration}
+              resetDataFilter={resetDataFilter}
+              dataSearch={dataSearch}
             ></FiterNavSearch>
           </Col>
         </RowPage>

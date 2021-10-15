@@ -53,11 +53,11 @@ export default function TabsBorrow(props: any) {
     const queryString = require('query-string');
     const newObj = {
       collateralAmount: Number(data.collateralAmount),
-      collateralSymbols: data.collateralSymbols.value, //
+      collateralSymbols: [data.collateralSymbols.value], //
       durationQty: Number(data.durationQty),
-      durationTypes: Number(data.durationTypes.value), //
+      durationTypes: [Number(data.durationTypes.value)], //
       loanAmount: Number(data.loanAmount),
-      loanSymbols: data.loanSymbols.value, //
+      loanSymbols: [data.loanSymbols.value], //
       status: 3,
       size: 10,
     };
