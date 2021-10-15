@@ -19,7 +19,7 @@ export const NftShop = styled.div`
       width: 21.5rem;
       &-shop {
         width: 100%;
-        height: auto;
+        height: 100%;
         border-radius: 2rem;
         object-fit: cover;
       }
@@ -73,6 +73,12 @@ export const NftShop = styled.div`
       }
       &-result {
         color: #ffffff;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
         &--blue {
           color: #2596ff;
           text-decoration: underline;
