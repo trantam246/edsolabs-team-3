@@ -1,6 +1,5 @@
 import { ButtonComponent } from 'app/components/Button/Input';
 import React from 'react';
-import styled from 'styled-components';
 import heartActive from '../../../images/heart_active.svg';
 import heartDisable from '../../../images/heart_disable.svg';
 import checkIcon from '../../../images/check_icon.svg';
@@ -26,7 +25,6 @@ interface IShop {
     avatar: string;
     type: number;
     isFavorite?: boolean;
-    // method: string;
   };
 }
 
