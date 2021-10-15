@@ -55,7 +55,7 @@ export function PageSearch() {
       loanTypes: [],
       durationTypes: [],
       loanSymbols: [],
-      size: 10,
+      size: 5,
       status: 3,
     });
     history.push({
@@ -216,7 +216,7 @@ export function PageSearch() {
       durationQty: param.durationQty,
       loanAmount: param.loanAmount,
       status: 3,
-      size: 10,
+      size: 5,
       loanTypes: param.loanTypes,
     });
   }, []);

@@ -59,7 +59,7 @@ export default function TabsBorrow(props: any) {
       loanAmount: Number(data.loanAmount),
       loanSymbols: [data.loanSymbols.value], //
       status: 3,
-      size: 10,
+      size: 5,
     };
     history.push({
       pathname: '/pawn/offer',
