@@ -31,6 +31,61 @@ export function PageSearchNft() {
   const history = useHistory();
   const param = queryString.parse(history.location.search);
   const [dataRender, setdataRender] = useState<any>({});
+  const [dataSearch, setdataSearch] = useState<any>({
+    name: '',
+    durationTypes: [],
+    NFTtype: [],
+    Assettype: [],
+    collateralSymbols: [],
+  });
+  //lấy dữ liệu input
+  const onchangeInputName = e => {
+    setdataSearch({ ...dataSearch, name: e.target.value });
+  };
+  const collateralSymbols = e => {
+    if (e.target.checked) {
+      const newvalue = dataSearch?.collateralSymbols;
+      newvalue.push(e.target.value);
+      setdataSearch({ ...dataSearch, collateralSymbols: newvalue });
+    } else {
+      const newValue1 = [...dataSearch?.collateralSymbols];
+      const newValue2 = newValue1.filter(el => el !== e.target.value);
+      setdataSearch({ ...dataSearch, collateralSymbols: newValue2 });
+    }
+  };
+  const NFTtype = e => {
+    if (e.target.checked) {
+      const newvalue = dataSearch?.NFTtype;
+      newvalue.push(e.target.value);
+      setdataSearch({ ...dataSearch, NFTtype: newvalue });
+    } else {
+      const newValue1 = [...dataSearch?.NFTtype];
+      const newValue2 = newValue1.filter(el => el !== e.target.value);
+      setdataSearch({ ...dataSearch, NFTtype: newValue2 });
+    }
+  };
+  const durationTypes = e => {
+    if (e.target.checked) {
+      const newvalue = dataSearch?.durationTypes;
+      newvalue.push(e.target.value);
+      setdataSearch({ ...dataSearch, durationTypes: newvalue });
+    } else {
+      const newValue1 = [...dataSearch?.durationTypes];
+      const newValue2 = newValue1.filter(el => el !== e.target.value);
+      setdataSearch({ ...dataSearch, durationTypes: newValue2 });
+    }
+  };
+  const Assettype = e => {
+    if (e.target.checked) {
+      const newvalue = dataSearch?.Assettype;
+      newvalue.push(e.target.value);
+      setdataSearch({ ...dataSearch, Assettype: newvalue });
+    } else {
+      const newValue1 = [...dataSearch?.Assettype];
+      const newValue2 = newValue1.filter(el => el !== e.target.value);
+      setdataSearch({ ...dataSearch, Assettype: newValue2 });
+    }
+  };
   useEffect(() => {
     SearchLendNFTApi.search(param)
       .then((res: any) => {
@@ -40,7 +95,10 @@ export function PageSearchNft() {
         console.log(error);
       });
   }, []);
-
+  const editPageCount = e => {
+    setdataSearch({ ...dataSearch, page: e });
+  };
+  console.log('dataSearch', dataSearch);
   return (
     <>
       <Helmet>
@@ -62,12 +120,23 @@ export function PageSearchNft() {
             <Col>
               <NftShop dataLendNFT={dataRender} />
             </Col>
-            <Col>{/* <Pagination /> */}</Col>
+            <Col>
+              {' '}
+              <Pagination
+                editPageCount={editPageCount}
+                dataRender={dataRender}
+              />
+            </Col>
           </Col>
           <Col xl="3">
             <FiterNavSearch
               status={statusFilterNav}
               onClick={onClick}
+              onchangeInputName={onchangeInputName}
+              collateralSymbols={collateralSymbols}
+              NFTtype={NFTtype}
+              durationTypes={durationTypes}
+              Assettype={Assettype}
             ></FiterNavSearch>
           </Col>
         </Row>

@@ -11,6 +11,22 @@ import {
 } from './style';
 import { iconCoin } from 'app/components/icon';
 export function FiterNavSearch(props: any) {
+  const onchangeInputName = e => {
+    props.onchangeInputName(e);
+  };
+  const collateralSymbols = e => {
+    props.collateralSymbols(e);
+  };
+  const NFTtype = e => {
+    props.NFTtype(e);
+  };
+  const durationTypes = e => {
+    props.durationTypes(e);
+  };
+  const Assettype = e => {
+    props.Assettype(e);
+  };
+
   return (
     <>
       <Helmet>
@@ -32,7 +48,11 @@ export function FiterNavSearch(props: any) {
               <img src={searchFilterNav} alt="" />
             </div>
             <div>
-              <input type="text" placeholder="Search pawnshops" />
+              <input
+                type="text"
+                placeholder="Search pawnshops"
+                onChange={onchangeInputName}
+              />
             </div>
           </div>
         </InputSearchNameFilter>
@@ -57,11 +77,21 @@ export function FiterNavSearch(props: any) {
             >
               <div className="accordion-body">
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Duration" value="Week" />
+                  <input
+                    type="checkbox"
+                    name="Duration"
+                    value="0"
+                    onChange={durationTypes}
+                  />
                   <span>Week</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Duration" value="Month" />
+                  <input
+                    type="checkbox"
+                    name="Duration"
+                    value="1"
+                    onChange={durationTypes}
+                  />
                   <span>Month</span>
                 </div>
               </div>
@@ -87,11 +117,21 @@ export function FiterNavSearch(props: any) {
             >
               <div className="accordion-body">
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="SoftNFT" value="SoftNFT" />
+                  <input
+                    type="checkbox"
+                    name="SoftNFT"
+                    value="0"
+                    onChange={NFTtype}
+                  />
                   <span>Soft NFT</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="HardNFT" value="HardNFT" />
+                  <input
+                    type="checkbox"
+                    name="HardNFT"
+                    value="1"
+                    onChange={NFTtype}
+                  />
                   <span>Hard NFT</span>
                 </div>
               </div>
@@ -117,19 +157,39 @@ export function FiterNavSearch(props: any) {
             >
               <div className="accordion-body">
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Assettype" value="SoftNFT" />
+                  <input
+                    type="checkbox"
+                    name="Assettype"
+                    value="1"
+                    onChange={Assettype}
+                  />
                   <span>Jewelry</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Assettype" value="HardNFT" />
+                  <input
+                    type="checkbox"
+                    name="Assettype"
+                    value="2"
+                    onChange={Assettype}
+                  />
                   <span>Car</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Assettype" value="HardNFT" />
+                  <input
+                    type="checkbox"
+                    name="Assettype"
+                    value="3"
+                    onChange={Assettype}
+                  />
                   <span>Car</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Assettype" value="HardNFT" />
+                  <input
+                    type="checkbox"
+                    name="Assettype"
+                    value="4"
+                    onChange={Assettype}
+                  />
                   <span>House and land</span>
                 </div>
               </div>
@@ -161,6 +221,7 @@ export function FiterNavSearch(props: any) {
                       type="checkbox"
                       name="Collateralaccepted"
                       value={item.value}
+                      onChange={collateralSymbols}
                     />
                     <span>
                       <img

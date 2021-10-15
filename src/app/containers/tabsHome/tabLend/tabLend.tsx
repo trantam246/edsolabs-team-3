@@ -15,7 +15,6 @@ export function TabLendForm() {
     control,
   } = useForm();
   const onSubmit = data => {
-    console.log('lend', data);
     if (Collateral === true) {
       const newObj = {
         collateralSymbols: [],
