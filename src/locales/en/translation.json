@@ -204,6 +204,8 @@
       "asset": "Asset location:",
       "price": "Evaluated price",
       "expect": "Expected loan",
+      "art": "Artwork",
+      "dia": "Diamond",
       "button": "Send Offer",
       "filter": {
         "reset": "Reset filter",
@@ -215,6 +217,10 @@
         "soft": "Soft NFT",
         "hard": "Hard NFT",
         "asset": "Asset type",
+        "jew": "Jewelry",
+        "car": "Car",
+        "gem": "Gemstone",
+        "house": "House and land",
         "loan": "Loan currency"
       }
     }
@@ -228,13 +234,19 @@
       "label": "Sign up",
       "name": "Name",
       "enterName": "Enter name",
+      "invalidName": "Invalid name",
       "enterEmail": "Enter email",
+      "invalidEmail": "Invalid email",
       "password": "Password",
       "enterPass": "Enter password",
+      "invalidPass": "Invalid password",
       "confirm": "Confirm password",
+      "passErr": "The confirm password field does not match the password",
       "desc": "We will not share or sell your information to 3rd parties.",
       "action": "By clicking on ",
+      "create": "Create Account",
       "actionMore": ", you agree to DeFi For You's Terms and Conditions of Use.",
+      "captcha": "Invalid captcha",
       "button": "Create Account"
     },
     "logIn": {
@@ -243,7 +255,9 @@
       "password": "Password",
       "enterPass": "Enter password",
       "forget": "Forgot your password?",
-      "button": "Log in"
+      "button": "Log in",
+      "invalidEmail": "Invalid email",
+      "invalidPass": "Invalid password"
     }
   },
   "404": {

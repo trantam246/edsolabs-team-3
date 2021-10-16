@@ -118,7 +118,6 @@ export default function TabsBorrow(props: any) {
                 ></input>
                 {errors.collateralAmount && (
                   <span className="warning__input">
-                    {' '}
                     {t('home.tabs.invalidAmount')}
                   </span>
                 )}

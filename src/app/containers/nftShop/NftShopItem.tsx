@@ -116,7 +116,7 @@ const NftShopItem: React.FC<IShop> = ({ item }) => {
 
           {/* nftAssetTypeId chắn diamond, lẻ artwork */}
           <ButtonComponent
-            width="9.4rem"
+            width="-1rem"
             height="2.3rem"
             borderRadius="1.7rem"
             color="#DBA83D"
@@ -128,7 +128,9 @@ const NftShopItem: React.FC<IShop> = ({ item }) => {
             ) : (
               <img src={artworkIcon} alt="" />
             )}
-            {item.nftAssetTypeId % 2 === 0 ? 'Diamond' : 'Artwork'}
+            {item.nftAssetTypeId % 2 === 0
+              ? `${t('search.lendNft.dia')}`
+              : `${t('search.lendNft.art')}`}
           </ButtonComponent>
           <ButtonComponent
             fontSize="1.6rem"

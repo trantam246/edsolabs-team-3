@@ -136,7 +136,7 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
             {renderCollateral}
           </div>
           <ButtonComponent
-            width="10rem"
+            width="auto"
             height="2.6rem"
             borderRadius="1.35rem"
             className={`pawn__method pawn__method--${methodButton().toLowerCase()}`}

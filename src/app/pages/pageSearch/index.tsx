@@ -280,6 +280,7 @@ export function PageSearch() {
   const handleSort = o => {
     setdataSearch({ ...dataSearch, cusSort: o });
   };
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>

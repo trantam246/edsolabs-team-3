@@ -196,7 +196,7 @@ export function FiterNavSearch(props: any) {
                         : param.assetType.includes('1')
                     }
                   />
-                  <span>Jewelry</span>
+                  <span>{t('search.lendNft.filter.jew')}</span>
                 </div>
                 <div className="checkbox__custom">
                   <input
@@ -210,7 +210,7 @@ export function FiterNavSearch(props: any) {
                         : param.assetType.includes('2')
                     }
                   />
-                  <span>Car</span>
+                  <span>{t('search.lendNft.filter.car')}</span>
                 </div>
                 <div className="checkbox__custom">
                   <input
@@ -224,7 +224,7 @@ export function FiterNavSearch(props: any) {
                         : param.assetType.includes('3')
                     }
                   />
-                  <span>Gemstone</span>
+                  <span>{t('search.lendNft.filter.gem')}</span>
                 </div>
                 <div className="checkbox__custom">
                   <input
@@ -238,7 +238,7 @@ export function FiterNavSearch(props: any) {
                         : param.assetType.includes('4')
                     }
                   />
-                  <span>House and land</span>
+                  <span>{t('search.lendNft.filter.house')}</span>
                 </div>
               </div>
             </div>

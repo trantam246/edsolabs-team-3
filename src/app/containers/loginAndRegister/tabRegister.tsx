@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useDispatch } from 'react-redux';
 import { authActions } from 'redux/slices';
+import { useTranslation } from 'react-i18next';
 
 const TabPaneLogin = styled(TabPane)`
   padding-top: 3rem;
@@ -161,20 +162,20 @@ export default function TabRegister({ id }: props) {
 
   const [hide2, setHide2] = useState<boolean>(true);
   const getHide2 = () => setHide2(!hide2);
-
+  const { t } = useTranslation();
   return (
     <TabPaneLogin tabId={id}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputCustom
-          label="Name"
+          label={t('auth.signUp.name')}
           type="text"
-          placeHolder="Enter name"
+          placeHolder={t('auth.signUp.enterName')}
           Icon={null}
           iconClick={null}
           register={register('name', { required: true })}
           err={
             errors?.name?.type === 'required' && (
-              <p className="pError">Invalid name</p>
+              <p className="pError">{t('auth.signUp.invalidName')}</p>
             )
           }
         />
@@ -182,35 +183,35 @@ export default function TabRegister({ id }: props) {
         <InputCustom
           label="Email"
           type="text"
-          placeHolder="Enter email"
+          placeHolder={t('auth.signUp.enterEmail')}
           Icon={null}
           iconClick={null}
           register={register('email', { required: true })}
           err={
             errors?.email?.type === 'required' && (
-              <p className="pError">Invalid email</p>
+              <p className="pError">{t('auth.signUp.invalidEmail')}</p>
             )
           }
         />
 
         <InputCustom
-          label="Password"
+          label={t('auth.signUp.password')}
           type={hide1 ? 'password' : 'text'}
-          placeHolder="Enter password"
+          placeHolder={t('auth.signUp.enterPass')}
           Icon={hide1 ? BsEyeSlashFill : BsEyeFill}
           iconClick={getHide1}
           register={register('password', { required: true })}
           err={
             errors?.password?.type === 'required' && (
-              <p className="pError">Invalid password</p>
+              <p className="pError">{t('auth.signUp.invalidPass')}</p>
             )
           }
         />
 
         <InputCustom
-          label="Confirm password"
+          label={t('auth.signUp.confirm')}
           type={hide2 ? 'password' : 'text'}
-          placeHolder="Enter password"
+          placeHolder={t('auth.signUp.enterPass')}
           Icon={hide2 ? BsEyeSlashFill : BsEyeFill}
           iconClick={getHide2}
           register={register('rePassword', {
@@ -219,22 +220,19 @@ export default function TabRegister({ id }: props) {
           })}
           err={
             (errors?.rePassword?.type === 'required' && (
-              <p className="pError">Invalid password</p>
+              <p className="pError">{t('auth.signUp.invalidPass')}</p>
             )) ||
             (errors?.rePassword?.type === 'validate' && (
-              <p className="pError">
-                The confirm password field does not match the password
-              </p>
+              <p className="pError">{t('auth.signUp.passErr')}</p>
             ))
           }
         />
 
-        <p className="pInfor p1">
-          We will not share or sell your information to 3rd parties.
-        </p>
+        <p className="pInfor p1">{t('auth.signUp.desc')}</p>
         <p className="pInfor p2">
-          By clicking on <span className="pYellow">Create Account</span>, you
-          agree to DeFi For You’s Terms and Conditions of Use.
+          {t('auth.signUp.action')}
+          <span className="pYellow">{t('auth.signUp.create')}</span>
+          {t('auth.signUp.actionMore')}
         </p>
 
         <div className="captchaField">
@@ -250,13 +248,12 @@ export default function TabRegister({ id }: props) {
             onExpired={() => setToken('')}
           />
           {errors?.reCaptcha?.type === 'required' && (
-            <p className="pError">Invalid captcha</p>
+            <p className="pError">{t('auth.signUp.captcha')}</p>
           )}
         </div>
-
         <div className="divButton">
           <button type="submit" className="buttonStyled">
-            Create Account
+            {t('auth.signUp.button')}
           </button>
         </div>
       </form>

@@ -57,7 +57,6 @@ export function TabLendForm() {
         size: 10,
         page: 0,
       };
-      console.log('false', newObj);
       history.push({
         pathname: '/pawn/lender/nft-result',
         search: queryString.stringify(newObj),
