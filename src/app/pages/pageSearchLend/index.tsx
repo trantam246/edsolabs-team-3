@@ -136,7 +136,6 @@ export function PageSearchLend() {
       name:
         dataSearch.name === undefined ? undefined : dataSearch.name.toString(),
     };
-    console.log(newObj);
     SearchLendCryApi.search(newObj)
       .then((res: any) => {
         setdataRender(res.data);
