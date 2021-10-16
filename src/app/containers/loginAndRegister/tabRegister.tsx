@@ -64,10 +64,6 @@ const TabPaneLogin = styled(TabPane)`
     border: none;
     outline: none;
 
-    &:hover {
-      box-shadow: 0 0 5px 0 #ffd574 inset, 0 0 7px 2px #ffd574;
-    }
-
     &:active {
       transform: translateY(4px);
     }
@@ -144,17 +140,13 @@ export default function TabRegister({ id }: props) {
   const dispath = useDispatch();
   const [token, setToken] = useState('');
   const onSubmit = (data: IFormInput) => {
-    if (data.password !== data.rePassword) {
-      alert('tài khoản mật khẩu ko khớp ');
-    } else {
-      const datas = {
-        name: data.name,
-        email: data.email,
-        password: data.password,
-        recaptcha_response: token,
-      };
-      dispath(authActions.register(datas));
-    }
+    const datas = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      recaptcha_response: token,
+    };
+    dispath(authActions.register(datas));
   };
   const [hide1, setHide1] = useState<boolean>(true);
   const getHide1 = () => setHide1(!hide1);

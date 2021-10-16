@@ -64,10 +64,6 @@ const TabPaneLogin = styled(TabPane)`
     border: none;
     outline: none;
 
-    &:hover {
-      box-shadow: 0 0 5px 0 #ffd574 inset, 0 0 7px 2px #ffd574;
-    }
-
     &:active {
       transform: translateY(4px);
     }
@@ -129,21 +125,31 @@ export default function TabLogin({ id }: props) {
   const dispath = useDispatch();
   const history = useHistory();
   const islogin = useAppSelector(selectIsLoggedIn);
+  //modal box
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+
+  //hide-show
+  const [hide, setHide] = useState<boolean>(true);
+  const getHide = () => setHide(!hide);
+
   useEffect(() => {
     if (islogin) {
       history.push('/');
     }
   }, [islogin]);
+
+  //react hook form
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<IFormInput>();
+
+  //submit
   const onSubmit = (data: IFormInput) => {
     dispath(authActions.login(data));
   };
-  const [hide, setHide] = useState<boolean>(true);
-  const getHide = () => setHide(!hide);
 
   return (
     <TabPaneLogin tabId={id}>
@@ -182,11 +188,11 @@ export default function TabLogin({ id }: props) {
 
         <div className="divButton">
           <button type="submit" className="buttonStyled">
-            Login
+            Log in
           </button>
         </div>
       </form>
-      {/* <ModalBox /> */}
+      <ModalBox status={modal} click={toggle} />
     </TabPaneLogin>
   );
 }
