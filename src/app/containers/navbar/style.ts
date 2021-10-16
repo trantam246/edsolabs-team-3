@@ -15,6 +15,7 @@ export const RowNavBar = styled(Row)`
 `;
 export const AccountZone = styled.div`
   display: inline-block;
+  position: relative;
   & > img {
     width: 31px;
     height: 31px;
@@ -25,6 +26,33 @@ export const AccountZone = styled.div`
     font-weight: 500;
     font-size: 16px;
     color: #fff;
+  }
+  & > ul {
+    box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%), 0 8px 10px 1px rgb(0 0 0 / 14%),
+      0 3px 14px 2px rgb(0 0 0 / 12%);
+    list-style-type: none;
+    padding: 0;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    background-color: red;
+    position: absolute;
+    top: 42px;
+    border-radius: 10px;
+    background-color: rgb(62, 65, 75);
+    margin: 0;
+    hr {
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      padding: 5px 10px;
+      text-align: center;
+      border-radius: 10px;
+      :hover {
+        background-color: rgb(92 94 102);
+      }
+    }
   }
   @media (max-width: 1440px) {
     & > span {

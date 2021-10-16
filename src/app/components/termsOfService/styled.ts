@@ -34,16 +34,34 @@ export const Button = styled.button`
   }
 `;
 export const ModalBG = styled(Modal)`
+  position: fixed;
+  transform: translate(-50%, -50%) !important;
+  top: 45%;
+  left: 50%;
+
   .modal-content {
     background: none !important;
   }
   max-width: 1324px !important;
+
+  @media (max-width: 1920px) {
+    max-width: 80% !important;
+    margin: 6.5rem auto !important;
+    transform: none !important;
+    left: 10%;
+    top: 20px;
+  }
+
   @media (max-width: 1324px) {
     max-width: 80% !important;
     margin: 6.5rem auto !important;
+    transform: none !important;
+    left: 10%;
+    top: 0;
   }
   @media (max-width: 540px) {
     max-width: 100% !important;
+    left: 0;
   }
 `;
 
@@ -107,14 +125,13 @@ export const Box = styled.div`
   max-height: 530px;
   padding: 3rem 4rem 0 4rem;
   ::-webkit-scrollbar {
+    position: absolute;
     width: 10px;
   }
   ::-webkit-scrollbar-track {
     background: #45484f;
     border-radius: 0.5rem;
-    margin-right: 2.2rem;
-    margin-bottom: 4rem;
-    margin-top: 2rem;
+    margin: 2rem 2.2rem 4rem 0 !important;
   }
   ::-webkit-scrollbar-thumb {
     background: #a2a3a7;

@@ -3,7 +3,21 @@ import { Helmet } from 'react-helmet-async';
 import closeFilterNav from '../../../images/closeFilterNav.svg';
 import { Accordion, Bong, Resetfilter, WarperFilterNav } from './style';
 import { iconCoin, LoanAmount } from 'app/components/icon';
+import { useHistory } from 'react-router';
 export function FiterNavSearch(props: any) {
+  //onchange dữ liệu truyền lên api nè ỏ ỏ ỏ
+  const collateralSymbols = e => {
+    props.collateralSymbols(e);
+  };
+  const loanSymbols = e => {
+    props.loanSymbols(e);
+  };
+  const durationTypes = e => {
+    props.durationTypes(e);
+  };
+  const queryString = require('query-string');
+  const history = useHistory();
+  const param = queryString.parse(history.location.search);
   return (
     <>
       <Helmet>
@@ -11,7 +25,7 @@ export function FiterNavSearch(props: any) {
       </Helmet>
       <WarperFilterNav status={props.status}>
         <Resetfilter>
-          <span>Reset filter</span>
+          <span onClick={() => props.clickResetAll()}>Reset filter</span>
           <img
             src={closeFilterNav}
             alt=""
@@ -45,6 +59,12 @@ export function FiterNavSearch(props: any) {
                       type="checkbox"
                       name="Collateralaccepted"
                       value={item.value}
+                      onChange={collateralSymbols}
+                      checked={
+                        param.collateralSymbols === undefined
+                          ? false
+                          : param.collateralSymbols.includes(item.value)
+                      }
                     />
                     <span>
                       <img
@@ -59,7 +79,6 @@ export function FiterNavSearch(props: any) {
               </div>
             </div>
           </div>
-
           <div className="accordion-item">
             <h2 className="accordion-header" id="panelsStayOpen-headingFour">
               <button
@@ -85,6 +104,12 @@ export function FiterNavSearch(props: any) {
                       type="checkbox"
                       name="Loantoken"
                       value={item.value}
+                      onChange={loanSymbols}
+                      checked={
+                        param.loanSymbols === undefined
+                          ? false
+                          : param.loanSymbols.includes(item.value)
+                      }
                     />
                     <span>
                       <img
@@ -109,6 +134,7 @@ export function FiterNavSearch(props: any) {
                 data-bs-target="#panelsStayOpen-collapseFive"
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseFive"
+                style={{ color: '#53565f' }}
               >
                 NFT Evaluation
               </button>
@@ -120,12 +146,24 @@ export function FiterNavSearch(props: any) {
             >
               <div className="accordion-body">
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Loantype" value="Auto" />
-                  <span>Auto</span>
+                  <input
+                    type="checkbox"
+                    name="Loantype"
+                    value="Auto"
+                    disabled
+                    style={{ borderColor: '#53565f' }}
+                  />
+                  <span style={{ color: '#53565f' }}>Auto</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Loantype" value="Semi-auto" />
-                  <span>Semi-auto</span>
+                  <input
+                    type="checkbox"
+                    name="Loantype"
+                    value="Semi-auto"
+                    disabled
+                    style={{ borderColor: '#53565f' }}
+                  />
+                  <span style={{ color: '#53565f' }}>Semi-auto</span>
                 </div>
               </div>
             </div>
@@ -150,11 +188,31 @@ export function FiterNavSearch(props: any) {
             >
               <div className="accordion-body">
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Duration" value="Week" />
+                  <input
+                    type="checkbox"
+                    name="Duration"
+                    value="1"
+                    onChange={durationTypes}
+                    checked={
+                      param.durationTypes === undefined
+                        ? false
+                        : param.durationTypes.includes('1')
+                    }
+                  />
                   <span>Week</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Duration" value="Month" />
+                  <input
+                    type="checkbox"
+                    name="Duration"
+                    value="0"
+                    onChange={durationTypes}
+                    checked={
+                      param.durationTypes === undefined
+                        ? false
+                        : param.durationTypes.includes('0')
+                    }
+                  />
                   <span>Month</span>
                 </div>
               </div>

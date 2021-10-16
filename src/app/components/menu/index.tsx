@@ -56,7 +56,7 @@ const Menu = styled(Col)`
       }
     }
   }
-  @media (max-width: 1280px) {
+  @media (max-width: 1320px) {
     & > ul {
       & > li {
         padding-left: 20px;
@@ -79,32 +79,32 @@ export function MenuNavbar() {
       <Menu className="flex-fill">
         <ul>
           <li>
-            <NavLink exact to="/" activeClassName="selected">
+            <NavLink exact to="/pawn" activeClassName="selected">
               <span>Pawn</span>
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/search/borrow" activeClassName="selected">
+            <NavLink exact to="/" activeClassName="selected">
               <span>Borrow</span>
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/login" activeClassName="selected">
+            <NavLink exact to="/" activeClassName="selected">
               <span>Lend</span>
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/111" activeClassName="selected">
+            <NavLink exact to="/" activeClassName="selected">
               <span>NFT</span>
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/22" activeClassName="selected">
+            <NavLink exact to="/" activeClassName="selected">
               <span>My Account</span>
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/2222" activeClassName="selected">
+            <NavLink exact to="/" activeClassName="selected">
               <span>FAQ</span>
             </NavLink>
           </li>

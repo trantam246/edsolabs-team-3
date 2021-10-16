@@ -83,7 +83,6 @@ export function SelectAll(props: any) {
       </>
     ),
   }));
-  options1.unshift({ value: 'All', label: 'All' });
   const options2: any = LoanAmount.map(e => ({
     value: e.value,
     label: (
@@ -93,9 +92,7 @@ export function SelectAll(props: any) {
       </>
     ),
   }));
-  options2.unshift({ value: 'All', label: 'All' });
   const options3 = [
-    { value: 'All', label: 'All' },
     { value: '1', label: 'Month' },
     { value: '0', label: 'Weeks' },
   ];
@@ -230,9 +227,42 @@ export function SelectAll(props: any) {
               onChange={props.onChange}
             ></SelectA>
           )
+        ) : //tab lend
+        props.isMuli ? (
+          <SelectA
+            isMulti
+            defaultValue={props.value}
+            options={
+              props.option === '1'
+                ? options1
+                : props.option === '2'
+                ? options2
+                : options3
+            }
+            styles={styles}
+            components={{
+              IndicatorSeparator: () => null,
+            }}
+            placeholder={props.placeholder}
+            onChange={props.onChange}
+          ></SelectA>
         ) : (
-          ''
-          //tab lend
+          <SelectA
+            defaultValue={props.value}
+            options={
+              props.option === '1'
+                ? options1
+                : props.option === '2'
+                ? options2
+                : options3
+            }
+            styles={styles}
+            components={{
+              IndicatorSeparator: () => null,
+            }}
+            placeholder={props.placeholder}
+            onChange={props.onChange}
+          ></SelectA>
         )}
       </>
       {/* {props.option === '1' ? (

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import searchFilterNav from '../../../images/searchFilterNav.svg';
 import closeFilterNav from '../../../images/closeFilterNav.svg';
+import { useHistory } from 'react-router';
 import {
   Accordion,
   Bong,
@@ -32,6 +33,9 @@ export function FiterNavSearch(props: any) {
   const onChangeDuration = e => {
     props.onChangeDuration(e);
   };
+  const queryString = require('query-string');
+  const history = useHistory();
+  let param: any = queryString.parse(history.location.search);
   return (
     <>
       <Helmet>
@@ -39,7 +43,13 @@ export function FiterNavSearch(props: any) {
       </Helmet>
       <WarperFilterNav status={props.status}>
         <Resetfilter>
-          <span>Reset filter</span>
+          <span
+            onClick={() => {
+              props.resetDataFilter();
+            }}
+          >
+            Reset filter
+          </span>
           <img
             src={closeFilterNav}
             alt=""
@@ -89,6 +99,11 @@ export function FiterNavSearch(props: any) {
                       name="Interestrange"
                       value="0:0.1"
                       onChange={onChangeInterestRange}
+                      checked={
+                        param.interestRanges === undefined
+                          ? false
+                          : param.interestRanges.includes('0:0.1')
+                      }
                     />
                     <span></span>
                   </div>
@@ -101,6 +116,11 @@ export function FiterNavSearch(props: any) {
                       name="Interestrange"
                       value="0.1:0.25"
                       onChange={onChangeInterestRange}
+                      checked={
+                        param.interestRanges === undefined
+                          ? false
+                          : param.interestRanges.includes('0.1:0.25')
+                      }
                     />
                     <span></span>
                   </div>
@@ -113,6 +133,11 @@ export function FiterNavSearch(props: any) {
                       name="Interestrange"
                       value="0.25:0.5"
                       onChange={onChangeInterestRange}
+                      checked={
+                        param.interestRanges === undefined
+                          ? false
+                          : param.interestRanges.includes('0.25:0.5')
+                      }
                     />
                     <span></span>
                   </div>
@@ -125,6 +150,11 @@ export function FiterNavSearch(props: any) {
                       name="Interestrange"
                       value="0.5:1"
                       onChange={onChangeInterestRange}
+                      checked={
+                        param.interestRanges === undefined
+                          ? false
+                          : param.interestRanges.includes('0.5:1')
+                      }
                     />
                     <span></span>
                   </div>
@@ -158,8 +188,13 @@ export function FiterNavSearch(props: any) {
                     <input
                       type="radio"
                       name="Loantovalue"
-                      value="0-25"
+                      value="0:0.25"
                       onChange={onChangeLoanToValue}
+                      checked={
+                        param.loanToValueRanges === undefined
+                          ? false
+                          : param.loanToValueRanges.includes('0:0.25')
+                      }
                     />
                     <span></span>
                   </div>
@@ -170,8 +205,13 @@ export function FiterNavSearch(props: any) {
                     <input
                       type="radio"
                       name="Loantovalue"
-                      value="25-50"
+                      value="0.25:0.5"
                       onChange={onChangeLoanToValue}
+                      checked={
+                        param.loanToValueRanges === undefined
+                          ? false
+                          : param.loanToValueRanges.includes('0.25:0.5')
+                      }
                     />
                     <span></span>
                   </div>
@@ -182,8 +222,13 @@ export function FiterNavSearch(props: any) {
                     <input
                       type="radio"
                       name="Loantovalue"
-                      value="50-75"
+                      value="0.5:0.75"
                       onChange={onChangeLoanToValue}
+                      checked={
+                        param.loanToValueRanges === undefined
+                          ? false
+                          : param.loanToValueRanges.includes('0.5:0.75')
+                      }
                     />
                     <span></span>
                   </div>
@@ -194,8 +239,13 @@ export function FiterNavSearch(props: any) {
                     <input
                       type="radio"
                       name="Loantovalue"
-                      value=">75"
+                      value="0.75:1"
                       onChange={onChangeLoanToValue}
+                      checked={
+                        param.loanToValueRanges === undefined
+                          ? false
+                          : param.loanToValueRanges.includes('0.75:1')
+                      }
                     />
                     <span></span>
                   </div>
@@ -231,6 +281,11 @@ export function FiterNavSearch(props: any) {
                       name={item.value}
                       value={item.value}
                       onChange={onChangeCollateralAccepted}
+                      checked={
+                        param.collateralSymbols === undefined
+                          ? false
+                          : param.collateralSymbols.includes(item.value)
+                      }
                     />
                     <span>
                       <img
@@ -272,6 +327,11 @@ export function FiterNavSearch(props: any) {
                       name="Loantoken"
                       value={item.value}
                       onChange={onChangeLoanToken}
+                      checked={
+                        param.loanSymbols === undefined
+                          ? false
+                          : param.loanSymbols.includes(item.value)
+                      }
                     />
                     <span>
                       <img
@@ -310,8 +370,13 @@ export function FiterNavSearch(props: any) {
                   <input
                     type="checkbox"
                     name="Loantype"
-                    value="Auto"
+                    value="0"
                     onChange={onChangeLoanType}
+                    checked={
+                      param.loanTypes === undefined
+                        ? false
+                        : param.loanTypes.includes('0')
+                    }
                   />
                   <span>Auto</span>
                 </div>
@@ -319,8 +384,13 @@ export function FiterNavSearch(props: any) {
                   <input
                     type="checkbox"
                     name="Loantype"
-                    value="Semi-auto"
+                    value="1"
                     onChange={onChangeLoanType}
+                    checked={
+                      param.loanTypes === undefined
+                        ? false
+                        : param.loanTypes.includes('1')
+                    }
                   />
                   <span>Semi-auto</span>
                 </div>
@@ -328,8 +398,13 @@ export function FiterNavSearch(props: any) {
                   <input
                     type="checkbox"
                     name="Loantype"
-                    value="Negotiation"
+                    value="2"
                     onChange={onChangeLoanType}
+                    checked={
+                      param.loanTypes === undefined
+                        ? false
+                        : param.loanTypes.includes('2')
+                    }
                   />
                   <span>Negotiation</span>
                 </div>
@@ -359,8 +434,13 @@ export function FiterNavSearch(props: any) {
                   <input
                     type="checkbox"
                     name="Duration"
-                    value="Week"
+                    value="0"
                     onChange={onChangeDuration}
+                    checked={
+                      param.durationTypes === undefined
+                        ? false
+                        : param.durationTypes.includes('0')
+                    }
                   />
                   <span>Week</span>
                 </div>
@@ -368,8 +448,13 @@ export function FiterNavSearch(props: any) {
                   <input
                     type="checkbox"
                     name="Duration"
-                    value="Month"
+                    value="1"
                     onChange={onChangeDuration}
+                    checked={
+                      param.durationTypes === undefined
+                        ? false
+                        : param.durationTypes.includes('1')
+                    }
                   />
                   <span>Month</span>
                 </div>

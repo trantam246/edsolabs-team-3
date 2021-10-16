@@ -25,7 +25,7 @@ export default function TermsOfService(props) {
       <Paper>
         <H3>Terms of Service</H3>
         <Box className="overflow-auto" onScroll={funcScroll}>
-          <Span>DeFi For You Crypto Ethics & Regulation UK</Span>
+          <Span>DeFi For You Crypto Ethics {'&'} Regulation UK</Span>
           <List>
             The crypto digital ecosystem is a challenger to the existing
             financial system that has managed the economy since the financial
@@ -67,6 +67,29 @@ export default function TermsOfService(props) {
           <List>
             CListents and users are assured that we are a company that treats
             customers fairly.
+          </List>
+          <List>
+            CListents and users are assured that we are a company that treats
+            customers fairly.
+          </List>
+          <List>
+            CListents and users are assured that we are a company that treats
+            customers fairly.
+          </List>
+          <List>
+            Assurance knowing that certain elements within the peer-to-peer
+            transaction process is authorised and regulated by The Financial
+            Conduct Authority.{' '}
+          </List>
+          <List>
+            Assurance knowing that certain elements within the peer-to-peer
+            transaction process is authorised and regulated by The Financial
+            Conduct Authority.{' '}
+          </List>
+          <List>
+            Assurance knowing that certain elements within the peer-to-peer
+            transaction process is authorised and regulated by The Financial
+            Conduct Authority.{' '}
           </List>
         </Box>
         <ButtonGroup>

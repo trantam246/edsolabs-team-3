@@ -8,10 +8,8 @@ import { GrClose } from '@react-icons/all-files/gr/GrClose';
 import { useState } from 'react';
 import { MenuNavbar } from 'app/components/menu';
 import { Logo } from 'app/components/logo';
-import avatarMenu from '../../../images/avatarMenu.png';
 import { useHistory } from 'react-router';
 import {
-  AccountZone,
   ActiveMenuMobile,
   AiOutlineLefts,
   AvatarAndName,
@@ -29,6 +27,7 @@ import { useDispatch } from 'react-redux';
 import { authActions } from 'redux/slices';
 import { useEffect } from 'react';
 import userApi from 'api/userApi';
+import DropDownUser from './dropdowmUser';
 export function Navbar(props) {
   const history = useHistory();
   const dispath = useDispatch();
@@ -55,9 +54,10 @@ export function Navbar(props) {
       document.body.style.overflow = 'auto';
     }
   };
+  const [statusBlockLogout, setstatusBlockLogout] = useState(false);
   const logout = () => {
     dispath(authActions.logout());
-    alert(window.location.pathname);
+    setstatusBlockLogout(!statusBlockLogout);
     history.push('/');
   };
   const openDownMenuMobile = value => {
@@ -110,17 +110,17 @@ export function Navbar(props) {
                 <ButtonNavBar color={''} status={''}>
                   <NavLink to="/">Buy DFY</NavLink>
                 </ButtonNavBar>
-                <ButtonNavBar color={''} status={'true'} onClick={logout}>
+                <ButtonNavBar color={''} status={'true'}>
                   <NavLink to="/">Connect</NavLink>
                 </ButtonNavBar>
                 {localStorage.getItem('access_token') ? (
-                  <AccountZone>
-                    <img src={avatarMenu} alt="" />
-                    <span>{accName?.data?.name}</span>
-                  </AccountZone>
+                  <DropDownUser
+                    name={accName?.data?.name}
+                    handleLogout={logout}
+                  />
                 ) : (
                   <ButtonNavBar color={''} status={''}>
-                    <NavLink to="/login">Login</NavLink>
+                    <NavLink to="/login?tab=2">Login</NavLink>
                   </ButtonNavBar>
                 )}
                 <HamburgerMenu onClick={openMenu}>
@@ -138,7 +138,7 @@ export function Navbar(props) {
               <MenuMobile>
                 <AvatarAndName>
                   <img src={avtar} alt="" />
-                  <p>admin</p>
+                  <p>{accName?.data?.name || 'admin'}</p>
                 </AvatarAndName>
                 <MenuSubMobile>
                   <div>Pawn</div>
@@ -244,7 +244,7 @@ export function Navbar(props) {
                   )}
                   <div>FAQ</div>
                   <div>Change password</div>
-                  <div>Log out</div>
+                  <div onClick={logout}>Log out</div>
                 </MenuSubMobile>
               </MenuMobile>
             </>
