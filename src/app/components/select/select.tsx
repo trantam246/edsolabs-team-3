@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Select from 'react-select';
 import styled from 'styled-components';
 import { iconCoin, LoanAmount } from '../icon';
@@ -74,6 +75,7 @@ const SelectA = styled(Select)`
   }
 `;
 export function SelectAll(props: any) {
+  const { t } = useTranslation();
   const options1: any = iconCoin.map(e => ({
     value: e.value,
     label: (
@@ -101,8 +103,8 @@ export function SelectAll(props: any) {
     ),
   }));
   const options3 = [
-    { value: '1', label: 'Month' },
-    { value: '0', label: 'Weeks' },
+    { value: '1', label: t('home.tabs.borrow.cryp.month') },
+    { value: '0', label: t('home.tabs.borrow.cryp.week') },
   ];
   const styles = {
     option: (provided, state) => ({

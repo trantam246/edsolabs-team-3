@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Banner from './Banner/index';
 import Borrower from './Borrower';
 import NFTIcon from './NFTIcon';
@@ -10,20 +11,22 @@ export default function Table(props: any) {
     dataRender?.content?.length <= dataRender?.size / 2
       ? dataRender?.content?.length
       : dataRender?.size / 2;
-
+  const { t } = useTranslation();
   return (
     <>
       {props && (
         <>
-          <P>{dataRender.total_elements} collateral offers match your search</P>
+          <P>
+            {dataRender.total_elements} {t('search.lendCrypto.result')}
+          </P>
           <Tables>
             <Thead>
               <tr>
                 <Th>#</Th>
-                <Th>Borrower</Th>
-                <Th>Collateral</Th>
-                <Th>Loan currency</Th>
-                <Th>Duration</Th>
+                <Th>{t('search.lendCrypto.borrower')}</Th>
+                <Th>{t('search.lendCrypto.coll')}</Th>
+                <Th>{t('search.lendCrypto.loan')}</Th>
+                <Th>{t('search.lendCrypto.duration')}</Th>
                 <Th></Th>
               </tr>
             </Thead>
@@ -56,12 +59,12 @@ export default function Table(props: any) {
                       </Td>
                       <Td>
                         {o?.durationType === 0
-                          ? `${o?.durationQty} Weeks`
-                          : `${o?.durationQty} Months`}
+                          ? `${o?.durationQty} ${t('search.lendCrypto.months')}`
+                          : `${o?.durationQty} ${t('search.lendCrypto.weeks')}`}
                       </Td>
                       <Td>
                         <Button
-                          children="Send Offer"
+                          children={t('search.lendCrypto.button')}
                           color="#282C37"
                           borderRadius="2.5rem"
                           width="auto"

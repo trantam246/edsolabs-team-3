@@ -21,6 +21,7 @@ import { useHistory } from 'react-router';
 import SearchBorrowCryApi from 'api/searchBorrowCryApi';
 import { useEffect } from 'react';
 import searchPersonalLend from 'api/searchPersonalLendApi';
+import { useTranslation } from 'react-i18next';
 
 const ContainerPage = styled(Container)`
   padding: 0 1.6rem;
@@ -256,7 +257,8 @@ export function PageSearch() {
         setdataRender(res.data);
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
+        throw error;
       });
     history.push({
       pathname: '/pawn/offer',
@@ -279,6 +281,7 @@ export function PageSearch() {
   const handleSort = o => {
     setdataSearch({ ...dataSearch, cusSort: o });
   };
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>
@@ -300,15 +303,15 @@ export function PageSearch() {
             </Filter>
             <Col>
               <NumberOfResult
-                content="pawnshop packages match your search"
+                content={t('search.borrowCrypto.amountResult')}
                 amount={dataRender.total_elements}
               />
             </Col>
             <Col>
               <Suggest
                 src={hurry_img}
-                title="You are not in a hurry and can await?"
-                desc="Request a loan from a trusted P2P lender to get a better interest rate and LTV"
+                title={t('search.borrowCrypto.suggest.first.title')}
+                desc={t('search.borrowCrypto.suggest.first.content')}
               ></Suggest>
             </Col>
             <Col>
@@ -317,8 +320,8 @@ export function PageSearch() {
             <Col>
               <Suggest
                 src={loan_img}
-                title="Want an instant loan?"
-                desc="Submit your collateral to get a loan in seconds"
+                title={t('search.borrowCrypto.suggest.second.title')}
+                desc={t('search.borrowCrypto.suggest.second.content')}
               ></Suggest>
             </Col>
             <Col>

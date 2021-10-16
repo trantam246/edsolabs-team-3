@@ -135,6 +135,7 @@ export const NftShop = styled.div`
       font-style: normal;
       font-weight: 500;
       line-height: 1.5rem;
+      min-width: 9.4rem;
       display: flex;
       align-items: center;
       justify-content: space-evenly;

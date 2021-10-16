@@ -221,3 +221,22 @@ export const SwiperSlideCustom = styled.div`
     }
   }
 `;
+
+export const See = styled.p`
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2.4rem;
+  color: #ffffff;
+  text-align: right;
+  margin-bottom: 1.2rem;
+  cursor: pointer;
+  & svg {
+    margin-left: 0.6rem;
+  }
+  &:hover {
+    color: #dba83d;
+  }
+  @media (max-width: 375px) {
+    display: none;
+  }
+`;
