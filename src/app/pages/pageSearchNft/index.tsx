@@ -32,7 +32,7 @@ export function PageSearchNft() {
   const history = useHistory();
   const param = queryString.parse(history.location.search);
   const [dataRender, setdataRender] = useState<any>({});
-  const [dataSearch, setdataSearch] = useState<any>({});
+  const [dataSearch, setdataSearch] = useState<any>({ page: 0, size: 10 });
   //nut reset
   const clickResetAll = () => {
     history.push('/pawn/lender/nft-result');
@@ -44,8 +44,15 @@ export function PageSearchNft() {
   };
   const collateralSymbols = e => {
     if (e.target.checked) {
-      const newvalue = dataSearch?.loanSymbols;
-      newvalue.push(e.target.value);
+      const data = {
+        loanSymbols: [],
+      };
+      const newvalue =
+        dataSearch.loanSymbols === undefined
+          ? [...data.loanSymbols, e.target.value]
+          : typeof dataSearch.loanSymbols === 'string'
+          ? [dataSearch.loanSymbols]
+          : [...dataSearch.loanSymbols, e.target.value];
       setdataSearch({ ...dataSearch, loanSymbols: newvalue });
     } else {
       const newValue1 = [...dataSearch?.loanSymbols];
@@ -61,6 +68,8 @@ export function PageSearchNft() {
       const newvalue =
         dataSearch.nftType === undefined
           ? [...data.nftType, e.target.value]
+          : typeof dataSearch.nftType === 'string'
+          ? [dataSearch.nftType]
           : [...dataSearch.nftType, e.target.value];
       setdataSearch({ ...dataSearch, nftType: newvalue });
     } else {
@@ -71,8 +80,15 @@ export function PageSearchNft() {
   };
   const durationTypes = e => {
     if (e.target.checked) {
-      const newvalue = dataSearch?.durationTypes;
-      newvalue.push(e.target.value);
+      const data = {
+        durationTypes: [],
+      };
+      const newvalue =
+        dataSearch.durationTypes === undefined
+          ? [...data.durationTypes, e.target.value]
+          : typeof dataSearch.durationTypes === 'string'
+          ? [dataSearch.durationTypes]
+          : [...dataSearch.durationTypes, e.target.value];
       setdataSearch({ ...dataSearch, durationTypes: newvalue });
     } else {
       const newValue1 = [...dataSearch?.durationTypes];
@@ -88,6 +104,8 @@ export function PageSearchNft() {
       const newvalue =
         dataSearch.assetType === undefined
           ? [...data.assetType, e.target.value]
+          : typeof dataSearch.assetType === 'string'
+          ? [dataSearch.assetType]
           : [...dataSearch.assetType, e.target.value];
       setdataSearch({ ...dataSearch, assetType: newvalue });
     } else {
@@ -96,48 +114,88 @@ export function PageSearchNft() {
       setdataSearch({ ...dataSearch, assetType: newValue2 });
     }
   };
-
   useEffect(() => {
-    SearchLendNFTApi.search(dataSearch)
-      .then((res: any) => {
-        setdataRender(res.data);
-        console.log('laanf 2');
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    history.push({
-      pathname: '/pawn/lender/nft-result',
-      search: queryString.stringify(dataSearch),
-    });
-  }, [dataSearch]);
-  useEffect(() => {
-    const durationTypes: any = [];
-    durationTypes.push(param.durationTypes);
-    const loanSymbols: any = [];
-    loanSymbols.push(param.loanSymbols);
+    const durationTypes =
+      param.durationTypes === undefined
+        ? undefined
+        : param.durationTypes.split(',');
+    const loanSymbols =
+      param.loanSymbols === undefined
+        ? undefined
+        : param.loanSymbols.split(',');
     const nftType =
-      param.nftType === undefined ? param.nftType : [...param.nftType];
+      param.nftType === undefined ? undefined : param.nftType.split(',');
     const assetType =
-      param.assetType === undefined ? param.assetType : [...param.assetType];
+      param.assetType === undefined ? undefined : param.assetType.split(',');
     setdataSearch({
       page: param.page,
       size: 10,
       // durationQty: param.durationQty, //
       durationTypes: durationTypes,
-      // loanAmount: param.loanAmount, //
+      loanAmount: param.loanAmount,
       loanSymbols: loanSymbols,
       name: param.name,
       nftType: nftType,
       assetType: assetType,
     });
   }, []);
+  useEffect(() => {
+    const newObj = {
+      page: dataSearch.page === undefined ? undefined : Number(dataSearch.page),
+      size: dataSearch.size === undefined ? undefined : Number(dataSearch.size),
+      loanAmount:
+        dataSearch.loanAmount === undefined
+          ? undefined
+          : dataSearch.loanAmount.length === 0
+          ? undefined
+          : dataSearch.loanAmount.toString(),
+      durationTypes:
+        dataSearch.durationTypes === undefined
+          ? undefined
+          : dataSearch.durationTypes.length === 0
+          ? undefined
+          : dataSearch.durationTypes.toString(),
+      loanSymbols:
+        dataSearch.loanSymbols === undefined
+          ? undefined
+          : dataSearch.loanSymbols.length === 0
+          ? undefined
+          : dataSearch.loanSymbols.toString(),
+      name:
+        dataSearch.name === undefined
+          ? undefined
+          : dataSearch.name.length === 0
+          ? undefined
+          : dataSearch.name.toString(),
+      nftType:
+        dataSearch.nftType === undefined
+          ? undefined
+          : dataSearch.nftType.length === 0
+          ? undefined
+          : dataSearch.nftType.toString(),
+      assetType:
+        dataSearch.assetType === undefined
+          ? undefined
+          : dataSearch.assetType.length === 0
+          ? undefined
+          : dataSearch.assetType.toString(),
+    };
+    SearchLendNFTApi.search(newObj)
+      .then((res: any) => {
+        setdataRender(res.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    history.push({
+      pathname: '/pawn/lender/nft-result',
+      search: queryString.stringify(newObj),
+    });
+  }, [dataSearch]);
+
   const editPageCount = e => {
     setdataSearch({ ...dataSearch, page: e });
   };
-  console.log('param', param);
-  console.log('dataSearch', dataSearch);
-  console.log('datarender', dataRender);
 
   return (
     <>

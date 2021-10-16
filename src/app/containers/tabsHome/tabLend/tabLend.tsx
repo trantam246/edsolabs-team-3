@@ -16,17 +16,26 @@ export function TabLendForm() {
   } = useForm();
   const onSubmit = data => {
     if (Collateral === true) {
-      const newObj = {
-        collateralSymbols: [],
+      const newObj: any = {
         // durationQty: Number(data.durationQty),
-        durationTypes: Number(data.durationTypes.value),
+        durationTypes:
+          data.durationTypes === undefined
+            ? undefined
+            : data.durationTypes.value.toString(),
         // loanAmount: Number(data.loanAmount),
-        loanSymbols: data.loanSymbols.value,
+        loanSymbols:
+          data.loanSymbols === undefined
+            ? undefined
+            : data.loanSymbols.value.toString(),
         size: 10,
+        page: 0,
       };
-      const newArr = data.collateralSymbols.map(value => value.value);
-      newObj.collateralSymbols = newArr;
-      console.log('true', newObj);
+      const newArr =
+        data.collateralSymbols === undefined
+          ? undefined
+          : data.collateralSymbols.map(value => value.value);
+      newObj.collateralSymbols =
+        newArr === undefined ? undefined : newArr.toString();
       history.push({
         pathname: '/pawn/lender',
         search: queryString.stringify(newObj),
@@ -35,13 +44,19 @@ export function TabLendForm() {
       const newObj = {
         //collateralSymbols: data.collateralSymbols,
         durationQty: Number(data.durationQty),
-        durationTypes: Number(data.durationTypes.value),
-        loanAmount: Number(data.loanAmount),
-        loanSymbols: data.loanSymbols.value,
+        durationTypes:
+          data.durationTypes === undefined
+            ? undefined
+            : data.durationTypes.value.toString(),
+        // loanAmount: Number(data.loanAmount),
+        loanSymbols:
+          data.loanSymbols === undefined
+            ? undefined
+            : data.loanSymbols.value.toString(),
         size: 10,
         page: 0,
       };
-      console.log('ô âu phàn này', newObj);
+      console.log('false', newObj);
       history.push({
         pathname: '/pawn/lender/nft-result',
         search: queryString.stringify(newObj),

@@ -24,7 +24,6 @@ export function PageHome() {
     setTimeout(() => {
       setModal(true);
     }, 2000);
-
   }
   const toggle = () => {
     localStorage.setItem('terms-and-conditions', '1');

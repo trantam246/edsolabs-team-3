@@ -98,6 +98,27 @@ export const Banner = styled(Col)`
       }
     }
   }
+  @media (max-width: 1187px) {
+    padding-right: 0px;
+    padding-left: 0px;
+    h1 {
+      margin-bottom: 29px;
+      width: 100%;
+      text-align: left;
+      padding-left: 0px;
+    }
+    p {
+      text-align: left;
+      padding-left: 0px;
+      margin-bottom: 80px;
+    }
+    div {
+      text-align: left;
+      img {
+        display: inline-block;
+      }
+    }
+  }
   @media (max-width: 1024px) {
     padding-right: 0px;
     padding-left: 0px;
