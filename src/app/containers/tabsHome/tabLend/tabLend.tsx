@@ -4,6 +4,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { SelectAll } from 'app/components/select/select';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
+import { useTranslation } from 'react-i18next';
 export function TabLendForm() {
   const history = useHistory();
   const queryString = require('query-string');
@@ -66,10 +67,11 @@ export function TabLendForm() {
   const onChangeRadio = e => {
     setCollateral(!Collateral);
   };
+  const { t } = useTranslation();
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <GrInput>
-        <p>Maximum loan amount</p>
+        <p> {t('home.tabs.lend.maxAmount')}</p>
         <div className="">
           <WarperInput
             width="417px"
@@ -78,16 +80,16 @@ export function TabLendForm() {
           >
             <input
               type="text"
-              placeholder="Enter amount"
+              placeholder={t('home.tabs.lend.enterAmount')}
               autoComplete="off"
               {...register('loanAmount', { required: true })}
             />
             {errors.Maximum && (
               <span className="errValiInput">
-                Maximum loan amount is required
+                {t('home.tabs.lend.maxRequired')}
               </span>
             )}
-            <button className="btn__max-lend">Max</button>
+            <button className="btn__max-lend">{t('home.tabs.lend.max')}</button>
           </WarperInput>
           <WarperInput width="111px" height="44px">
             <Controller
@@ -117,7 +119,7 @@ export function TabLendForm() {
         </div>
       </GrInput>
       <GrInput>
-        <p>Duration</p>
+        <p> {t('home.tabs.lend.duration')}</p>
         <div className="">
           <WarperInput
             width="417px"
@@ -127,12 +129,14 @@ export function TabLendForm() {
             <input
               type="text"
               autoComplete="off"
-              placeholder="durationQty"
+              placeholder={t('home.tabs.lend.enterDuration')}
               {...register('durationQty', { required: true })}
             />
             {errors.durationQty && (
               <>
-                <span className="errValiInput">Invalid duration</span>
+                <span className="errValiInput">
+                  {t('home.tabs.invalidDuration')}
+                </span>
                 <fieldset></fieldset>
               </>
             )}
@@ -159,13 +163,15 @@ export function TabLendForm() {
               )}
             />
             {errors.durationTypes && (
-              <span className="warning__input">Invalid amount</span>
+              <span className="warning__input">
+                {t('home.tabs.lend.enterAmount')}
+              </span>
             )}
           </WarperInput>
         </div>
       </GrInput>
       <GrInput>
-        <p>Collateral</p>
+        <p>{t('home.tabs.lend.coll')}</p>
         <div className="">
           <div className="radio">
             <input
@@ -176,7 +182,7 @@ export function TabLendForm() {
               onChange={onChangeRadio}
             />
           </div>
-          <span>Crypto</span>
+          <span>{t('home.tabs.lend.crypto')}</span>
           <div className="radio">
             <input
               type="radio"
@@ -213,7 +219,9 @@ export function TabLendForm() {
                 )}
               />
               {errors.collateralSymbols && (
-                <span className="warning__input">Invalid amount</span>
+                <span className="warning__input">
+                  {t('home.tabs.lend.enterAmount')}
+                </span>
               )}
             </WarperInput>
           </div>
@@ -222,7 +230,7 @@ export function TabLendForm() {
         ''
       )}
       <GrInput>
-        <button>Search</button>
+        <button>{t('home.tabs.search')}</button>
       </GrInput>
     </form>
   );

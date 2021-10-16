@@ -28,6 +28,7 @@ import { authActions } from 'redux/slices';
 import { useEffect } from 'react';
 import userApi from 'api/userApi';
 import DropDownUser from './dropdowmUser';
+import { useTranslation } from 'react-i18next';
 export function Navbar(props) {
   const history = useHistory();
   const dispath = useDispatch();
@@ -90,6 +91,7 @@ export function Navbar(props) {
         break;
     }
   };
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>
@@ -105,13 +107,13 @@ export function Navbar(props) {
               <MenuNavbar></MenuNavbar>
               <Col className="text-end flex-fill">
                 <ButtonNavBar color={'gradiend'} status={''}>
-                  <NavLink to="/">Become a Pawnshop</NavLink>
+                  <NavLink to="/">{t('navBar.become')}</NavLink>
                 </ButtonNavBar>
                 <ButtonNavBar color={''} status={''}>
-                  <NavLink to="/">Buy DFY</NavLink>
+                  <NavLink to="/">{t('navBar.buy')}</NavLink>
                 </ButtonNavBar>
                 <ButtonNavBar color={''} status={'true'}>
-                  <NavLink to="/">Connect</NavLink>
+                  <NavLink to="/">{t('navBar.connect')}</NavLink>
                 </ButtonNavBar>
                 {localStorage.getItem('access_token') ? (
                   <DropDownUser
@@ -120,7 +122,7 @@ export function Navbar(props) {
                   />
                 ) : (
                   <ButtonNavBar color={''} status={''}>
-                    <NavLink to="/login?tab=2">Login</NavLink>
+                    <NavLink to="/login?tab=2">{t('navBar.login')}</NavLink>
                   </ButtonNavBar>
                 )}
                 <HamburgerMenu onClick={openMenu}>
@@ -141,15 +143,15 @@ export function Navbar(props) {
                   <p>{accName?.data?.name || 'admin'}</p>
                 </AvatarAndName>
                 <MenuSubMobile>
-                  <div>Pawn</div>
-                  <div>Staking</div>
+                  <div>{t('navMobile.pawn')}</div>
+                  <div>{t('navMobile.staking')}</div>
                   <div>NFT</div>
                   <ActiveMenuMobile
                     status={statusMenuMobile.Myaccount}
                     className="d-flex justify-content-between"
                     onClick={() => openDownMenuMobile('Myaccount')}
                   >
-                    <span className="active">My account</span>
+                    <span className="active">{t('navMobile.account')}</span>
                     <span>
                       <AiOutlineLefts>
                         {statusMenuMobile.Myaccount}
@@ -167,7 +169,7 @@ export function Navbar(props) {
                             statusMenuMobile.BorrowerProfile ? 'active' : ''
                           }
                         >
-                          Borrower Profile
+                          {t('navMobile.borrowProfile')}
                         </span>
                         <span>
                           <AiOutlineLefts>
@@ -178,8 +180,8 @@ export function Navbar(props) {
                       {statusMenuMobile.BorrowerProfile ? (
                         <>
                           <MenuBorrowerProfile>
-                            <div>Collateral</div>
-                            <div>Contracts</div>
+                            <div>{t('navMobile.coll')}</div>
+                            <div>{t('navMobile.contract')}</div>
                           </MenuBorrowerProfile>
                         </>
                       ) : (
@@ -194,7 +196,7 @@ export function Navbar(props) {
                             statusMenuMobile.LenderProfile ? 'active' : ''
                           }
                         >
-                          Lender Profile
+                          {t('navMobile.lendProfile')}
                         </span>
                         <span>
                           <AiOutlineLefts>
@@ -205,16 +207,16 @@ export function Navbar(props) {
                       {statusMenuMobile.LenderProfile ? (
                         <>
                           <MenuBorrowerProfile>
-                            <div>Offers sent</div>
-                            <div>Contracts</div>
-                            <div>Pawnshop Loan Packages</div>
-                            <div>Loan requests</div>
+                            <div>{t('navMobile.offer')}</div>
+                            <div>{t('navMobile.contract')}</div>
+                            <div>{t('navMobile.package')}</div>
+                            <div>{t('navMobile.loan')}</div>
                           </MenuBorrowerProfile>
                         </>
                       ) : (
                         ''
                       )}
-                      <div>Staking</div>
+                      <div>{t('navMobile.staking')}</div>
                       <div
                         className="d-flex justify-content-between"
                         onClick={() => openDownMenuMobile('NFT')}
@@ -231,8 +233,8 @@ export function Navbar(props) {
                       {statusMenuMobile.NFT ? (
                         <>
                           <MenuBorrowerProfile>
-                            <div>NFT List</div>
-                            <div>NFT Auction</div>
+                            <div>{t('navMobile.list')}</div>
+                            <div>{t('navMobile.auction')}</div>
                           </MenuBorrowerProfile>
                         </>
                       ) : (
@@ -243,8 +245,8 @@ export function Navbar(props) {
                     ''
                   )}
                   <div>FAQ</div>
-                  <div>Change password</div>
-                  <div onClick={logout}>Log out</div>
+                  <div>{t('navMobile.changePass')}</div>
+                  <div onClick={logout}>{t('navMobile.logOut')}</div>
                 </MenuSubMobile>
               </MenuMobile>
             </>

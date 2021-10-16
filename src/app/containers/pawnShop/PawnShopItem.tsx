@@ -5,6 +5,7 @@ import heartDisable from '../../../images/heart_disable.svg';
 import checkIcon from '../../../images/check_icon.svg';
 import starIcon from '../../../images/star_icon.svg';
 import { PawnShop } from './style';
+import { useTranslation } from 'react-i18next';
 
 interface IShop {
   item: {
@@ -29,11 +30,13 @@ interface IShop {
 }
 
 const PawnShopItem: React.FC<IShop> = ({ item }) => {
+  const { t } = useTranslation();
   const renderCollateral =
     item.collateral.length > 3 ? (
       <p className="pawn__collateral-result">
         {item.collateral.slice(0, 3).join(', ')} &{' '}
-        {item.collateral.slice(3).length}+ more
+        {item.collateral.slice(3).length}+{' '}
+        {t('search.borrowCrypto.pawnshop.more')}
       </p>
     ) : (
       <p className="pawn__collateral-result">{item.collateral.join(', ')}</p>
@@ -43,6 +46,11 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
     if (item.type === 0) return 'Auto';
     else if (item.type === 1) return 'Semi-Auto';
     return 'Negotiation';
+  };
+  const resultMethod = () => {
+    if (item.type === 0) return `${t('search.borrowCrypto.filter.auto')}`;
+    else if (item.type === 1) return `${t('search.borrowCrypto.filter.semi')}`;
+    return `${t('search.borrowCrypto.filter.nego')}`;
   };
   return (
     <PawnShop>
@@ -66,14 +74,18 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
             </div>
             <ul className="pawn__details">
               <li className="pawn__details-item">
-                <p className="pawn__details-label">Available:</p>
+                <p className="pawn__details-label">
+                  {t('search.borrowCrypto.pawnshop.available')}
+                </p>
                 <p className="pawn__details-result">
                   {Math.ceil(Math.random() * 1000000).toLocaleString('en')}
                   {' ' + item.symbol}
                 </p>
               </li>
               <li className="pawn__details-item">
-                <p className="pawn__details-label">Limit:</p>
+                <p className="pawn__details-label">
+                  {t('search.borrowCrypto.pawnshop.limit')}
+                </p>
                 <p className="pawn__details-result">
                   {item.allowedLoanMin?.toLocaleString('en')}
                   {' ' + item.symbol} -{' '}
@@ -82,17 +94,21 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
                 </p>
               </li>
               <li className="pawn__details-item">
-                <p className="pawn__details-label">Duration:</p>
+                <p className="pawn__details-label">
+                  {t('search.borrowCrypto.pawnshop.duration')}
+                </p>
                 <p className="pawn__details-result">
                   {item.durationQtyMin} - {item.durationQtyMax}{' '}
-                  {item.durationQtyType === 1 ? 'months' : 'weeks'}
+                  {item.durationQtyType === 1
+                    ? `${t('search.borrowCrypto.pawnshop.months')}`
+                    : `${t('search.borrowCrypto.pawnshop.weeks')}`}
                 </p>
               </li>
               {item.loanToValue && (
                 <li className="pawn__details-item">
                   <p className="pawn__details-label">LTV:</p>
                   <p className="pawn__details-result">
-                    Up to {item.loanToValue}%
+                    {t('search.borrowCrypto.pawnshop.upTo')} {item.loanToValue}%
                   </p>
                 </li>
               )}
@@ -103,7 +119,7 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
           <div className="pawn__rate">
             <p className="pawn__rate-label">
               {item.interestMin || item.interestMax || item.interest
-                ? 'Interest rate'
+                ? t('search.borrowCrypto.pawnshop.interest')
                 : ''}
             </p>
             <p className="pawn__rate-result">
@@ -114,7 +130,9 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
             </p>
           </div>
           <div className="pawn__collateral">
-            <p className="pawn__collateral-label">Collateral accepted</p>
+            <p className="pawn__collateral-label">
+              {t('search.borrowCrypto.pawnshop.coll')}
+            </p>
             {renderCollateral}
           </div>
           <ButtonComponent
@@ -123,7 +141,7 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
             borderRadius="1.35rem"
             className={`pawn__method pawn__method--${methodButton().toLowerCase()}`}
           >
-            {methodButton()}
+            {resultMethod()}
           </ButtonComponent>
           <ButtonComponent
             fontSize="1.6rem"
@@ -133,7 +151,7 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
             color="#282c37"
             className="pawn__view"
           >
-            View Detail
+            {t('search.borrowCrypto.pawnshop.button')}
           </ButtonComponent>
         </div>
       </div>

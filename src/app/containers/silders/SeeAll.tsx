@@ -1,5 +1,5 @@
-import styled from 'styled-components/macro';
 import { HiArrowNarrowRight } from '@react-icons/all-files/hi/HiArrowNarrowRight';
+<<<<<<< HEAD
 
 const See = styled.p`
   font-size: 1.6rem;
@@ -19,11 +19,16 @@ const See = styled.p`
     display: none;
   }
 `;
+=======
+import { useTranslation } from 'react-i18next';
+import { See } from './style';
+>>>>>>> e21d42a (add translations)
 
 const SeeAll = () => {
+  const { t } = useTranslation();
   return (
     <See>
-      See all
+      {t('home.sliders.seeAll')}
       <HiArrowNarrowRight />
     </See>
   );

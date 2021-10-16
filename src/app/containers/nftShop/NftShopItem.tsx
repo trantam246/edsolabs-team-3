@@ -6,6 +6,7 @@ import artworkIcon from '../../../images/art_nft_icon.svg';
 import starIcon from '../../../images/star_icon.svg';
 import hardNft from '../../../images/hard_nft.png';
 import { NftShop } from './style';
+import { useTranslation } from 'react-i18next';
 
 interface IShop {
   item: {
@@ -33,6 +34,7 @@ interface IShop {
 }
 
 const NftShopItem: React.FC<IShop> = ({ item }) => {
+  const { t } = useTranslation();
   return (
     <NftShop>
       <div className="nft">
@@ -59,33 +61,41 @@ const NftShopItem: React.FC<IShop> = ({ item }) => {
           </div>
           <ul className="nft__details">
             <li className="nft__details-item">
-              <p className="nft__details-label">Borrower:</p>
+              <p className="nft__details-label">
+                {t('search.lendNft.borrower')}
+              </p>
               <p className="nft__details-result nft__details-result--blue">
                 {item.borrowerWalletAddress}
               </p>
             </li>
             <li className="nft__details-item">
-              <p className="nft__details-label">Duration:</p>
+              <p className="nft__details-label">
+                {t('search.lendNft.duration')}
+              </p>
               <p className="nft__details-result">
                 {item.durationTime}{' '}
                 {item.durationType === 0
                   ? item.durationTime > 1
-                    ? 'weeks'
-                    : 'week'
+                    ? t('search.lendNft.weeks')
+                    : t('search.lendNft.week')
                   : item.durationTime > 1
-                  ? 'months'
-                  : 'month'}
+                  ? t('search.lendNft.months')
+                  : t('search.lendNft.months')}
               </p>
             </li>
             {item.nftAssetLocation && (
               <li className="nft__details-item">
-                <p className="nft__details-label">Asset location:</p>
+                <p className="nft__details-label">
+                  {t('search.lendNft.asset')}
+                </p>
                 <p className="nft__details-result">{item.nftAssetLocation}</p>
               </li>
             )}
             {item.nftEvaluatedPrice && (
               <li className="nft__details-item">
-                <p className="nft__details-label">Evaluated price:</p>
+                <p className="nft__details-label">
+                  {t('search.lendNft.price')}
+                </p>
                 <div className="nft__details-result">
                   <img src={tIcon} alt="" />
                   {item.nftEvaluatedPrice.toLocaleString('en')}{' '}
@@ -97,7 +107,7 @@ const NftShopItem: React.FC<IShop> = ({ item }) => {
         </div>
         <div className="nft__interest">
           <div className="nft__rate">
-            <p className="nft__rate-label">Expected loan</p>
+            <p className="nft__rate-label"> {t('search.lendNft.expect')}</p>
             <p className="nft__rate-result">
               {item.expectedLoanAmount.toLocaleString('en')}{' '}
               {item.expectedLoanSymbol}
@@ -128,7 +138,7 @@ const NftShopItem: React.FC<IShop> = ({ item }) => {
             color="#282c37"
             className="nft__offer"
           >
-            Send Offer
+            {t('search.lendNft.button')}
           </ButtonComponent>
         </div>
       </div>

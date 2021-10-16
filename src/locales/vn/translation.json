@@ -1,15 +1,15 @@
 {
   "navBar": {
-    "pawn": "Pawn",
-    "borrow": "Borrow",
-    "lend": "Lend",
-    "account": "My account",
-    "become": "Become a Pawnshop",
-    "buy": "Buy DFY",
-    "connect": "Connect",
-    "login": "Login",
-    "changePass": "Change password",
-    "logOut": "Log out"
+    "pawn": "Thế chấp",
+    "borrow": "Vay",
+    "lend": "Cho vay",
+    "account": "Tài khoản của tôi",
+    "become": "Trở thành Hiệu cầm đồ",
+    "buy": "Mua DFY",
+    "connect": "Kết nối",
+    "login": "Đăng nhập",
+    "changePass": "Đổi mật khẩu",
+    "logOut": "Đăng xuất"
   },
   "navMobile": {
     "pawn": "Pawn",
@@ -29,79 +29,79 @@
   },
   "home": {
     "banner": {
-      "content": "Get Crypto Loans Instantly, Regardless of Your Credit Rating"
+      "content": "Nhận các khoản cho vay tiền điện tử ngay lập tức, bất kể xếp hạng tín dụng của bạn"
     },
     "tabs": {
       "borrow": {
-        "title": "Borrow",
+        "title": "Vay",
         "cryp": {
-          "active": "Cryptocurrency",
-          "coll": "Collateral",
-          "enterAmount": "Enter amount",
-          "duration": "Duration",
-          "loanAmount": "Loan amount",
-          "or": "Or",
-          "max": "Max",
-          "choose": "Choose Existing Collateral",
-          "recommend": "Recommended amount",
-          "recommendContent": "To get a loan quickly, you should set the desired loan amount between 50 - 70% of the collateral value.",
-          "week": "week",
-          "month": "month"
+          "active": "Tiền điện tử",
+          "coll": "Tài sản thế chấp",
+          "enterAmount": "Nhập số lượng",
+          "duration": "Thời gian",
+          "loanAmount": "Số tiền vay",
+          "or": "Hoặc",
+          "max": "Tối đa",
+          "choose": "Chọn tài sản thế chấp hiện có",
+          "recommend": "Đề xuất số tiền",
+          "recommendContent": "Để được vay nhanh chóng, bạn nên đặt mức vay mong muốn từ 50 - 70% giá trị tài sản đảm bảo.",
+          "week": "Tuần",
+          "month": "Tháng"
         },
         "nft": {
-          "find": "Find NFT lenders",
-          "dont": "Don't have hard NFT?",
-          "new": "Create new"
+          "find": "Tìm những người cho vay NFT",
+          "dont": "Không có NFT?",
+          "new": "Tạo mới"
         }
       },
       "lend": {
-        "title": "Lend",
-        "maxAmount": "Maximum loan amount",
-        "enterAmount": "Enter amount",
-        "enterDuration": "Enter duration",
-        "max": "Max",
-        "maxRequired": "Maximum loan amount is required",
-        "duration": "Duration",
-        "coll": "Collateral",
-        "crypto": "Crypto"
+        "title": "Cho vay",
+        "maxAmount": "Số tiền cho vay tối đa",
+        "enterAmount": "Nhập số lượng",
+        "duration": "Thời gian",
+        "enterDuration": "Nhập thời gian",
+        "max": "Tối đa",
+        "maxRequired": "Số tiền vay bắt buộc phải lớn nhất",
+        "coll": "Tài sản thế chấp",
+        "crypto": "Tiền điện tử"
       },
-      "search": "Search",
+      "search": "Tìm kiếm",
       "invalidAmount": "Số lượng không hợp lệ",
       "invalidDuration": "Thời gian không hợp lệ"
     },
     "features": {
-      "title": "Why Borrow With Us?",
+      "title": "Vì Sao Nên Vay Từ Chúng Tôi?",
       "list": {
         "bank": {
-          "title": "Quicker Than The Bank",
-          "content": "Banks are yesterdays news. Get the money you need without having to wait."
+          "title": "Nhanh Hơn Ngân Hàng",
+          "content": "Ngân hàng giờ đã là quá khứ. Nhận số tiền bạn mà không phải chờ đợi."
         },
         "rate": {
-          "title": "Better Interest Rates",
-          "content": "P2P lending lets you negotiate with the lender to arrange the best possible interest rates."
+          "title": "Lãi Suất Tốt Hơn",
+          "content": "Với vay P2P, bạn có thể thương lượng với người cho vay để có lãi suất ưu đãi nhất."
         },
         "sell": {
-          "title": "Finance Assets Without Selling ",
-          "content": "Put your assets to work so you can continue to meet your financial obligations."
+          "title": "Không Cần Bán Tài Sản",
+          "content": "Đưa tài sản của bạn vào hoạt động để có thể tiếp tục đáp ứng các yêu cầu tài chính của bạn."
         },
         "credit": {
-          "title": "No Credit Checks",
-          "content": "Borrow without the background checks. Anyone can get the financing they need."
+          "title": "Không Kiểm Tra Tín Dụng",
+          "content": "Vay mà không cần kiểm tra lý lịch. Ai cũng có thể tiếp cận nguồn tài chính họ cần."
         }
       }
     },
     "sliders": {
-      "title": "Explore Featured Pawnshops",
-      "labelShop": "Super Shop",
-      "seeAll": "See all",
+      "title": "Các Hiệu Cầm Đồ Nổi Bật",
+      "labelShop": "Siêu cửa hàng",
+      "seeAll": "Xem thêm",
       "list": {
-        "name": "Pawnshop America"
+        "name": "Hiệu cầm đồ America"
       }
     },
     "ads": {
-      "title": "Become a Pawnshop",
-      "content": "Open your own pawn shop and discover a new business opportunity with an unmatched ROI. Be a part of the world's financial revolution.",
-      "more": "Learn more"
+      "title": "Trở thành Hiệu cầm đồ",
+      "content": "Mở tiệm cầm đồ của riêng bạn và khám phá cơ hội kinh doanh mới với ROI. Trở thành một phần của sự biến đổi tài chính thế giới.",
+      "more": "Xem thêm"
     }
   },
   "search": {
@@ -247,32 +247,33 @@
     }
   },
   "404": {
-    "title": "Page not found.",
-    "back": "GO BACK"
+    "title": "Không tìm thấy trang.",
+    "back": "QUAY LẠI"
   },
+
   "footer": {
     "copyRight": {
-      "trademark": "© 2021 DeFi For You. All rights reserved.",
-      "term": "Terms of Service",
-      "policy": "Privacy Policy"
+      "trademark": "© 2021 DeFi For You. Đã đăng ký bản quyền.",
+      "term": "Điều khoản hợp đồng",
+      "policy": "Chính sách bảo mật"
     },
     "office": {
-      "haNoi": "DeFi For You — Hanoi Office",
-      "london": "DeFi For You — London Office",
-      "register": "Registration Number:",
-      "viewCompanies": "View on Companies House"
+      "haNoi": "DeFi For You — Trụ sở tại Hà Nội",
+      "london": "DeFi For You — Trụ sở tại London",
+      "register": "Số hiệu công ty:",
+      "viewCompanies": "Xem thông tin công ty"
     },
-    "findUs": "Find us on",
+    "findUs": "Tìm chúng tôi",
     "quickNav": {
-      "title": "Quick Navigation",
-      "whitepaper": "Whitepaper",
-      "mobile": "Get the mobile app",
-      "buy": "Buy",
-      "exchange": "Exchanges"
+      "title": "Điều hướng nhanh",
+      "whitepaper": "Trang trắng",
+      "mobile": "Cài đặt trên điện thoại",
+      "buy": "Mua",
+      "exchange": "trên sàn giao dịch"
     },
     "about": {
-      "title": "About DeFi For You.",
-      "content": "is a trading style of Miles Mann Limited registered office at 5 Southgate Street, Gloucester, Gloucestershire, GL1 1TG1 Licensed authorised and regulated by the Financial Conduct Authority to exercise lender's rights and duties under a regulated credit agreement (excluding high-cost short-term credit, bill of sale agreement, and home collected credit agreement), and has the right to exercise lender's rights and duties under a regulated credit agreement (excluding high-cost short-term credit, bill of sale agreement, and home collected credit agreement)"
+      "title": "Về DeFi For You.",
+      "content": "là một phong cách giao dịch của văn phòng đăng ký Miles Mann Limited tại số 5 Southgate Street, Gloucester, Gloucestershire, GL1 1TG1 Được cấp phép và quản lý bởi Cơ quan quản lý tài chính để thực hiện các quyền và nghĩa vụ của người cho vay theo thỏa thuận tín dụng quy định (không bao gồm các khoản khống chi phí cao - tín dụng có kỳ hạn, hợp đồng mua bán hóa đơn và hợp đồng tín dụng thu tiền tận nhà), và có quyền thực hiện các quyền và nghĩa vụ của người cho vay theo hợp đồng tín dụng được quy định (không bao gồm tín dụng ngắn hạn chi phí cao, hợp đồng mua bán hóa đơn và tín dụng thu tiền tận nhà hợp đồng)"
     }
   }
 }
