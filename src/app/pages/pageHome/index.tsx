@@ -9,15 +9,7 @@ import { Helmet } from 'react-helmet-async';
 import { Container } from 'reactstrap';
 import { Section } from './style';
 import TermsOfService from '../../components/termsOfService/index';
-// import { useState, useEffect } from 'react';
 export function PageHome() {
-  document.title = 'home';
-  // const [state, setstate] = useState(window.innerWidth);
-  // const a = () => {
-  //   setstate(window.innerWidth);
-  // };
-  // window.addEventListener('resize', a);
-  // console.log(state);
   const [modal, setModal] = useState(false);
 
   if (!localStorage.hasOwnProperty('terms-and-conditions')) {

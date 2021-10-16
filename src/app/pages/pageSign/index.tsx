@@ -7,7 +7,7 @@ export function PageSign() {
   return (
     <>
       <Helmet>
-        <title>Home</title>
+        <title>DeFi For You | DeFi For You UK</title>
         <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
       {/*navbar*/}

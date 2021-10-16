@@ -136,6 +136,7 @@ export function PageSearchLend() {
       name:
         dataSearch.name === undefined ? undefined : dataSearch.name.toString(),
     };
+    console.log(newObj);
     SearchLendCryApi.search(newObj)
       .then((res: any) => {
         setdataRender(res.data);
@@ -148,14 +149,13 @@ export function PageSearchLend() {
       search: queryString.stringify(newObj),
     });
   }, [dataSearch]);
-
   const editPageCount = e => {
     setdataSearch({ ...dataSearch, page: e });
   };
   return (
     <>
       <Helmet>
-        <title>Home</title>
+        <title>DeFi For You | DeFi For You UK</title>
         <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
       {/*navbar*/}
