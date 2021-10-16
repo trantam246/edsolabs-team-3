@@ -68,8 +68,15 @@ export function PageSearch() {
 
   const onChangeCollateralAccepted = e => {
     if (e.target.checked) {
-      const newvalue = dataSearch?.collateralSymbols;
-      newvalue.push(e.target.value);
+      const data = {
+        collateralSymbols: [],
+      };
+      const newvalue =
+        dataSearch.collateralSymbols === undefined
+          ? [...data.collateralSymbols, e.target.value]
+          : typeof dataSearch.collateralSymbols === 'string'
+          ? [dataSearch.collateralSymbols]
+          : [...dataSearch.collateralSymbols, e.target.value];
       setdataSearch({ ...dataSearch, collateralSymbols: newvalue });
     } else {
       const newValue1 = [...dataSearch?.collateralSymbols];
@@ -161,6 +168,7 @@ export function PageSearch() {
       param.collateralSymbols === undefined
         ? undefined
         : param.collateralSymbols.split(',');
+    const cusSort = param.cusSort === undefined ? undefined : param.cusSort;
     setdataSearch({
       durationTypes: durationTypes,
       loanSymbols: loanSymbols,
@@ -174,6 +182,7 @@ export function PageSearch() {
       page: param.page,
       status: 3, //
       size: 5, //
+      cusSort: cusSort,
     });
   }, []);
   // lấy api render
@@ -237,6 +246,10 @@ export function PageSearch() {
       page: dataSearch.page === undefined ? undefined : Number(dataSearch.page),
       status:
         dataSearch.status === undefined ? undefined : Number(dataSearch.status),
+      cusSort:
+        dataSearch.cusSort === undefined
+          ? undefined
+          : dataSearch.cusSort.toString(),
     };
     SearchBorrowCryApi.search(newObj)
       .then((res: any) => {

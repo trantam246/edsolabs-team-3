@@ -35,7 +35,6 @@ const navList = [
 export function NavSortSearch(props) {
   const [items, setItems] = useState(navList);
   const [active, setActive] = useState('');
-
   const handleClick = v => {
     setItems(
       items.map(o =>
