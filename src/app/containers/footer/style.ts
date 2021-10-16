@@ -202,7 +202,7 @@ export const IconLink = styled.div`
 export const FooterDefi = styled.footer`
   background-color: #171a23;
   min-height: 76.5rem;
-  background-image: ${`url(${textFooter}:any)`};
+  background-image: ${`url(${textFooter})`};
   background-repeat: no-repeat;
   background-size: 70%;
   background-position-y: 7rem;

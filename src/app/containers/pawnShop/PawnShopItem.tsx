@@ -57,7 +57,15 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
       <div className="pawn">
         <div className="pawn__shop">
           <div className="pawn__img">
-            <img className="pawn__img-shop" src={item.avatar} alt="" />
+            <img
+              className="pawn__img-shop"
+              src={
+                item.avatar
+                  ? item.avatar
+                  : 'https://static2.yan.vn/YanNews/2167221/202003/dan-mang-du-trend-thiet-ke-avatar-du-kieu-day-mau-sac-tu-anh-mac-dinh-b0de2bad.jpg'
+              }
+              alt=""
+            />
             <img
               className="pawn__img-icon"
               src={item.isFavorite ? heartActive : heartDisable}
