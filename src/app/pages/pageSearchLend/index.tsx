@@ -142,7 +142,8 @@ export function PageSearchLend() {
         setdataRender(res.data);
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
+        throw error;
       });
     history.push({
       pathname: '/pawn/lender',

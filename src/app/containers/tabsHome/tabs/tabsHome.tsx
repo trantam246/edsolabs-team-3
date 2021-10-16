@@ -5,11 +5,13 @@ import { Tabborrow, TabLend, Tabs, TabSum } from './style';
 import { TabContent } from 'reactstrap';
 import TabsBorrow from '../tabsBorrow/tabsBorrow';
 import { TabLendForm } from '../tabLend/tabLend';
+import { useTranslation } from 'react-i18next';
 export function TabsComponent() {
   const [activeTabBorRow, setActiveTabBorRow] = useState('1');
   const toggle = tab => {
     if (activeTabBorRow !== tab) setActiveTabBorRow(tab);
   };
+  const { t } = useTranslation();
   return (
     <>
       <Tabs className="tabs">
@@ -21,7 +23,7 @@ export function TabsComponent() {
                 toggle('1');
               }}
             >
-              Borrow
+              {t('home.tabs.borrow.title')}
             </span>
           </div>
           <div>
@@ -31,7 +33,7 @@ export function TabsComponent() {
                 toggle('2');
               }}
             >
-              Lend
+              {t('home.tabs.lend.title')}
             </span>
           </div>
         </TabSum>

@@ -28,6 +28,7 @@ export const Paginate = styled.div`
           justify-content: center;
           align-items: center;
           height: 100%;
+          padding-top: 0.1rem;
         }
       }
       &:hover {

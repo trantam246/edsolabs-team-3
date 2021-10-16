@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useAppSelector } from 'redux/hocks';
 import ModalBox from './modalBox';
+import { useTranslation } from 'react-i18next';
 
 const TabPaneLogin = styled(TabPane)`
   padding-top: 3rem;
@@ -144,45 +145,45 @@ export default function TabLogin({ id }: props) {
   };
   const [hide, setHide] = useState<boolean>(true);
   const getHide = () => setHide(!hide);
-
+  const { t } = useTranslation();
   return (
     <TabPaneLogin tabId={id}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputCustom
           label="Email"
           type="text"
-          placeHolder="Enter email"
+          placeHolder={t('auth.logIn.enterEmail')}
           Icon={null}
           iconClick={null}
           register={register('username', { required: true })}
           err={
             errors?.username?.type === 'required' && (
-              <p className="pError">Invalid email</p>
+              <p className="pError">{t('auth.logIn.invalidEmail')}</p>
             )
           }
         />
 
         <InputCustom
-          label="Password"
+          label={t('auth.logIn.password')}
           type={hide ? 'password' : 'text'}
-          placeHolder="Enter password"
+          placeHolder={t('auth.logIn.enterPass')}
           Icon={hide ? BsEyeSlashFill : BsEyeFill}
           iconClick={getHide}
           register={register('password', { required: true })}
           err={
             errors?.password?.type === 'required' && (
-              <p className="pError">Invalid password</p>
+              <p className="pError">{t('auth.logIn.invalidPass')}</p>
             )
           }
         />
 
         <div className="aStyle">
-          <a href="//">Forgot your password?</a>
+          <a href="//">{t('auth.logIn.forget')}</a>
         </div>
 
         <div className="divButton">
           <button type="submit" className="buttonStyled">
-            Login
+            {t('auth.logIn.button')}
           </button>
         </div>
       </form>

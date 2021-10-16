@@ -5,11 +5,14 @@ import youtube from '../../../images/youtube_icon.svg';
 import lin from '../../../images/lin_icon.svg';
 import twitter from '../../../images/twitter_icon.svg';
 import { IconLink } from './style';
+import { useTranslation } from 'react-i18next';
 
 const IconsList = () => {
+  const { t } = useTranslation();
+
   return (
     <IconLink>
-      <p className="title">Find us on</p>
+      <p className="title">{t('footer.findUs')}</p>
       <div className="icons">
         <a href="https://github.com/defi-vn/" title="Github">
           <img src={github} alt="" />

@@ -30,18 +30,20 @@ export const AboutFooter = styled.div`
 
 export const AddressList = styled.div`
   ul {
-    height: 33.5rem;
+    /* height: 33.5rem; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding-left: 0;
+    & > li {
+      margin-bottom: 4.2rem;
+    }
   }
 
   li {
     list-style: none;
     font-size: 1.4rem;
     line-height: 2.1rem;
-    margin-bottom: 5.6rem;
     font-weight: 500;
   }
   @media screen and (max-width: 575px) {

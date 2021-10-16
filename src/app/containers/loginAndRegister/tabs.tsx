@@ -6,6 +6,7 @@ import TabRegister from './tabRegister';
 import TabLogin from './tabLogin';
 import { useHistory } from 'react-router';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const NavStyled = styled(Nav)`
   border: none;
@@ -54,6 +55,7 @@ export default function Tabs() {
       setActiveTab('2');
     }
   }, [setActiveTab, history.location.search]);
+  const { t } = useTranslation();
   return (
     <>
       <NavStyled tabs>
@@ -64,7 +66,7 @@ export default function Tabs() {
               toggle('1');
             }}
           >
-            Sign up
+            {t('auth.signUp.label')}
           </NavLink>
         </NavItem>
         <NavItem>
@@ -74,7 +76,7 @@ export default function Tabs() {
               toggle('2');
             }}
           >
-            Log in
+            {t('auth.logIn.label')}
           </NavLink>
         </NavItem>
       </NavStyled>

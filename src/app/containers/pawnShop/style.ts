@@ -71,7 +71,7 @@ export const PawnShop = styled.div`
       }
       &-label {
         color: #a2a3a7;
-        min-width: 10rem;
+        min-width: 12rem;
       }
       &-result {
         color: #ffffff;
@@ -128,6 +128,7 @@ export const PawnShop = styled.div`
       align-items: center;
       justify-content: center;
       margin-bottom: 1.1rem;
+      min-width: 10rem;
       &--auto {
         color: #2596ff;
         background: rgba(37, 150, 255, 0.2);
