@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { TabPane } from 'reactstrap';
 import styled from 'styled-components';
 import InputCustom from './inputCustom';
@@ -65,10 +64,6 @@ const TabPaneLogin = styled(TabPane)`
     border: none;
     outline: none;
 
-    &:hover {
-      box-shadow: 0 0 5px 0 #ffd574 inset, 0 0 7px 2px #ffd574;
-    }
-
     &:active {
       transform: translateY(4px);
     }
@@ -130,19 +125,25 @@ export default function TabLogin({ id }: props) {
   const dispath = useDispatch();
   const history = useHistory();
   const islogin = useAppSelector(selectIsLoggedIn);
+
   useEffect(() => {
     if (islogin) {
       history.push('/');
     }
   }, [islogin]);
+
+  //react hook form
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<IFormInput>();
+
+  //submit
   const onSubmit = (data: IFormInput) => {
     dispath(authActions.login(data));
   };
+
   const [hide, setHide] = useState<boolean>(true);
   const getHide = () => setHide(!hide);
   const { t } = useTranslation();
@@ -187,7 +188,6 @@ export default function TabLogin({ id }: props) {
           </button>
         </div>
       </form>
-      {/* <ModalBox /> */}
     </TabPaneLogin>
   );
 }

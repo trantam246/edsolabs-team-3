@@ -126,7 +126,8 @@ export const SwiperSlideCustom = styled.div`
   .swiper-button-next,
   .swiper-button-prev {
     position: absolute;
-    top: calc(50% - 45px);
+    top: calc(50% - 53px);
+    transform: translate(0, -50%);
     background: rgba(201, 202, 205, 0.1);
     color: #dba83d;
     font-size: 2.5rem;
@@ -166,7 +167,6 @@ export const SwiperSlideCustom = styled.div`
   @media (max-width: 1024px) {
     .swiper-button-next,
     .swiper-button-prev {
-      top: calc(50% - 40px);
       width: 55px;
       height: 55px;
       font-size: 1.5rem;
@@ -183,7 +183,7 @@ export const SwiperSlideCustom = styled.div`
 
     .swiper-button-next,
     .swiper-button-prev {
-      top: calc(50% - 35px);
+      top: calc(50% - 27px);
       width: 45px;
       height: 45px;
       font-size: 1.5rem;
@@ -199,7 +199,6 @@ export const SwiperSlideCustom = styled.div`
     margin: 0 auto;
     .swiper-button-next,
     .swiper-button-prev {
-      top: calc(50% - 30px);
       width: 40px;
       height: 40px;
       font-size: 1.2rem;
@@ -214,11 +213,13 @@ export const SwiperSlideCustom = styled.div`
   @media (max-width: 375px) {
     .swiper-button-next,
     .swiper-button-prev {
-      top: calc(50% - 27px);
-
       width: 30px;
       height: 30px;
     }
+  }
+  @media (max-width: 375px) {
+    margin-left: 15px;
+    margin-right: 15px;
   }
 `;
 
