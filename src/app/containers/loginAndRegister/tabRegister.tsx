@@ -63,6 +63,14 @@ const TabPaneLogin = styled(TabPane)`
     font-size: 1.6rem;
     border: none;
     outline: none;
+
+    &:hover {
+      box-shadow: 0 0 5px 0 #ffd574 inset, 0 0 7px 2px #ffd574;
+    }
+
+    &:active {
+      transform: translateY(4px);
+    }
   }
 
   @media (max-width: 376px) {
