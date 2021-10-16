@@ -134,12 +134,12 @@ export function FiterNavSearch(props: any) {
                   <input
                     type="checkbox"
                     name="SoftNFT"
-                    value="0"
+                    value="1"
                     onChange={NFTtype}
                     checked={
                       param.nftType === undefined
                         ? false
-                        : param.nftType.includes('0')
+                        : param.nftType.includes('1')
                     }
                   />
                   <span>Soft NFT</span>
@@ -148,12 +148,12 @@ export function FiterNavSearch(props: any) {
                   <input
                     type="checkbox"
                     name="HardNFT"
-                    value="1"
+                    value="0"
                     onChange={NFTtype}
                     checked={
                       param.nftType === undefined
                         ? false
-                        : param.nftType.includes('1')
+                        : param.nftType.includes('0')
                     }
                   />
                   <span>Hard NFT</span>
