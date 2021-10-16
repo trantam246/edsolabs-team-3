@@ -8,10 +8,8 @@ import { GrClose } from '@react-icons/all-files/gr/GrClose';
 import { useState } from 'react';
 import { MenuNavbar } from 'app/components/menu';
 import { Logo } from 'app/components/logo';
-import avatarMenu from '../../../images/avatarMenu.png';
 import { useHistory } from 'react-router';
 import {
-  AccountZone,
   ActiveMenuMobile,
   AiOutlineLefts,
   AvatarAndName,
@@ -61,9 +59,6 @@ export function Navbar(props) {
     dispath(authActions.logout());
     setstatusBlockLogout(!statusBlockLogout);
     history.push('/');
-  };
-  const onClickBlock = () => {
-    setstatusBlockLogout(!statusBlockLogout);
   };
   const openDownMenuMobile = value => {
     switch (value) {
@@ -119,26 +114,13 @@ export function Navbar(props) {
                   <NavLink to="/">Connect</NavLink>
                 </ButtonNavBar>
                 {localStorage.getItem('access_token') ? (
-                  // <AccountZone onClick={onClickBlock}>
-                  //   <img src={avatarMenu} alt="" />
-                  //   <span>{accName?.data?.name}</span>
-                  //   {statusBlockLogout ? (
-                  //     <ul>
-                  //       <li>change pass</li>
-                  //       <hr />
-                  //       <li onClick={logout}>logout</li>
-                  //     </ul>
-                  //   ) : (
-                  //     ''
-                  //   )}
-                  // </AccountZone>
                   <DropDownUser
                     name={accName?.data?.name}
                     handleLogout={logout}
                   />
                 ) : (
                   <ButtonNavBar color={''} status={''}>
-                    <NavLink to="/login">Login</NavLink>
+                    <NavLink to="/login?tab=2">Login</NavLink>
                   </ButtonNavBar>
                 )}
                 <HamburgerMenu onClick={openMenu}>

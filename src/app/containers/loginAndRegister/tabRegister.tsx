@@ -8,16 +8,7 @@ import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useDispatch } from 'react-redux';
 import { authActions } from 'redux/slices';
-interface props {
-  id: string;
-}
-interface IFormInput {
-  name: string;
-  email: string;
-  password: string;
-  rePassword: string;
-}
-const AU_SITE_KEY: string = '6LcSG9EaAAAAABvbpHkdugGmjEWeYPp6NoPPDEvt';
+
 const TabPaneLogin = styled(TabPane)`
   padding-top: 3rem;
   .pError {
@@ -44,6 +35,10 @@ const TabPaneLogin = styled(TabPane)`
     color: #dba83d;
   }
 
+  .captchaField {
+    height: 94px;
+  }
+
   .divButton {
     width: 58.4rem;
     display: flex;
@@ -68,6 +63,14 @@ const TabPaneLogin = styled(TabPane)`
     font-size: 1.6rem;
     border: none;
     outline: none;
+
+    &:hover {
+      box-shadow: 0 0 5px 0 #ffd574 inset, 0 0 7px 2px #ffd574;
+    }
+
+    &:active {
+      transform: translateY(4px);
+    }
   }
 
   @media (max-width: 376px) {
@@ -115,16 +118,31 @@ const TabPaneLogin = styled(TabPane)`
     }
   }
 `;
+//code
+interface props {
+  id: string;
+}
+interface IFormInput {
+  name: string;
+  email: string;
+  password: string;
+  rePassword: string;
+  reCaptcha: string;
+}
+
+const SITE_KEY: string = '6LcSG9EaAAAAABvbpHkdugGmjEWeYPp6NoPPDEvt';
 
 export default function TabRegister({ id }: props) {
   const {
     register,
     formState: { errors },
     handleSubmit,
+    watch,
   } = useForm<IFormInput>();
+  const password = useRef({});
+  password.current = watch('password', '');
   const dispath = useDispatch();
   const [token, setToken] = useState('');
-  const reCaptcha = useRef();
   const onSubmit = (data: IFormInput) => {
     if (data.password !== data.rePassword) {
       alert('tài khoản mật khẩu ko khớp ');
@@ -195,11 +213,19 @@ export default function TabRegister({ id }: props) {
           placeHolder="Enter password"
           Icon={hide2 ? BsEyeSlashFill : BsEyeFill}
           iconClick={getHide2}
-          register={register('rePassword', { required: true })}
+          register={register('rePassword', {
+            required: true,
+            validate: value => value === password.current,
+          })}
           err={
-            errors?.rePassword?.type === 'required' && (
+            (errors?.rePassword?.type === 'required' && (
               <p className="pError">Invalid password</p>
-            )
+            )) ||
+            (errors?.rePassword?.type === 'validate' && (
+              <p className="pError">
+                The confirm password field does not match the password
+              </p>
+            ))
           }
         />
 
@@ -211,15 +237,22 @@ export default function TabRegister({ id }: props) {
           agree to DeFi For You’s Terms and Conditions of Use.
         </p>
 
-        <ReCAPTCHA
-          className="recaptcha"
-          sitekey={AU_SITE_KEY}
-          hl="en"
-          size="normal"
-          ref={reCaptcha}
-          onChange={token => setToken(token)}
-          onExpired={() => setToken('')}
-        />
+        <div className="captchaField">
+          <ReCAPTCHA
+            className="recaptcha"
+            sitekey={SITE_KEY}
+            hl="en"
+            size="normal"
+            {...register('reCaptcha', {
+              required: token === '',
+            })}
+            onChange={token => setToken(token)}
+            onExpired={() => setToken('')}
+          />
+          {errors?.reCaptcha?.type === 'required' && (
+            <p className="pError">Invalid captcha</p>
+          )}
+        </div>
 
         <div className="divButton">
           <button type="submit" className="buttonStyled">

@@ -39,29 +39,20 @@ export function PageSearch() {
   const param = queryString.parse(history.location.search);
   //data lấy từ filter search
   const [dataSearch, setdataSearch] = useState<any>({
-    // name: '',
-    // interestRanges: '',
-    // loanToValueRanges: '',
-    // collateralSymbols: [],
-    // loanSymbols: [],
-    // loanTypes: [],
-    // durationTypes: [],
+    status: 3,
+    size: 5,
   }); //data lấy được từ người dùng khi onchange
   const resetDataFilter = () => {
     setdataSearch({
-      name: '',
-      interestRanges: '',
-      loanToValueRanges: '',
-      collateralSymbols: [],
-      loanTypes: [],
-      durationTypes: [],
-      loanSymbols: [],
       size: 5,
       status: 3,
     });
     history.push({
       pathname: '/pawn/offer',
-      search: queryString.stringify({ size: 10 }),
+      search: queryString.stringify({
+        size: 5,
+        status: 3,
+      }),
     });
   };
   const onChangeInputSearch = (e: any) => {
@@ -77,8 +68,15 @@ export function PageSearch() {
 
   const onChangeCollateralAccepted = e => {
     if (e.target.checked) {
-      const newvalue = dataSearch?.collateralSymbols;
-      newvalue.push(e.target.value);
+      const data = {
+        collateralSymbols: [],
+      };
+      const newvalue =
+        dataSearch.collateralSymbols === undefined
+          ? [...data.collateralSymbols, e.target.value]
+          : typeof dataSearch.collateralSymbols === 'string'
+          ? [dataSearch.collateralSymbols]
+          : [...dataSearch.collateralSymbols, e.target.value];
       setdataSearch({ ...dataSearch, collateralSymbols: newvalue });
     } else {
       const newValue1 = [...dataSearch?.collateralSymbols];
@@ -94,9 +92,9 @@ export function PageSearch() {
       const newvalue =
         dataSearch.loanSymbols === undefined
           ? [...data.loanSymbols, e.target.value]
+          : typeof dataSearch.loanSymbols === 'string'
+          ? [dataSearch.loanSymbols]
           : [...dataSearch.loanSymbols, e.target.value];
-      // const newvalue: any = dataSearch?.loanSymbols;
-      // newvalue.push(e.target.value);
       setdataSearch({ ...dataSearch, loanSymbols: newvalue });
     } else {
       const newValue1 = [...dataSearch.loanSymbols];
@@ -112,6 +110,8 @@ export function PageSearch() {
       const newvalue =
         dataSearch.loanTypes === undefined
           ? [...data.loanTypes, e.target.value]
+          : typeof dataSearch.loanTypes === 'string'
+          ? [dataSearch.loanTypes]
           : [...dataSearch.loanTypes, e.target.value];
       setdataSearch({ ...dataSearch, loanTypes: newvalue });
     } else {
@@ -122,8 +122,15 @@ export function PageSearch() {
   };
   const onChangeDuration = e => {
     if (e.target.checked) {
-      const newvalue = dataSearch?.durationTypes;
-      newvalue.push(e.target.value);
+      const data = {
+        durationTypes: [],
+      };
+      const newvalue =
+        dataSearch.durationTypes === undefined
+          ? [...data.durationTypes, e.target.value]
+          : typeof dataSearch.durationTypes === 'string'
+          ? [dataSearch.durationTypes]
+          : [...dataSearch.durationTypes, e.target.value];
       setdataSearch({ ...dataSearch, durationTypes: newvalue });
     } else {
       const newValue1 = [...dataSearch.durationTypes];
@@ -144,85 +151,119 @@ export function PageSearch() {
       throw err;
     }
   };
-
   useEffect(() => {
     fetchDataPersonalLend();
   }, []);
-
-  useEffect(() => {
-    if (
-      dataSearch.interestRanges === undefined &&
-      dataSearch.collateralSymbols === undefined &&
-      dataSearch.loanTypes === undefined &&
-      dataSearch.name === undefined
-    ) {
-      SearchBorrowCryApi.search(param)
-        .then((res: any) => {
-          setdataRender(res.data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    } else {
-      //goij laij api
-      SearchBorrowCryApi.search(dataSearch)
-        .then((res: any) => {
-          setdataRender(res.data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-      history.push({
-        pathname: '/pawn/offer',
-        search: queryString.stringify(dataSearch),
-      });
-    }
-  }, [dataSearch]);
   //truyền param vào state 1 lần
   useEffect(() => {
-    const data: any = {
-      durationTypes: [],
-      loanSymbols: [],
-      collateralSymbols: [],
-    };
-    const newArrDuration = [...data.durationTypes];
-    const newArrDuration2 =
-      typeof param.durationTypes === 'undefined'
-        ? []
-        : typeof param.durationTypes === 'string'
-        ? [param.durationTypes].concat(newArrDuration)
-        : param.durationTypes.concat(newArrDuration);
-
-    const newLoanToken = [...data.loanSymbols];
-    const newLoanToken2 =
-      typeof param.loanSymbols === 'undefined'
-        ? []
-        : typeof param.loanSymbols === 'string'
-        ? [param.loanSymbols].concat(newLoanToken)
-        : param.loanSymbols.concat(newLoanToken);
-
-    const newCollateralAccepted = [...data.collateralSymbols];
-    const newCollateralAccepted2 =
-      typeof param.collateralSymbols === 'undefined'
-        ? []
-        : typeof param.collateralSymbols === 'string'
-        ? [param.collateralSymbols].concat(newCollateralAccepted)
-        : param.collateralSymbols.concat(newCollateralAccepted);
+    const durationTypes =
+      param.durationTypes === undefined
+        ? undefined
+        : param.durationTypes.split(',');
+    const loanSymbols =
+      param.loanSymbols === undefined
+        ? undefined
+        : param.loanSymbols.split(',');
+    const collateralSymbols =
+      param.collateralSymbols === undefined
+        ? undefined
+        : param.collateralSymbols.split(',');
+    const cusSort = param.cusSort === undefined ? undefined : param.cusSort;
     setdataSearch({
-      ...dataSearch,
-      durationTypes: newArrDuration2,
-      loanSymbols: newLoanToken2,
-      collateralSymbols: newCollateralAccepted2,
-      collateralAmount: param.collateralAmount,
-      durationQty: param.durationQty,
-      loanAmount: param.loanAmount,
-      status: 3,
-      size: 5,
+      durationTypes: durationTypes,
+      loanSymbols: loanSymbols,
+      collateralSymbols: collateralSymbols,
+      collateralAmount: param.collateralAmount, //
+      durationQty: param.durationQty, //
+      loanAmount: param.loanAmount, //
       loanTypes: param.loanTypes,
       interestRanges: param.interestRanges,
       loanToValueRanges: param.loanToValueRanges,
+      page: param.page,
+      status: 3, //
+      size: 5, //
+      cusSort: cusSort,
     });
   }, []);
+  // lấy api render
+  useEffect(() => {
+    const newObj = {
+      durationTypes:
+        dataSearch.durationTypes === undefined
+          ? undefined
+          : dataSearch.durationTypes.length === 0
+          ? undefined
+          : dataSearch.durationTypes.toString(),
+      loanSymbols:
+        dataSearch.loanSymbols === undefined
+          ? undefined
+          : dataSearch.loanSymbols.length === 0
+          ? undefined
+          : dataSearch.loanSymbols.toString(),
+      collateralSymbols:
+        dataSearch.collateralSymbols === undefined
+          ? undefined
+          : dataSearch.collateralSymbols.length === 0
+          ? undefined
+          : dataSearch.collateralSymbols.toString(),
+      collateralAmount:
+        dataSearch.collateralAmount === undefined
+          ? undefined
+          : dataSearch.collateralAmount.length === 0
+          ? undefined
+          : dataSearch.collateralAmount.toString(),
+      durationQty:
+        dataSearch.durationQty === undefined
+          ? undefined
+          : dataSearch.durationQty.length === 0
+          ? undefined
+          : dataSearch.durationQty.toString(),
+      loanAmount:
+        dataSearch.loanAmount === undefined
+          ? undefined
+          : dataSearch.loanAmount.length === 0
+          ? undefined
+          : dataSearch.loanAmount.toString(),
+      loanTypes:
+        dataSearch.loanTypes === undefined
+          ? undefined
+          : dataSearch.loanTypes.length === 0
+          ? undefined
+          : dataSearch.loanTypes.toString(),
+      interestRanges:
+        dataSearch.interestRanges === undefined
+          ? undefined
+          : dataSearch.interestRanges.length === 0
+          ? undefined
+          : dataSearch.interestRanges.toString(),
+      loanToValueRanges:
+        dataSearch.loanToValueRanges === undefined
+          ? undefined
+          : dataSearch.loanToValueRanges.length === 0
+          ? undefined
+          : dataSearch.loanToValueRanges.toString(),
+      size: dataSearch.size === undefined ? undefined : Number(dataSearch.size),
+      page: dataSearch.page === undefined ? undefined : Number(dataSearch.page),
+      status:
+        dataSearch.status === undefined ? undefined : Number(dataSearch.status),
+      cusSort:
+        dataSearch.cusSort === undefined
+          ? undefined
+          : dataSearch.cusSort.toString(),
+    };
+    SearchBorrowCryApi.search(newObj)
+      .then((res: any) => {
+        setdataRender(res.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    history.push({
+      pathname: '/pawn/offer',
+      search: queryString.stringify(newObj),
+    });
+  }, [dataSearch]);
+
   const editPageCount = e => {
     setdataSearch({ ...dataSearch, page: e });
   };
@@ -235,18 +276,13 @@ export function PageSearch() {
       document.body.style.overflow = 'auto';
     }
   };
-
   const handleSort = o => {
     setdataSearch({ ...dataSearch, cusSort: o });
   };
-  console.log('param', param);
-  console.log('data từ api trả về', dataRender);
-  console.log('----------------------------------------');
-  console.log('data filter nav gửi api', dataSearch);
   return (
     <>
       <Helmet>
-        <title>Home</title>
+        <title>DeFi For You | DeFi For You UK</title>
         <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
       {/*navbar*/}
