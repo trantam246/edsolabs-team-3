@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useAppSelector } from 'redux/hocks';
 import { useTranslation } from 'react-i18next';
+import ModalBox from './modalBox';
 
 const TabPaneLogin = styled(TabPane)`
   padding-top: 3rem;
