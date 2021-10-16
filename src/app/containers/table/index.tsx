@@ -30,8 +30,8 @@ export default function Table(props: any) {
             <Tbody>
               {dataRender?.content?.map((o, i) => {
                 return (
-                  <>
-                    <tr key={i}>
+                  <React.Fragment key={o.id}>
+                    <tr className="item">
                       <Td>{++i}</Td>
                       <Td>
                         <Borrower
@@ -56,8 +56,8 @@ export default function Table(props: any) {
                       </Td>
                       <Td>
                         {o?.durationType === 0
-                          ? `${o?.durationQty} Months`
-                          : `${o?.durationQty} Weeks`}
+                          ? `${o?.durationQty} Weeks`
+                          : `${o?.durationQty} Months`}
                       </Td>
                       <Td>
                         <Button
@@ -69,9 +69,14 @@ export default function Table(props: any) {
                         />
                       </Td>
                     </tr>
-
-                    <td colSpan={6}>{i === length && <Banner />}</td>
-                  </>
+                    {i === length && (
+                      <tr>
+                        <td colSpan={6}>
+                          <Banner />
+                        </td>
+                      </tr>
+                    )}
+                  </React.Fragment>
                 );
               })}
             </Tbody>

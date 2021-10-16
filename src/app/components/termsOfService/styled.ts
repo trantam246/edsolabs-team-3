@@ -34,7 +34,6 @@ export const Button = styled.button`
   }
 `;
 export const ModalBG = styled(Modal)`
-
   position: fixed;
   transform: translate(-50%, -50%) !important;
   top: 45%;
@@ -44,7 +43,6 @@ export const ModalBG = styled(Modal)`
     background: none !important;
   }
   max-width: 1324px !important;
-
 
   @media (max-width: 1920px) {
     max-width: 80% !important;
@@ -64,6 +62,7 @@ export const ModalBG = styled(Modal)`
   @media (max-width: 540px) {
     max-width: 100% !important;
     left: 0;
+  }
 `;
 
 export const Paper = styled(Jumbotron)`
@@ -114,7 +113,10 @@ export const H3 = styled.h3`
   font-size: 4rem;
   line-height: 150%;
   color: #ffffff;
-  margin-bottom: 2.8rem;
+
+  margin-top: 46px;
+  margin-bottom: 17px;
+
   @media (max-width: 540px) {
     line-height: 2rem;
     font-size: 1.6rem;
@@ -124,7 +126,9 @@ export const H3 = styled.h3`
 
 export const Box = styled.div`
   max-height: 530px;
-  padding: 3rem 4rem 0 4rem;
+  padding: 0 4rem 0 4rem;
+  margin-right: 2.2rem;
+  text-align: justify;
   ::-webkit-scrollbar {
     position: absolute;
     width: 10px;

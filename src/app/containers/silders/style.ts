@@ -67,10 +67,10 @@ export const H3 = styled.h3`
   font-size: 36px;
   font-weight: 600;
   padding-top: 6rem;
-  padding-bottom: 10rem;
+  padding-bottom: 6.4rem;
   @media (max-width: 768px) {
     font-size: 24px;
-    padding-top: 0;
+    padding-top: 4rem;
     padding-bottom: 3rem;
   }
 `;
@@ -114,6 +114,7 @@ export const content = styled.p`
 `;
 
 export const SwiperSlideCustom = styled.div`
+  padding-bottom: 8rem;
   position: relative;
   .swiper-button-next,
   .swiper-button-prev {
@@ -178,6 +179,8 @@ export const SwiperSlideCustom = styled.div`
     }
   }
   @media (max-width: 768px) {
+    padding-bottom: 3rem;
+
     .swiper-button-next,
     .swiper-button-prev {
       top: calc(50% - 35px);

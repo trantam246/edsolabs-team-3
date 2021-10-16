@@ -15,7 +15,10 @@ export default function TermsOfService(props) {
   const [colorBtn, setColorBtn] = useState('disable');
 
   const funcScroll = e => {
-    if (e.target.scrollTop === e.target.scrollHeight - e.target.clientHeight) {
+    if (
+      Math.floor(e.target.scrollTop) ===
+      Math.floor(e.target.scrollHeight - e.target.clientHeight)
+    ) {
       setTypeBtn(false);
       setColorBtn('gradiend');
     }
@@ -93,7 +96,9 @@ export default function TermsOfService(props) {
           </List>
         </Box>
         <ButtonGroup>
-          <Button color={''}>Decline</Button>
+          <Button onClick={props.handleClose} color={''}>
+            Decline
+          </Button>
           <Button
             color={colorBtn}
             onClick={props.handleAccept}
