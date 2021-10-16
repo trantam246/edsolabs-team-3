@@ -87,7 +87,6 @@ export function SelectAll(props: any) {
       </>
     ),
   }));
-  options1.unshift({ value: 'All', label: 'All' });
   const options2: any = LoanAmount.map(e => ({
     value: e.value,
     label: (
@@ -101,9 +100,7 @@ export function SelectAll(props: any) {
       </>
     ),
   }));
-  options2.unshift({ value: 'All', label: 'All' });
   const options3 = [
-    { value: 'All', label: 'All' },
     { value: '1', label: 'Month' },
     { value: '0', label: 'Weeks' },
   ];

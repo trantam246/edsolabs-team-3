@@ -49,17 +49,26 @@ export default function TabsBorrow(props: any) {
     control,
   } = useForm();
   const onSumitFormCryptocurrency = data => {
-    console.log(data);
     const queryString = require('query-string');
     const newObj = {
       collateralAmount: Number(data.collateralAmount),
-      collateralSymbols: [data.collateralSymbols.value], //
+      collateralSymbols:
+        data.collateralSymbols === undefined
+          ? undefined
+          : data.collateralSymbols.value.toString(),
       durationQty: Number(data.durationQty),
-      durationTypes: [Number(data.durationTypes.value)], //
+      durationTypes:
+        data.durationTypes === undefined
+          ? undefined
+          : data.durationTypes.value.toString(),
       loanAmount: Number(data.loanAmount),
-      loanSymbols: [data.loanSymbols.value], //
+      loanSymbols:
+        data.loanSymbols === undefined
+          ? undefined
+          : data.loanSymbols.value.toString(),
       status: 3,
       size: 5,
+      page: 0,
     };
     history.push({
       pathname: '/pawn/offer',
