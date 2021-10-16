@@ -257,7 +257,8 @@ export function PageSearch() {
         setdataRender(res.data);
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
+        throw error;
       });
     history.push({
       pathname: '/pawn/offer',
