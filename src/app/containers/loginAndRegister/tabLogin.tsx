@@ -11,7 +11,7 @@ import { authActions, selectIsLoggedIn } from 'redux/slices';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useAppSelector } from 'redux/hocks';
-import ModalBox from './modalBox';
+import { useTranslation } from 'react-i18next';
 
 const TabPaneLogin = styled(TabPane)`
   padding-top: 3rem;
@@ -125,13 +125,6 @@ export default function TabLogin({ id }: props) {
   const dispath = useDispatch();
   const history = useHistory();
   const islogin = useAppSelector(selectIsLoggedIn);
-  //modal box
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
-
-  //hide-show
-  const [hide, setHide] = useState<boolean>(true);
-  const getHide = () => setHide(!hide);
 
   useEffect(() => {
     if (islogin) {
@@ -150,6 +143,10 @@ export default function TabLogin({ id }: props) {
   const onSubmit = (data: IFormInput) => {
     dispath(authActions.login(data));
   };
+
+  const [hide, setHide] = useState<boolean>(true);
+  const getHide = () => setHide(!hide);
+  const { t } = useTranslation();
 
   return (
     <TabPaneLogin tabId={id}>
@@ -189,10 +186,10 @@ export default function TabLogin({ id }: props) {
         <div className="divButton">
           <button type="submit" className="buttonStyled">
             Log in
+            {t('auth.logIn.button')}
           </button>
         </div>
       </form>
-      <ModalBox status={modal} click={toggle} />
     </TabPaneLogin>
   );
 }
