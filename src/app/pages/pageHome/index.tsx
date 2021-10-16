@@ -15,16 +15,23 @@ export function PageHome() {
   if (!localStorage.hasOwnProperty('terms-and-conditions')) {
     setTimeout(() => {
       setModal(true);
-    }, 2000);
+    }, 1000);
   }
   const toggle = () => {
     localStorage.setItem('terms-and-conditions', '1');
     setModal(!modal);
   };
 
+  const handleClose = () => {
+    setModal(!modal);
+  };
   return (
     <>
-      <TermsOfService isOpen={modal} handleAccept={toggle} />
+      <TermsOfService
+        isOpen={modal}
+        handleClose={handleClose}
+        handleAccept={toggle}
+      />
       <Helmet>
         <title>DeFi For You | DeFi For You UK</title>
         <meta name="description" content="A Boilerplate application homepage" />

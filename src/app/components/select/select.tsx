@@ -78,7 +78,11 @@ export function SelectAll(props: any) {
     value: e.value,
     label: (
       <>
-        <img src={e.url} alt="" style={{ height: '20px', width: '20px' }} />
+        <img
+          src={e.url}
+          alt=""
+          style={{ height: '20px', width: '20px', marginRight: '5px' }}
+        />
         <span>{e.value}</span>
       </>
     ),
@@ -87,7 +91,11 @@ export function SelectAll(props: any) {
     value: e.value,
     label: (
       <>
-        <img src={e.url} alt="" style={{ height: '20px', width: '20px' }} />
+        <img
+          src={e.url}
+          alt=""
+          style={{ height: '20px', width: '20px', marginRight: '5px' }}
+        />
         <span>{e.value}</span>
       </>
     ),

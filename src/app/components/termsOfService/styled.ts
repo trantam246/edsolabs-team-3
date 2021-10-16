@@ -113,7 +113,10 @@ export const H3 = styled.h3`
   font-size: 4rem;
   line-height: 150%;
   color: #ffffff;
-  margin-bottom: 2.8rem;
+
+  margin-top: 46px;
+  margin-bottom: 17px;
+
   @media (max-width: 540px) {
     line-height: 2rem;
     font-size: 1.6rem;
@@ -123,7 +126,9 @@ export const H3 = styled.h3`
 
 export const Box = styled.div`
   max-height: 530px;
-  padding: 3rem 4rem 0 4rem;
+  padding: 0 4rem 0 4rem;
+  margin-right: 2.2rem;
+  text-align: justify;
   ::-webkit-scrollbar {
     position: absolute;
     width: 10px;
