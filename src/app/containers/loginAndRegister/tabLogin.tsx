@@ -11,11 +11,8 @@ import { authActions, selectIsLoggedIn } from 'redux/slices';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useAppSelector } from 'redux/hocks';
-<<<<<<< HEAD
 import ModalBox from './modalBox';
-=======
 import { useTranslation } from 'react-i18next';
->>>>>>> 499a643 (done traslation)
 
 const TabPaneLogin = styled(TabPane)`
   padding-top: 3rem;

@@ -59,13 +59,8 @@ export default function Table(props: any) {
                       </Td>
                       <Td>
                         {o?.durationType === 0
-<<<<<<< HEAD
-                          ? `${o?.durationQty} Weeks`
-                          : `${o?.durationQty} Months`}
-=======
                           ? `${o?.durationQty} ${t('search.lendCrypto.months')}`
                           : `${o?.durationQty} ${t('search.lendCrypto.weeks')}`}
->>>>>>> e21d42a (add translations)
                       </Td>
                       <Td>
                         <Button
