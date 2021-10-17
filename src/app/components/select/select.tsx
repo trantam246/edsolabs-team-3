@@ -78,6 +78,11 @@ const SelectA = styled(Select)`
       cursor: text;
     }
   }
+  .css-1cso6ad-control {
+    &:hover {
+      border-color: #ffffff;
+    }
+  }
   .css-e73spq-control {
     box-shadow: #dba83d 0px 0px 0px 2px;
   }

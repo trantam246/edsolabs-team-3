@@ -260,6 +260,7 @@ export const WarperInput = styled.div<any>`
     font-size: 12px;
     margin: 0px;
   }
+
   &:focus {
     border: 2px solid #dba83d;
   }
@@ -274,6 +275,9 @@ export const WarperInput = styled.div<any>`
     font-size: 16px;
     color: #a2a3a7;
     padding: 0px 20px;
+    &:hover {
+      border-color: #ffffff;
+    }
     &:focus {
       outline: none;
       border: 2px solid #dba83d;
