@@ -87,31 +87,35 @@ const PawnShopItem: React.FC<IShop> = ({ item }) => {
                 </p>
                 <p className="pawn__details-result">
                   {Math.ceil(Math.random() * 1000000).toLocaleString('en')}
-                  {' ' + item.symbol}
+                  {' DFY '}
                 </p>
               </li>
-              <li className="pawn__details-item">
-                <p className="pawn__details-label">
-                  {t('search.borrowCrypto.pawnshop.limit')}
-                </p>
-                <p className="pawn__details-result">
-                  {item.allowedLoanMin?.toLocaleString('en')}
-                  {' ' + item.symbol} -{' '}
-                  {item.allowedLoanMax?.toLocaleString('en')}
-                  {' ' + item.symbol}
-                </p>
-              </li>
-              <li className="pawn__details-item">
-                <p className="pawn__details-label">
-                  {t('search.borrowCrypto.pawnshop.duration')}
-                </p>
-                <p className="pawn__details-result">
-                  {item.durationQtyMin} - {item.durationQtyMax}{' '}
-                  {item.durationQtyType === 1
-                    ? `${t('search.borrowCrypto.pawnshop.months')}`
-                    : `${t('search.borrowCrypto.pawnshop.weeks')}`}
-                </p>
-              </li>
+              {item.allowedLoanMin && (
+                <li className="pawn__details-item">
+                  <p className="pawn__details-label">
+                    {t('search.borrowCrypto.pawnshop.limit')}
+                  </p>
+                  <p className="pawn__details-result">
+                    {item.allowedLoanMin?.toLocaleString('en')}
+                    {' ' + item.symbol} -{' '}
+                    {item.allowedLoanMax?.toLocaleString('en')}
+                    {' ' + item.symbol}
+                  </p>
+                </li>
+              )}
+              {item.durationQtyMin && (
+                <li className="pawn__details-item">
+                  <p className="pawn__details-label">
+                    {t('search.borrowCrypto.pawnshop.duration')}
+                  </p>
+                  <p className="pawn__details-result">
+                    {item.durationQtyMin} - {item.durationQtyMax}{' '}
+                    {item.durationQtyType === 1
+                      ? `${t('search.borrowCrypto.pawnshop.months')}`
+                      : `${t('search.borrowCrypto.pawnshop.weeks')}`}
+                  </p>
+                </li>
+              )}
               {item.loanToValue && (
                 <li className="pawn__details-item">
                   <p className="pawn__details-label">LTV:</p>
