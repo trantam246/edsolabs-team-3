@@ -14,7 +14,11 @@ import { useEffect } from 'react';
 import SearchLendCryApi from 'api/searchLendCry';
 import { useHistory } from 'react-router';
 import { Pagination } from 'app/containers/pagination';
+import styled from 'styled-components/macro';
 
+const ContainerPage = styled(Container)`
+  padding: 0 1.6rem 2rem 1.6rem;
+`;
 export function PageSearchLend() {
   const [statusFilterNav, setstatusFilterNav] = useState(false);
   const onClick = () => {
@@ -161,7 +165,7 @@ export function PageSearchLend() {
       {/*navbar*/}
       <Navbar></Navbar>
       <Section className="section-even">
-        <Container>
+        <ContainerPage>
           <Row>
             <Col xl="9">
               <Filter>
@@ -174,10 +178,12 @@ export function PageSearchLend() {
               </Filter>
               <Table dataRender={dataRender} />
               <Col>
-                <Pagination
-                  editPageCount={editPageCount}
-                  dataRender={dataRender}
-                />
+                {dataRender?.total_pages > 0 && (
+                  <Pagination
+                    editPageCount={editPageCount}
+                    dataRender={dataRender}
+                  />
+                )}
               </Col>
             </Col>
             <Col xl="3">
@@ -192,7 +198,7 @@ export function PageSearchLend() {
               ></FiterNavSearch>
             </Col>
           </Row>
-        </Container>
+        </ContainerPage>
         {/*footter*/}
         <Footer></Footer>
       </Section>

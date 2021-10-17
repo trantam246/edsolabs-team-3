@@ -144,6 +144,9 @@ export const Box = styled.div`
     margin: 0;
     height: 60vh;
   }
+  @media (max-height: 600px) {
+    height: 40vh;
+  }
   @media (max-width: 540px) {
     padding: 1.2rem;
     ::-webkit-scrollbar {

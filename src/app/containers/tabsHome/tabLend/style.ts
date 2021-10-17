@@ -44,18 +44,65 @@ export const GrInput = styled.div`
     justify-content: space-between;
   }
   & > .radio {
+    margin-top: 12px;
     display: flex;
     & > .radio_input {
       flex: 1;
+      align-items: center;
       display: flex;
       & > span {
         color: #fff;
         font-weight: 500;
         font-size: 16px;
-        /* margin-right: 172px; */
-        margin-top: 13px;
+        margin-left: 12px;
       }
-      .radio {
+      .radio__custom {
+        span {
+          box-sizing: border-box;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          border: 1px solid #fff;
+          display: inline-block;
+          box-sizing: border-box;
+          position: relative;
+          transition: 300ms all ease-in-out;
+          cursor: pointer;
+        }
+        span:hover {
+          box-shadow: 0 0 0px 5px rgba(253, 253, 253, 0.308);
+        }
+        span:focus {
+          box-shadow: 0 0 0px 5px rgba(253, 253, 253, 0.664);
+        }
+        span::before {
+          box-sizing: border-box;
+          content: '';
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          display: inline-block;
+          box-sizing: border-box;
+          background-color: #dba83d;
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          transform: scale(0);
+          transition: 300ms all ease-in-out;
+        }
+        input {
+          margin: 0px;
+          display: none;
+        }
+        & > input[type='radio']:checked ~ span::before {
+          transform: scale(1);
+        }
+        & > input[type='radio']:checked ~ span {
+          border: 2px solid #dba83d;
+        }
+      }
+
+      /* .radio {
         width: 24px;
         height: 24px;
         margin-right: 5px;
@@ -95,7 +142,7 @@ export const GrInput = styled.div`
             box-shadow: 0 0 0 3px rgb(red);
           }
         }
-      }
+      } */
     }
   }
   @media (max-width: 1024px) {
@@ -213,6 +260,7 @@ export const WarperInput = styled.div<any>`
     font-size: 12px;
     margin: 0px;
   }
+
   &:focus {
     border: 2px solid #dba83d;
   }
@@ -220,13 +268,16 @@ export const WarperInput = styled.div<any>`
     height: 100%;
     width: 100%;
     border-radius: 22px;
-    border: 1px solid ${p => (p.border ? '#ff5252' : '#74767b')};
+    border: ${p => (p.border ? '2px solid #ff5252' : '1px solid #74767b')};
     box-sizing: border-box;
     background-color: transparent;
     font-weight: 500;
     font-size: 16px;
     color: #a2a3a7;
     padding: 0px 20px;
+    &:hover {
+      border-color: #ffffff;
+    }
     &:focus {
       outline: none;
       border: 2px solid #dba83d;

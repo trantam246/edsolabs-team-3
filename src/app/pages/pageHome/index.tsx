@@ -23,6 +23,7 @@ export function PageHome() {
   };
 
   const handleClose = () => {
+    localStorage.setItem('terms-and-conditions', '0');
     setModal(!modal);
   };
   return (
@@ -55,7 +56,6 @@ export function PageHome() {
         </Container>
       </Section>
       {/*footter*/}
-
       <Footer></Footer>
     </>
   );

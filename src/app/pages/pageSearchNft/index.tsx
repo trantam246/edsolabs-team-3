@@ -12,7 +12,9 @@ import filtericon from '../../../images/filtericon.svg';
 import { Filter } from './style';
 import { useHistory } from 'react-router';
 import SearchLendNFTApi from 'api/searchLendNFT';
+
 const ContainerPage = styled(Container)`
+  padding: 0 1.6rem 2rem 1.6rem;
   @media screen and (max-width: 575px) {
     padding: 0 1.6rem;
   }
@@ -220,11 +222,12 @@ export function PageSearchNft() {
               <NftShop dataLendNFT={dataRender} />
             </Col>
             <Col>
-              {' '}
-              <Pagination
-                editPageCount={editPageCount}
-                dataRender={dataRender}
-              />
+              {dataRender.total_pages > 0 && (
+                <Pagination
+                  editPageCount={editPageCount}
+                  dataRender={dataRender}
+                />
+              )}
             </Col>
           </Col>
           <Col xl="3">

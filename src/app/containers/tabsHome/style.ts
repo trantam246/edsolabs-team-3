@@ -5,6 +5,7 @@ export const ContainerSumTabHome = styled(Container)`
   background-color: #232732;
   min-height: 875px;
   padding: 0px;
+  margin: 0px;
   & > .container-fluid {
     & > .container {
       padding: 83px 16px;

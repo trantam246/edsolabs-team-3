@@ -222,4 +222,14 @@ export const See = styled.p`
   &:hover {
     color: #dba83d;
   }
+  @media screen and (max-width: 1500px) {
+    margin-right: 5%;
+  }
+  @media screen and (max-width: 576px) {
+    margin-right: 24%;
+  }
+  @media screen and (max-width: 425px) {
+    margin-right: 12%;
+    font-size: 1.4rem;
+  }
 `;

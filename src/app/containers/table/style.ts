@@ -116,22 +116,22 @@ export const Td = styled.td`
       padding-top: 0.4rem;
     }
     &:nth-child(2)::before {
-      content: 'Borrower';
+      content: '${props => props.theme}';
       position: absolute;
       left: 15px;
     }
     &:nth-child(3)::before {
-      content: 'Collateral';
+      content: '${props => props.theme}';
       position: absolute;
       left: 15px;
     }
     &:nth-child(4)::before {
-      content: 'Loan currency';
+      content: '${props => props.theme}';
       position: absolute;
       left: 15px;
     }
     &:nth-child(5)::before {
-      content: 'Duration';
+      content: '${props => props.theme}';
       position: absolute;
       left: 15px;
     }

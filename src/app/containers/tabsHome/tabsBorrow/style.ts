@@ -148,9 +148,13 @@ export const WrapperInput = styled.div`
     color: ${(props: wrapperInput) =>
       props.colorFont ? props.colorFont : '#fff'};
     font-size: 16px;
+    &:hover {
+      border-color: #ffffff;
+    }
     &:focus {
       outline: none;
-      border: 2px solid #dba83d;
+      border: 2px solid;
+      border-color: #dba83d;
     }
     ::placeholder {
       font-weight: 500;

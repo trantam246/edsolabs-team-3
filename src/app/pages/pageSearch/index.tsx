@@ -26,7 +26,7 @@ import { useDispatch } from 'react-redux';
 import { navSortAction } from 'redux/slices/navSort';
 import { Loading } from 'app/components/loading';
 const ContainerPage = styled(Container)`
-  padding: 0 1.6rem;
+  padding: 0 1.6rem 2rem 1.6rem;
 `;
 
 const RowPage = styled(Row)`
