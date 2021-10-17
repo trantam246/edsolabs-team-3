@@ -1,4 +1,3 @@
-import { SwitchLanguage } from 'app/components/switchLanguage';
 import { useTranslation } from 'react-i18next';
 import { Container } from 'reactstrap';
 import { CopyRightFooter } from './style';
@@ -11,7 +10,6 @@ const CopyRight = () => {
         <div className="copyright">
           <p>{t('footer.copyRight.trademark')}</p>
           <div>
-            <SwitchLanguage />
             <a
               href="https://defi-for-you.gitbook.io/faq/p2p-lending/terms-of-service"
               className="right"

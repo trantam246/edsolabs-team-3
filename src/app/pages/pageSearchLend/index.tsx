@@ -136,10 +136,6 @@ export function PageSearchLend() {
       name:
         dataSearch.name === undefined ? undefined : dataSearch.name.toString(),
     };
-<<<<<<< HEAD
-=======
-    // console.log(newObj);
->>>>>>> d73f21a (fix footer and fix reset active nav-sort)
     SearchLendCryApi.search(newObj)
       .then((res: any) => {
         setdataRender(res.data);

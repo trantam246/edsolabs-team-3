@@ -81,17 +81,17 @@ export function MenuNavbar() {
       <Menu className="flex-fill">
         <ul>
           <li>
-            <NavLink exact to="/" activeClassName="selected">
+            <NavLink exact to="/pawn" activeClassName="selected">
               <span>{t('navBar.pawn')}</span>
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/search/borrow" activeClassName="selected">
+            <NavLink exact to="/" activeClassName="selected">
               <span>{t('navBar.borrow')}</span>
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/login" activeClassName="selected">
+            <NavLink exact to="/" activeClassName="selected">
               <span>{t('navBar.lend')}</span>
             </NavLink>
           </li>
@@ -101,7 +101,7 @@ export function MenuNavbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/22" activeClassName="selected">
+            <NavLink exact to="/" activeClassName="selected">
               <span>{t('navBar.account')}</span>
             </NavLink>
           </li>
