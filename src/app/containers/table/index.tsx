@@ -14,11 +14,11 @@ export default function Table(props: any) {
   const { t } = useTranslation();
   return (
     <>
-      {props && (
-        <>
-          <P>
-            {dataRender.total_elements} {t('search.lendCrypto.result')}
-          </P>
+      <>
+        <P>
+          {dataRender.total_elements} {t('search.lendCrypto.result')}
+        </P>
+        {props.dataRender.total_pages > 0 && (
           <Tables>
             <Thead>
               <tr>
@@ -84,8 +84,8 @@ export default function Table(props: any) {
               })}
             </Tbody>
           </Tables>
-        </>
-      )}
+        )}
+      </>
     </>
   );
 }

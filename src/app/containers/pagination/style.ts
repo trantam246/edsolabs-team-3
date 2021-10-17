@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 export const Paginate = styled.div`
   .paginate {
     &__list {
-      margin: 5.5rem 0 6.9rem 0;
+      margin: 5.5rem 0 4.5rem 0;
       display: flex;
       align-items: center;
       justify-content: center;
