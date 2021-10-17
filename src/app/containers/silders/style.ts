@@ -8,30 +8,23 @@ export const SlideImg = styled.img`
   object-fit: cover;
   border-radius: 2rem;
 
-  @media (max-width: 1441) {
-    width: 362px;
-  }
   @media (max-width: 768px) {
-    max-width: 283px;
+    width: 283px;
   }
 `;
 
 export const Box = styled.div`
   display: block;
   margin: 0 auto;
-  max-width: 428px;
   width: inherit;
-  @media (max-width: 1441) {
-    width: 362px;
-  }
+
   @media (max-width: 768px) {
-    max-width: 283px;
+    width: 283px;
   }
 `;
 
 export const Title = styled.div`
   display: block;
-  max-width: 428px;
   width: inherit;
   margin: 12px auto 0;
   color: #ffffff;
@@ -73,6 +66,10 @@ export const H3 = styled.h3`
     padding-top: 4rem;
     padding-bottom: 3rem;
   }
+  @media (max-width: 540px) {
+    width: 283px;
+    margin: 0 auto;
+  }
 `;
 
 export const IconGroup = styled.div`
@@ -96,18 +93,6 @@ export const IconGroup = styled.div`
       }
     }
   }
-
-  @media (max-width: 768px) {
-    max-width: 283px;
-  }
-`;
-export const content = styled.p`
-  display: block;
-  max-width: 428px;
-  width: inherit;
-  object-fit: cover;
-  border-radius: 2rem;
-  margin: 0 auto;
   @media (max-width: 768px) {
     max-width: 283px;
   }
@@ -178,9 +163,8 @@ export const SwiperSlideCustom = styled.div`
       left: -60px;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding-bottom: 3rem;
-
     .swiper-button-next,
     .swiper-button-prev {
       top: calc(50% - 27px);
@@ -189,10 +173,10 @@ export const SwiperSlideCustom = styled.div`
       font-size: 1.5rem;
     }
     .swiper-button-next {
-      right: -60px;
+      right: -35px;
     }
     .swiper-button-prev {
-      left: -60px;
+      left: -35px;
     }
   }
   @media (max-width: 576px) {
@@ -213,11 +197,12 @@ export const SwiperSlideCustom = styled.div`
   @media (max-width: 375px) {
     .swiper-button-next,
     .swiper-button-prev {
+      top: calc(50% - 27px);
       width: 30px;
       height: 30px;
     }
   }
-  @media (max-width: 375px) {
+  @media (max-width: 320px) {
     margin-left: 15px;
     margin-right: 15px;
   }
