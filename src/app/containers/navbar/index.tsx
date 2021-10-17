@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Col } from 'reactstrap';
 import avtar from '../../../images/avatarMenu.png';
 import { GrMenu } from '@react-icons/all-files/gr/GrMenu';
@@ -145,12 +145,41 @@ export function Navbar(props) {
           {openMenuMobile ? (
             <>
               <MenuMobile>
-                <AvatarAndName>
-                  <img src={avtar} alt="" />
-                  <p>{accName?.data?.name || 'admin'}</p>
-                </AvatarAndName>
+                {localStorage.getItem('access_token') ? (
+                  <AvatarAndName>
+                    <img src={avtar} alt="" />
+                    <p>{accName?.data?.name || 'admin'}</p>
+                  </AvatarAndName>
+                ) : (
+                  <div style={{ textAlign: 'center', padding: '10px' }}>
+                    <Link
+                      to="/login?tab=2"
+                      style={{
+                        textDecoration: 'none',
+                        border: '1px solid #fff',
+                        padding: '10px',
+                        fontSize: '16px',
+                        color: '#fff',
+                      }}
+                    >
+                      {t('navBar.login')}
+                    </Link>
+                  </div>
+                )}
+
                 <MenuSubMobile>
-                  <div>{t('navMobile.pawn')}</div>
+                  <div>
+                    <Link
+                      to="/"
+                      style={{
+                        textDecoration: 'none',
+                        fontSize: '16px',
+                        color: '#fff',
+                      }}
+                    >
+                      {t('navMobile.pawn')}
+                    </Link>
+                  </div>
                   <div>{t('navMobile.staking')}</div>
                   <div>NFT</div>
                   <ActiveMenuMobile
@@ -253,7 +282,12 @@ export function Navbar(props) {
                   )}
                   <div>FAQ</div>
                   <div>{t('navMobile.changePass')}</div>
-                  <div onClick={logout}>{t('navMobile.logOut')}</div>
+                  {localStorage.getItem('access_token') ? (
+                    <div onClick={logout}>{t('navMobile.logOut')}</div>
+                  ) : (
+                    ''
+                  )}
+
                   <div className="Select__language">
                     <SwitchLanguage></SwitchLanguage>
                   </div>
