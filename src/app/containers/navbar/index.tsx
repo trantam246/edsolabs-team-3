@@ -153,6 +153,7 @@ export function Navbar(props) {
                 ) : (
                   <div style={{ textAlign: 'center', padding: '10px' }}>
                     <Link
+                      onClick={openMenu}
                       to="/login?tab=2"
                       style={{
                         textDecoration: 'none',
@@ -171,6 +172,7 @@ export function Navbar(props) {
                   <div>
                     <Link
                       to="/"
+                      onClick={openMenu}
                       style={{
                         textDecoration: 'none',
                         fontSize: '16px',
