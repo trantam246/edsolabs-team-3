@@ -35,6 +35,11 @@ interface IShop {
 
 const NftShopItem: React.FC<IShop> = ({ item }) => {
   const { t } = useTranslation();
+  const convertStr = str => {
+    if (str?.length > 16) {
+      return `${str.substr(0, 5)}.....${str.substr(str?.length - 4, 4)}`;
+    }
+  };
   return (
     <NftShop>
       <div className="nft">
@@ -65,7 +70,7 @@ const NftShopItem: React.FC<IShop> = ({ item }) => {
                 {t('search.lendNft.borrower')}
               </p>
               <p className="nft__details-result nft__details-result--blue">
-                {item.borrowerWalletAddress}
+                {convertStr(item.borrowerWalletAddress)}
               </p>
             </li>
             <li className="nft__details-item">

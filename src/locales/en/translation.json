@@ -66,8 +66,8 @@
         "crypto": "Crypto"
       },
       "search": "Search",
-      "invalidAmount": "Số lượng không hợp lệ",
-      "invalidDuration": "Thời gian không hợp lệ"
+      "invalidAmount": "Invalid amount",
+      "invalidDuration": "Invalid duration"
     },
     "features": {
       "title": "Why Borrow With Us?",
