@@ -25,6 +25,7 @@ export const Button = styled.button`
   @media (max-width: 540px) {
     font-size: 1.4rem;
     margin-bottom: 0;
+    padding: 10px 20px;
   }
 `;
 
@@ -42,6 +43,8 @@ export const P = styled.p`
     line-height: 1.5rem;
     margin-bottom: 1.2rem;
     margin-right: 50%;
+    height: 45px !important;
+    overflow: hidden !important;
   }
 `;
 
@@ -92,10 +95,6 @@ export const ContainerAbs = styled.div`
     margin-top: 3rem;
     margin-bottom: 4rem;
   }
-  @media (max-width: 475px) {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
 `;
 
 export const Box = styled.div`
@@ -105,5 +104,8 @@ export const Box = styled.div`
   }
   @media (max-width: 768px) {
     padding: 1.6rem;
+  }
+  @media (max-width: 375px) {
+    padding: 1.2rem;
   }
 `;

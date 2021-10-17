@@ -78,7 +78,7 @@ export function TabLendForm() {
               type="text"
               placeholder={t('home.tabs.lend.enterAmount')}
               autoComplete="off"
-              {...register('loanAmount', { required: true })}
+              {...register('loanAmount', { required: true, pattern: /[0-9]/ })}
             />
             {errors.Maximum && (
               <span className="errValiInput">
@@ -122,7 +122,7 @@ export function TabLendForm() {
               type="text"
               autoComplete="off"
               placeholder={t('home.tabs.lend.enterDuration')}
-              {...register('durationQty', { required: true })}
+              {...register('durationQty', { required: true, pattern: /[0-9]/ })}
             />
             {errors.durationQty && (
               <>
