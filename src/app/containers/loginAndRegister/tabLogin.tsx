@@ -143,10 +143,17 @@ export default function TabLogin({ id }: props) {
   const onSubmit = (data: IFormInput) => {
     dispath(authActions.login(data));
   };
+  //modal box
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
+  //hide-show
   const [hide, setHide] = useState<boolean>(true);
   const getHide = () => setHide(!hide);
+
+  //translation
   const { t } = useTranslation();
+
   return (
     <TabPaneLogin tabId={id}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -188,6 +195,13 @@ export default function TabLogin({ id }: props) {
           </button>
         </div>
       </form>
+
+      <ModalBox
+        status={modal}
+        click={toggle}
+        content="This account has not been activated yet. Please confirm email to
+          activate your account"
+      />
     </TabPaneLogin>
   );
 }
