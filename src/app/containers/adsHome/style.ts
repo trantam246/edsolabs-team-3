@@ -20,7 +20,7 @@ export const Button = styled.button`
 
   &:hover {
     opacity: 0.7;
-    transition: all ease-in-out 0.5s;
+    transition: all ease-in-out 0.3s;
   }
   @media (max-width: 540px) {
     font-size: 1.4rem;
@@ -51,6 +51,10 @@ export const H4 = styled.h4`
   line-height: 4.4rem;
   color: #ffffff;
   margin-bottom: 1rem;
+  @media (max-width: 768px) {
+    line-height: 3rem;
+    font-size: 3rem;
+  }
   @media (max-width: 540px) {
     line-height: 2rem;
     font-size: 1.6rem;
@@ -69,8 +73,11 @@ export const ContainerAbs = styled.div`
   background-position: 100%;
   background-size: cover;
   border-radius: 2rem;
-  margin: 0 auto;
-  @media (max-width: 992px) {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6rem;
+  margin-bottom: 8rem;
+  @media (max-width: 1024px) {
     background: linear-gradient(
         90.03deg,
         #131318 21.91%,
@@ -80,6 +87,14 @@ export const ContainerAbs = styled.div`
       url(${props => props.color}) no-repeat;
     background-position: 100%;
     background-size: cover;
+  }
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+  }
+  @media (max-width: 475px) {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 `;
 

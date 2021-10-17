@@ -12,6 +12,20 @@ export const RowNavBar = styled(Row)`
     max-height: 56px;
     min-height: 56px;
   }
+  .Select__language {
+    & > select {
+      border: 1px solid #dba83d;
+      color: #dba83d;
+      background: transparent !important;
+      outline: none;
+      & > option {
+        background-color: #232732;
+      }
+    }
+    @media (max-width: 1024px) {
+      display: none !important;
+    }
+  }
 `;
 export const AccountZone = styled.div`
   display: inline-block;
@@ -135,6 +149,17 @@ export const MenuMobile = styled.div`
   background-color: #171a23;
   border: 1px solid #fff;
   z-index: 999;
+  .Select__language {
+    & > select {
+      border: 1px solid #dba83d;
+      color: #dba83d;
+      background: transparent !important;
+      outline: none;
+      & > option {
+        background-color: #232732;
+      }
+    }
+  }
 `;
 export const AvatarAndName = styled.div`
   text-align: center;

@@ -34,34 +34,21 @@ export const Button = styled.button`
   }
 `;
 export const ModalBG = styled(Modal)`
-  position: fixed;
-  transform: translate(-50%, -50%) !important;
-  top: 45%;
-  left: 50%;
+  margin: 10vh auto 0;
+  max-width: 1324px !important;
 
   .modal-content {
     background: none !important;
   }
-  max-width: 1324px !important;
 
   @media (max-width: 1920px) {
-    max-width: 80% !important;
-    margin: 6.5rem auto !important;
     transform: none !important;
-    left: 10%;
-    top: 20px;
   }
-
-  @media (max-width: 1324px) {
-    max-width: 80% !important;
-    margin: 6.5rem auto !important;
-    transform: none !important;
-    left: 10%;
-    top: 0;
+  @media (max-width: 1024px) {
+    max-width: calc(100% -2.2rem) !important;
   }
   @media (max-width: 540px) {
     max-width: 100% !important;
-    left: 0;
   }
 `;
 
@@ -113,8 +100,13 @@ export const H3 = styled.h3`
   font-size: 4rem;
   line-height: 150%;
   color: #ffffff;
-  margin-bottom: 2.8rem;
+
+  margin-top: 46px;
+  margin-bottom: 17px;
+
   @media (max-width: 540px) {
+    margin-top: 24px;
+    margin-bottom: 11px;
     line-height: 2rem;
     font-size: 1.6rem;
     margin-bottom: 0.7rem;
@@ -122,8 +114,12 @@ export const H3 = styled.h3`
 `;
 
 export const Box = styled.div`
+  text-align: justify;
+  margin-right: 30px;
   max-height: 530px;
-  padding: 3rem 4rem 0 4rem;
+  padding: 0 4rem 0 4rem;
+  margin-right: 2.2rem;
+  text-align: justify;
   ::-webkit-scrollbar {
     position: absolute;
     width: 10px;
@@ -140,11 +136,18 @@ export const Box = styled.div`
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
-  @media (max-width: 992px) {
-    padding: 2.4rem;
+  @media (max-width: 1366px) {
+    height: 50vh;
+  }
+  @media (max-width: 768px) {
+    padding: 0 1.6rem;
+    margin: 0;
+    height: 60vh;
   }
   @media (max-width: 540px) {
     padding: 1.2rem;
-    max-height: 330px;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;

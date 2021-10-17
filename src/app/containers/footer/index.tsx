@@ -1,16 +1,16 @@
-import { Col, Container, Row } from 'reactstrap';
+import { Col, Row } from 'reactstrap';
 import Contact from './Contact';
 import { Address } from './Address';
 import IconsList from './IconsList';
 import NavList from './NavList';
 import About from './About';
 import CopyRight from './CopyRight';
-import { FooterDefi } from './style';
+import { ContainerComponent, FooterDefi } from './style';
 
 export function Footer() {
   return (
     <FooterDefi>
-      <Container>
+      <ContainerComponent>
         <Row className="contact">
           <Col className="col-xl-3 col-sm-6 col-12">
             <Contact />
@@ -35,7 +35,7 @@ export function Footer() {
             <About />
           </Col>
         </Row>
-      </Container>
+      </ContainerComponent>
       <CopyRight />
     </FooterDefi>
   );

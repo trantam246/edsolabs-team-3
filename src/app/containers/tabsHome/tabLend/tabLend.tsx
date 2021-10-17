@@ -1,9 +1,11 @@
 import React from 'react';
-import { GrInput, WarperInput } from './style';
+import { GrInput, WarperInput, WarperSelect, WarperselectIsmul } from './style';
 import { Controller, useForm } from 'react-hook-form';
 import { SelectAll } from 'app/components/select/select';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
+import { useTranslation } from 'react-i18next';
+import BiSearch from '../../../../images/search.png';
 export function TabLendForm() {
   const history = useHistory();
   const queryString = require('query-string');
@@ -56,7 +58,6 @@ export function TabLendForm() {
         size: 10,
         page: 0,
       };
-      console.log('false', newObj);
       history.push({
         pathname: '/pawn/lender/nft-result',
         search: queryString.stringify(newObj),
@@ -66,30 +67,27 @@ export function TabLendForm() {
   const onChangeRadio = e => {
     setCollateral(!Collateral);
   };
+  const { t } = useTranslation();
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <GrInput>
-        <p>Maximum loan amount</p>
+        <p> {t('home.tabs.lend.maxAmount')}</p>
         <div className="">
-          <WarperInput
-            width="417px"
-            height="44px"
-            border={Boolean(errors.Duration)}
-          >
+          <WarperInput border={Boolean(errors.Duration)}>
             <input
               type="text"
-              placeholder="Enter amount"
+              placeholder={t('home.tabs.lend.enterAmount')}
               autoComplete="off"
               {...register('loanAmount', { required: true })}
             />
             {errors.Maximum && (
               <span className="errValiInput">
-                Maximum loan amount is required
+                {t('home.tabs.lend.maxRequired')}
               </span>
             )}
-            <button className="btn__max-lend">Max</button>
+            <button className="btn__max-lend">{t('home.tabs.lend.max')}</button>
           </WarperInput>
-          <WarperInput width="111px" height="44px">
+          <WarperSelect>
             <Controller
               control={control}
               name="loanSymbols"
@@ -113,31 +111,29 @@ export function TabLendForm() {
             {errors.loanSymbols && (
               <span className="warning__input">Invalid amount</span>
             )}
-          </WarperInput>
+          </WarperSelect>
         </div>
       </GrInput>
       <GrInput>
-        <p>Duration</p>
+        <p> {t('home.tabs.lend.duration')}</p>
         <div className="">
-          <WarperInput
-            width="417px"
-            height="44px"
-            border={Boolean(errors.durationQty)}
-          >
+          <WarperInput border={Boolean(errors.durationQty)}>
             <input
               type="text"
               autoComplete="off"
-              placeholder="durationQty"
+              placeholder={t('home.tabs.lend.enterDuration')}
               {...register('durationQty', { required: true })}
             />
             {errors.durationQty && (
               <>
-                <span className="errValiInput">Invalid duration</span>
+                <span className="errValiInput">
+                  {t('home.tabs.invalidDuration')}
+                </span>
                 <fieldset></fieldset>
               </>
             )}
           </WarperInput>
-          <WarperInput width="111px" height="44px">
+          <WarperSelect>
             <Controller
               control={control}
               name="durationTypes"
@@ -159,39 +155,45 @@ export function TabLendForm() {
               )}
             />
             {errors.durationTypes && (
-              <span className="warning__input">Invalid amount</span>
+              <span className="warning__input">
+                {t('home.tabs.lend.enterAmount')}
+              </span>
             )}
-          </WarperInput>
+          </WarperSelect>
         </div>
       </GrInput>
       <GrInput>
-        <p>Collateral</p>
-        <div className="">
-          <div className="radio">
-            <input
-              type="radio"
-              name="radio"
-              value="1"
-              defaultChecked
-              onChange={onChangeRadio}
-            />
+        <p>{t('home.tabs.lend.coll')}</p>
+        <div className="radio">
+          <div className="radio_input">
+            <div className="radio">
+              <input
+                type="radio"
+                name="radio"
+                value="1"
+                defaultChecked
+                onChange={onChangeRadio}
+              />
+            </div>
+            <span>{t('home.tabs.lend.crypto')}</span>
           </div>
-          <span>Crypto</span>
-          <div className="radio">
-            <input
-              type="radio"
-              name="radio"
-              value="2"
-              onChange={onChangeRadio}
-            />
+          <div className="radio_input">
+            <div className="radio">
+              <input
+                type="radio"
+                name="radio"
+                value="2"
+                onChange={onChangeRadio}
+              />
+            </div>
+            <span>NFT</span>
           </div>
-          <span>NFT</span>
         </div>
       </GrInput>
       {Collateral ? (
         <GrInput>
           <div className="">
-            <WarperInput width="540px" height="" className="input__full">
+            <WarperselectIsmul>
               <Controller
                 control={control}
                 name="collateralSymbols"
@@ -213,16 +215,21 @@ export function TabLendForm() {
                 )}
               />
               {errors.collateralSymbols && (
-                <span className="warning__input">Invalid amount</span>
+                <span className="warning__input">
+                  {t('home.tabs.lend.enterAmount')}
+                </span>
               )}
-            </WarperInput>
+            </WarperselectIsmul>
           </div>
         </GrInput>
       ) : (
         ''
       )}
       <GrInput>
-        <button>Search</button>
+        <button>
+          <img src={BiSearch} alt="" style={{ marginRight: '16px' }} />
+          {t('home.tabs.search')}
+        </button>
       </GrInput>
     </form>
   );

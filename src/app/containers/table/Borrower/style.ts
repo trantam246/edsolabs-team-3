@@ -5,7 +5,7 @@ export const IconStart = styled(AiFillStar)`
   color: #dba83d;
   margin-right: 0.9rem;
   margin-bottom: 2px;
-  font-size: 1.6rem;
+  font-size: 20px !important;
 `;
 
 export const P = styled.p`

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Select from 'react-select';
 import styled from 'styled-components';
 import { iconCoin, LoanAmount } from '../icon';
@@ -23,6 +24,11 @@ const SelectA = styled(Select)`
   .css-182fo9s-option {
     display: flex;
     justify-content: flex-start;
+    @media (max-width: 375px) {
+      & > span {
+        font-size: 14px;
+      }
+    }
   }
   .css-y6e3hu-option {
     display: flex;
@@ -62,6 +68,9 @@ const SelectA = styled(Select)`
   }
   .css-1ywozm8-ValueContainer {
     cursor: text;
+    @media (max-width: 375px) {
+      font-size: 14px;
+    }
   }
   .css-1fz1i0g-Input {
     cursor: text;
@@ -74,11 +83,16 @@ const SelectA = styled(Select)`
   }
 `;
 export function SelectAll(props: any) {
+  const { t } = useTranslation();
   const options1: any = iconCoin.map(e => ({
     value: e.value,
     label: (
       <>
-        <img src={e.url} alt="" style={{ height: '20px', width: '20px' }} />
+        <img
+          src={e.url}
+          alt=""
+          style={{ height: '20px', width: '20px', marginRight: '5px' }}
+        />
         <span>{e.value}</span>
       </>
     ),
@@ -87,14 +101,18 @@ export function SelectAll(props: any) {
     value: e.value,
     label: (
       <>
-        <img src={e.url} alt="" style={{ height: '20px', width: '20px' }} />
+        <img
+          src={e.url}
+          alt=""
+          style={{ height: '20px', width: '20px', marginRight: '5px' }}
+        />
         <span>{e.value}</span>
       </>
     ),
   }));
   const options3 = [
-    { value: '1', label: 'Month' },
-    { value: '0', label: 'Weeks' },
+    { value: '1', label: t('home.tabs.borrow.cryp.month') },
+    { value: '0', label: t('home.tabs.borrow.cryp.week') },
   ];
   const styles = {
     option: (provided, state) => ({

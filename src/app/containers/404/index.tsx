@@ -5,6 +5,7 @@ import logo from '../../../images/logo.png';
 import Au_notFound from '../../../images/Au_notFound.png';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -144,6 +145,7 @@ const Panel = styled.div`
 `;
 
 export function Not404() {
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>
@@ -161,10 +163,10 @@ export function Not404() {
             <Row>
               <Col lg={6} xs={12}>
                 <Panel>
-                  <div className="bigText">Oopps...</div>
-                  <div className="smallText">Page not found.</div>
+                  <div className="bigText">Oopps...!</div>
+                  <div className="smallText">{t('404.title')}</div>
                   <Link to="/pawn">
-                    <button className="buttonStyled">GO BACK</button>
+                    <button className="buttonStyled">{t('404.back')}</button>
                   </Link>
                 </Panel>
               </Col>

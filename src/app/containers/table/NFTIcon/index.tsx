@@ -15,8 +15,9 @@ export default function NFTIcon(props: any) {
       {props && (
         <Box>
           <img src={srcImg} alt={props.value} />
-          {props.value}
-          <span>{props.Amount}</span>
+          <span>
+            {props.Amount} {props.value}
+          </span>
         </Box>
       )}
       {!props && <div></div>}

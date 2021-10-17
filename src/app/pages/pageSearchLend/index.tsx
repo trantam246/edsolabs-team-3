@@ -141,21 +141,21 @@ export function PageSearchLend() {
         setdataRender(res.data);
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
+        throw error;
       });
     history.push({
       pathname: '/pawn/lender',
       search: queryString.stringify(newObj),
     });
   }, [dataSearch]);
-
   const editPageCount = e => {
     setdataSearch({ ...dataSearch, page: e });
   };
   return (
     <>
       <Helmet>
-        <title>Home</title>
+        <title>DeFi For You | DeFi For You UK</title>
         <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
       {/*navbar*/}

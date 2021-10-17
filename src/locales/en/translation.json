@@ -1,3 +1,292 @@
 {
-  "title": "welcome"
+  "navBar": {
+    "pawn": "Pawn",
+    "borrow": "Borrow",
+    "lend": "Lend",
+    "account": "My account",
+    "become": "Become a Pawnshop",
+    "buy": "Buy DFY",
+    "connect": "Connect",
+    "login": "Login",
+    "changePass": "Change password",
+    "logOut": "Log out"
+  },
+  "navMobile": {
+    "pawn": "Pawn",
+    "staking": "Staking",
+    "account": "My account",
+    "borrowProfile": "Borrower Profile",
+    "coll": "Collateral",
+    "contract": "Contracts",
+    "lendProfile": "Lender Profile",
+    "offer": "Offers sent",
+    "package": "Pawnshop Loan Packages",
+    "loan": "Loan requests",
+    "list": "NFT List",
+    "auction": "NFT Auction",
+    "changePass": "Change password",
+    "logOut": "Log out"
+  },
+  "home": {
+    "banner": {
+      "content": "Get Crypto Loans Instantly, Regardless of Your Credit Rating"
+    },
+    "tabs": {
+      "borrow": {
+        "title": "Borrow",
+        "cryp": {
+          "active": "Cryptocurrency",
+          "coll": "Collateral",
+          "enterAmount": "Enter amount",
+          "duration": "Duration",
+          "loanAmount": "Loan amount",
+          "or": "Or",
+          "max": "Max",
+          "choose": "Choose Existing Collateral",
+          "recommend": "Recommended amount",
+          "recommendContent": "To get a loan quickly, you should set the desired loan amount between 50 - 70% of the collateral value.",
+          "week": "week",
+          "month": "month"
+        },
+        "nft": {
+          "find": "Find NFT lenders",
+          "dont": "Don't have hard NFT?",
+          "new": "Create new"
+        }
+      },
+      "lend": {
+        "title": "Lend",
+        "maxAmount": "Maximum loan amount",
+        "enterAmount": "Enter amount",
+        "enterDuration": "Enter duration",
+        "max": "Max",
+        "maxRequired": "Maximum loan amount is required",
+        "duration": "Duration",
+        "coll": "Collateral",
+        "crypto": "Crypto"
+      },
+      "search": "Search",
+      "invalidAmount": "Invalid amount",
+      "invalidDuration": "Invalid duration"
+    },
+    "features": {
+      "title": "Why Borrow With Us?",
+      "list": {
+        "bank": {
+          "title": "Quicker Than The Bank",
+          "content": "Banks are yesterdays news. Get the money you need without having to wait."
+        },
+        "rate": {
+          "title": "Better Interest Rates",
+          "content": "P2P lending lets you negotiate with the lender to arrange the best possible interest rates."
+        },
+        "sell": {
+          "title": "Finance Assets Without Selling ",
+          "content": "Put your assets to work so you can continue to meet your financial obligations."
+        },
+        "credit": {
+          "title": "No Credit Checks",
+          "content": "Borrow without the background checks. Anyone can get the financing they need."
+        }
+      }
+    },
+    "sliders": {
+      "title": "Explore Featured Pawnshops",
+      "labelShop": "Super Shop",
+      "seeAll": "See all",
+      "list": {
+        "name": "Pawnshop America"
+      }
+    },
+    "ads": {
+      "title": "Become a Pawnshop",
+      "content": "Open your own pawn shop and discover a new business opportunity with an unmatched ROI. Be a part of the world's financial revolution.",
+      "more": "Learn more"
+    }
+  },
+  "search": {
+    "borrowCrypto": {
+      "amountResult": "pawnshop package match your search",
+      "suggest": {
+        "first": {
+          "title": "You are not in a hurry and can wait?",
+          "content": "Request a loan from a trusted P2P lender to get a better interest rate and LTV"
+        },
+        "second": {
+          "title": "Want an instant loan? ",
+          "content": "Submit your collateral to get a loan in seconds"
+        }
+      },
+      "personalLend": {
+        "label": "Personal Lending",
+        "viewAll": "View all",
+        "contracts": "signed contracts",
+        "contract": "signed contract",
+        "interest": "interest rate",
+        "coll": "Collateral accepted:",
+        "more": "more",
+        "button": "Request loan"
+      },
+      "pawnshop": {
+        "available": "Available:",
+        "limit": "Limit:",
+        "duration": "Duration",
+        "months": "months",
+        "month": "month",
+        "weeks": "weeks",
+        "week": "week",
+        "upTo": "Up to",
+        "interest": "Interest rate",
+        "coll": "Collateral accepted",
+        "more": "more",
+        "button": "View Detail"
+      },
+      "sort": {
+        "interest": "Interest rate",
+        "loan": "Loan to value",
+        "duration": "Duration",
+        "limit": "Limitation",
+        "rating": "Pawnshop rating"
+      },
+      "filter": {
+        "reset": "Reset filter",
+        "search": "Search pawnshops",
+        "interest": "interest rate",
+        "loan": "Loan to value",
+        "coll": "Collateral accepted",
+        "token": "Loan token",
+        "type": "Loan type",
+        "auto": "Auto",
+        "semi": "Semi-auto",
+        "nego": "Negotiation",
+        "duration": "Duration",
+        "week": "Week",
+        "month": "Month"
+      }
+    },
+    "lendCrypto": {
+      "result": "collateral offers match your search",
+      "borrower": "Borrower",
+      "coll": "Collateral",
+      "loan": "Loan currency",
+      "duration": "Duration",
+      "contract": "contract",
+      "contracts": "contracts",
+      "month": "month",
+      "months": "months",
+      "week": "week",
+      "weeks": "weeks",
+      "button": "Send Offer",
+      "ads": {
+        "title": "Become your own bank",
+        "content": "Sign up for pawnshop to get great benefits from "
+      },
+      "filter": {
+        "reset": "Reset filter",
+        "coll": "Collateral",
+        "loan": "Loan currency",
+        "nft": "NFT Evaluation",
+        "all": "All",
+        "evaluated": "Evaluated",
+        "duration": "Duration",
+        "week": "Week",
+        "month": "Month"
+      }
+    },
+    "lendNft": {
+      "result": "collateral offers match your search",
+      "borrower": "Borrower:",
+      "duration": "Duration:",
+      "months": "months",
+      "month": "month",
+      "weeks": "weeks",
+      "week": "week",
+      "asset": "Asset location:",
+      "price": "Evaluated price",
+      "expect": "Expected loan",
+      "art": "Artwork",
+      "dia": "Diamond",
+      "button": "Send Offer",
+      "filter": {
+        "reset": "Reset filter",
+        "search": "Search NFT",
+        "duration": "Duration",
+        "week": "Week",
+        "month": "Month",
+        "nft": "NFT type",
+        "soft": "Soft NFT",
+        "hard": "Hard NFT",
+        "asset": "Asset type",
+        "jew": "Jewelry",
+        "car": "Car",
+        "gem": "Gemstone",
+        "house": "House and land",
+        "loan": "Loan currency"
+      }
+    }
+  },
+  "auth": {
+    "title": "Exclusive on ",
+    "content": "Register new DeFi For You account from ",
+    "to": "to",
+    "contentMore": "to have 100% chance of receiving DFY tokens",
+    "signUp": {
+      "label": "Sign up",
+      "name": "Name",
+      "enterName": "Enter name",
+      "invalidName": "Invalid name",
+      "enterEmail": "Enter email",
+      "invalidEmail": "Invalid email",
+      "password": "Password",
+      "enterPass": "Enter password",
+      "invalidPass": "Invalid password",
+      "confirm": "Confirm password",
+      "passErr": "The confirm password field does not match the password",
+      "desc": "We will not share or sell your information to 3rd parties.",
+      "action": "By clicking on ",
+      "create": "Create Account",
+      "actionMore": ", you agree to DeFi For You's Terms and Conditions of Use.",
+      "captcha": "Invalid captcha",
+      "button": "Create Account"
+    },
+    "logIn": {
+      "label": "Log in",
+      "enterEmail": "Enter email",
+      "password": "Password",
+      "enterPass": "Enter password",
+      "forget": "Forgot your password?",
+      "button": "Log in",
+      "invalidEmail": "Invalid email",
+      "invalidPass": "Invalid password"
+    }
+  },
+  "404": {
+    "title": "Page not found.",
+    "back": "GO BACK"
+  },
+  "footer": {
+    "copyRight": {
+      "trademark": "© 2021 DeFi For You. All rights reserved.",
+      "term": "Terms of Service",
+      "policy": "Privacy Policy"
+    },
+    "office": {
+      "haNoi": "DeFi For You — Hanoi Office",
+      "london": "DeFi For You — London Office",
+      "register": "Registration Number:",
+      "viewCompanies": "View on Companies House"
+    },
+    "findUs": "Find us on",
+    "quickNav": {
+      "title": "Quick Navigation",
+      "whitepaper": "Whitepaper",
+      "mobile": "Get the mobile app",
+      "buy": "Buy",
+      "exchange": "Exchanges"
+    },
+    "about": {
+      "title": "About DeFi For You.",
+      "content": "is a trading style of Miles Mann Limited registered office at 5 Southgate Street, Gloucester, Gloucestershire, GL1 1TG1 Licensed authorised and regulated by the Financial Conduct Authority to exercise lender's rights and duties under a regulated credit agreement (excluding high-cost short-term credit, bill of sale agreement, and home collected credit agreement), and has the right to exercise lender's rights and duties under a regulated credit agreement (excluding high-cost short-term credit, bill of sale agreement, and home collected credit agreement)"
+    }
+  }
 }

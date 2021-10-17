@@ -185,7 +185,8 @@ export function PageSearchNft() {
         setdataRender(res.data);
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
+        throw error;
       });
     history.push({
       pathname: '/pawn/lender/nft-result',
@@ -200,7 +201,7 @@ export function PageSearchNft() {
   return (
     <>
       <Helmet>
-        <title>Home</title>
+        <title>DeFi For You | DeFi For You UK</title>
         <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
       <Navbar></Navbar>

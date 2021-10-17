@@ -9,7 +9,7 @@ export const Paginate = styled.div`
       justify-content: center;
 
       li {
-        width: 3.2rem;
+        min-width: 3.2rem;
         height: 3.2rem;
         border: 0.1rem solid #d1d1d3;
         box-sizing: border-box;
@@ -28,11 +28,10 @@ export const Paginate = styled.div`
           justify-content: center;
           align-items: center;
           height: 100%;
+          padding-top: 0.1rem;
         }
       }
       &:hover {
-        /* background-color: #dba83d;
-          border: none; */
         a {
           color: #ffffff !important;
         }

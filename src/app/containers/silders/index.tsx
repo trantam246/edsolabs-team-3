@@ -18,41 +18,43 @@ import {
 } from './style';
 import { AiFillStar } from 'react-icons/ai';
 import SeeAll from './SeeAll';
+import { useTranslation } from 'react-i18next';
 
-const items = [
-  {
-    src: slide1,
-    altText: 'Pawnshop America',
-    caption: 'Lorem ipsum dolor sit amet',
-  },
-  {
-    src: slide2,
-    altText: 'Pawnshop America',
-    caption: 'Lorem ipsum dolor sit amet',
-  },
-  {
-    src: slide3,
-    altText: 'Pawnshop America',
-    caption: 'Lorem ipsum dolor sit amet',
-  },
-  {
-    src: slide3,
-    altText: 'Pawnshop America',
-    caption: 'Lorem ipsum dolor sit amet',
-  },
-  {
-    src: slide3,
-    altText: 'Pawnshop America',
-    caption: 'Lorem ipsum dolor sit amet',
-  },
-];
 SwiperCore.use([Pagination, Navigation]);
 
 export function Silder() {
+  const { t } = useTranslation();
+  const items = [
+    {
+      src: slide1,
+      altText: t('home.sliders.list.name'),
+      caption: 'Lorem ipsum dolor sit amet',
+    },
+    {
+      src: slide2,
+      altText: t('home.sliders.list.name'),
+      caption: 'Lorem ipsum dolor sit amet',
+    },
+    {
+      src: slide3,
+      altText: t('home.sliders.list.name'),
+      caption: 'Lorem ipsum dolor sit amet',
+    },
+    {
+      src: slide3,
+      altText: t('home.sliders.list.name'),
+      caption: 'Lorem ipsum dolor sit amet',
+    },
+    {
+      src: slide3,
+      altText: t('home.sliders.list.name'),
+      caption: 'Lorem ipsum dolor sit amet',
+    },
+  ];
   return (
     <>
       <H3>
-        <span>explore featured pawnshops</span>
+        <span>{t('home.sliders.title')}</span>
       </H3>
       <SeeAll />
       <SwiperSlideCustom>
@@ -68,11 +70,11 @@ export function Silder() {
             nextEl: '.swiper-button-next',
           }}
           breakpoints={{
-            '@1': {
+            577: {
               slidesPerView: 2,
               spaceBetween: 20,
             },
-            '@1.5': {
+            1025: {
               slidesPerView: 3,
               spaceBetween: 20,
             },
@@ -83,7 +85,9 @@ export function Silder() {
               <SwiperSlide key={index}>
                 <Box>
                   <IconGroup>
-                    <div className="icon icon-Brand">Super shop</div>
+                    <div className="icon icon-Brand">
+                      {t('home.sliders.labelShop')}
+                    </div>
                     <div className="icon icon-rank">
                       <AiFillStar />
                       1000

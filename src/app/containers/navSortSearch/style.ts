@@ -41,6 +41,16 @@ export const SortNav = styled.div`
       }
     }
   }
+  @media screen and (max-width: 575px) {
+    .sort-nav {
+      &__item {
+        font-size: 1.4rem;
+        img {
+          margin-left: 0.6rem;
+        }
+      }
+    }
+  }
 `;
 
 export const NavItem: any = styled.div`

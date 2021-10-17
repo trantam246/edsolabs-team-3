@@ -1,6 +1,8 @@
+import BNB from '../../../images/BNB.978ee2b.png';
 export const iconCoin = [
   {
-    url: 'https://app.defiforyou.uk/_nuxt/img/BNB.978ee2b.png',
+    // url: 'https://app.defiforyou.uk/_nuxt/img/BNB.978ee2b.png',
+    url: BNB,
     value: 'BNB',
   },
   {
