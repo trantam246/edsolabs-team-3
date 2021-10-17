@@ -24,6 +24,11 @@ const SelectA = styled(Select)`
   .css-182fo9s-option {
     display: flex;
     justify-content: flex-start;
+    @media (max-width: 375px) {
+      & > span {
+        font-size: 14px;
+      }
+    }
   }
   .css-y6e3hu-option {
     display: flex;
@@ -63,6 +68,9 @@ const SelectA = styled(Select)`
   }
   .css-1ywozm8-ValueContainer {
     cursor: text;
+    @media (max-width: 375px) {
+      font-size: 14px;
+    }
   }
   .css-1fz1i0g-Input {
     cursor: text;
