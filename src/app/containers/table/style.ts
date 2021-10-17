@@ -113,6 +113,7 @@ export const Td = styled.td`
       line-height: 1.7rem;
       padding: 1.6rem 0;
       width: fit-content;
+      max-width: 27%;
       padding-top: 0.4rem;
     }
     &:nth-child(2)::before {

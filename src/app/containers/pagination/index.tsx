@@ -17,6 +17,8 @@ export function Pagination(props: any) {
         pageCount={props.dataRender.total_pages}
         onPageChange={changePage}
         initialPage={0}
+        marginPagesDisplayed={1}
+        pageRangeDisplayed={1}
         containerClassName={'paginate__list'}
         previousLinkClassName={'paginate__prev'}
         nextLinkClassName={'paginate__next'}
