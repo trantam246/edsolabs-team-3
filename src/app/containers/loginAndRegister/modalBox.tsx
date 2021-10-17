@@ -50,10 +50,7 @@ export default function ModalBox(props: any) {
   return (
     <ModalStyled isOpen={props.status} centered>
       <ModalBody>
-        <div>
-          This account has not been activated yet. Please confirm email to
-          activate your account
-        </div>
+        <div>{props.content}</div>
         <button className="buttonDialog" onClick={props.click}>
           OK
         </button>
