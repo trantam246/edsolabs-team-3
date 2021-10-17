@@ -12,6 +12,7 @@ export default function Table(props: any) {
       ? dataRender?.content?.length
       : dataRender?.size / 2;
   const { t } = useTranslation();
+
   return (
     <>
       {props && (
@@ -36,28 +37,28 @@ export default function Table(props: any) {
                   <React.Fragment key={o.id}>
                     <tr className="item">
                       <Td>{++i}</Td>
-                      <Td>
+                      <Td theme={t('search.lendCrypto.borrower')}>
                         <Borrower
                           href={o?.walletAddress}
                           contract={o?.completedContracts}
                           reputation={o?.reputation}
                         />
                       </Td>
-                      <Td>
+                      <Td theme={t('search.lendCrypto.coll')}>
                         <NFTIcon
                           type={'collateral'}
                           value={o?.collateralSymbol}
                           Amount={o?.collateralAmount}
                         />
                       </Td>
-                      <Td>
+                      <Td theme={t('search.lendCrypto.loan')}>
                         <NFTIcon
                           type={'loan'}
                           value={o?.loanSymbol}
                           Amount={o?.loanAmount}
                         />
                       </Td>
-                      <Td>
+                      <Td theme={t('search.lendCrypto.duration')}>
                         {o?.durationType === 0
                           ? `${o?.durationQty} ${t('search.lendCrypto.months')}`
                           : `${o?.durationQty} ${t('search.lendCrypto.weeks')}`}
