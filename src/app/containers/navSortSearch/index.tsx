@@ -5,9 +5,10 @@ import decreaseIcon from '../../../images/arrow_decrease.svg';
 import { Row } from 'reactstrap';
 import { SortNav, NavItem } from './style';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { navSortAction } from 'redux/slices/navSort';
 
 export function NavSortSearch(props) {
-  const [active, setActive] = useState('');
   const { t } = useTranslation();
   const navList = [
     {
@@ -39,7 +40,8 @@ export function NavSortSearch(props) {
     },
   ];
   const [items, setItems] = useState(navList);
-
+  const dispatch = useDispatch();
+  const active = useSelector((state: any) => state.navSort.active);
   const handleClick = v => {
     setItems(
       items.map(o =>
@@ -48,7 +50,7 @@ export function NavSortSearch(props) {
           : o,
       ),
     );
-    setActive(v.value);
+    dispatch(navSortAction.toggle(v.value));
     props.handleSort(v.cusSort(v.src));
   };
   return (

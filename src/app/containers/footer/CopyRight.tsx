@@ -12,8 +12,19 @@ const CopyRight = () => {
           <p>{t('footer.copyRight.trademark')}</p>
           <div>
             <SwitchLanguage />
-            <span className="right">{t('footer.copyRight.term')}</span> |{' '}
-            <span className="left">{t('footer.copyRight.policy')}</span>
+            <a
+              href="https://defi-for-you.gitbook.io/faq/p2p-lending/terms-of-service"
+              className="right"
+            >
+              {t('footer.copyRight.term')}
+            </a>{' '}
+            |{' '}
+            <a
+              href="https://defi-for-you.gitbook.io/faq/p2p-lending/privacy-policy"
+              className="left"
+            >
+              {t('footer.copyRight.policy')}
+            </a>
           </div>
         </div>
       </Container>

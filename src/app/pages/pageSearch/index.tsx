@@ -22,7 +22,9 @@ import SearchBorrowCryApi from 'api/searchBorrowCryApi';
 import { useEffect } from 'react';
 import searchPersonalLend from 'api/searchPersonalLendApi';
 import { useTranslation } from 'react-i18next';
-
+import { useDispatch } from 'react-redux';
+import { navSortAction } from 'redux/slices/navSort';
+import { Loading } from 'app/components/loading';
 const ContainerPage = styled(Container)`
   padding: 0 1.6rem;
 `;
@@ -35,6 +37,7 @@ const RowPage = styled(Row)`
 export function PageSearch() {
   const queryString = require('query-string');
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
   const [statusFilterNav, setstatusFilterNav] = useState(false);
   // chuyển đổi url ra obj
   const param = queryString.parse(history.location.search);
@@ -43,6 +46,7 @@ export function PageSearch() {
     status: 3,
     size: 5,
   }); //data lấy được từ người dùng khi onchange
+  const dispatch = useDispatch();
   const resetDataFilter = () => {
     setdataSearch({
       size: 5,
@@ -55,6 +59,7 @@ export function PageSearch() {
         status: 3,
       }),
     });
+    dispatch(navSortAction.toggle(''));
   };
   const onChangeInputSearch = (e: any) => {
     setdataSearch({ ...dataSearch, name: e.target.value });
@@ -145,10 +150,13 @@ export function PageSearch() {
 
   const fetchDataPersonalLend = async () => {
     try {
+      setLoading(true);
       const response = await searchPersonalLend.search();
       const data = await response.data;
       setDataPersonalLend(data);
+      setLoading(false);
     } catch (err) {
+      setLoading(false);
       throw err;
     }
   };
@@ -291,70 +299,74 @@ export function PageSearch() {
       {/*navbar*/}
       <Navbar></Navbar>
       <ContainerPage>
-        <RowPage>
-          <Col xl="9">
-            <Filter>
-              <img
-                src={filtericon}
-                alt=""
-                onClick={onClick}
-                style={{ cursor: 'pointer' }}
-              />
-            </Filter>
-            <Col>
-              <NumberOfResult
-                content={t('search.borrowCrypto.amountResult')}
-                amount={dataRender.total_elements}
-              />
-            </Col>
-            <Col>
-              <Suggest
-                src={hurry_img}
-                title={t('search.borrowCrypto.suggest.first.title')}
-                desc={t('search.borrowCrypto.suggest.first.content')}
-              ></Suggest>
-            </Col>
-            <Col>
-              <PersonalLending data={dataPersonalLend} />
-            </Col>
-            <Col>
-              <Suggest
-                src={loan_img}
-                title={t('search.borrowCrypto.suggest.second.title')}
-                desc={t('search.borrowCrypto.suggest.second.content')}
-              ></Suggest>
-            </Col>
-            <Col>
-              <NavSortSearch handleSort={handleSort} />
-            </Col>
-            <Col>
-              <PawnShop data={dataRender} />
-            </Col>
-            {dataRender?.total_pages > 0 && (
+        {loading ? (
+          <Loading />
+        ) : (
+          <RowPage>
+            <Col xl="9">
+              <Filter>
+                <img
+                  src={filtericon}
+                  alt=""
+                  onClick={onClick}
+                  style={{ cursor: 'pointer' }}
+                />
+              </Filter>
               <Col>
-                <Pagination
-                  editPageCount={editPageCount}
-                  dataRender={dataRender}
+                <NumberOfResult
+                  content={t('search.borrowCrypto.amountResult')}
+                  amount={dataRender.total_elements}
                 />
               </Col>
-            )}
-          </Col>
-          <Col xl="3">
-            <FiterNavSearch
-              status={statusFilterNav}
-              onClick={onClick}
-              onChangeInputSearch={onChangeInputSearch}
-              onChangeInterestRange={onChangeInterestRange}
-              onChangeLoanToValue={onChangeLoanToValue}
-              onChangeCollateralAccepted={onChangeCollateralAccepted}
-              onChangeLoanToken={onChangeLoanToken}
-              onChangeLoanType={onChangeLoanType}
-              onChangeDuration={onChangeDuration}
-              resetDataFilter={resetDataFilter}
-              dataSearch={dataSearch}
-            ></FiterNavSearch>
-          </Col>
-        </RowPage>
+              <Col>
+                <Suggest
+                  src={hurry_img}
+                  title={t('search.borrowCrypto.suggest.first.title')}
+                  desc={t('search.borrowCrypto.suggest.first.content')}
+                ></Suggest>
+              </Col>
+              <Col>
+                <PersonalLending data={dataPersonalLend} />
+              </Col>
+              <Col>
+                <Suggest
+                  src={loan_img}
+                  title={t('search.borrowCrypto.suggest.second.title')}
+                  desc={t('search.borrowCrypto.suggest.second.content')}
+                ></Suggest>
+              </Col>
+              <Col>
+                <NavSortSearch handleSort={handleSort} />
+              </Col>
+              <Col>
+                <PawnShop data={dataRender} />
+              </Col>
+              {dataRender?.total_pages > 0 && (
+                <Col>
+                  <Pagination
+                    editPageCount={editPageCount}
+                    dataRender={dataRender}
+                  />
+                </Col>
+              )}
+            </Col>
+            <Col xl="3">
+              <FiterNavSearch
+                status={statusFilterNav}
+                onClick={onClick}
+                onChangeInputSearch={onChangeInputSearch}
+                onChangeInterestRange={onChangeInterestRange}
+                onChangeLoanToValue={onChangeLoanToValue}
+                onChangeCollateralAccepted={onChangeCollateralAccepted}
+                onChangeLoanToken={onChangeLoanToken}
+                onChangeLoanType={onChangeLoanType}
+                onChangeDuration={onChangeDuration}
+                resetDataFilter={resetDataFilter}
+                dataSearch={dataSearch}
+              ></FiterNavSearch>
+            </Col>
+          </RowPage>
+        )}
       </ContainerPage>
       {/*footter*/}
       <Footer></Footer>
