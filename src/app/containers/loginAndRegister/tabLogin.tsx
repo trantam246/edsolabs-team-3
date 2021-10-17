@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { TabPane } from 'reactstrap';
 import styled from 'styled-components';
 import InputCustom from './inputCustom';
@@ -27,16 +28,11 @@ const TabPaneLogin = styled(TabPane)`
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    a {
-      color: #e0e0e0;
-      font-size: 1.2rem;
-      line-height: 1rem;
-    }
-    @media (min-width: 1440px) {
-      width: 58.4rem;
-      font-size: 1.6rem;
-      line-height: 2rem;
-    }
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    line-height: 1rem;
+    text-decoration: underline;
+    cursor: pointer;
   }
 
   .divButton {
@@ -108,6 +104,12 @@ const TabPaneLogin = styled(TabPane)`
 
   @media (min-width: 1440px) {
     padding-bottom: 213px;
+
+    .aStyle {
+      width: 58.4rem;
+      font-size: 1.6rem;
+      line-height: 2rem;
+    }
   }
 `;
 
@@ -185,8 +187,8 @@ export default function TabLogin({ id }: props) {
           }
         />
 
-        <div className="aStyle">
-          <a href="//">{t('auth.logIn.forget')}</a>
+        <div className="aStyle" onClick={toggle}>
+          {t('auth.logIn.forget')}
         </div>
 
         <div className="divButton">
@@ -196,12 +198,7 @@ export default function TabLogin({ id }: props) {
         </div>
       </form>
 
-      <ModalBox
-        status={modal}
-        click={toggle}
-        content="This account has not been activated yet. Please confirm email to
-          activate your account"
-      />
+      <ModalBox status={modal} click={toggle} content="Coming soon !!!" />
     </TabPaneLogin>
   );
 }
