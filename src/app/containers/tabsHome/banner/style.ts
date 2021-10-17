@@ -266,7 +266,7 @@ export const Banner = styled(Col)`
       font-weight: bold;
       font-size: 5rem;
       color: #ffffff;
-      padding-right: 45px;
+      padding-right: 20px;
       margin-bottom: 10px;
       div {
         display: inline-block;

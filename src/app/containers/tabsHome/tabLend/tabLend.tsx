@@ -73,14 +73,14 @@ export function TabLendForm() {
       <GrInput>
         <p> {t('home.tabs.lend.maxAmount')}</p>
         <div className="">
-          <WarperInput border={Boolean(errors.Duration)}>
+          <WarperInput border={Boolean(errors.loanAmount)}>
             <input
               type="text"
               placeholder={t('home.tabs.lend.enterAmount')}
               autoComplete="off"
               {...register('loanAmount', { required: true, pattern: /[0-9]/ })}
             />
-            {errors.Maximum && (
+            {errors.loanAmount && (
               <span className="errValiInput">
                 {t('home.tabs.lend.maxRequired')}
               </span>

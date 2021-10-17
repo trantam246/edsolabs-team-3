@@ -55,7 +55,6 @@ export function PageHome() {
         </Container>
       </Section>
       {/*footter*/}
-
       <Footer></Footer>
     </>
   );
