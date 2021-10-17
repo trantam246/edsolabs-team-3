@@ -136,6 +136,10 @@ export function PageSearchLend() {
       name:
         dataSearch.name === undefined ? undefined : dataSearch.name.toString(),
     };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 262bfaf (fix)
     SearchLendCryApi.search(newObj)
       .then((res: any) => {
         setdataRender(res.data);
