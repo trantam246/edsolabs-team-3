@@ -7,8 +7,4 @@ export const Box = styled.div`
     margin-right: 1rem;
     margin-bottom: 2px;
   }
-
-  span {
-    padding-left: 5px;
-  }
 `;
