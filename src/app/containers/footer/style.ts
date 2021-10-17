@@ -246,9 +246,6 @@ export const FooterDefi = styled.footer`
     .contact {
       padding-top: 4rem;
     }
-    .row__about {
-      /* margin-top: -8rem; */
-    }
   }
   @media screen and (max-width: 575px) {
     background-size: 100%;
@@ -260,15 +257,11 @@ export const FooterDefi = styled.footer`
     .row__nav-list {
       position: absolute;
       bottom: 0;
+      right: 1.6rem;
+      left: 1.6rem;
     }
     .row__about {
-      /* margin-top: -22rem; */
       padding: 0 0.8rem 24rem 0.8rem;
-    }
-  }
-  @media screen and (max-width: 320px) {
-    .row__nav-list {
-      /* transform: translateY(42rem); */
     }
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -288,21 +281,6 @@ export const FooterDefi = styled.footer`
       .icons {
         width: 20rem;
       }
-    }
-  }
-  @media screen and (min-width: 437px) and (max-width: 575px) {
-    .row__nav-list {
-      /* transform: translateY(32rem); */
-    }
-  }
-  @media screen and (max-width: 372px) {
-    .row__nav-list {
-      /* transform: translateY(40rem); */
-    }
-  }
-  @media screen and (max-width: 319px) {
-    .row__nav-list {
-      /* transform: translateY(43rem); */
     }
   }
 `;
