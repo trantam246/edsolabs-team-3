@@ -102,7 +102,7 @@ export function Navbar(props) {
         <Containers fluid id={openMenuMobile ? 'fixed__Header' : ''}>
           <RowNavBar>
             <Col className="p-0 col-xl-2 col-lg-3 col-md-4 col-5 d-flex justify-content-start align-items-center warper__logo">
-              <Logo></Logo>
+              <Logo openMenu={openMenu}></Logo>
             </Col>
             <Col className="p-0 col-xl-10 col-lg-9 col-md-8 col-7 d-flex align-items-center justify-content-between">
               <MenuNavbar></MenuNavbar>
@@ -285,7 +285,14 @@ export function Navbar(props) {
                   <div>FAQ</div>
                   <div>{t('navMobile.changePass')}</div>
                   {localStorage.getItem('access_token') ? (
-                    <div onClick={logout}>{t('navMobile.logOut')}</div>
+                    <div
+                      onClick={() => {
+                        logout();
+                        openMenu();
+                      }}
+                    >
+                      {t('navMobile.logOut')}
+                    </div>
                   ) : (
                     ''
                   )}
