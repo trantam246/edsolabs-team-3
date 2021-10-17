@@ -9,7 +9,7 @@ import BiSearch from '../../../../images/search.png';
 export function TabLendForm() {
   const history = useHistory();
   const queryString = require('query-string');
-  const [Collateral, setCollateral] = useState<any>(true);
+  const [Collateral, setCollateral] = useState<any>('1');
   const {
     handleSubmit,
     register,
@@ -17,7 +17,7 @@ export function TabLendForm() {
     control,
   } = useForm();
   const onSubmit = data => {
-    if (Collateral === true) {
+    if (Collateral === '1') {
       const newObj: any = {
         // durationQty: Number(data.durationQty),
         durationTypes:
@@ -65,7 +65,7 @@ export function TabLendForm() {
     }
   };
   const onChangeRadio = e => {
-    setCollateral(!Collateral);
+    setCollateral(e.target.value);
   };
   const { t } = useTranslation();
   return (
@@ -166,7 +166,7 @@ export function TabLendForm() {
         <p>{t('home.tabs.lend.coll')}</p>
         <div className="radio">
           <div className="radio_input">
-            <div className="radio">
+            <label className="radio__custom">
               <input
                 type="radio"
                 name="radio"
@@ -174,23 +174,25 @@ export function TabLendForm() {
                 defaultChecked
                 onChange={onChangeRadio}
               />
-            </div>
+              <span></span>
+            </label>
             <span>{t('home.tabs.lend.crypto')}</span>
           </div>
           <div className="radio_input">
-            <div className="radio">
+            <label className="radio__custom">
               <input
                 type="radio"
                 name="radio"
                 value="2"
                 onChange={onChangeRadio}
               />
-            </div>
+              <span></span>
+            </label>
             <span>NFT</span>
           </div>
         </div>
       </GrInput>
-      {Collateral ? (
+      {Collateral === '1' ? (
         <GrInput>
           <div className="">
             <WarperselectIsmul>
