@@ -70,6 +70,11 @@ export const Th = styled.th`
   &:last-child {
     border-radius: 0px 10px 0px 0px;
   }
+  @media (max-width: 992px) {
+    &:first-child {
+      padding-left: 2rem;
+    }
+  }
 `;
 
 export const Tbody = styled.tbody`
@@ -95,6 +100,12 @@ export const Td = styled.td`
   border-bottom: 2px solid #171a23 !important;
   &:first-child {
     padding-left: 2.4rem;
+  }
+
+  @media (max-width: 992px) {
+    &:first-child {
+      padding-left: 2rem;
+    }
   }
 
   @media (max-width: 768px) {
