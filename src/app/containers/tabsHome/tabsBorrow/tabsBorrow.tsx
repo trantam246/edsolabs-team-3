@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { TabContent } from 'reactstrap';
 import { TabborrowNFT } from './style';
 import { RiInformationFill } from '@react-icons/all-files/ri/RiInformationFill';
-import { BiSearch } from '@react-icons/all-files/bi/BiSearch';
+import BiSearch from '../../../../images/search.png';
 import { ButtonComponent } from 'app/components/Button/Input';
 import { Controller, useForm } from 'react-hook-form';
 import NFT from '../../../../images/NFT.png';
@@ -281,7 +281,7 @@ export default function TabsBorrow(props: any) {
               color="#282C37"
               className="btn__submit"
             >
-              <BiSearch />
+              <img src={BiSearch} alt="" style={{ marginRight: '16px' }} />
               {t('home.tabs.search')}
             </ButtonComponent>
           </form>

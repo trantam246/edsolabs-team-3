@@ -29,6 +29,7 @@ import { useEffect } from 'react';
 import userApi from 'api/userApi';
 import DropDownUser from './dropdowmUser';
 import { useTranslation } from 'react-i18next';
+import { SwitchLanguage } from 'app/components/switchLanguage';
 export function Navbar(props) {
   const history = useHistory();
   const dispath = useDispatch();
@@ -125,6 +126,12 @@ export function Navbar(props) {
                     <NavLink to="/login?tab=2">{t('navBar.login')}</NavLink>
                   </ButtonNavBar>
                 )}
+                <div
+                  style={{ marginLeft: '5px', display: 'inline-block' }}
+                  className="Select__language"
+                >
+                  <SwitchLanguage></SwitchLanguage>
+                </div>
                 <HamburgerMenu onClick={openMenu}>
                   {openMenuMobile ? (
                     <GrClose size="28"></GrClose>
@@ -247,6 +254,9 @@ export function Navbar(props) {
                   <div>FAQ</div>
                   <div>{t('navMobile.changePass')}</div>
                   <div onClick={logout}>{t('navMobile.logOut')}</div>
+                  <div className="Select__language">
+                    <SwitchLanguage></SwitchLanguage>
+                  </div>
                 </MenuSubMobile>
               </MenuMobile>
             </>

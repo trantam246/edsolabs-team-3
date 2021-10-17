@@ -37,7 +37,7 @@ export const GrInput = styled.div`
     font-weight: 500;
     font-size: 14px;
     color: #ffffff;
-    margin-bottom: 0px;
+    margin-bottom: 6px;
   }
   & > div {
     display: flex;

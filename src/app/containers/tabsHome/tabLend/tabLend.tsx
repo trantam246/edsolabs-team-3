@@ -5,7 +5,7 @@ import { SelectAll } from 'app/components/select/select';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { BiSearch } from '@react-icons/all-files/bi/BiSearch';
+import BiSearch from '../../../../images/search.png';
 export function TabLendForm() {
   const history = useHistory();
   const queryString = require('query-string');
@@ -227,7 +227,7 @@ export function TabLendForm() {
       )}
       <GrInput>
         <button>
-          <BiSearch />
+          <img src={BiSearch} alt="" style={{ marginRight: '16px' }} />
           {t('home.tabs.search')}
         </button>
       </GrInput>
