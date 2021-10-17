@@ -1,10 +1,11 @@
 import React from 'react';
-import { GrInput, WarperInput } from './style';
+import { GrInput, WarperInput, WarperSelect, WarperselectIsmul } from './style';
 import { Controller, useForm } from 'react-hook-form';
 import { SelectAll } from 'app/components/select/select';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { BiSearch } from '@react-icons/all-files/bi/BiSearch';
 export function TabLendForm() {
   const history = useHistory();
   const queryString = require('query-string');
@@ -72,11 +73,7 @@ export function TabLendForm() {
       <GrInput>
         <p> {t('home.tabs.lend.maxAmount')}</p>
         <div className="">
-          <WarperInput
-            width="417px"
-            height="44px"
-            border={Boolean(errors.Duration)}
-          >
+          <WarperInput border={Boolean(errors.Duration)}>
             <input
               type="text"
               placeholder={t('home.tabs.lend.enterAmount')}
@@ -90,7 +87,7 @@ export function TabLendForm() {
             )}
             <button className="btn__max-lend">{t('home.tabs.lend.max')}</button>
           </WarperInput>
-          <WarperInput width="111px" height="44px">
+          <WarperSelect>
             <Controller
               control={control}
               name="loanSymbols"
@@ -114,17 +111,13 @@ export function TabLendForm() {
             {errors.loanSymbols && (
               <span className="warning__input">Invalid amount</span>
             )}
-          </WarperInput>
+          </WarperSelect>
         </div>
       </GrInput>
       <GrInput>
         <p> {t('home.tabs.lend.duration')}</p>
         <div className="">
-          <WarperInput
-            width="417px"
-            height="44px"
-            border={Boolean(errors.durationQty)}
-          >
+          <WarperInput border={Boolean(errors.durationQty)}>
             <input
               type="text"
               autoComplete="off"
@@ -140,7 +133,7 @@ export function TabLendForm() {
               </>
             )}
           </WarperInput>
-          <WarperInput width="111px" height="44px">
+          <WarperSelect>
             <Controller
               control={control}
               name="durationTypes"
@@ -166,37 +159,41 @@ export function TabLendForm() {
                 {t('home.tabs.lend.enterAmount')}
               </span>
             )}
-          </WarperInput>
+          </WarperSelect>
         </div>
       </GrInput>
       <GrInput>
         <p>{t('home.tabs.lend.coll')}</p>
-        <div className="">
-          <div className="radio">
-            <input
-              type="radio"
-              name="radio"
-              value="1"
-              defaultChecked
-              onChange={onChangeRadio}
-            />
+        <div className="radio">
+          <div className="radio_input">
+            <div className="radio">
+              <input
+                type="radio"
+                name="radio"
+                value="1"
+                defaultChecked
+                onChange={onChangeRadio}
+              />
+            </div>
+            <span>{t('home.tabs.lend.crypto')}</span>
           </div>
-          <span>{t('home.tabs.lend.crypto')}</span>
-          <div className="radio">
-            <input
-              type="radio"
-              name="radio"
-              value="2"
-              onChange={onChangeRadio}
-            />
+          <div className="radio_input">
+            <div className="radio">
+              <input
+                type="radio"
+                name="radio"
+                value="2"
+                onChange={onChangeRadio}
+              />
+            </div>
+            <span>NFT</span>
           </div>
-          <span>NFT</span>
         </div>
       </GrInput>
       {Collateral ? (
         <GrInput>
           <div className="">
-            <WarperInput width="540px" height="" className="input__full">
+            <WarperselectIsmul>
               <Controller
                 control={control}
                 name="collateralSymbols"
@@ -222,14 +219,17 @@ export function TabLendForm() {
                   {t('home.tabs.lend.enterAmount')}
                 </span>
               )}
-            </WarperInput>
+            </WarperselectIsmul>
           </div>
         </GrInput>
       ) : (
         ''
       )}
       <GrInput>
-        <button>{t('home.tabs.search')}</button>
+        <button>
+          <BiSearch />
+          {t('home.tabs.search')}
+        </button>
       </GrInput>
     </form>
   );

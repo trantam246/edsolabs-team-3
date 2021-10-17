@@ -37,14 +37,16 @@ export function TabsComponent() {
             </span>
           </div>
         </TabSum>
-        <TabContent activeTab={activeTabBorRow}>
-          <Tabborrow tabId="1">
-            <TabsBorrow></TabsBorrow>
-          </Tabborrow>
-          <TabLend tabId="2">
-            <TabLendForm></TabLendForm>
-          </TabLend>
-        </TabContent>
+        <div>
+          <TabContent activeTab={activeTabBorRow}>
+            <Tabborrow tabId="1">
+              <TabsBorrow></TabsBorrow>
+            </Tabborrow>
+            <TabLend tabId="2">
+              <TabLendForm></TabLendForm>
+            </TabLend>
+          </TabContent>
+        </div>
       </Tabs>
     </>
   );

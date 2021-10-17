@@ -4,6 +4,7 @@ import {
   TabborrowSub,
   TooltipTabs,
   WrapperInput,
+  WrapperInputSelect,
 } from './style';
 import classnames from 'classnames';
 import { useState } from 'react';
@@ -19,6 +20,7 @@ import { SelectAll } from 'app/components/select/select';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useTranslation } from 'react-i18next';
+
 export default function TabsBorrow(props: any) {
   //tabs
   const history = useHistory();
@@ -131,7 +133,7 @@ export default function TabsBorrow(props: any) {
                   {t('home.tabs.borrow.cryp.max')}
                 </ButtonComponent>
               </WrapperInput>
-              <WrapperInput width="111px" height="44px" colorFont="" colorBr="">
+              <WrapperInputSelect>
                 <Controller
                   control={control}
                   name="collateralSymbols"
@@ -157,7 +159,7 @@ export default function TabsBorrow(props: any) {
                     {t('home.banner.cryp.invalidAmount')}
                   </span>
                 )}
-              </WrapperInput>
+              </WrapperInputSelect>
             </div>
             <p>{t('home.tabs.borrow.cryp.or')}</p>
             <div>
@@ -194,7 +196,7 @@ export default function TabsBorrow(props: any) {
                   </span>
                 )}
               </WrapperInput>
-              <WrapperInput width="111px" height="44px" colorFont="" colorBr="">
+              <WrapperInputSelect>
                 <Controller
                   control={control}
                   name="durationTypes"
@@ -220,7 +222,7 @@ export default function TabsBorrow(props: any) {
                     {t('home.tabs.invalidDuration')}
                   </span>
                 )}
-              </WrapperInput>
+              </WrapperInputSelect>
             </div>
             <p> {t('home.tabs.borrow.cryp.loanAmount')}</p>
             <div>
@@ -239,7 +241,7 @@ export default function TabsBorrow(props: any) {
                   </span>
                 )}
               </WrapperInput>
-              <WrapperInput width="111px" height="44px" colorFont="" colorBr="">
+              <WrapperInputSelect>
                 <Controller
                   control={control}
                   name="loanSymbols"
@@ -265,7 +267,7 @@ export default function TabsBorrow(props: any) {
                     {t('home.tabs.invalidAmount')}
                   </span>
                 )}
-              </WrapperInput>
+              </WrapperInputSelect>
             </div>
             <TooltipTabs>
               {t('home.tabs.borrow.cryp.recommend')} <RiInformationFill />
