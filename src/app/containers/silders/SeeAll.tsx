@@ -15,7 +15,7 @@ const See = styled.p`
   &:hover {
     color: #dba83d;
   }
-  @media (max-width: 576px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;

@@ -68,7 +68,7 @@ export function Silder() {
             nextEl: '.swiper-button-next',
           }}
           breakpoints={{
-            577: {
+            768: {
               slidesPerView: 2,
               spaceBetween: 20,
             },
