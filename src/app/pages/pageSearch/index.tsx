@@ -192,11 +192,14 @@ export function PageSearch() {
       status: 3, //
       size: 5, //
       cusSort: cusSort,
+      name: param.name,
     });
   }, []);
   // lấy api render
   useEffect(() => {
     const newObj = {
+      name:
+        dataSearch.name === undefined ? undefined : dataSearch.name.toString(),
       durationTypes:
         dataSearch.durationTypes === undefined
           ? undefined

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Col } from 'reactstrap';
 export const Banner = styled(Col)`
   @media (min-width: 1920px) {
-    po h1 {
+    h1 {
       font-weight: bold;
       font-size: 6rem;
       color: #ffffff;
