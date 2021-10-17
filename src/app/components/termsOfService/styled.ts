@@ -114,6 +114,8 @@ export const H3 = styled.h3`
 `;
 
 export const Box = styled.div`
+  text-align: justify;
+  margin-right: 30px;
   max-height: 530px;
   padding: 0 4rem 0 4rem;
   margin-right: 2.2rem;

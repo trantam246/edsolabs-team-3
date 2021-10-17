@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import { Helmet } from 'react-helmet-async';
 import { Col } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 const Menu = styled(Col)`
   ul {
     padding: 0px;
@@ -71,6 +72,7 @@ const Menu = styled(Col)`
   }
 `;
 export function MenuNavbar() {
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>
@@ -80,17 +82,17 @@ export function MenuNavbar() {
         <ul>
           <li>
             <NavLink exact to="/pawn" activeClassName="selected">
-              <span>Pawn</span>
+              <span>{t('navBar.pawn')}</span>
             </NavLink>
           </li>
           <li>
             <NavLink exact to="/" activeClassName="selected">
-              <span>Borrow</span>
+              <span>{t('navBar.borrow')}</span>
             </NavLink>
           </li>
           <li>
             <NavLink exact to="/" activeClassName="selected">
-              <span>Lend</span>
+              <span>{t('navBar.lend')}</span>
             </NavLink>
           </li>
           <li>
@@ -100,7 +102,7 @@ export function MenuNavbar() {
           </li>
           <li>
             <NavLink exact to="/" activeClassName="selected">
-              <span>My Account</span>
+              <span>{t('navBar.account')}</span>
             </NavLink>
           </li>
           <li>

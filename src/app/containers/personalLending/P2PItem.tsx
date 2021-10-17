@@ -5,6 +5,7 @@ import infoIcon from '../../../images/info_icon.svg';
 import tagIcon from '../../../images/tag_icon.svg';
 import { ButtonComponent } from 'app/components/Button/Input';
 import { P2P } from './style';
+import { useTranslation } from 'react-i18next';
 interface IP2P {
   item: {
     addressLend: string;
@@ -25,7 +26,7 @@ const P2PItem: React.FC<IP2P> = ({ item }) => {
       : item.icons
           .slice(0, item.collateral.length)
           .map((o, i) => <img key={i} src={o} alt="" />);
-
+  const { t } = useTranslation();
   return (
     <P2P>
       <div className="lender">
@@ -38,11 +39,14 @@ const P2PItem: React.FC<IP2P> = ({ item }) => {
           <span>|</span>
           <p className="lender__sign">
             {item.contract}
-            {item.contract > 0 ? ' signed contracts' : ' signed contract'}
+            {item.contract > 0
+              ? ` ${t('search.borrowCrypto.personalLend.contracts')}`
+              : ` ${t('search.borrowCrypto.personalLend.contract')}`}
           </p>
         </div>
         <div className="lender__interest">
-          {item.interestMin} - {item.interestMax}% interest rate{' '}
+          {item.interestMin} - {item.interestMax}%{' '}
+          {t('search.borrowCrypto.personalLend.interest')}
           <img src={infoIcon} alt="" />
         </div>
         <ul className="lender__tag">
@@ -54,10 +58,12 @@ const P2PItem: React.FC<IP2P> = ({ item }) => {
           ))}
         </ul>
         <div className="lender__collateral">
-          <span>Collateral accepted:</span>
+          <span>{t('search.borrowCrypto.personalLend.coll')}</span>
           {renderIconsList}{' '}
           {item.collateral.length > 5
-            ? `& ${item.collateral.slice(5).length} more`
+            ? `& ${item.collateral.slice(5).length} ${t(
+                'search.borrowCrypto.personalLend.more',
+              )}`
             : ''}
         </div>
       </div>
@@ -69,7 +75,7 @@ const P2PItem: React.FC<IP2P> = ({ item }) => {
         color="#282c37"
         className="lender__button"
       >
-        Request loan
+        {t('search.borrowCrypto.personalLend.button')}
       </ButtonComponent>
     </P2P>
   );

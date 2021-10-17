@@ -54,10 +54,21 @@ const Title = styled.div`
   line-height: 2.4rem;
   padding-top: 3.5rem;
   color: #ffffff;
+
+  @media (max-width: 321px) {
+    font-size: 1.5rem !important;
+    padding-top: 1rem;
+    line-height: 1.8rem;
+  }
+
   @media (max-width: 376px) {
     font-size: 1.8rem;
     padding-top: 1rem;
     line-height: 2.2rem;
+  }
+
+  @media (min-width: 1440px) {
+    width: 32.1rem;
   }
 `;
 

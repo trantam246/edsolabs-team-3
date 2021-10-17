@@ -136,13 +136,13 @@ export function PageSearchLend() {
       name:
         dataSearch.name === undefined ? undefined : dataSearch.name.toString(),
     };
-    console.log(newObj);
     SearchLendCryApi.search(newObj)
       .then((res: any) => {
         setdataRender(res.data);
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
+        throw error;
       });
     history.push({
       pathname: '/pawn/lender',

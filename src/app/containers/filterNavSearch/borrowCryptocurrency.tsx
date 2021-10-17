@@ -11,6 +11,7 @@ import {
   WarperFilterNav,
 } from './style';
 import { iconCoin, LoanAmount } from 'app/components/icon';
+import { useTranslation } from 'react-i18next';
 export function FiterNavSearch(props: any) {
   const onChangeInputSearch = e => {
     props.onChangeInputSearch(e);
@@ -36,6 +37,7 @@ export function FiterNavSearch(props: any) {
   const queryString = require('query-string');
   const history = useHistory();
   let param: any = queryString.parse(history.location.search);
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>
@@ -48,7 +50,7 @@ export function FiterNavSearch(props: any) {
               props.resetDataFilter();
             }}
           >
-            Reset filter
+            {t('search.borrowCrypto.filter.reset')}
           </span>
           <img
             src={closeFilterNav}
@@ -65,7 +67,7 @@ export function FiterNavSearch(props: any) {
             <div>
               <input
                 type="text"
-                placeholder="Search pawnshops"
+                placeholder={t('search.borrowCrypto.filter.search')}
                 onChange={onChangeInputSearch}
               />
             </div>
@@ -83,7 +85,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="true"
                 aria-controls="panelsStayOpen-collapseOne"
               >
-                Interest range
+                {t('search.borrowCrypto.filter.interest')}
               </button>
             </h2>
             <div
@@ -174,7 +176,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseTwo"
               >
-                Loan to value
+                {t('search.borrowCrypto.filter.loan')}
               </button>
             </h2>
             <div
@@ -265,7 +267,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseThree"
               >
-                Collateral accepted
+                {t('search.borrowCrypto.filter.coll')}
               </button>
             </h2>
             <div
@@ -311,7 +313,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseFour"
               >
-                Loan token
+                {t('search.borrowCrypto.filter.token')}
               </button>
             </h2>
             <div
@@ -357,7 +359,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseFive"
               >
-                Loan type
+                {t('search.borrowCrypto.filter.type')}
               </button>
             </h2>
             <div
@@ -378,7 +380,7 @@ export function FiterNavSearch(props: any) {
                         : param.loanTypes.includes('0')
                     }
                   />
-                  <span>Auto</span>
+                  <span> {t('search.borrowCrypto.filter.auto')}</span>
                 </div>
                 <div className="checkbox__custom">
                   <input
@@ -392,7 +394,7 @@ export function FiterNavSearch(props: any) {
                         : param.loanTypes.includes('1')
                     }
                   />
-                  <span>Semi-auto</span>
+                  <span> {t('search.borrowCrypto.filter.semi')}</span>
                 </div>
                 <div className="checkbox__custom">
                   <input
@@ -406,7 +408,7 @@ export function FiterNavSearch(props: any) {
                         : param.loanTypes.includes('2')
                     }
                   />
-                  <span>Negotiation</span>
+                  <span> {t('search.borrowCrypto.filter.nego')}</span>
                 </div>
               </div>
             </div>
@@ -421,7 +423,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapse6"
               >
-                Duration
+                {t('search.borrowCrypto.filter.duration')}
               </button>
             </h2>
             <div
@@ -442,7 +444,7 @@ export function FiterNavSearch(props: any) {
                         : param.durationTypes.includes('0')
                     }
                   />
-                  <span>Week</span>
+                  <span>{t('search.borrowCrypto.filter.week')}</span>
                 </div>
                 <div className="checkbox__custom">
                   <input
@@ -456,7 +458,7 @@ export function FiterNavSearch(props: any) {
                         : param.durationTypes.includes('1')
                     }
                   />
-                  <span>Month</span>
+                  <span>{t('search.borrowCrypto.filter.month')}</span>
                 </div>
               </div>
             </div>

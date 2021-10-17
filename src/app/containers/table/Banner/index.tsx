@@ -1,14 +1,16 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Frame from '../../../../images/Frame.png';
 import { Box, Title } from './style';
 export default function Banner() {
+  const { t } = useTranslation();
   return (
     <>
       <Box>
         <Title>
-          <h4>Become your own bank</h4>
+          <h4>{t('search.lendCrypto.ads.title')}</h4>
           <p>
-            Sign up for pawnshop to get great benefits from{' '}
+            {t('search.lendCrypto.ads.content')}
             <span>DeFi For You.</span>
           </p>
         </Title>

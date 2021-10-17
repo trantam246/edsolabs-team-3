@@ -4,6 +4,7 @@ import closeFilterNav from '../../../images/closeFilterNav.svg';
 import { Accordion, Bong, Resetfilter, WarperFilterNav } from './style';
 import { iconCoin, LoanAmount } from 'app/components/icon';
 import { useHistory } from 'react-router';
+import { useTranslation } from 'react-i18next';
 export function FiterNavSearch(props: any) {
   //onchange dữ liệu truyền lên api nè ỏ ỏ ỏ
   const collateralSymbols = e => {
@@ -18,6 +19,7 @@ export function FiterNavSearch(props: any) {
   const queryString = require('query-string');
   const history = useHistory();
   const param = queryString.parse(history.location.search);
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>
@@ -25,7 +27,9 @@ export function FiterNavSearch(props: any) {
       </Helmet>
       <WarperFilterNav status={props.status}>
         <Resetfilter>
-          <span onClick={() => props.clickResetAll()}>Reset filter</span>
+          <span onClick={() => props.clickResetAll()}>
+            {t('search.lendCrypto.filter.reset')}
+          </span>
           <img
             src={closeFilterNav}
             alt=""
@@ -44,7 +48,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseThree"
               >
-                Collateral
+                {t('search.lendCrypto.filter.coll')}
               </button>
             </h2>
             <div
@@ -89,7 +93,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseFour"
               >
-                Loan currency
+                {t('search.lendCrypto.filter.loan')}
               </button>
             </h2>
             <div
@@ -136,7 +140,7 @@ export function FiterNavSearch(props: any) {
                 aria-controls="panelsStayOpen-collapseFive"
                 style={{ color: '#53565f' }}
               >
-                NFT Evaluation
+                {t('search.lendCrypto.filter.nft')}
               </button>
             </h2>
             <div
@@ -153,7 +157,9 @@ export function FiterNavSearch(props: any) {
                     disabled
                     style={{ borderColor: '#53565f' }}
                   />
-                  <span style={{ color: '#53565f' }}>Auto</span>
+                  <span style={{ color: '#53565f' }}>
+                    {t('search.lendCrypto.filter.all')}
+                  </span>
                 </div>
                 <div className="checkbox__custom">
                   <input
@@ -163,7 +169,9 @@ export function FiterNavSearch(props: any) {
                     disabled
                     style={{ borderColor: '#53565f' }}
                   />
-                  <span style={{ color: '#53565f' }}>Semi-auto</span>
+                  <span style={{ color: '#53565f' }}>
+                    {t('search.lendCrypto.filter.evaluated')}
+                  </span>
                 </div>
               </div>
             </div>
@@ -178,7 +186,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapse6"
               >
-                Duration
+                {t('search.lendCrypto.filter.duration')}
               </button>
             </h2>
             <div
@@ -199,7 +207,7 @@ export function FiterNavSearch(props: any) {
                         : param.durationTypes.includes('1')
                     }
                   />
-                  <span>Week</span>
+                  <span>{t('search.lendCrypto.filter.week')}</span>
                 </div>
                 <div className="checkbox__custom">
                   <input
@@ -213,7 +221,7 @@ export function FiterNavSearch(props: any) {
                         : param.durationTypes.includes('0')
                     }
                   />
-                  <span>Month</span>
+                  <span>{t('search.lendCrypto.filter.month')}</span>
                 </div>
               </div>
             </div>

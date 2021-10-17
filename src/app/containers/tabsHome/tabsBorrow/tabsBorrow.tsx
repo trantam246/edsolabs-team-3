@@ -4,13 +4,14 @@ import {
   TabborrowSub,
   TooltipTabs,
   WrapperInput,
+  WrapperInputSelect,
 } from './style';
 import classnames from 'classnames';
 import { useState } from 'react';
 import { TabContent } from 'reactstrap';
 import { TabborrowNFT } from './style';
 import { RiInformationFill } from '@react-icons/all-files/ri/RiInformationFill';
-import { BiSearch } from '@react-icons/all-files/bi/BiSearch';
+import BiSearch from '../../../../images/search.png';
 import { ButtonComponent } from 'app/components/Button/Input';
 import { Controller, useForm } from 'react-hook-form';
 import NFT from '../../../../images/NFT.png';
@@ -18,6 +19,8 @@ import { Link } from 'react-router-dom';
 import { SelectAll } from 'app/components/select/select';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
+import { useTranslation } from 'react-i18next';
+
 export default function TabsBorrow(props: any) {
   //tabs
   const history = useHistory();
@@ -76,6 +79,7 @@ export default function TabsBorrow(props: any) {
     });
   };
 
+  const { t } = useTranslation();
   return (
     <>
       <TabborrowSub tabs>
@@ -87,7 +91,7 @@ export default function TabsBorrow(props: any) {
             toggleCryptocurrency('1');
           }}
         >
-          Cryptocurrency
+          {t('home.tabs.borrow.cryp.active')}
         </span>
         <span
           className={classnames({
@@ -103,19 +107,21 @@ export default function TabsBorrow(props: any) {
       <TabContent activeTab={activeTabBorRowCryptocurrency}>
         <TabborrowCryptocurrency tabId="1">
           <form onSubmit={handleSubmit(onSumitFormCryptocurrency)}>
-            <p>Collateral</p>
+            <p> {t('home.tabs.borrow.cryp.coll')}</p>
             <div>
               <WrapperInput width="417px" height="44px" colorFont="" colorBr="">
                 <input
                   type="number"
                   // name="Collateral"
-                  placeholder="Enter amount"
+                  placeholder={t('home.tabs.borrow.cryp.enterAmount')}
                   className={errors.collateralAmount ? 'activeBrinput' : ''}
                   {...register('collateralAmount', { required: true })}
                   autoComplete="off"
                 ></input>
                 {errors.collateralAmount && (
-                  <span className="warning__input">Invalid amount</span>
+                  <span className="warning__input">
+                    {t('home.tabs.invalidAmount')}
+                  </span>
                 )}
                 <ButtonComponent
                   className="btn_max"
@@ -124,10 +130,10 @@ export default function TabsBorrow(props: any) {
                   borderRadius="172px"
                   type="button"
                 >
-                  Max
+                  {t('home.tabs.borrow.cryp.max')}
                 </ButtonComponent>
               </WrapperInput>
-              <WrapperInput width="111px" height="44px" colorFont="" colorBr="">
+              <WrapperInputSelect>
                 <Controller
                   control={control}
                   name="collateralSymbols"
@@ -149,11 +155,13 @@ export default function TabsBorrow(props: any) {
                   )}
                 />
                 {errors.collateralSymbols && (
-                  <span className="warning__input">Invalid amount</span>
+                  <span className="warning__input">
+                    {t('home.banner.cryp.invalidAmount')}
+                  </span>
                 )}
-              </WrapperInput>
+              </WrapperInputSelect>
             </div>
-            <p>Or</p>
+            <p>{t('home.tabs.borrow.cryp.or')}</p>
             <div>
               <WrapperInput
                 width="225px"
@@ -165,28 +173,30 @@ export default function TabsBorrow(props: any) {
                 <input
                   type="text"
                   disabled
-                  placeholder="Choose Existing collateral"
+                  placeholder={t('home.tabs.borrow.cryp.choose')}
                   // defaultValue="Choose Existing collateral"
                   className="input__Disabled"
                 ></input>
               </WrapperInput>
             </div>
-            <p>Duration</p>
+            <p> {t('home.tabs.borrow.cryp.duration')}</p>
             <div>
               <WrapperInput width="417px" height="44px" colorFont="" colorBr="">
                 <input
                   // name="Duration"
                   type="number"
-                  placeholder="durationQty"
+                  placeholder={t('home.tabs.borrow.cryp.duration')}
                   autoComplete="off"
                   className={errors.durationQty ? 'activeBrinput' : ''}
                   {...register('durationQty', { required: true })}
                 ></input>
                 {errors.durationQty && (
-                  <span className="warning__input">Invalid amount</span>
+                  <span className="warning__input">
+                    {t('home.tabs.invalidDuration')}
+                  </span>
                 )}
               </WrapperInput>
-              <WrapperInput width="111px" height="44px" colorFont="" colorBr="">
+              <WrapperInputSelect>
                 <Controller
                   control={control}
                   name="durationTypes"
@@ -208,26 +218,30 @@ export default function TabsBorrow(props: any) {
                   )}
                 />
                 {errors.durationTypes && (
-                  <span className="warning__input">Invalid amount</span>
+                  <span className="warning__input">
+                    {t('home.tabs.invalidDuration')}
+                  </span>
                 )}
-              </WrapperInput>
+              </WrapperInputSelect>
             </div>
-            <p>Loan amount</p>
+            <p> {t('home.tabs.borrow.cryp.loanAmount')}</p>
             <div>
               <WrapperInput width="417px" height="44px" colorFont="" colorBr="">
                 <input
                   // name="Loanamount"
                   type="number"
                   autoComplete="off"
-                  placeholder="Enter amount"
+                  placeholder={t('home.tabs.borrow.cryp.enterAmount')}
                   className={errors.loanAmount ? 'activeBrinput' : ''}
                   {...register('loanAmount', { required: true })}
                 ></input>
                 {errors.loanAmount && (
-                  <span className="warning__input">Invalid amount</span>
+                  <span className="warning__input">
+                    {t('home.tabs.invalidAmount')}
+                  </span>
                 )}
               </WrapperInput>
-              <WrapperInput width="111px" height="44px" colorFont="" colorBr="">
+              <WrapperInputSelect>
                 <Controller
                   control={control}
                   name="loanSymbols"
@@ -249,16 +263,15 @@ export default function TabsBorrow(props: any) {
                   )}
                 />
                 {errors.loanSymbols && (
-                  <span className="warning__input">Invalid amount</span>
+                  <span className="warning__input">
+                    {t('home.tabs.invalidAmount')}
+                  </span>
                 )}
-              </WrapperInput>
+              </WrapperInputSelect>
             </div>
             <TooltipTabs>
-              Recommended amount <RiInformationFill />
-              <span>
-                To get a loan quickly, you should set the desired loan amount
-                between 50 - 70% of the collateral value.
-              </span>
+              {t('home.tabs.borrow.cryp.recommend')} <RiInformationFill />
+              <span>{t('home.tabs.borrow.cryp.recommendContent')}</span>
             </TooltipTabs>
             <ButtonComponent
               borderRadius="172px"
@@ -268,8 +281,8 @@ export default function TabsBorrow(props: any) {
               color="#282C37"
               className="btn__submit"
             >
-              <BiSearch />
-              Search
+              <img src={BiSearch} alt="" style={{ marginRight: '16px' }} />
+              {t('home.tabs.search')}
             </ButtonComponent>
           </form>
         </TabborrowCryptocurrency>
@@ -277,10 +290,10 @@ export default function TabsBorrow(props: any) {
           <div className="img">
             <img src={NFT} alt="" />
           </div>
-          <button>Find NFT lenders</button>
+          <button>{t('home.tabs.borrow.nft.find')}</button>
           <p>
-            Don’t have hard NFT?
-            <Link to="/login"> Create new</Link>
+            {t('home.tabs.borrow.nft.dont')}
+            <Link to="/login"> {t('home.tabs.borrow.nft.new')}</Link>
           </p>
         </TabborrowNFT>
       </TabContent>
