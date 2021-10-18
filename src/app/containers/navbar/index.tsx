@@ -56,6 +56,9 @@ export function Navbar(props) {
       document.body.style.overflow = 'auto';
     }
   };
+  const setcolseMenuMobile = () => {
+    document.body.style.overflow = 'auto';
+  };
   const [statusBlockLogout, setstatusBlockLogout] = useState(false);
   const logout = () => {
     dispath(authActions.logout());
@@ -102,7 +105,7 @@ export function Navbar(props) {
         <Containers fluid id={openMenuMobile ? 'fixed__Header' : ''}>
           <RowNavBar>
             <Col className="p-0 col-xl-2 col-lg-3 col-md-4 col-5 d-flex justify-content-start align-items-center warper__logo">
-              <Logo openMenu={openMenu}></Logo>
+              <Logo setcolseMenuMobile={setcolseMenuMobile}></Logo>
             </Col>
             <Col className="p-0 col-xl-10 col-lg-9 col-md-8 col-7 d-flex align-items-center justify-content-between">
               <MenuNavbar></MenuNavbar>
