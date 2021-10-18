@@ -22,7 +22,12 @@ export function Logo(props: any) {
       <Helmet>
         <meta name="description" content="Page not found" />
       </Helmet>
-      <NavLink to="/">
+      <NavLink
+        to="/"
+        onClick={() => {
+          props.setcolseMenuMobile();
+        }}
+      >
         <LogoImg src={logo}></LogoImg>
       </NavLink>
     </>
