@@ -22,7 +22,7 @@ export function Logo(props: any) {
       <Helmet>
         <meta name="description" content="Page not found" />
       </Helmet>
-      <NavLink to="/" onClick={() => props.openMenu()}>
+      <NavLink to="/">
         <LogoImg src={logo}></LogoImg>
       </NavLink>
     </>
