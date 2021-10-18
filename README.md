@@ -25,39 +25,7 @@
 
 -khi fetch về chạy <b>yarn install</b> để cài đặt nodemodules người khác cài
 
-# bảng công việc hàng này của từng thành viên
+# nhánh chính là nhánh main
+# nhánh dev chỉ có nhiệm vụ cho các thành viên pr code
 
-<table border="1">
-  <thead>
-    <tr>
-      <td align="center">thứ</td>
-      <td align="center">ánh</td>
-      <td align="center">âu</td>
-      <td align="center">tâm</td>
-      <td align="center">toàn</td>
-  </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="center">thứ 2</td>
-      <td align="center">header navbar</td>
-      <td align="center">featureList</td>
-      <td align="center">splide</td>
-      <td align="center">ads</td>
-  </tr>
-  <tr>
-      <td align="center">thứ 3</td>
-      <td align="center">header banner + tabs</td>
-      <td align="center">404</td>
-      <td align="center">footer</td>
-      <td align="center">Terms of Service</td>
-  </tr>
-  <tr>
-      <td align="center">thứ 4</td>
-      <td align="center">header banner + tabs</td>
-      <td align="center">singup +login</td>
-      <td align="center">pawnShop + pagination</td>
-      <td align="center">personnalLending + suggest + nav sort</td>
-  </tr>
-  </tbody>
-</table>
+# đường link trang demo https://deploydemoteam.herokuapp.com  hoặc https://defiforyou-team3.herokuapp.com
