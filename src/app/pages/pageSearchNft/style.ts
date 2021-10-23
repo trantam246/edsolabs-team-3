@@ -3,6 +3,9 @@ import styled from 'styled-components/macro';
 export const Filter = styled(Col)`
   text-align: right;
   margin-top: 13px;
+  @media (min-width: 1920px) {
+    display: none;
+  }
   @media (max-width: 1920px) {
     display: none;
   }
@@ -14,6 +17,9 @@ export const Filter = styled(Col)`
   }
   @media (max-width: 1280px) {
     display: none;
+  }
+  @media (max-width: 1199px) {
+    display: block;
   }
   @media (max-width: 1024px) {
     display: block;

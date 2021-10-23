@@ -6,31 +6,18 @@ import { BsEyeFill } from '@react-icons/all-files/bs/BsEyeFill';
 import { BsEyeSlashFill } from '@react-icons/all-files/bs/BsEyeSlashFill';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
-
-interface props {
-  id: string;
-}
-
-interface IFormInput {
-  name: string;
-  email: string;
-  password: string;
-  rePassword: string;
-}
-
-const AU_SITE_KEY: string = '6Lc8HrgcAAAAAMH77TMTrDqP3ZNFz8J19AZW13TD';
-const AU_SECRET_KEY: string = '6Lc8HrgcAAAAAEHCvI0OVfuCY3hWCGyQE3DvgdPV';
+import { useDispatch } from 'react-redux';
+import { authActions } from 'redux/slices';
+import { useTranslation } from 'react-i18next';
 
 const TabPaneLogin = styled(TabPane)`
   padding-top: 3rem;
-
   .pError {
     color: rgb(255, 72, 72);
     font-size: 1.2rem;
     line-height: 1.2rem;
     padding-top: 0.4rem;
   }
-
   .pInfor {
     color: white;
     font-size: 1.4rem;
@@ -47,6 +34,10 @@ const TabPaneLogin = styled(TabPane)`
 
   .pYellow {
     color: #dba83d;
+  }
+
+  .captchaField {
+    height: 94px;
   }
 
   .divButton {
@@ -73,6 +64,10 @@ const TabPaneLogin = styled(TabPane)`
     font-size: 1.6rem;
     border: none;
     outline: none;
+
+    &:active {
+      transform: translateY(4px);
+    }
   }
 
   @media (max-width: 376px) {
@@ -120,43 +115,59 @@ const TabPaneLogin = styled(TabPane)`
     }
   }
 `;
+//code
+interface props {
+  id: string;
+}
+interface IFormInput {
+  name: string;
+  email: string;
+  password: string;
+  rePassword: string;
+  reCaptcha: string;
+}
+
+const SITE_KEY: string = '6LcSG9EaAAAAABvbpHkdugGmjEWeYPp6NoPPDEvt';
 
 export default function TabRegister({ id }: props) {
   const {
     register,
     formState: { errors },
     handleSubmit,
+    watch,
   } = useForm<IFormInput>();
-
+  const password = useRef({});
+  password.current = watch('password', '');
+  const dispath = useDispatch();
   const [token, setToken] = useState('');
-  const reCaptcha = useRef();
   const onSubmit = (data: IFormInput) => {
-    if (!token) {
-      return;
-    }
-    console.log(JSON.stringify(data) + '************1111!' + token);
-    setToken('');
+    const datas = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      recaptcha_response: token,
+    };
+    dispath(authActions.register(datas));
   };
-
   const [hide1, setHide1] = useState<boolean>(true);
   const getHide1 = () => setHide1(!hide1);
 
   const [hide2, setHide2] = useState<boolean>(true);
   const getHide2 = () => setHide2(!hide2);
-
+  const { t } = useTranslation();
   return (
     <TabPaneLogin tabId={id}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputCustom
-          label="Name"
+          label={t('auth.signUp.name')}
           type="text"
-          placeHolder="Enter name"
+          placeHolder={t('auth.signUp.enterName')}
           Icon={null}
           iconClick={null}
           register={register('name', { required: true })}
           err={
             errors?.name?.type === 'required' && (
-              <p className="pError">Invalid name</p>
+              <p className="pError">{t('auth.signUp.invalidName')}</p>
             )
           }
         />
@@ -164,66 +175,77 @@ export default function TabRegister({ id }: props) {
         <InputCustom
           label="Email"
           type="text"
-          placeHolder="Enter email"
+          placeHolder={t('auth.signUp.enterEmail')}
           Icon={null}
           iconClick={null}
           register={register('email', { required: true })}
           err={
             errors?.email?.type === 'required' && (
-              <p className="pError">Invalid email</p>
+              <p className="pError">{t('auth.signUp.invalidEmail')}</p>
             )
           }
         />
 
         <InputCustom
-          label="Password"
+          label={t('auth.signUp.password')}
           type={hide1 ? 'password' : 'text'}
-          placeHolder="Enter password"
+          placeHolder={t('auth.signUp.enterPass')}
           Icon={hide1 ? BsEyeSlashFill : BsEyeFill}
           iconClick={getHide1}
           register={register('password', { required: true })}
           err={
             errors?.password?.type === 'required' && (
-              <p className="pError">Invalid password</p>
+              <p className="pError">{t('auth.signUp.invalidPass')}</p>
             )
           }
         />
 
         <InputCustom
-          label="Confirm password"
+          label={t('auth.signUp.confirm')}
           type={hide2 ? 'password' : 'text'}
-          placeHolder="Enter password"
+          placeHolder={t('auth.signUp.enterPass')}
           Icon={hide2 ? BsEyeSlashFill : BsEyeFill}
           iconClick={getHide2}
-          register={register('rePassword', { required: true })}
+          register={register('rePassword', {
+            required: true,
+            validate: value => value === password.current,
+          })}
           err={
-            errors?.rePassword?.type === 'required' && (
-              <p className="pError">Invalid password</p>
-            )
+            (errors?.rePassword?.type === 'required' && (
+              <p className="pError">{t('auth.signUp.invalidPass')}</p>
+            )) ||
+            (errors?.rePassword?.type === 'validate' && (
+              <p className="pError">{t('auth.signUp.passErr')}</p>
+            ))
           }
         />
 
-        <p className="pInfor p1">
-          We will not share or sell your information to 3rd parties.
-        </p>
+        <p className="pInfor p1">{t('auth.signUp.desc')}</p>
         <p className="pInfor p2">
-          By clicking on <span className="pYellow">Create Account</span>, you
-          agree to DeFi For You’s Terms and Conditions of Use.
+          {t('auth.signUp.action')}
+          <span className="pYellow">{t('auth.signUp.create')}</span>
+          {t('auth.signUp.actionMore')}
         </p>
 
-        <ReCAPTCHA
-          className="recaptcha"
-          sitekey={AU_SITE_KEY}
-          hl="en"
-          size="normal"
-          ref={reCaptcha}
-          onChange={token => setToken(token)}
-          onExpired={() => setToken('')}
-        />
-
+        <div className="captchaField">
+          <ReCAPTCHA
+            className="recaptcha"
+            sitekey={SITE_KEY}
+            hl="en"
+            size="normal"
+            {...register('reCaptcha', {
+              required: token === '',
+            })}
+            onChange={token => setToken(token)}
+            onExpired={() => setToken('')}
+          />
+          {errors?.reCaptcha?.type === 'required' && (
+            <p className="pError">{t('auth.signUp.captcha')}</p>
+          )}
+        </div>
         <div className="divButton">
           <button type="submit" className="buttonStyled">
-            Create Account
+            {t('auth.signUp.button')}
           </button>
         </div>
       </form>

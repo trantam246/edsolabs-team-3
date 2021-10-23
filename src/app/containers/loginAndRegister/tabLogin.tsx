@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { TabPane } from 'reactstrap';
 import styled from 'styled-components';
 import InputCustom from './inputCustom';
@@ -5,6 +6,13 @@ import { BsEyeFill } from '@react-icons/all-files/bs/BsEyeFill';
 import { BsEyeSlashFill } from '@react-icons/all-files/bs/BsEyeSlashFill';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { authActions, selectIsLoggedIn } from 'redux/slices';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router';
+import { useAppSelector } from 'redux/hocks';
+import ModalBox from './modalBox';
+import { useTranslation } from 'react-i18next';
 
 const TabPaneLogin = styled(TabPane)`
   padding-top: 3rem;
@@ -14,6 +22,17 @@ const TabPaneLogin = styled(TabPane)`
     font-size: 1.2rem;
     line-height: 1.2rem;
     padding-top: 0.4rem;
+  }
+
+  .aStyle {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    line-height: 1rem;
+    text-decoration: underline;
+    cursor: pointer;
   }
 
   .divButton {
@@ -40,6 +59,10 @@ const TabPaneLogin = styled(TabPane)`
     font-size: 1.6rem;
     border: none;
     outline: none;
+
+    &:active {
+      transform: translateY(4px);
+    }
   }
 
   @media (max-width: 376px) {
@@ -73,35 +96,65 @@ const TabPaneLogin = styled(TabPane)`
     }
   }
 
-  @media (max-width: 1025px) {
+  @media (max-width: 1201px) {
     .divButton {
       width: 100%;
     }
   }
+
+  @media (min-width: 1440px) {
+    padding-bottom: 213px;
+
+    .aStyle {
+      width: 58.4rem;
+      font-size: 1.6rem;
+      line-height: 2rem;
+    }
+  }
 `;
 
+//code
 interface props {
   id: string;
 }
 
 interface IFormInput {
-  email: string;
+  username: string;
   password: string;
 }
 
 export default function TabLogin({ id }: props) {
+  const dispath = useDispatch();
+  const history = useHistory();
+  const islogin = useAppSelector(selectIsLoggedIn);
+
+  useEffect(() => {
+    if (islogin) {
+      history.push('/');
+    }
+  }, [islogin]);
+
+  //react hook form
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<IFormInput>();
 
+  //submit
   const onSubmit = (data: IFormInput) => {
-    alert(JSON.stringify(data));
+    dispath(authActions.login(data));
   };
+  //modal box
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
+  //hide-show
   const [hide, setHide] = useState<boolean>(true);
   const getHide = () => setHide(!hide);
+
+  //translation
+  const { t } = useTranslation();
 
   return (
     <TabPaneLogin tabId={id}>
@@ -109,37 +162,43 @@ export default function TabLogin({ id }: props) {
         <InputCustom
           label="Email"
           type="text"
-          placeHolder="Enter email"
+          placeHolder={t('auth.logIn.enterEmail')}
           Icon={null}
           iconClick={null}
-          register={register('email', { required: true })}
+          register={register('username', { required: true })}
           err={
-            errors?.email?.type === 'required' && (
-              <p className="pError">Invalid email</p>
+            errors?.username?.type === 'required' && (
+              <p className="pError">{t('auth.logIn.invalidEmail')}</p>
             )
           }
         />
 
         <InputCustom
-          label="Password"
+          label={t('auth.logIn.password')}
           type={hide ? 'password' : 'text'}
-          placeHolder="Enter password"
+          placeHolder={t('auth.logIn.enterPass')}
           Icon={hide ? BsEyeSlashFill : BsEyeFill}
           iconClick={getHide}
           register={register('password', { required: true })}
           err={
             errors?.password?.type === 'required' && (
-              <p className="pError">Invalid password</p>
+              <p className="pError">{t('auth.logIn.invalidPass')}</p>
             )
           }
         />
 
+        <div className="aStyle" onClick={toggle}>
+          {t('auth.logIn.forget')}
+        </div>
+
         <div className="divButton">
           <button type="submit" className="buttonStyled">
-            Login
+            {t('auth.logIn.button')}
           </button>
         </div>
       </form>
+
+      <ModalBox status={modal} click={toggle} content="Coming soon !!!" />
     </TabPaneLogin>
   );
 }

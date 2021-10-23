@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 const All = styled.div`
@@ -62,17 +63,25 @@ const SmallText = styled.div`
     line-height: 2rem;
     width: 100%;
   }
+
+  @media (max-width: 769px) {
+    width: 100%;
+  } ;
 `;
 
-export default function textContent() {
+export default function TextContent() {
+  const { t } = useTranslation();
   return (
     <All>
       <BigText>
-        Exclusive on <Span>DeFi For You</Span>!!!
+        {t('auth.title')}
+        <Span>DeFi For You</Span>!!!
       </BigText>
       <SmallText>
-        Register new DeFi For You account from <Span>01/08/2021</Span> to&nbsp;
-        <Span>31/12/2021</Span> to have 100% chance of receiving DFY tokens
+        {t('auth.content')}
+        <Span>01/08/2021</Span> {t('auth.to')}&nbsp;
+        <Span>31/12/2021</Span>
+        {t('auth.contentMore')}
       </SmallText>
     </All>
   );

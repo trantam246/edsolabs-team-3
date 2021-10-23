@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const RowNavBar = styled(Row)`
   max-height: 100px;
   padding: 20px 30px;
-  background-color: #232732;
+  background-color: #282c37;
   color: #d1d1d3;
   border-bottom: 1px solid #4f4f4f;
   @media (max-width: 600px) {
@@ -12,41 +12,114 @@ export const RowNavBar = styled(Row)`
     max-height: 56px;
     min-height: 56px;
   }
+  .Select__language {
+    & > select {
+      border: 1px solid #dba83d;
+      color: #dba83d;
+      background: transparent !important;
+      outline: none;
+      & > option {
+        background-color: #232732;
+      }
+    }
+    @media (max-width: 1024px) {
+      display: none !important;
+    }
+  }
 `;
-
+export const AccountZone = styled.div`
+  display: inline-block;
+  position: relative;
+  & > img {
+    width: 31px;
+    height: 31px;
+    margin-left: 20px;
+  }
+  & > span {
+    margin-left: 7px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+  }
+  & > ul {
+    box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%), 0 8px 10px 1px rgb(0 0 0 / 14%),
+      0 3px 14px 2px rgb(0 0 0 / 12%);
+    list-style-type: none;
+    padding: 0;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    background-color: red;
+    position: absolute;
+    top: 42px;
+    border-radius: 10px;
+    background-color: rgb(62, 65, 75);
+    margin: 0;
+    hr {
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      padding: 5px 10px;
+      text-align: center;
+      border-radius: 10px;
+      :hover {
+        background-color: rgb(92 94 102);
+      }
+    }
+  }
+  @media (max-width: 1440px) {
+    & > span {
+      display: none;
+    }
+  }
+  @media (max-width: 600px) {
+    & > img {
+      display: none;
+    }
+  }
+`;
 export const ButtonNavBar = styled(Button)`
+  margin-left: 20px;
+  border: ${props => (props.color ? 'none' : '1px solid #dba83d')};
+  box-sizing: border-box;
+  border-radius: 25px;
+  padding: 9px 20px;
+  background: ${props =>
+    props.color
+      ? 'linear-gradient(221.15deg, #BD8727 0%, #FFD574 49.02%, #FECA50 62.02%, #BD8727 101.47%)'
+      : 'transparent'};
+
+  &:hover {
+    opacity: 0.7;
+    transition: all ease-in-out 0.5s;
+  }
+
   a {
     text-decoration: none;
     font-weight: 500;
     font-size: 14px;
     color: ${props => (props.color ? '#282C37' : '#dba83d ')};
-    border: ${props => (props.color ? 'none' : '1px solid #dba83d')};
-    box-sizing: border-box;
-    border-radius: 25px;
-    padding: 9px 20px;
-    background: ${props =>
-      props.color
-        ? 'linear-gradient(221.15deg, #BD8727 0%, #FFD574 49.02%, #FECA50 62.02%, #BD8727 101.47%)'
-        : 'unset'};
-    margin-left: 20px;
+    line-height: 17px;
   }
-  @media (max-width: 1440px) {
-    a {
-      margin-left: 0px;
-      padding: 9px 20px;
-    }
+  &:first-child {
+    margin-left: 0px;
+  }
+  @media (max-width: 1352px) {
+    margin-left: 10px;
   }
   @media (max-width: 1280px) {
-    a {
-      margin-left: 0px;
-      padding: 9px 18px;
-    }
+    padding: 9px 10px;
+  }
+  @media (max-width: 1200px) {
+    padding: 9px 20px;
   }
   @media (max-width: 900px) {
     display: ${props => (props.status ? 'inline-block ' : 'none')};
-    a {
-      margin-left: 0px;
-    }
+  }
+  @media (max-width: 320px) {
+    display: ${props => (props.status ? 'inline-block ' : 'none')};
+    margin-left: 0px;
   }
 `;
 export const HamburgerMenu = styled.div`
@@ -76,6 +149,17 @@ export const MenuMobile = styled.div`
   background-color: #171a23;
   border: 1px solid #fff;
   z-index: 999;
+  .Select__language {
+    & > select {
+      border: 1px solid #dba83d;
+      color: #dba83d;
+      background: transparent !important;
+      outline: none;
+      & > option {
+        background-color: #232732;
+      }
+    }
+  }
 `;
 export const AvatarAndName = styled.div`
   text-align: center;

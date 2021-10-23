@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Col } from 'reactstrap';
 import avtar from '../../../images/avatarMenu.png';
 import { GrMenu } from '@react-icons/all-files/gr/GrMenu';
@@ -8,7 +8,7 @@ import { GrClose } from '@react-icons/all-files/gr/GrClose';
 import { useState } from 'react';
 import { MenuNavbar } from 'app/components/menu';
 import { Logo } from 'app/components/logo';
-
+import { useHistory } from 'react-router';
 import {
   ActiveMenuMobile,
   AiOutlineLefts,
@@ -23,7 +23,24 @@ import {
   MenuSubMobile,
   RowNavBar,
 } from './style';
+import { useDispatch } from 'react-redux';
+import { authActions } from 'redux/slices';
+import { useEffect } from 'react';
+import userApi from 'api/userApi';
+import DropDownUser from './dropdowmUser';
+import { useTranslation } from 'react-i18next';
+import { SwitchLanguage } from 'app/components/switchLanguage';
 export function Navbar(props) {
+  const history = useHistory();
+  const dispath = useDispatch();
+  const [accName, setaccName] = useState<any>({});
+  useEffect(() => {
+    if (localStorage.getItem('access_token')) {
+      userApi
+        .getNameAcc(localStorage.getItem('access_token'))
+        .then(res => setaccName(res));
+    }
+  }, []);
   const [openMenuMobile, setopenMenuMobile] = useState(false);
   const [statusMenuMobile, setstatusMenuMobile] = useState({
     Myaccount: false,
@@ -38,6 +55,15 @@ export function Navbar(props) {
     } else {
       document.body.style.overflow = 'auto';
     }
+  };
+  const setcolseMenuMobile = () => {
+    document.body.style.overflow = 'auto';
+  };
+  const [statusBlockLogout, setstatusBlockLogout] = useState(false);
+  const logout = () => {
+    dispath(authActions.logout());
+    setstatusBlockLogout(!statusBlockLogout);
+    history.push('/');
   };
   const openDownMenuMobile = value => {
     switch (value) {
@@ -69,6 +95,7 @@ export function Navbar(props) {
         break;
     }
   };
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>
@@ -77,24 +104,37 @@ export function Navbar(props) {
       <HeaderHome>
         <Containers fluid id={openMenuMobile ? 'fixed__Header' : ''}>
           <RowNavBar>
-            <Col className="p-0 col-xl-2 col-lg-3 col-md-5 col-6 d-flex justify-content-start align-items-center warper__logo">
-              <Logo></Logo>
+            <Col className="p-0 col-xl-2 col-lg-3 col-md-4 col-5 d-flex justify-content-start align-items-center warper__logo">
+              <Logo setcolseMenuMobile={setcolseMenuMobile}></Logo>
             </Col>
-            <Col className="p-0 col-xl-10 col-lg-9 col-md-7 col-6 d-flex align-items-center justify-content-between">
+            <Col className="p-0 col-xl-10 col-lg-9 col-md-8 col-7 d-flex align-items-center justify-content-between">
               <MenuNavbar></MenuNavbar>
-              <Col className="text-end">
+              <Col className="text-end flex-fill">
                 <ButtonNavBar color={'gradiend'} status={''}>
-                  <NavLink to="/">Become a Pawnshop</NavLink>
+                  <NavLink to="/">{t('navBar.become')}</NavLink>
                 </ButtonNavBar>
                 <ButtonNavBar color={''} status={''}>
-                  <NavLink to="/">Buy DFY</NavLink>
+                  <NavLink to="/">{t('navBar.buy')}</NavLink>
                 </ButtonNavBar>
                 <ButtonNavBar color={''} status={'true'}>
-                  <NavLink to="/">Connect</NavLink>
+                  <NavLink to="/">{t('navBar.connect')}</NavLink>
                 </ButtonNavBar>
-                <ButtonNavBar color={''} status={''}>
-                  <NavLink to="/login">Login</NavLink>
-                </ButtonNavBar>
+                {localStorage.getItem('access_token') ? (
+                  <DropDownUser
+                    name={accName?.data?.name}
+                    handleLogout={logout}
+                  />
+                ) : (
+                  <ButtonNavBar color={''} status={''}>
+                    <NavLink to="/login?tab=2">{t('navBar.login')}</NavLink>
+                  </ButtonNavBar>
+                )}
+                <div
+                  style={{ marginLeft: '5px', display: 'inline-block' }}
+                  className="Select__language"
+                >
+                  <SwitchLanguage></SwitchLanguage>
+                </div>
                 <HamburgerMenu onClick={openMenu}>
                   {openMenuMobile ? (
                     <GrClose size="28"></GrClose>
@@ -108,20 +148,51 @@ export function Navbar(props) {
           {openMenuMobile ? (
             <>
               <MenuMobile>
-                <AvatarAndName>
-                  <img src={avtar} alt="" />
-                  <p>admin</p>
-                </AvatarAndName>
+                {localStorage.getItem('access_token') ? (
+                  <AvatarAndName>
+                    <img src={avtar} alt="" />
+                    <p>{accName?.data?.name || 'admin'}</p>
+                  </AvatarAndName>
+                ) : (
+                  <div style={{ textAlign: 'center', padding: '10px' }}>
+                    <Link
+                      onClick={openMenu}
+                      to="/login?tab=2"
+                      style={{
+                        textDecoration: 'none',
+                        border: '1px solid #fff',
+                        padding: '10px',
+                        fontSize: '16px',
+                        color: '#fff',
+                      }}
+                    >
+                      {t('navBar.login')}
+                    </Link>
+                  </div>
+                )}
+
                 <MenuSubMobile>
-                  <div>Pawn</div>
-                  <div>Staking</div>
+                  <div>
+                    <Link
+                      to="/"
+                      onClick={openMenu}
+                      style={{
+                        textDecoration: 'none',
+                        fontSize: '16px',
+                        color: '#fff',
+                      }}
+                    >
+                      {t('navMobile.pawn')}
+                    </Link>
+                  </div>
+                  <div>{t('navMobile.staking')}</div>
                   <div>NFT</div>
                   <ActiveMenuMobile
                     status={statusMenuMobile.Myaccount}
                     className="d-flex justify-content-between"
                     onClick={() => openDownMenuMobile('Myaccount')}
                   >
-                    <span className="active">My account</span>
+                    <span className="active">{t('navMobile.account')}</span>
                     <span>
                       <AiOutlineLefts>
                         {statusMenuMobile.Myaccount}
@@ -139,7 +210,7 @@ export function Navbar(props) {
                             statusMenuMobile.BorrowerProfile ? 'active' : ''
                           }
                         >
-                          Borrower Profile
+                          {t('navMobile.borrowProfile')}
                         </span>
                         <span>
                           <AiOutlineLefts>
@@ -150,8 +221,8 @@ export function Navbar(props) {
                       {statusMenuMobile.BorrowerProfile ? (
                         <>
                           <MenuBorrowerProfile>
-                            <div>Collateral</div>
-                            <div>Contracts</div>
+                            <div>{t('navMobile.coll')}</div>
+                            <div>{t('navMobile.contract')}</div>
                           </MenuBorrowerProfile>
                         </>
                       ) : (
@@ -166,7 +237,7 @@ export function Navbar(props) {
                             statusMenuMobile.LenderProfile ? 'active' : ''
                           }
                         >
-                          Lender Profile
+                          {t('navMobile.lendProfile')}
                         </span>
                         <span>
                           <AiOutlineLefts>
@@ -177,16 +248,16 @@ export function Navbar(props) {
                       {statusMenuMobile.LenderProfile ? (
                         <>
                           <MenuBorrowerProfile>
-                            <div>Offers sent</div>
-                            <div>Contracts</div>
-                            <div>Pawnshop Loan Packages</div>
-                            <div>Loan requests</div>
+                            <div>{t('navMobile.offer')}</div>
+                            <div>{t('navMobile.contract')}</div>
+                            <div>{t('navMobile.package')}</div>
+                            <div>{t('navMobile.loan')}</div>
                           </MenuBorrowerProfile>
                         </>
                       ) : (
                         ''
                       )}
-                      <div>Staking</div>
+                      <div>{t('navMobile.staking')}</div>
                       <div
                         className="d-flex justify-content-between"
                         onClick={() => openDownMenuMobile('NFT')}
@@ -203,8 +274,8 @@ export function Navbar(props) {
                       {statusMenuMobile.NFT ? (
                         <>
                           <MenuBorrowerProfile>
-                            <div>NFT List</div>
-                            <div>NFT Auction</div>
+                            <div>{t('navMobile.list')}</div>
+                            <div>{t('navMobile.auction')}</div>
                           </MenuBorrowerProfile>
                         </>
                       ) : (
@@ -215,8 +286,23 @@ export function Navbar(props) {
                     ''
                   )}
                   <div>FAQ</div>
-                  <div>Change password</div>
-                  <div>Log out</div>
+                  <div>{t('navMobile.changePass')}</div>
+                  {localStorage.getItem('access_token') ? (
+                    <div
+                      onClick={() => {
+                        logout();
+                        openMenu();
+                      }}
+                    >
+                      {t('navMobile.logOut')}
+                    </div>
+                  ) : (
+                    ''
+                  )}
+
+                  <div className="Select__language">
+                    <SwitchLanguage></SwitchLanguage>
+                  </div>
                 </MenuSubMobile>
               </MenuMobile>
             </>

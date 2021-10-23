@@ -3,7 +3,23 @@ import { Helmet } from 'react-helmet-async';
 import closeFilterNav from '../../../images/closeFilterNav.svg';
 import { Accordion, Bong, Resetfilter, WarperFilterNav } from './style';
 import { iconCoin, LoanAmount } from 'app/components/icon';
+import { useHistory } from 'react-router';
+import { useTranslation } from 'react-i18next';
 export function FiterNavSearch(props: any) {
+  //onchange dữ liệu truyền lên api nè ỏ ỏ ỏ
+  const collateralSymbols = e => {
+    props.collateralSymbols(e);
+  };
+  const loanSymbols = e => {
+    props.loanSymbols(e);
+  };
+  const durationTypes = e => {
+    props.durationTypes(e);
+  };
+  const queryString = require('query-string');
+  const history = useHistory();
+  const param = queryString.parse(history.location.search);
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>
@@ -11,7 +27,9 @@ export function FiterNavSearch(props: any) {
       </Helmet>
       <WarperFilterNav status={props.status}>
         <Resetfilter>
-          <span>Reset filter</span>
+          <span onClick={() => props.clickResetAll()}>
+            {t('search.lendCrypto.filter.reset')}
+          </span>
           <img
             src={closeFilterNav}
             alt=""
@@ -30,7 +48,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseThree"
               >
-                Collateral
+                {t('search.lendCrypto.filter.coll')}
               </button>
             </h2>
             <div
@@ -45,6 +63,12 @@ export function FiterNavSearch(props: any) {
                       type="checkbox"
                       name="Collateralaccepted"
                       value={item.value}
+                      onChange={collateralSymbols}
+                      checked={
+                        param.collateralSymbols === undefined
+                          ? false
+                          : param.collateralSymbols.includes(item.value)
+                      }
                     />
                     <span>
                       <img
@@ -59,7 +83,6 @@ export function FiterNavSearch(props: any) {
               </div>
             </div>
           </div>
-
           <div className="accordion-item">
             <h2 className="accordion-header" id="panelsStayOpen-headingFour">
               <button
@@ -70,7 +93,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseFour"
               >
-                Loan currency
+                {t('search.lendCrypto.filter.loan')}
               </button>
             </h2>
             <div
@@ -85,6 +108,12 @@ export function FiterNavSearch(props: any) {
                       type="checkbox"
                       name="Loantoken"
                       value={item.value}
+                      onChange={loanSymbols}
+                      checked={
+                        param.loanSymbols === undefined
+                          ? false
+                          : param.loanSymbols.includes(item.value)
+                      }
                     />
                     <span>
                       <img
@@ -109,8 +138,9 @@ export function FiterNavSearch(props: any) {
                 data-bs-target="#panelsStayOpen-collapseFive"
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseFive"
+                style={{ color: '#53565f' }}
               >
-                NFT Evaluation
+                {t('search.lendCrypto.filter.nft')}
               </button>
             </h2>
             <div
@@ -120,12 +150,28 @@ export function FiterNavSearch(props: any) {
             >
               <div className="accordion-body">
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Loantype" value="Auto" />
-                  <span>Auto</span>
+                  <input
+                    type="checkbox"
+                    name="Loantype"
+                    value="Auto"
+                    disabled
+                    style={{ borderColor: '#53565f' }}
+                  />
+                  <span style={{ color: '#53565f' }}>
+                    {t('search.lendCrypto.filter.all')}
+                  </span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Loantype" value="Semi-auto" />
-                  <span>Semi-auto</span>
+                  <input
+                    type="checkbox"
+                    name="Loantype"
+                    value="Semi-auto"
+                    disabled
+                    style={{ borderColor: '#53565f' }}
+                  />
+                  <span style={{ color: '#53565f' }}>
+                    {t('search.lendCrypto.filter.evaluated')}
+                  </span>
                 </div>
               </div>
             </div>
@@ -140,7 +186,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapse6"
               >
-                Duration
+                {t('search.lendCrypto.filter.duration')}
               </button>
             </h2>
             <div
@@ -150,12 +196,32 @@ export function FiterNavSearch(props: any) {
             >
               <div className="accordion-body">
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Duration" value="Week" />
-                  <span>Week</span>
+                  <input
+                    type="checkbox"
+                    name="Duration"
+                    value="1"
+                    onChange={durationTypes}
+                    checked={
+                      param.durationTypes === undefined
+                        ? false
+                        : param.durationTypes.includes('1')
+                    }
+                  />
+                  <span>{t('search.lendCrypto.filter.week')}</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Duration" value="Month" />
-                  <span>Month</span>
+                  <input
+                    type="checkbox"
+                    name="Duration"
+                    value="0"
+                    onChange={durationTypes}
+                    checked={
+                      param.durationTypes === undefined
+                        ? false
+                        : param.durationTypes.includes('0')
+                    }
+                  />
+                  <span>{t('search.lendCrypto.filter.month')}</span>
                 </div>
               </div>
             </div>

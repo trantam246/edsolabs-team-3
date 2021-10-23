@@ -7,6 +7,7 @@ import Au_fastTime from '../../../images/Au_fastTime.png';
 import Au_rate from '../../../images/Au_rate.png';
 import Au_moneyManagement from '../../../images/Au_moneyManagement.png';
 import Au_approved from '../../../images/Au_approved.png';
+import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   background: #171a23; ;
@@ -43,35 +44,31 @@ export function FeatureList() {
     title: string;
     description: string;
   };
-
+  const { t } = useTranslation();
   const data: featureType[] = [
     {
       id: 1,
       path: Au_fastTime,
-      title: 'Quicker than the bank',
-      description:
-        'Banks are yesterdays news. Get the money you need without having to wait.',
+      title: t('home.features.list.bank.title'),
+      description: t('home.features.list.bank.content'),
     },
     {
       id: 2,
       path: Au_rate,
-      title: 'Better interest rates',
-      description:
-        'P2P lending lets you negotiate with the lender to arrange the best possible interest rates.',
+      title: t('home.features.list.rate.title'),
+      description: t('home.features.list.rate.content'),
     },
     {
       id: 3,
       path: Au_moneyManagement,
-      title: 'Finance assets without selling ',
-      description:
-        'Put your assets to work so you can continue to meet your financial obligations. ',
+      title: t('home.features.list.sell.title'),
+      description: t('home.features.list.sell.content'),
     },
     {
       id: 4,
       path: Au_approved,
-      title: 'No credit checks',
-      description:
-        'Borrow without the background checks. Anyone can get the financing they need.',
+      title: t('home.features.list.credit.title'),
+      description: t('home.features.list.credit.content'),
     },
   ];
 
@@ -82,7 +79,7 @@ export function FeatureList() {
       </Helmet>
       <Wrapper>
         <Container>
-          <Title>Why borrow with us?</Title>
+          <Title>{t('home.features.title')}</Title>
           <List>
             {data.map((o, i) => (
               <FeatureItem

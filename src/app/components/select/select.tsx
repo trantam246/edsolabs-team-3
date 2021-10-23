@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Select from 'react-select';
 import styled from 'styled-components';
 import { iconCoin, LoanAmount } from '../icon';
@@ -23,12 +24,17 @@ const SelectA = styled(Select)`
   .css-182fo9s-option {
     display: flex;
     justify-content: flex-start;
+    @media (max-width: 375px) {
+      & > span {
+        font-size: 14px;
+      }
+    }
   }
   .css-y6e3hu-option {
     display: flex;
     justify-content: flex-start;
     color: #fff;
-    background-color: blue;
+    background-color: #1976d2;
   }
   .css-jp1qg2-multiValue {
     background-color: hsl(0, 0%, 25%);
@@ -55,8 +61,6 @@ const SelectA = styled(Select)`
       }
     }
   }
-  .css-1cby5rx-control {
-  }
   .knhgOc {
     div {
       cursor: text;
@@ -64,6 +68,9 @@ const SelectA = styled(Select)`
   }
   .css-1ywozm8-ValueContainer {
     cursor: text;
+    @media (max-width: 375px) {
+      font-size: 14px;
+    }
   }
   .css-1fz1i0g-Input {
     cursor: text;
@@ -71,26 +78,47 @@ const SelectA = styled(Select)`
       cursor: text;
     }
   }
+  .css-1cso6ad-control {
+    &:hover {
+      border-color: #ffffff;
+    }
+  }
+  .css-e73spq-control {
+    box-shadow: #dba83d 0px 0px 0px 2px;
+  }
 `;
 export function SelectAll(props: any) {
-  const options1 = iconCoin.map(e => ({
+  const { t } = useTranslation();
+  const options1: any = iconCoin.map(e => ({
     value: e.value,
     label: (
       <>
-        <img src={e.url} alt="" style={{ height: '20px', width: '20px' }} />
+        <img
+          src={e.url}
+          alt=""
+          style={{ height: '20px', width: '20px', marginRight: '5px' }}
+        />
         <span>{e.value}</span>
       </>
     ),
   }));
-  const options2 = LoanAmount.map(e => ({
+  const options2: any = LoanAmount.map(e => ({
     value: e.value,
     label: (
       <>
-        <img src={e.url} alt="" style={{ height: '20px', width: '20px' }} />
+        <img
+          src={e.url}
+          alt=""
+          style={{ height: '20px', width: '20px', marginRight: '5px' }}
+        />
         <span>{e.value}</span>
       </>
     ),
   }));
+  const options3 = [
+    { value: '1', label: t('home.tabs.borrow.cryp.month') },
+    { value: '0', label: t('home.tabs.borrow.cryp.week') },
+  ];
   const styles = {
     option: (provided, state) => ({
       ...provided,
@@ -167,10 +195,9 @@ export function SelectAll(props: any) {
       ...provided,
       height: '100%',
       width: '100%',
-      backgroundColor: 'white',
       outline: 'none',
       borderRadius: '30px',
-      boxShadow: 'none',
+      // boxShadow: '#dba83d 0px 0px 0px 1px;',
       borderColor: 'rgba(255,255,255,0.24)',
       borderSize: '3px',
       background: 'transparent',
@@ -183,12 +210,112 @@ export function SelectAll(props: any) {
       marginleft: '15px',
     }),
   };
-  const onchange = value => {
-    props.onChanges(value);
-  };
   return (
     <>
-      {props.isMuli ? (
+      <>
+        {props.tab === 'bor' ? (
+          props.isMuli ? (
+            <SelectA
+              isMulti
+              defaultValue={props.value}
+              options={
+                props.option === '1'
+                  ? options1
+                  : props.option === '2'
+                  ? options2
+                  : options3
+              }
+              styles={styles}
+              components={{
+                IndicatorSeparator: () => null,
+              }}
+              placeholder={props.placeholder}
+              onChange={props.onChange}
+            ></SelectA>
+          ) : (
+            <SelectA
+              defaultValue={props.value}
+              options={
+                props.option === '1'
+                  ? options1
+                  : props.option === '2'
+                  ? options2
+                  : options3
+              }
+              styles={styles}
+              components={{
+                IndicatorSeparator: () => null,
+              }}
+              placeholder={props.placeholder}
+              onChange={props.onChange}
+            ></SelectA>
+          )
+        ) : //tab lend
+        props.isMuli ? (
+          <SelectA
+            isMulti
+            defaultValue={props.value}
+            options={
+              props.option === '1'
+                ? options1
+                : props.option === '2'
+                ? options2
+                : options3
+            }
+            styles={styles}
+            components={{
+              IndicatorSeparator: () => null,
+            }}
+            placeholder={props.placeholder}
+            onChange={props.onChange}
+          ></SelectA>
+        ) : (
+          <SelectA
+            defaultValue={props.value}
+            options={
+              props.option === '1'
+                ? options1
+                : props.option === '2'
+                ? options2
+                : options3
+            }
+            styles={styles}
+            components={{
+              IndicatorSeparator: () => null,
+            }}
+            placeholder={props.placeholder}
+            onChange={props.onChange}
+          ></SelectA>
+        )}
+      </>
+      {/* {props.option === '1' ? (
+        props.default ? (
+          <SelectA
+            options={options3}
+            styles={styles}
+            components={{
+              IndicatorSeparator: () => null,
+            }}
+            placeholder={props.placeholder}
+            onChange={props.onchange}
+            isSearchable={false}
+            defaultValue={props.value}
+          ></SelectA>
+        ) : (
+          <SelectA
+            defaultValue={props.value}
+            isSearchable={false}
+            options={options3}
+            styles={styles}
+            components={{
+              IndicatorSeparator: () => null,
+            }}
+            placeholder={props.placeholder}
+            onChange={props.onchange}
+          ></SelectA>
+        )
+      ) : ///option
+      props.isMuli ? (
         <SelectA
           isMulti
           options={options1}
@@ -197,30 +324,32 @@ export function SelectAll(props: any) {
             IndicatorSeparator: () => null,
           }}
           placeholder={props.placeholder}
-          onChange={onchange}
+          onChange={props.onchange}
+          defaultValue={props.value}
         ></SelectA>
       ) : props.default ? (
         <SelectA
+          defaultValue={props.value}
           options={options2}
           styles={styles}
           components={{
             IndicatorSeparator: () => null,
           }}
           placeholder={props.placeholder}
-          onChange={onchange}
-          defaultValue={options2[1]}
+          onChange={props.onchange}
         ></SelectA>
       ) : (
         <SelectA
+          defaultValue={props.value}
           options={options1}
           styles={styles}
           components={{
             IndicatorSeparator: () => null,
           }}
           placeholder={props.placeholder}
-          onChange={onchange}
+          onChange={props.onChange}
         ></SelectA>
-      )}
+      )} */}
     </>
   );
 }

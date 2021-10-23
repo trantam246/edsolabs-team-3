@@ -1,30 +1,26 @@
 import React from 'react';
-import ETH from '../../../../images/ETH.png';
-import BTC from '../../../../images/BTC.png';
-import BNB from '../../../../images/BNB.png';
-import DFY from '../../../../images/iconDcoi.png';
 import { Box } from './style';
+import { iconCoin, LoanAmount } from '../../../components/icon/index';
 
 export default function NFTIcon(props: any) {
-  const checkValue = (value: string) => {
-    if (value === 'ETH') {
-      return <img src={ETH} alt="" />;
-    } else if (value === 'BTC') {
-      return <img src={BTC} alt="" />;
-    } else if (value === 'BNB') {
-      return <img src={BNB} alt="" />;
-    } else if (value === 'DFY') {
-      return <img src={DFY} alt="" />;
-    }
+  const checkValue = (arr: any, src: string) => {
+    return arr.find(o => o.value === src);
   };
+
+  const typeArr = props.type === 'collateral' ? iconCoin : LoanAmount;
+  const srcImg = checkValue(typeArr, props.value)?.url;
+
   return (
     <>
       {props && (
         <Box>
-          {checkValue(props.value)}
-          {props.value}
+          <img src={srcImg} alt={props.value} />
+          <span>
+            {props.Amount} {props.value}
+          </span>
         </Box>
       )}
+      {!props && <div></div>}
     </>
   );
 }

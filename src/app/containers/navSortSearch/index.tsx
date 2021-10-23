@@ -1,107 +1,57 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import styled from 'styled-components';
 import increaseIcon from '../../../images/arrow_increase.svg';
 import decreaseIcon from '../../../images/arrow_decrease.svg';
 import { Row } from 'reactstrap';
-const SortNav = styled.div`
-  font-style: normal;
-  font-weight: 500;
-  font-size: 1.6rem;
-  line-height: 2rem;
-  text-align: center;
-  color: #ffffff;
-  background: #232732;
-  border-radius: 0.9rem;
-  margin: 2.8rem 0 2rem 0;
-  letter-spacing: 0.04rem;
-  .sort-nav {
-    &__list {
-      height: 5rem;
-      margin: 0;
-    }
-  }
-  @media screen and (max-width: 1200px) {
-    background-color: #171a23;
-    .sort-nav {
-      &__list {
-        height: auto;
-      }
-      &__item {
-        flex: none;
-        width: auto;
-        background: #232732;
-        margin-right: 2.4rem;
-        margin-bottom: 1.6rem;
-        padding: 1rem;
-        border-radius: 0.9rem;
-        border-right: none;
-        img {
-          margin-left: 1rem;
-        }
-        &:nth-child(4) {
-          order: 5;
-        }
-      }
-    }
-  }
-`;
+import { SortNav, NavItem } from './style';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { navSortAction } from 'redux/slices/navSort';
 
-const NavItem: any = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex: 1;
-  padding: 0 2rem;
-  border-right: 0.1rem grey solid;
-  ${({ active }: any) =>
-    active &&
-    `
-    background-color: rgba(219, 168, 61, 0.1);
-    border: 0.1rem solid #dba83d !important;`}
-  &:last-child {
-    border: none;
-  }
-  &:nth-child(even) {
-    background: #282c37;
-  }
-`;
-
-const navList = [
-  {
-    value: 'Interest rate',
-    src: increaseIcon,
-  },
-  {
-    value: 'Loan to value',
-    src: increaseIcon,
-  },
-  {
-    value: 'Duration',
-    src: increaseIcon,
-  },
-  {
-    value: 'Limitation',
-    src: increaseIcon,
-  },
-  {
-    value: 'Pawnshop rating',
-    src: increaseIcon,
-  },
-];
-export function NavSortSearch() {
+export function NavSortSearch(props) {
+  const { t } = useTranslation();
+  const navList = [
+    {
+      value: t('search.borrowCrypto.sort.interest'),
+      src: increaseIcon,
+      cusSort: o => (o === increaseIcon ? 'interest,desc' : 'interest,asc'),
+    },
+    {
+      value: t('search.borrowCrypto.sort.loan'),
+      src: increaseIcon,
+      cusSort: o =>
+        o === increaseIcon ? 'loanToValue,desc' : 'loanToValue,asc',
+    },
+    {
+      value: t('search.borrowCrypto.sort.duration'),
+      src: increaseIcon,
+      cusSort: o =>
+        o === increaseIcon ? 'durationQty,desc' : 'durationQty,asc',
+    },
+    {
+      value: t('search.borrowCrypto.sort.limit'),
+      src: increaseIcon,
+      cusSort: o => (o === increaseIcon ? 'limitation,desc' : 'limitation,asc'),
+    },
+    {
+      value: t('search.borrowCrypto.sort.rating'),
+      src: increaseIcon,
+      cusSort: o => (o === increaseIcon ? 'reputation,desc' : 'reputation,asc'),
+    },
+  ];
   const [items, setItems] = useState(navList);
-  const [active, setActive] = useState('');
-
+  const dispatch = useDispatch();
+  const active = useSelector((state: any) => state.navSort.active);
   const handleClick = v => {
     setItems(
       items.map(o =>
-        o.value === v
+        o.value === v.value
           ? { ...o, src: o.src === increaseIcon ? decreaseIcon : increaseIcon }
           : o,
       ),
     );
-    setActive(v);
+    dispatch(navSortAction.toggle(v.value));
+    props.handleSort(v.cusSort(v.src));
   };
   return (
     <>
@@ -115,7 +65,7 @@ export function NavSortSearch() {
               key={i}
               active={active === o.value ? 1 : undefined}
               className="sort-nav__item"
-              onClick={handleClick.bind(null, o.value)}
+              onClick={handleClick.bind(null, o)}
             >
               {o.value} <img src={o.src} alt="" />
             </NavItem>

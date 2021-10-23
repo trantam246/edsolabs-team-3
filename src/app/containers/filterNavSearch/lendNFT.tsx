@@ -9,10 +9,29 @@ import {
   Resetfilter,
   WarperFilterNav,
 } from './style';
-import { iconCoin } from 'app/components/icon';
-import { useState } from 'react';
-
+import { useHistory } from 'react-router';
+import { LoanAmount } from 'app/components/icon';
+import { useTranslation } from 'react-i18next';
 export function FiterNavSearch(props: any) {
+  const onchangeInputName = e => {
+    props.onchangeInputName(e);
+  };
+  const collateralSymbols = e => {
+    props.collateralSymbols(e);
+  };
+  const NFTtype = e => {
+    props.NFTtype(e);
+  };
+  const durationTypes = e => {
+    props.durationTypes(e);
+  };
+  const Assettype = e => {
+    props.Assettype(e);
+  };
+  const history = useHistory();
+  const queryString = require('query-string');
+  const param = queryString.parse(history.location.search);
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>
@@ -20,7 +39,9 @@ export function FiterNavSearch(props: any) {
       </Helmet>
       <WarperFilterNav status={props.status}>
         <Resetfilter>
-          <span>Reset filter</span>
+          <span onClick={() => props.clickResetAll()}>
+            {t('search.lendNft.filter.reset')}
+          </span>
           <img
             src={closeFilterNav}
             alt=""
@@ -34,7 +55,12 @@ export function FiterNavSearch(props: any) {
               <img src={searchFilterNav} alt="" />
             </div>
             <div>
-              <input type="text" placeholder="Search pawnshops" />
+              <input
+                type="text"
+                placeholder={t('search.lendNft.filter.search')}
+                onChange={onchangeInputName}
+                value={param.name === undefined ? '' : param.name}
+              />
             </div>
           </div>
         </InputSearchNameFilter>
@@ -49,7 +75,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapse1"
               >
-                Duration
+                {t('search.lendNft.filter.duration')}
               </button>
             </h2>
             <div
@@ -59,12 +85,32 @@ export function FiterNavSearch(props: any) {
             >
               <div className="accordion-body">
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Duration" value="Week" />
-                  <span>Week</span>
+                  <input
+                    type="checkbox"
+                    name="Duration"
+                    value="0"
+                    onChange={durationTypes}
+                    checked={
+                      param.durationTypes === undefined
+                        ? false
+                        : param.durationTypes.includes('0')
+                    }
+                  />
+                  <span>{t('search.lendNft.filter.week')}</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Duration" value="Month" />
-                  <span>Month</span>
+                  <input
+                    type="checkbox"
+                    name="Duration"
+                    value="1"
+                    onChange={durationTypes}
+                    checked={
+                      param.durationTypes === undefined
+                        ? false
+                        : param.durationTypes.includes('1')
+                    }
+                  />
+                  <span> {t('search.lendNft.filter.month')}</span>
                 </div>
               </div>
             </div>
@@ -79,7 +125,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapse2"
               >
-                NFT type
+                {t('search.lendNft.filter.nft')}
               </button>
             </h2>
             <div
@@ -89,12 +135,32 @@ export function FiterNavSearch(props: any) {
             >
               <div className="accordion-body">
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="SoftNFT" value="SoftNFT" />
-                  <span>Soft NFT</span>
+                  <input
+                    type="checkbox"
+                    name="SoftNFT"
+                    value="1"
+                    onChange={NFTtype}
+                    checked={
+                      param.nftType === undefined
+                        ? false
+                        : param.nftType.includes('1')
+                    }
+                  />
+                  <span> {t('search.lendNft.filter.soft')}</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="HardNFT" value="HardNFT" />
-                  <span>Hard NFT</span>
+                  <input
+                    type="checkbox"
+                    name="HardNFT"
+                    value="0"
+                    onChange={NFTtype}
+                    checked={
+                      param.nftType === undefined
+                        ? false
+                        : param.nftType.includes('0')
+                    }
+                  />
+                  <span> {t('search.lendNft.filter.hard')}</span>
                 </div>
               </div>
             </div>
@@ -109,7 +175,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapse4"
               >
-                Asset type
+                {t('search.lendNft.filter.asset')}
               </button>
             </h2>
             <div
@@ -119,20 +185,60 @@ export function FiterNavSearch(props: any) {
             >
               <div className="accordion-body">
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Assettype" value="SoftNFT" />
-                  <span>Jewelry</span>
+                  <input
+                    type="checkbox"
+                    name="Assettype"
+                    value="1"
+                    onChange={Assettype}
+                    checked={
+                      param.assetType === undefined
+                        ? false
+                        : param.assetType.includes('1')
+                    }
+                  />
+                  <span>{t('search.lendNft.filter.jew')}</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Assettype" value="HardNFT" />
-                  <span>Car</span>
+                  <input
+                    type="checkbox"
+                    name="Assettype"
+                    value="2"
+                    onChange={Assettype}
+                    checked={
+                      param.assetType === undefined
+                        ? false
+                        : param.assetType.includes('2')
+                    }
+                  />
+                  <span>{t('search.lendNft.filter.car')}</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Assettype" value="HardNFT" />
-                  <span>Car</span>
+                  <input
+                    type="checkbox"
+                    name="Assettype"
+                    value="3"
+                    onChange={Assettype}
+                    checked={
+                      param.assetType === undefined
+                        ? false
+                        : param.assetType.includes('3')
+                    }
+                  />
+                  <span>{t('search.lendNft.filter.gem')}</span>
                 </div>
                 <div className="checkbox__custom">
-                  <input type="checkbox" name="Assettype" value="HardNFT" />
-                  <span>House and land</span>
+                  <input
+                    type="checkbox"
+                    name="Assettype"
+                    value="4"
+                    onChange={Assettype}
+                    checked={
+                      param.assetType === undefined
+                        ? false
+                        : param.assetType.includes('4')
+                    }
+                  />
+                  <span>{t('search.lendNft.filter.house')}</span>
                 </div>
               </div>
             </div>
@@ -148,7 +254,7 @@ export function FiterNavSearch(props: any) {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseThree"
               >
-                Collateral accepted
+                {t('search.lendNft.filter.loan')}
               </button>
             </h2>
             <div
@@ -157,12 +263,18 @@ export function FiterNavSearch(props: any) {
               aria-labelledby="panelsStayOpen-headingThree"
             >
               <div className="accordion-body">
-                {iconCoin.map((item, index) => (
+                {LoanAmount.map((item, index) => (
                   <div className="checkbox__custom" key={index}>
                     <input
                       type="checkbox"
                       name="Collateralaccepted"
                       value={item.value}
+                      onChange={collateralSymbols}
+                      checked={
+                        param.loanSymbols === undefined
+                          ? false
+                          : param.loanSymbols.includes(item.value)
+                      }
                     />
                     <span>
                       <img

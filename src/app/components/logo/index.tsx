@@ -16,13 +16,18 @@ const LogoImg = styled.img`
     height: 30px;
   }
 `;
-export function Logo() {
+export function Logo(props: any) {
   return (
     <>
       <Helmet>
         <meta name="description" content="Page not found" />
       </Helmet>
-      <NavLink to="/">
+      <NavLink
+        to="/"
+        onClick={() => {
+          props.setcolseMenuMobile();
+        }}
+      >
         <LogoImg src={logo}></LogoImg>
       </NavLink>
     </>

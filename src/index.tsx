@@ -20,22 +20,19 @@ import { App } from 'app';
 
 import { HelmetProvider } from 'react-helmet-async';
 
-import { configureAppStore } from 'store/configureStore';
-
 import reportWebVitals from 'reportWebVitals';
-
+import { store } from 'redux/store';
 // Initialize languages
 import './locales/i18n';
 
-const store = configureAppStore();
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 
 ReactDOM.render(
   <Provider store={store}>
     <HelmetProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      {/* <React.StrictMode> */}
+      <App />
+      {/* </React.StrictMode> */}
     </HelmetProvider>
   </Provider>,
   MOUNT_NODE,

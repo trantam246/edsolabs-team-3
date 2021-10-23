@@ -1,49 +1,29 @@
+import { useTranslation } from 'react-i18next';
 import { Container } from 'reactstrap';
-import styled from 'styled-components/macro';
-const CopyRightFooter = styled.div`
-  height: 6.1rem;
-  background-color: #13171f;
-  margin-top: 4rem;
-  font-size: 1.4rem;
-  font-weight: 500;
-  line-height: 2.1rem;
-  color: #74767b;
-  .container {
-    height: 100%;
-  }
-  .copyright {
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  p {
-    margin-bottom: 0;
-  }
-  .right {
-    margin-right: 1.6rem;
-  }
-  .left {
-    margin-left: 1.6rem;
-  }
-  @media screen and (max-width: 575px) {
-    height: 9rem;
-    .copyright {
-      flex-direction: column;
-      justify-content: space-evenly;
-    }
-  }
-`;
+import { CopyRightFooter } from './style';
+
 const CopyRight = () => {
+  const { t } = useTranslation();
   return (
     <CopyRightFooter>
       <Container>
         <div className="copyright">
-          <p>© 2021 DeFi For You. All rights reserved.</p>
-          <p>
-            <span className="right">Terms of Service</span> |{' '}
-            <span className="left">Privacy Policy</span>
-          </p>
+          <p>{t('footer.copyRight.trademark')}</p>
+          <div>
+            <a
+              href="https://defi-for-you.gitbook.io/faq/p2p-lending/terms-of-service"
+              className="right"
+            >
+              {t('footer.copyRight.term')}
+            </a>{' '}
+            |{' '}
+            <a
+              href="https://defi-for-you.gitbook.io/faq/p2p-lending/privacy-policy"
+              className="left"
+            >
+              {t('footer.copyRight.policy')}
+            </a>
+          </div>
         </div>
       </Container>
     </CopyRightFooter>

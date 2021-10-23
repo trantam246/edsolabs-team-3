@@ -17,9 +17,15 @@ export const Button = styled.button`
   margin-bottom: 1rem;
   border-radius: 17.2rem;
   border: none;
+
+  &:hover {
+    opacity: 0.7;
+    transition: all ease-in-out 0.3s;
+  }
   @media (max-width: 540px) {
     font-size: 1.4rem;
     margin-bottom: 0;
+    padding: 10px 20px;
   }
 `;
 
@@ -37,28 +43,21 @@ export const P = styled.p`
     line-height: 1.5rem;
     margin-bottom: 1.2rem;
     margin-right: 50%;
+    height: 45px !important;
+    overflow: hidden !important;
   }
 `;
 
-export const H3 = styled.h3`
-  text-align: center;
-  color: #dba83d;
-  font-size: 36px;
-  font-weight: 600;
-  padding-top: 6rem;
-  padding-bottom: 10rem;
-  @media (max-width: 768px) {
-    font-size: 24px;
-    padding-top: 4rem;
-    padding-bottom: 4.1rem;
-  }
-`;
 export const H4 = styled.h4`
   font-weight: 600;
   font-size: 3.6rem;
   line-height: 4.4rem;
   color: #ffffff;
   margin-bottom: 1rem;
+  @media (max-width: 768px) {
+    line-height: 3rem;
+    font-size: 3rem;
+  }
   @media (max-width: 540px) {
     line-height: 2rem;
     font-size: 1.6rem;
@@ -77,8 +76,11 @@ export const ContainerAbs = styled.div`
   background-position: 100%;
   background-size: cover;
   border-radius: 2rem;
-  margin: 0 auto;
-  @media (max-width: 992px) {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6rem;
+  margin-bottom: 8rem;
+  @media (max-width: 1024px) {
     background: linear-gradient(
         90.03deg,
         #131318 21.91%,
@@ -89,6 +91,10 @@ export const ContainerAbs = styled.div`
     background-position: 100%;
     background-size: cover;
   }
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+  }
 `;
 
 export const Box = styled.div`
@@ -98,5 +104,8 @@ export const Box = styled.div`
   }
   @media (max-width: 768px) {
     padding: 1.6rem;
+  }
+  @media (max-width: 375px) {
+    padding: 1.2rem;
   }
 `;
